@@ -16,6 +16,7 @@
 		9835A46B22A7607E0097BD3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9835A46922A7607E0097BD3D /* LaunchScreen.storyboard */; };
 		9835A47622A7607E0097BD3D /* SlideTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9835A47522A7607E0097BD3D /* SlideTests.swift */; };
 		9835A48122A7607E0097BD3D /* SlideUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9835A48022A7607E0097BD3D /* SlideUITests.swift */; };
+		9835A48F22A76C4F0097BD3D /* login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9835A48E22A76C4F0097BD3D /* login.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		9835A47C22A7607E0097BD3D /* SlideUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlideUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9835A48022A7607E0097BD3D /* SlideUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUITests.swift; sourceTree = "<group>"; };
 		9835A48222A7607E0097BD3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9835A48E22A76C4F0097BD3D /* login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = login.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		9835A45B22A7607C0097BD3D /* Slide */ = {
 			isa = PBXGroup;
 			children = (
+				9835A48E22A76C4F0097BD3D /* login.swift */,
 				9835A45C22A7607C0097BD3D /* AppDelegate.swift */,
 				9835A45E22A7607C0097BD3D /* RootViewController.swift */,
 				9835A46022A7607C0097BD3D /* DataViewController.swift */,
@@ -262,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9835A45F22A7607C0097BD3D /* RootViewController.swift in Sources */,
+				9835A48F22A76C4F0097BD3D /* login.swift in Sources */,
 				9835A46322A7607C0097BD3D /* ModelController.swift in Sources */,
 				9835A46122A7607C0097BD3D /* DataViewController.swift in Sources */,
 				9835A45D22A7607C0097BD3D /* AppDelegate.swift in Sources */,
