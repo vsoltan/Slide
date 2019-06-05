@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04F5967222A76DD8004AA63A /* deleteMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F5967122A76DD8004AA63A /* deleteMe.swift */; };
 		9835A45D22A7607C0097BD3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9835A45C22A7607C0097BD3D /* AppDelegate.swift */; };
 		9835A45F22A7607C0097BD3D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9835A45E22A7607C0097BD3D /* RootViewController.swift */; };
 		9835A46122A7607C0097BD3D /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9835A46022A7607C0097BD3D /* DataViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04F5967122A76DD8004AA63A /* deleteMe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deleteMe.swift; sourceTree = "<group>"; };
 		9835A45922A7607C0097BD3D /* Slide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9835A45C22A7607C0097BD3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9835A45E22A7607C0097BD3D /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				9835A45C22A7607C0097BD3D /* AppDelegate.swift */,
 				9835A45E22A7607C0097BD3D /* RootViewController.swift */,
 				9835A46022A7607C0097BD3D /* DataViewController.swift */,
+				04F5967122A76DD8004AA63A /* deleteMe.swift */,
 				9835A46222A7607C0097BD3D /* ModelController.swift */,
 				9835A46422A7607C0097BD3D /* Main.storyboard */,
 				9835A46722A7607E0097BD3D /* Assets.xcassets */,
@@ -265,6 +268,7 @@
 				9835A46322A7607C0097BD3D /* ModelController.swift in Sources */,
 				9835A46122A7607C0097BD3D /* DataViewController.swift in Sources */,
 				9835A45D22A7607C0097BD3D /* AppDelegate.swift in Sources */,
+				04F5967222A76DD8004AA63A /* deleteMe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
