@@ -14,7 +14,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        print("hello")
+        self.performSegue(withIdentifier: "LoginView", sender: self)
+    }
 }
 
