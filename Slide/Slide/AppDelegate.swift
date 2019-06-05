@@ -2,7 +2,8 @@
 //  AppDelegate.swift
 //  Slide
 //
-//  Created by Valeriy Soltan on 6/4/19.
+//  Created by mac on 6/5/19.
+//  Copyright © 2019 Roodac. All rights reserved.
 //
 
 import UIKit
