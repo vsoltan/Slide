@@ -10,6 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Main-->
+        <scene sceneID="pef-nv-rrd">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="YeD-1B-o1a" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vPO-uf-xp9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-496" y="-207"/>
+        </scene>
         <!--Settings View Controller-->
         <scene sceneID="quF-9O-uXo">
             <objects>
@@ -36,7 +44,7 @@
                                 <rect key="frame" x="20" y="64" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="Evm-gm-ahU" kind="show" id="s7N-sR-jFg"/>
+                                    <segue destination="YeD-1B-o1a" kind="presentation" id="PDO-OL-OFz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -60,14 +68,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qAM-cT-iGC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5.7971014492753632" y="65.625"/>
-        </scene>
-        <!--Main-->
-        <scene sceneID="dJH-Ju-CXo">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" id="Evm-gm-ahU" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jge-r1-6Oy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-520" y="-206"/>
         </scene>
     </scenes>
 </document>
