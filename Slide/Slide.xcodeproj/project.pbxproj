@@ -14,6 +14,7 @@
 		98B3A44B22A87384005FBCF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B3A44822A87384005FBCF2 /* LaunchScreen.storyboard */; };
 		98B3A44E22A87A8A005FBCF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B3A44D22A87A8A005FBCF2 /* Main.storyboard */; };
 		98B3A45222A8BCDA005FBCF2 /* ProtectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3A45122A8BCDA005FBCF2 /* ProtectedViewController.swift */; };
+		98B3A45722A8C9D7005FBCF2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3A45622A8C9D7005FBCF2 /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		98B3A44822A87384005FBCF2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Slide/Storyboards/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		98B3A44D22A87A8A005FBCF2 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		98B3A45122A8BCDA005FBCF2 /* ProtectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectedViewController.swift; sourceTree = "<group>"; };
+		98B3A45622A8C9D7005FBCF2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			children = (
 				98B3A45122A8BCDA005FBCF2 /* ProtectedViewController.swift */,
 				04F596E122A8540D004AA63A /* ViewController.swift */,
+				98B3A45622A8C9D7005FBCF2 /* RegisterViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 				04F596E222A8540D004AA63A /* ViewController.swift in Sources */,
 				04F596E022A8540D004AA63A /* AppDelegate.swift in Sources */,
 				98B3A45222A8BCDA005FBCF2 /* ProtectedViewController.swift in Sources */,
+				98B3A45722A8C9D7005FBCF2 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

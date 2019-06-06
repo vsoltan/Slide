@@ -96,7 +96,7 @@
         <!--SignUpVC-->
         <scene sceneID="KWc-na-h4s">
             <objects>
-                <viewController title="SignUpVC" id="Jhi-YG-4kD" sceneMemberID="viewController">
+                <viewController title="SignUpVC" id="Jhi-YG-4kD" customClass="RegisterViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G02-1n-y1C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -155,6 +155,9 @@
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="accountActivated:" destination="Jhi-YG-4kD" eventType="touchUpInside" id="tMB-GX-HmX"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dx0-PA-2L6">
                                 <rect key="frame" x="90" y="605.33333333333337" width="138" height="20"/>
@@ -220,6 +223,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vUI-Bw-f2e"/>
                     </view>
+                    <connections>
+                        <outlet property="usrEmail" destination="BJe-BK-adA" id="xf8-D2-7Ik"/>
+                        <outlet property="usrName" destination="oig-UZ-Jgz" id="Ogj-Kx-BFx"/>
+                        <outlet property="usrPassword" destination="yJU-nd-Fwf" id="K68-6Q-zcY"/>
+                        <outlet property="usrUsername" destination="k2U-O7-JD1" id="3Tr-Qs-Gqp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rGX-mF-Rsl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -264,6 +273,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="x9M-Q8-bkk"/>
+        <segue reference="PXI-nH-AXu"/>
     </inferredMetricsTieBreakers>
 </document>
