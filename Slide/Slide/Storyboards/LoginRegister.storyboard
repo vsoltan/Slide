@@ -42,6 +42,9 @@
                                 <state key="normal" title="Log in">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="gLF-dF-64y" kind="presentation" id="nx0-1O-4KX"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29L-ck-FPa">
                                 <rect key="frame" x="60.000000000000014" y="369.66666666666669" width="181.33333333333337" height="20"/>
@@ -91,7 +94,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wZG-tN-rGT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4773.6000000000004" y="115.27093596059113"/>
+            <point key="canvasLocation" x="4774" y="115"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="nRX-4d-NHR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="gLF-dF-64y" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="moG-hU-Mn7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4774" y="513"/>
         </scene>
         <!--SignUpVC-->
         <scene sceneID="KWc-na-h4s">
@@ -232,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rGX-mF-Rsl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5618.3999999999996" y="115.27093596059113"/>
+            <point key="canvasLocation" x="5809" y="115"/>
         </scene>
         <!--Protected View Controller-->
         <scene sceneID="vhR-C9-pK8">
