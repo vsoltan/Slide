@@ -22,41 +22,15 @@ class RegisterViewController: UIViewController {
     
     // sign up button clicked
     @IBAction func accountActivated(_ sender: Any) {
-        if (validated()) {
+        TextVerification.validate(field: usrEmail, type: "email")
+        TextVerification.validate(field: usrName, type: "name")
+        TextVerification.validate(field: usrUsername, type: "username")
+        TextVerification.validate(field: usrPassword, type: "password")
+        
+        
+        
             // add to database and process sign up request
             return
         }
-    }
-    
-    func validated() -> Bool {
-        let email = usrEmail.text
-        let name = usrName.text
-        let usr = usrUsername.text
-        let pswd = usrPassword.text
-        
-        var valid: Bool = true
-        // change placeholder color to red color for empty textfields
-        if (email!.isEmpty){
-            usrEmail.attributedPlaceholder = NSAttributedString(string: "please enter your email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-            valid = false
-        }
-        
-        if (name!.isEmpty){
-            usrName.attributedPlaceholder = NSAttributedString(string: "please enter your name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-            valid = false
-        }
-        
-        if (usr!.isEmpty){
-            usrUsername.attributedPlaceholder = NSAttributedString(string: "please enter your username", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-            valid = false
-        }
-        
-        if (pswd!.isEmpty){
-            usrPassword.attributedPlaceholder = NSAttributedString(string: "please enter your username", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-            valid = false
-        }
-        
-        return valid
-    }
 }
 
