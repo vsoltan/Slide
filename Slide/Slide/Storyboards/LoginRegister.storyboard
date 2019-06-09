@@ -13,7 +13,7 @@
         <!--LogInVC-->
         <scene sceneID="FbC-Ss-sxX">
             <objects>
-                <viewController title="LogInVC" id="rjZ-1j-7WL" sceneMemberID="viewController">
+                <viewController title="LogInVC" id="rjZ-1j-7WL" customClass="LoginViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sfa-Oo-JDb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,6 +43,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="LogInActivated:" destination="rjZ-1j-7WL" eventType="touchUpInside" id="yc0-cD-UeP"/>
                                     <segue destination="gLF-dF-64y" kind="presentation" id="nx0-1O-4KX"/>
                                 </connections>
                             </button>
@@ -91,6 +92,11 @@
                         <viewLayoutGuide key="safeArea" id="jBB-zO-7Va"/>
                     </view>
                     <navigationItem key="navigationItem" id="F1r-qx-AEw"/>
+                    <connections>
+                        <outlet property="LogInButton" destination="4cu-11-2S5" id="qtE-Lh-5n8"/>
+                        <outlet property="password" destination="RZ7-00-Igd" id="srC-E5-wTY"/>
+                        <outlet property="username" destination="5db-Uf-43k" id="wOe-ap-pVQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wZG-tN-rGT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -284,6 +290,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="eIc-NK-u24"/>
         <segue reference="PXI-nH-AXu"/>
     </inferredMetricsTieBreakers>
 </document>
