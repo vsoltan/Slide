@@ -44,7 +44,7 @@
                                 <rect key="frame" x="20" y="64" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="YeD-1B-o1a" kind="popoverPresentation" popoverAnchorView="kSh-3A-NvE" id="PDO-OL-OFz">
+                                    <segue destination="YeD-1B-o1a" kind="popoverPresentation" identifier="ToHome" popoverAnchorView="kSh-3A-NvE" id="PDO-OL-OFz">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
