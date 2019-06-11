@@ -93,7 +93,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="F1r-qx-AEw"/>
                     <connections>
-                        <outlet property="LogInButton" destination="4cu-11-2S5" id="qtE-Lh-5n8"/>
                         <outlet property="password" destination="RZ7-00-Igd" id="srC-E5-wTY"/>
                         <outlet property="username" destination="5db-Uf-43k" id="wOe-ap-pVQ"/>
                     </connections>
@@ -290,7 +289,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eIc-NK-u24"/>
-        <segue reference="PXI-nH-AXu"/>
+        <segue reference="x9M-Q8-bkk"/>
     </inferredMetricsTieBreakers>
 </document>
