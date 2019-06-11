@@ -19,23 +19,19 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     let supportArray = ["About", "Contact", "Ratings", "Log out"]
     
+    // initial setup of the view controller
     override func viewDidLoad() {
         super.viewDidLoad()
         settingsTable.dataSource = self
         settingsTable.delegate = self
-        
-        print("Settings page loaded")
-        // Do any additional setup after loading the view.
     }
     
-    // MARK: - TABLEVIEW DELEGATE & DATASOURCE
-    
-    // How many sections?
+    // returns the number of sections for the table
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
     
-    // How many cells in each section?
+    // returns the number of cells in each section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var num = 0
         if section == 0 {
@@ -48,7 +44,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         return num
     }
     
-    // What are the cells' contents
+    // sets the cell contents
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItem", for: indexPath)
         
@@ -63,7 +59,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
-    // Create section titles
+    // assign section names
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return "Profile"
@@ -73,18 +69,5 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             return "Support"
         }
     }
-    
-    //override func tableView
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
