@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     
@@ -18,11 +19,14 @@ class LoginViewController: UIViewController {
         TextVerification.validate(field: username, type: "username")
         TextVerification.validate(field: password, type: "password")
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // creates login button from FBSDKLoginKit
+        _ = FBSDKLoginButton()
+        
         // Do any additional setup after loading the view.
     }
-    
-    
+
 }
