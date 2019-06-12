@@ -8,8 +8,9 @@
 
 import UIKit
 import FBSDKLoginKit
+import GoogleSignIn
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, GIDSignInUIDelegate {
     
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -20,13 +21,35 @@ class LoginViewController: UIViewController {
         TextVerification.validate(field: password, type: "password")
     }
 
+    // To be implemented later for google signout...
+/*    @IBAction func didTapSignOut(_ sender: AnyObject) {
+        GIDSignIn.sharedInstance().signOut()
+    }
+*/
+    
+    func googleSignIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
+                withError error: NSError!) {
+        if (error == nil) {
+            // Perform any operations on signed in user here.
+        } else {
+            print("\(error.localizedDescription)")
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Do any additional setup after loading the view.
         
         // creates login button from FBSDKLoginKit
         _ = FBSDKLoginButton()
         
-        // Do any additional setup after loading the view.
+        // creates login button from GoogleSignIn
+        GIDSignIn.sharedInstance().uiDelegate = self
+        
+        // Uncomment to automatically sign the user into google.
+        // GIDSignIn.sharedInstance().signInSilently()
+        
+        // TODO: Configure the sign-in button look/feel
     }
 
 }
