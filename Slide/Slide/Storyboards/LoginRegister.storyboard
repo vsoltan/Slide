@@ -66,6 +66,11 @@
                                     <segue destination="Jhi-YG-4kD" kind="presentation" identifier="ToRegisterView" id="eIc-NK-u24"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhE-Oh-KAX" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="95" y="439" width="185" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Continue with Facebook"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -99,7 +104,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wZG-tN-rGT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4774" y="115"/>
+            <point key="canvasLocation" x="4773.6000000000004" y="114.53201970443351"/>
         </scene>
         <!--Main-->
         <scene sceneID="nRX-4d-NHR">
