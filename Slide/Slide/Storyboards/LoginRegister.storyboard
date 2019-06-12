@@ -66,9 +66,8 @@
                                     <segue destination="Jhi-YG-4kD" kind="presentation" identifier="ToRegisterView" id="eIc-NK-u24"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhE-Oh-KAX" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="95" y="439" width="185" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhE-Oh-KAX" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="105" y="439" width="165" height="30"/>
                                 <state key="normal" title="Continue with Facebook"/>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6EE-Im-l8G" customClass="GIDSignInButton">
@@ -93,6 +92,8 @@
                             <constraint firstItem="4cu-11-2S5" firstAttribute="leading" secondItem="jBB-zO-7Va" secondAttribute="leading" constant="140" id="Tze-hS-h8h"/>
                             <constraint firstItem="BJp-Ta-qKA" firstAttribute="top" secondItem="jBB-zO-7Va" secondAttribute="top" constant="70" id="Wc5-hS-8Ug"/>
                             <constraint firstItem="29L-ck-FPa" firstAttribute="top" secondItem="4cu-11-2S5" secondAttribute="bottom" constant="45" id="aZ8-yt-gaI"/>
+                            <constraint firstItem="IhE-Oh-KAX" firstAttribute="centerX" secondItem="Sfa-Oo-JDb" secondAttribute="centerX" id="g12-2z-hhz"/>
+                            <constraint firstItem="IhE-Oh-KAX" firstAttribute="top" secondItem="YfR-PU-Tg9" secondAttribute="bottom" constant="44.329999999999998" id="g3e-Uh-STM"/>
                             <constraint firstItem="5db-Uf-43k" firstAttribute="centerX" secondItem="Sfa-Oo-JDb" secondAttribute="centerX" id="gQL-QM-QYK"/>
                             <constraint firstItem="YfR-PU-Tg9" firstAttribute="top" secondItem="RZ7-00-Igd" secondAttribute="bottom" constant="100" id="lbs-du-ZN4"/>
                             <constraint firstItem="5db-Uf-43k" firstAttribute="top" secondItem="BJp-Ta-qKA" secondAttribute="bottom" constant="40" id="ogx-79-vTj"/>
@@ -299,6 +300,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="x9M-Q8-bkk"/>
+        <segue reference="eIc-NK-u24"/>
+        <segue reference="PXI-nH-AXu"/>
     </inferredMetricsTieBreakers>
 </document>

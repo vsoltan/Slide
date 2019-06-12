@@ -22,25 +22,26 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     }
 
     // To be implemented later for google signout...
-/*    @IBAction func didTapSignOut(_ sender: AnyObject) {
-        GIDSignIn.sharedInstance().signOut()
-    }
-*/
+//    @IBAction func didTapSignOut(_ sender: AnyObject) {
+//        GIDSignIn.sharedInstance().signOut()
+//    }
+
     
-    func googleSignIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
-                withError error: NSError!) {
-        if (error == nil) {
-            // Perform any operations on signed in user here.
-        } else {
-            print("\(error.localizedDescription)")
-        }
-    }
+//    func googleSignIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
+//                withError error: NSError!) {
+//        if (error == nil) {
+//            // Perform any operations on signed in user here.
+//        } else {
+//            print("\(error.localizedDescription)")
+//        }
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         // creates login button from FBSDKLoginKit
+        // TODO center the facebook sign in button 
         _ = FBSDKLoginButton()
         
         // creates login button from GoogleSignIn

@@ -15,22 +15,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
 
+    // Override point for customization after application launch.
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        // Anything FBSDK is related to Facebook and GID is related to Google
+        
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        GIDSignIn.sharedInstance().clientID = "705100307106-3ivsiu3cbvjv2drsihtdbv5nkc8vmblk.apps.googleusercontent.com"
-        GIDSignIn.sharedInstance().delegate = self
+        
+        // TODO get google implementation working: cursory look on SO indicates that info.plist file might be missing something
+        
+//        GIDSignIn.sharedInstance().clientID = "705100307106-3ivsiu3cbvjv2drsihtdbv5nkc8vmblk.apps.googleusercontent.com"
+//        GIDSignIn.sharedInstance().delegate = self
         
         return true
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return
-            //FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
-            GIDSignIn.sharedInstance().handle(url as URL?,
-                    sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                    annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        // TODO please write documentation for what this is
+        
+            FBSDKApplicationDelegate.sharedInstance().application(application, open: url, options: options)
+//            GIDSignIn.sharedInstance().handle(url as URL?,
+//                    sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+//                    annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+        return true
     }
     
     
@@ -80,7 +86,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
 
 }
 
