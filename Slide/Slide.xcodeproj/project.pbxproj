@@ -10,6 +10,9 @@
 		04F596E022A8540D004AA63A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F596DF22A8540D004AA63A /* AppDelegate.swift */; };
 		04F596E222A8540D004AA63A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F596E122A8540D004AA63A /* ViewController.swift */; };
 		04F596E722A8540F004AA63A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F596E622A8540F004AA63A /* Assets.xcassets */; };
+		98B3847422B1C0260097A073 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847322B1C0260097A073 /* Profile.swift */; };
+		98B3847622B2F35F0097A073 /* QRContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847522B2F35F0097A073 /* QRContainer.swift */; };
+		98B3847822B2FCE90097A073 /* QR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847722B2FCE90097A073 /* QR.swift */; };
 		98B3A44922A87384005FBCF2 /* LoginRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B3A44622A87384005FBCF2 /* LoginRegister.storyboard */; };
 		98B3A44B22A87384005FBCF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B3A44822A87384005FBCF2 /* LaunchScreen.storyboard */; };
 		98B3A44E22A87A8A005FBCF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B3A44D22A87A8A005FBCF2 /* Main.storyboard */; };
@@ -17,7 +20,7 @@
 		98B3A45722A8C9D7005FBCF2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3A45622A8C9D7005FBCF2 /* RegisterViewController.swift */; };
 		98B3A46522A9DD78005FBCF2 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B3A46422A9DD78005FBCF2 /* Settings.storyboard */; };
 		98B3A46722A9DD7F005FBCF2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3A46622A9DD7F005FBCF2 /* SettingsViewController.swift */; };
-		98B3A46E22A9E878005FBCF2 /* TextVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3A46D22A9E878005FBCF2 /* TextVerification.swift */; };
+		98B3A46E22A9E878005FBCF2 /* TextFieldParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3A46D22A9E878005FBCF2 /* TextFieldParser.swift */; };
 		98B3A47222A9ED73005FBCF2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3A47122A9ED73005FBCF2 /* LoginViewController.swift */; };
 		98B3A49B22B1860D005FBCF2 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3A49422B1860D005FBCF2 /* FBSDKLoginKit.framework */; };
 		98B3A49C22B1860D005FBCF2 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3A49522B1860D005FBCF2 /* FBSDKShareKit.framework */; };
@@ -34,6 +37,9 @@
 		04F596E122A8540D004AA63A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		04F596E622A8540F004AA63A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04F596EB22A8540F004AA63A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98B3847322B1C0260097A073 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		98B3847522B2F35F0097A073 /* QRContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRContainer.swift; sourceTree = "<group>"; };
+		98B3847722B2FCE90097A073 /* QR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QR.swift; sourceTree = "<group>"; };
 		98B3A44622A87384005FBCF2 /* LoginRegister.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LoginRegister.storyboard; path = Slide/Storyboards/LoginRegister.storyboard; sourceTree = SOURCE_ROOT; };
 		98B3A44822A87384005FBCF2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Slide/Storyboards/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		98B3A44D22A87A8A005FBCF2 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -41,7 +47,7 @@
 		98B3A45622A8C9D7005FBCF2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		98B3A46422A9DD78005FBCF2 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		98B3A46622A9DD7F005FBCF2 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		98B3A46D22A9E878005FBCF2 /* TextVerification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextVerification.swift; sourceTree = "<group>"; };
+		98B3A46D22A9E878005FBCF2 /* TextFieldParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldParser.swift; sourceTree = "<group>"; };
 		98B3A47122A9ED73005FBCF2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		98B3A49422B1860D005FBCF2 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		98B3A49522B1860D005FBCF2 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -125,7 +131,10 @@
 		98B3A46A22A9E60A005FBCF2 /* Functions */ = {
 			isa = PBXGroup;
 			children = (
-				98B3A46D22A9E878005FBCF2 /* TextVerification.swift */,
+				98B3A46D22A9E878005FBCF2 /* TextFieldParser.swift */,
+				98B3847322B1C0260097A073 /* Profile.swift */,
+				98B3847522B2F35F0097A073 /* QRContainer.swift */,
+				98B3847722B2FCE90097A073 /* QR.swift */,
 			);
 			path = Functions;
 			sourceTree = "<group>";
@@ -219,11 +228,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				98B3A47222A9ED73005FBCF2 /* LoginViewController.swift in Sources */,
+				98B3847622B2F35F0097A073 /* QRContainer.swift in Sources */,
+				98B3847422B1C0260097A073 /* Profile.swift in Sources */,
 				04F596E222A8540D004AA63A /* ViewController.swift in Sources */,
 				04F596E022A8540D004AA63A /* AppDelegate.swift in Sources */,
-				98B3A46E22A9E878005FBCF2 /* TextVerification.swift in Sources */,
+				98B3A46E22A9E878005FBCF2 /* TextFieldParser.swift in Sources */,
 				98B3A45222A8BCDA005FBCF2 /* ProtectedViewController.swift in Sources */,
 				98B3A46722A9DD7F005FBCF2 /* SettingsViewController.swift in Sources */,
+				98B3847822B2FCE90097A073 /* QR.swift in Sources */,
 				98B3A45722A8C9D7005FBCF2 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
