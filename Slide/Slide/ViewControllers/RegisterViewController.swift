@@ -22,15 +22,11 @@ class RegisterViewController: UIViewController {
     
     // sign up button clicked
     @IBAction func accountActivated(_ sender: Any) {
-        TextVerification.validate(field: usrEmail, type: "email")
-        TextVerification.validate(field: usrName, type: "name")
-        TextVerification.validate(field: usrUsername, type: "username")
-        TextVerification.validate(field: usrPassword, type: "password")
+        let registerInfo: Array<(field: UITextField, type: String)>
+            = [(usrEmail, "email"), (usrName, "name"), (usrUsername, "username"), (usrPassword, "password")]
         
-        
-        
-            // add to database and process sign up request
-            return
-        }
+        TextFieldParser.validate(textFields: registerInfo)
+        return
+    }
 }
 
