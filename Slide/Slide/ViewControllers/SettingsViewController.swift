@@ -35,6 +35,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         settingsTable.delegate = self
     }
     
+    // returns the number of sections for the table
     func numberOfSections(in tableView: UITableView) -> Int {
         return numSections
     }
@@ -52,7 +53,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.textLabel!.text = allSections[indexPath.section][indexPath.row]
         return cell
     }
-    
+
     // sets the section titles
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return titles[section];

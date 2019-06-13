@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 
 class TextVerification {
+    // TODO parse email to determine if it's valid
     static func validate(field: UITextField, type: String) { // -> Bool
         // var valid: Bool = true
         // change placeholder color to red color for the passed textfields if empty
