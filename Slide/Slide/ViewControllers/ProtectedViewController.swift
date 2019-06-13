@@ -10,7 +10,6 @@ import UIKit
 
 class ProtectedViewController: UIViewController {
 
-    // Do any additional setup after loading the view.
     override func viewDidLoad() {
         super.viewDidLoad()
     }

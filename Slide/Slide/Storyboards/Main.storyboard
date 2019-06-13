@@ -21,24 +21,54 @@
         <!--MainVC-->
         <scene sceneID="NKf-KH-xe2">
             <objects>
-                <viewController title="MainVC" id="geV-7T-qZd" sceneMemberID="viewController">
+                <viewController title="MainVC" id="geV-7T-qZd" customClass="ViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zMc-O2-ear">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13x-xq-AwI">
-                                <rect key="frame" x="15" y="67" width="57" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13x-xq-AwI">
+                                <rect key="frame" x="20" y="67" width="57" height="30"/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
                                     <segue destination="znL-d6-ReE" kind="presentation" id="1da-dH-ztb"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MjK-EJ-j8R">
+                                <rect key="frame" x="20" y="142" width="294" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRT-qN-Rgs">
+                                <rect key="frame" x="334" y="142" width="64" height="30"/>
+                                <state key="normal" title="Generate"/>
+                                <connections>
+                                    <action selector="generate:" destination="geV-7T-qZd" eventType="touchUpInside" id="h4F-lp-ZxG"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FNH-Pd-epK">
+                                <rect key="frame" x="54" y="296" width="300" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MjK-EJ-j8R" firstAttribute="top" secondItem="13x-xq-AwI" secondAttribute="bottom" constant="45" id="IiR-mv-Gj5"/>
+                            <constraint firstItem="esl-Ic-Cb0" firstAttribute="trailing" secondItem="13x-xq-AwI" secondAttribute="trailing" constant="337" id="LId-cy-8Mg"/>
+                            <constraint firstItem="fRT-qN-Rgs" firstAttribute="top" secondItem="esl-Ic-Cb0" secondAttribute="top" constant="98" id="Sbk-Xn-4yc"/>
+                            <constraint firstItem="13x-xq-AwI" firstAttribute="leading" secondItem="esl-Ic-Cb0" secondAttribute="leading" constant="20" id="WZD-sk-470"/>
+                            <constraint firstItem="fRT-qN-Rgs" firstAttribute="leading" secondItem="MjK-EJ-j8R" secondAttribute="trailing" constant="20" id="gMn-T1-3NS"/>
+                            <constraint firstItem="MjK-EJ-j8R" firstAttribute="leading" secondItem="esl-Ic-Cb0" secondAttribute="leading" constant="20" id="hco-F1-d6M"/>
+                            <constraint firstItem="13x-xq-AwI" firstAttribute="top" secondItem="esl-Ic-Cb0" secondAttribute="top" constant="23" id="t2S-pk-By1"/>
+                            <constraint firstItem="esl-Ic-Cb0" firstAttribute="trailing" secondItem="MjK-EJ-j8R" secondAttribute="trailing" constant="100" id="ycu-Dl-0uS"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="esl-Ic-Cb0"/>
                     </view>
                     <navigationItem key="navigationItem" id="YfQ-22-Hb5"/>
+                    <connections>
+                        <outlet property="QRView" destination="FNH-Pd-epK" id="m1k-5F-Bjj"/>
+                        <outlet property="linkField" destination="MjK-EJ-j8R" id="gkp-H2-9Zf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aV3-u5-IRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

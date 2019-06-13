@@ -9,10 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var linkField: UITextField!
+    @IBOutlet weak var QRView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func generate(_ sender: Any) {
+    let img = QR.generateQRCode(from: linkField.text!)
+        QRView.image = img
     }
 }
 

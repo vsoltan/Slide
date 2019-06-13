@@ -40,8 +40,20 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHZ-j4-CTu">
+                                <rect key="frame" x="163" y="61" width="88.5" height="28"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Settings">
+                                        <attributes>
+                                            <font key="NSFont" size="24" name="AppleSymbols"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSh-3A-NvE">
-                                <rect key="frame" x="20" y="64" width="34" height="30"/>
+                                <rect key="frame" x="20" y="59" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
                                     <segue destination="YeD-1B-o1a" kind="popoverPresentation" identifier="ToHome" popoverAnchorView="kSh-3A-NvE" id="PDO-OL-OFz">
@@ -53,9 +65,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="BsO-VU-0d2" firstAttribute="trailing" secondItem="AqZ-UB-twD" secondAttribute="trailing" constant="10" id="Ec8-Rz-41V"/>
+                            <constraint firstItem="vHZ-j4-CTu" firstAttribute="top" secondItem="BsO-VU-0d2" secondAttribute="top" constant="17" id="Gnv-NU-egZ"/>
+                            <constraint firstItem="vHZ-j4-CTu" firstAttribute="leading" secondItem="kSh-3A-NvE" secondAttribute="trailing" constant="109" id="IXk-Pp-u07"/>
+                            <constraint firstItem="kSh-3A-NvE" firstAttribute="top" secondItem="BsO-VU-0d2" secondAttribute="top" constant="15" id="MGj-Yy-M2v"/>
                             <constraint firstItem="AqZ-UB-twD" firstAttribute="leading" secondItem="BsO-VU-0d2" secondAttribute="leading" constant="10" id="MSo-uf-Fpk"/>
-                            <constraint firstItem="kSh-3A-NvE" firstAttribute="top" secondItem="BsO-VU-0d2" secondAttribute="top" constant="20" id="O4v-Mj-jHR"/>
                             <constraint firstItem="kSh-3A-NvE" firstAttribute="leading" secondItem="BsO-VU-0d2" secondAttribute="leading" constant="20" id="PGn-1E-2GE"/>
+                            <constraint firstItem="vHZ-j4-CTu" firstAttribute="centerX" secondItem="SOt-Zh-gzU" secondAttribute="centerX" id="ZnJ-PO-QbU"/>
                             <constraint firstItem="AqZ-UB-twD" firstAttribute="bottom" secondItem="BsO-VU-0d2" secondAttribute="bottom" id="aF6-zH-U58"/>
                             <constraint firstItem="AqZ-UB-twD" firstAttribute="leading" secondItem="BsO-VU-0d2" secondAttribute="leading" constant="10" id="l6z-4F-HM6"/>
                             <constraint firstItem="BsO-VU-0d2" firstAttribute="trailing" secondItem="AqZ-UB-twD" secondAttribute="trailing" constant="10" id="zGG-jA-qJB"/>

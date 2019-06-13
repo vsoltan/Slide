@@ -14,7 +14,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     let numSections = 3
     
     // sections of the table
-    
     let profileArray = ["Linked Media", "Cards", "Friends"]
     
     let accountArray = ["Password", "Upgrade"]
@@ -23,6 +22,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     let titles = ["Profile", "Account", "Support"]
     
+    // cumulative array with all sections for easy access in methods
     lazy var allSections : Array<Array<String>> = [profileArray, accountArray, supportArray]
 
     // table object

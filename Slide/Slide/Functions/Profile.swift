@@ -10,11 +10,10 @@ import Foundation
 
 // structure modeling a profile for a user
 class Profile {
-    // sing up details
+    // sign up details
     private var usr, email, pswd, name : String!
     
-    
-    
+    // creates a new user
     init() {
         
     }
