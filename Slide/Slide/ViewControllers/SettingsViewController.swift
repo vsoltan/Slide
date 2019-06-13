@@ -8,10 +8,12 @@
 
 import UIKit
 
-
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var settingsTable: UITableView!
+    // constant for the number of sections in the settings table
+    let numSections = 3
+    
+    // sections of the table
     
     let profileArray = ["Linked Media", "Cards", "Friends"]
     
@@ -19,59 +21,40 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     let supportArray = ["About", "Contact", "Ratings", "Log out"]
     
+    let titles = ["Profile", "Account", "Support"]
+    
+    lazy var allSections : Array<Array<String>> = [profileArray, accountArray, supportArray]
+
+    // table object
+    @IBOutlet weak var settingsTable: UITableView!
+    
+    // initialization
     override func viewDidLoad() {
         super.viewDidLoad()
         settingsTable.dataSource = self
         settingsTable.delegate = self
-        
-        print("Settings page loaded")
-        // Do any additional setup after loading the view.
     }
     
-    // MARK: - TABLEVIEW DELEGATE & DATASOURCE
-    
-    // How many sections?
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return numSections
     }
     
-    // How many cells in each section?
+    // returns the number of cells in each section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var num = 0
-        if section == 0 {
-            num = profileArray.count
-        } else if section == 1 {
-            num = accountArray.count
-        } else if section == 2 {
-            num = supportArray.count
-        }
-        return num
+        return allSections[section].count
     }
     
-    // What are the cells' contents
+    // creates the labels in the table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // retrieves a cell from the table given the index
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItem", for: indexPath)
-        
-        if indexPath.section == 0 {
-            cell.textLabel!.text = profileArray[indexPath.row]
-        } else if indexPath.section == 1 {
-            cell.textLabel!.text = accountArray[indexPath.row]
-        } else if indexPath.section == 2 {
-            cell.textLabel!.text = supportArray[indexPath.row]
-        }
-        
+        // sets the text of that cell to the strings enumerated in the corresponding array
+        cell.textLabel!.text = allSections[indexPath.section][indexPath.row]
         return cell
     }
     
-    // Create section titles
+    // sets the section titles
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "Profile"
-        } else if section == 1 {
-            return "Account"
-        } else {
-            return "Support"
-        }
+        return titles[section];
     }
-
 }
