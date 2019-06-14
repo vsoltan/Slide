@@ -6,6 +6,8 @@
 //  Copyright © 2019 Roodac. All rights reserved.
 //
 
+
+// OBLIGATORY COMMENT
 import UIKit
 
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
