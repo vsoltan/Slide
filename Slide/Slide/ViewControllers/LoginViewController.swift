@@ -21,20 +21,20 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         TextFieldParser.validate(textFields: signInInfo)
     }
 
-    // To be implemented later for google signout...
+    // to be implemented later for google signout...
     //    @IBAction func didTapSignOut(_ sender: AnyObject) {
     //        GIDSignIn.sharedInstance().signOut()
     //    }
 
-    
-    //    func googleSignIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
-    //                withError error: NSError!) {
-    //        if (error == nil) {
-    //            // Perform any operations on signed in user here.
-    //        } else {
-    //            print("\(error.localizedDescription)")
-    //        }
-    //    }
+    // 
+    func googleSignIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
+                    withError error: NSError!) {
+        if (error == nil) {
+                // Perform any operations on signed in user here.
+        } else {
+            print("\(error.localizedDescription)")
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +46,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         GIDSignIn.sharedInstance().uiDelegate = self
         
         // automatically signs the user into google.
-        // GIDSignIn.sharedInstance().signInSilently()
+         GIDSignIn.sharedInstance().signInSilently()
         
         // TODO: Configure the sign-in button look/feel
     }
