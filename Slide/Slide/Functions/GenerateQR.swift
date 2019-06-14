@@ -9,23 +9,24 @@
 import UIKit
 import Foundation
 
-class QR {
+class GenerateQR {
     static func generateQRCode(from string : String) -> UIImage? {
         // retrieves data from string and encodes it into ascii
         let data = string.data(using: String.Encoding.ascii)
         
-        // create a QR code filter using Core Image library
+        // creates a filter and applies it to the data
         if let filter = CIFilter(name: "CIQRCodeGenerator") {
-            // pass text data to filter for processing
             filter.setValue(data, forKey: "inputMessage")
+            
             // scaling transformation to fit any screen
             let transform = CGAffineTransform(scaleX: 4, y: 4)
+            
             // image is rendered after transformation is applied
             if let output = filter.outputImage?.transformed(by: transform) {
                 return UIImage(ciImage: output)
             }
         }
-        // if any of the steps fail, nothing is returned
+        // error occured
         return nil
     }
 }

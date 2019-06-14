@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func generate(_ sender: Any) {
-    let img = QR.generateQRCode(from: linkField.text!)
+    let img = GenerateQR.generateQRCode(from: linkField.text!)
         QRView.image = img
     }
 }
