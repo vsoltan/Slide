@@ -10,6 +10,9 @@
 		04F596E022A8540D004AA63A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F596DF22A8540D004AA63A /* AppDelegate.swift */; };
 		04F596E222A8540D004AA63A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F596E122A8540D004AA63A /* ViewController.swift */; };
 		04F596E722A8540F004AA63A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F596E622A8540F004AA63A /* Assets.xcassets */; };
+		0D3DD6E022B329190051D26C /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D3DD6DF22B329190051D26C /* LocalAuthentication.framework */; };
+		0D3DD6E222B329230051D26C /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D3DD6E122B329230051D26C /* SafariServices.framework */; };
+		0D3DD6E422B3292C0051D26C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D3DD6E322B3292C0051D26C /* SystemConfiguration.framework */; };
 		98B3847422B1C0260097A073 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847322B1C0260097A073 /* Profile.swift */; };
 		98B3847622B2F35F0097A073 /* QRContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847522B2F35F0097A073 /* QRContainer.swift */; };
 		98B3847822B2FCE90097A073 /* QR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847722B2FCE90097A073 /* QR.swift */; };
@@ -37,6 +40,9 @@
 		04F596E122A8540D004AA63A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		04F596E622A8540F004AA63A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04F596EB22A8540F004AA63A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D3DD6DF22B329190051D26C /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		0D3DD6E122B329230051D26C /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		0D3DD6E322B3292C0051D26C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		98B3847322B1C0260097A073 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		98B3847522B2F35F0097A073 /* QRContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRContainer.swift; sourceTree = "<group>"; };
 		98B3847722B2FCE90097A073 /* QR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QR.swift; sourceTree = "<group>"; };
@@ -63,6 +69,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D3DD6E422B3292C0051D26C /* SystemConfiguration.framework in Frameworks */,
+				0D3DD6E222B329230051D26C /* SafariServices.framework in Frameworks */,
+				0D3DD6E022B329190051D26C /* LocalAuthentication.framework in Frameworks */,
 				98B3A49C22B1860D005FBCF2 /* FBSDKShareKit.framework in Frameworks */,
 				98B3A4A122B1860D005FBCF2 /* GoogleSignIn.framework in Frameworks */,
 				98B3A49E22B1860D005FBCF2 /* FBSDKCoreKit.framework in Frameworks */,
@@ -80,6 +89,7 @@
 			children = (
 				04F596DE22A8540D004AA63A /* Slide */,
 				04F596DD22A8540D004AA63A /* Products */,
+				0D3DD6DE22B329190051D26C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +113,16 @@
 				04F596EB22A8540F004AA63A /* Info.plist */,
 			);
 			path = Slide;
+			sourceTree = "<group>";
+		};
+		0D3DD6DE22B329190051D26C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D3DD6E322B3292C0051D26C /* SystemConfiguration.framework */,
+				0D3DD6E122B329230051D26C /* SafariServices.framework */,
+				0D3DD6DF22B329190051D26C /* LocalAuthentication.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		98B3A44522A8737D005FBCF2 /* Storyboards */ = {
@@ -373,6 +393,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.roodac.Slide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -393,6 +417,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.roodac.Slide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
