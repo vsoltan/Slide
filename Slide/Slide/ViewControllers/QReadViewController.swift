@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import AVFoundation
 
-class ReadQR: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class QReadViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
