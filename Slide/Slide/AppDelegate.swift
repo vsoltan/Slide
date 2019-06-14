@@ -8,15 +8,40 @@
 
 import UIKit
 import FBSDKCoreKit
+import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+    
+    // handles the google signin process
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            print("\(error.localizedDescription)")
+        } else {
+            // perform any operations on signed in user here.
+            let userId = user.userID                  // for client-side use only!
+            let idToken = user.authentication.idToken // safe to send to the server
+            let fullName = user.profile.name
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+            // ...
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
+              withError error: Error!) {
+        // perform any operations when the user disconnects from app here.
+        // ...
+    }
 
     var window: UIWindow?
 
     // Override point for customization after application launch.
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        GIDSignIn.sharedInstance().clientID = "705100307106-3ivsiu3cbvjv2drsihtdbv5nkc8vmblk.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().delegate = self
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // TODO get google implementation working: cursory look on SO indicates that info.plist file might be missing something
@@ -35,6 +60,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
+    func application2(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url as URL?,
+            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+            annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+    }
     
 
     func applicationWillResignActive(_ application: UIApplication) {
