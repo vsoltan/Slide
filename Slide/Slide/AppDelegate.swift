@@ -8,10 +8,9 @@
 
 import UIKit
 import FBSDKCoreKit
-import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
@@ -21,9 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // TODO get google implementation working: cursory look on SO indicates that info.plist file might be missing something
-        
-//        GIDSignIn.sharedInstance().clientID = "705100307106-3ivsiu3cbvjv2drsihtdbv5nkc8vmblk.apps.googleusercontent.com"
-//        GIDSignIn.sharedInstance().delegate = self
+    
         
         return true
     }
@@ -33,35 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // TODO please write documentation for what this is
         
             FBSDKApplicationDelegate.sharedInstance().application(application, open: url, options: options)
-//            GIDSignIn.sharedInstance().handle(url as URL?,
-//                    sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-//                    annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+        
         return true
     }
     
     
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
-              withError error: Error!) {
-        if let error = error {
-            print("\(error.localizedDescription)")
-        } else {
-            // Perform any operations on signed in user here.
-            /*
-            let userId = user.userID                  // For client-side use only!
-            let idToken = user.authentication.idToken // Safe to send to the server
-            let fullName = user.profile.name
-            let givenName = user.profile.givenName
-            let familyName = user.profile.familyName
-            let email = user.profile.email
-            // ...
-            */
-        }
-    }
     
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Google SDK: Perform any operations when the user disconnects from app here.
-        // ...
-    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
