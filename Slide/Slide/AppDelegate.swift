@@ -9,6 +9,7 @@
 import UIKit
 import FBSDKCoreKit
 import GoogleSignIn
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -45,6 +46,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // TODO get google implementation working: cursory look on SO indicates that info.plist file might be missing something
+        
+        // Use Firebase library to configure APIs
+        FirebaseApp.configure()
+        let db = Database.database().reference()
+        db.setValue("Hello Firebase")
     
         
         return true
