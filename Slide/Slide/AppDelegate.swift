@@ -20,14 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         if let error = error {
             print("\(error.localizedDescription)")
         } else {
-            // perform any operations on signed in user here.
+//            // perform any operations on signed in user here.
 //            let userId = user.userID                  // for client-side use only!
 //            let idToken = user.authentication.idToken // safe to send to the server
 //            let fullName = user.profile.name
 //            let givenName = user.profile.givenName
 //            let familyName = user.profile.familyName
 //            let email = user.profile.email
-            // ...
+//             ...
         }
     }
     
@@ -39,21 +39,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
 
-    // Override point for customization after application launch.
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         GIDSignIn.sharedInstance().clientID = "705100307106-3ivsiu3cbvjv2drsihtdbv5nkc8vmblk.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        // TODO get google implementation working: cursory look on SO indicates that info.plist file might be missing something
-        
-        // Use Firebase library to configure APIs
+        // use Firebase library to configure APIs
         FirebaseApp.configure()
         let db = Database.database().reference()
         db.setValue("Hello Firebase")
-    
-        
+
         return true
     }
     

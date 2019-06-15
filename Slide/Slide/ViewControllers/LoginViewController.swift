@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import FBSDKLoginKit
 import GoogleSignIn
 
@@ -18,7 +19,11 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     @IBAction func LogInActivated(_ sender: Any) {
         let signInInfo: Array<(field: UITextField, type: String)>
             = [(username, "username"), (password, "password")]
+        
+        // checks that the user passed information to the application
         TextFieldParser.validate(textFields: signInInfo)
+        
+        // Auth
     }
 
     // to be implemented later for google signout...

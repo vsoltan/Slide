@@ -16,6 +16,7 @@
 		98B3847D22B32BB30097A073 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3847C22B32BB30097A073 /* SystemConfiguration.framework */; };
 		98B3847F22B32BBC0097A073 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3847E22B32BBC0097A073 /* LocalAuthentication.framework */; };
 		98B3848122B33B550097A073 /* ReadQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3848022B33B550097A073 /* ReadQR.swift */; };
+		98B3848422B482950097A073 /* QRReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3848322B482950097A073 /* QRReaderViewController.swift */; };
 		98B3A44922A87384005FBCF2 /* LoginRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B3A44622A87384005FBCF2 /* LoginRegister.storyboard */; };
 		98B3A44B22A87384005FBCF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B3A44822A87384005FBCF2 /* LaunchScreen.storyboard */; };
 		98B3A44E22A87A8A005FBCF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B3A44D22A87A8A005FBCF2 /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 		98B3847C22B32BB30097A073 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		98B3847E22B32BBC0097A073 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		98B3848022B33B550097A073 /* ReadQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadQR.swift; sourceTree = "<group>"; };
+		98B3848322B482950097A073 /* QRReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRReaderViewController.swift; sourceTree = "<group>"; };
 		98B3A44622A87384005FBCF2 /* LoginRegister.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LoginRegister.storyboard; path = Slide/Storyboards/LoginRegister.storyboard; sourceTree = SOURCE_ROOT; };
 		98B3A44822A87384005FBCF2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Slide/Storyboards/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		98B3A44D22A87A8A005FBCF2 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				04F596E122A8540D004AA63A /* ViewController.swift */,
 				98B3A45622A8C9D7005FBCF2 /* RegisterViewController.swift */,
 				98B3A47122A9ED73005FBCF2 /* LoginViewController.swift */,
+				98B3848322B482950097A073 /* QRReaderViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98B3A47222A9ED73005FBCF2 /* LoginViewController.swift in Sources */,
+				98B3848422B482950097A073 /* QRReaderViewController.swift in Sources */,
 				98B3847422B1C0260097A073 /* User.swift in Sources */,
 				98B3848122B33B550097A073 /* ReadQR.swift in Sources */,
 				04F596E222A8540D004AA63A /* ViewController.swift in Sources */,
