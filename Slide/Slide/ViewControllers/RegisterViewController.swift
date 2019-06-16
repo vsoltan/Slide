@@ -21,6 +21,11 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    // go back to sign in view
+    @IBAction func chooseLogIn(_ sender: Any) {
+        performSegue(withIdentifier: "toLogin", sender: self)
+    }
+    
     // sign up button clicked
     @IBAction func accountActivated(_ sender: Any) {
         let registerInfo: Array<(field: UITextField, type: String)>
