@@ -47,8 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         // use Firebase library to configure APIs
         FirebaseApp.configure()
-        let db = Database.database().reference()
-        db.setValue("Hello Firebase")
+//        let db = Database.database().reference()
 
         return true
     }

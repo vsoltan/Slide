@@ -7,23 +7,33 @@
 //
 
 import UIKit
-import Firebase
 import FBSDKLoginKit
 import GoogleSignIn
+import FirebaseAuth
 
 class LoginViewController: UIViewController, GIDSignInUIDelegate {
     
-    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     
     @IBAction func LogInActivated(_ sender: Any) {
         let signInInfo: Array<(field: UITextField, type: String)>
-            = [(username, "username"), (password, "password")]
+            = [(email, "username"), (password, "password")]
         
         // checks that the user passed information to the application
-        TextFieldParser.validate(textFields: signInInfo)
+        if (TextFieldParser.validate(textFields: signInInfo)) {
+            Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
+                if user != nil {
+                    self.performSegue(withIdentifier: "signInToMain", sender: self)
+                } else {
+                    // error checking
+                }
+            }
+        }
         
-        // Auth
+        
+        
+        
     }
 
     // to be implemented later for google signout...
@@ -55,5 +65,13 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         
         // TODO: Configure the sign-in button look/feel
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        let handle = Auth.auth().addStateDidChangeListener { (auth, user) in}
+//    }
+//
+//    override func viewWillDisappear(_ animated: Bool) {
+//        Auth.auth().removeStateDidChangeListener(handle!)
+//    }
 
 }

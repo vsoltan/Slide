@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class RegisterViewController: UIViewController {
     
@@ -25,7 +26,18 @@ class RegisterViewController: UIViewController {
         let registerInfo: Array<(field: UITextField, type: String)>
             = [(usrEmail, "email"), (usrName, "name"), (usrUsername, "username"), (usrPassword, "password")]
         
-        TextFieldParser.validate(textFields: registerInfo)
+        if (TextFieldParser.validate(textFields: registerInfo)) {
+            Auth.auth().createUser(withEmail: usrEmail.text!, password: usrPassword.text!) { (user, error) in
+                // successfully creates a new user and signs them into the application
+                if user != nil {
+                    self.performSegue(withIdentifier: "registerToHome", sender: self)
+                // error checking
+                } else {
+                    // TODO make intuitive error alerts
+                    print("\(error!)")
+                }
+            }
+        }
         return
     }
 }

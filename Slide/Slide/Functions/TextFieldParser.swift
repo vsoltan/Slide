@@ -25,17 +25,23 @@ class TextFieldParser: UIAlertController {
         return invalidEmail
     }
     
-    static func validate(textFields: Array<(field: UITextField, type: String)>) {
+    static func validate(textFields: Array<(field: UITextField, type: String)>) -> Bool {
+        
+        var completeForm : Bool = true
+        
         // iterates through each textfield and checks if its empty
         for entry in textFields {
             if (entry.field.text!.isEmpty){
                 emptyError(field: entry.field, error: "please enter your \(entry.type)")
+                completeForm = false
             }
             // if the entry is an email, checks if its of a valid format
             if (entry.type.equals(id: "email") && !(entry.field.text!.isValidEmail())) {
                 emailError().show()
+                completeForm = false
             }
         }
+        return completeForm
     }
 }
 
