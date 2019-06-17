@@ -10,7 +10,8 @@
 import UIKit
 import FBSDKCoreKit
 import GoogleSignIn
-import Firebase
+import FirebaseCore
+import FirebaseFirestore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -47,7 +48,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         // use Firebase library to configure APIs
         FirebaseApp.configure()
-//        let db = Database.database().reference()
+        let db = Firestore.firestore()
+        // let db = Database.database().reference()
+        
+        print(db) // silence warning
 
         return true
     }

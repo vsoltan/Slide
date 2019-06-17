@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseAuth
+import FirebaseCore
+import FirebaseFirestore
 
 class RegisterViewController: UIViewController {
-    
+
     // text fields
     @IBOutlet weak var usrEmail: UITextField!
     @IBOutlet weak var usrName: UITextField!
@@ -36,6 +39,23 @@ class RegisterViewController: UIViewController {
                 // successfully creates a new user and signs them into the application
                 if user != nil {
                     self.performSegue(withIdentifier: "registerToHome", sender: self)
+                    // Creates firestore document
+                    let userID = (Auth.auth().currentUser)!.uid
+                    print("Hello uid:", userID)
+                    let db = Firestore.firestore()
+                    db.collection("users").document(userID).setData([
+                        // Set any data entries
+                        "id": userID // just a placeholder
+                    ]) { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                        } else {
+                            print("Document successfully written!")
+                        }
+                        
+                    }
+                    
+
                 // error checking
                 } else {
                     // TODO make intuitive error alerts
