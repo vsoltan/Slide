@@ -18,10 +18,10 @@
             </objects>
             <point key="canvasLocation" x="-496" y="-207"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Settings-->
         <scene sceneID="quF-9O-uXo">
             <objects>
-                <viewController storyboardIdentifier="Settings" id="eYC-rp-Cnv" customClass="SettingsViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Settings" title="Settings" id="eYC-rp-Cnv" customClass="SettingsViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SOt-Zh-gzU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

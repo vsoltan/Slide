@@ -18,10 +18,10 @@
             </objects>
             <point key="canvasLocation" x="454" y="-226"/>
         </scene>
-        <!--MainVC-->
+        <!--MainMenu-->
         <scene sceneID="NKf-KH-xe2">
             <objects>
-                <viewController title="MainVC" id="geV-7T-qZd" customClass="ViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="MainMenu" id="geV-7T-qZd" customClass="ViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zMc-O2-ear">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -75,9 +75,28 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aV3-u5-IRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="RB7-l8-Rpu"/>
+                <swipeGestureRecognizer direction="left" id="RB7-l8-Rpu">
+                    <connections>
+                        <segue destination="lb8-9m-ZY2" kind="presentation" id="smv-gf-qZj"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="957.97101449275374" y="20.758928571428569"/>
+        </scene>
+        <!--QR Scanner-->
+        <scene sceneID="5wZ-0Z-QE4">
+            <objects>
+                <viewController title="QR Scanner" id="lb8-9m-ZY2" customClass="QRScannerController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Fd-re-NEX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="EFT-NI-twI"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fYj-IQ-TOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1828" y="21"/>
         </scene>
     </scenes>
 </document>

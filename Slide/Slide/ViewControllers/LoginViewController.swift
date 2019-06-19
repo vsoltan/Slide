@@ -20,20 +20,18 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         let signInInfo: Array<(field: UITextField, type: String)>
             = [(email, "username"), (password, "password")]
         
+        // TODO fix empty textfields working
         // checks that the user passed information to the application
-        if (TextFieldParser.validate(textFields: signInInfo)) {
+        print("\(TextFieldParser.validate(textFields: signInInfo))")
+        if (TextFieldParser.validate(textFields: signInInfo) == true) {
             Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
                 if user != nil {
                     self.performSegue(withIdentifier: "signInToMain", sender: self)
                 } else {
-                    // error checking
+                    SlidErr.textFieldError(errorTitle: "Login Error", errorMessage: error!.localizedDescription).show()
                 }
             }
         }
-        
-        
-        
-        
     }
 
     // to be implemented later for google signout...
@@ -62,16 +60,5 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         
         // automatically signs the user into google.
          GIDSignIn.sharedInstance().signInSilently()
-        
-        // TODO: Configure the sign-in button look/feel
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        let handle = Auth.auth().addStateDidChangeListener { (auth, user) in}
-//    }
-//
-//    override func viewWillDisappear(_ animated: Bool) {
-//        Auth.auth().removeStateDidChangeListener(handle!)
-//    }
-
 }
