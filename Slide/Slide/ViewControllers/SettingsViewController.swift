@@ -6,10 +6,8 @@
 //  Copyright © 2019 Roodac. All rights reserved.
 //
 
-
-// OBLIGATORY COMMENT
-// SECOND COMMENT
 import UIKit
+import FirebaseAuth
 
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     

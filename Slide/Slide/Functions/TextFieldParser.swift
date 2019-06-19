@@ -9,20 +9,11 @@
 import UIKit
 import Foundation
 
-class TextFieldParser: UIAlertController {
+class TextFieldParser {
 
     // sets the placeholder text to red and displays an appropriate error message
     static func emptyError(field: UITextField, error: String) {
         field.attributedPlaceholder = NSAttributedString(string: error, attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-    }
-    
-    // creates a UIAlertController with prompts for the user
-    static func emailError() -> UIAlertController {
-        // customization
-        let invalidEmail = UIAlertController(title: "Invalid Email", message: "Please enter a valid email address", preferredStyle: .actionSheet)
-        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        invalidEmail.addAction(defaultAction)
-        return invalidEmail
     }
     
     static func validate(textFields: Array<(field: UITextField, type: String)>) -> Bool {
@@ -37,7 +28,7 @@ class TextFieldParser: UIAlertController {
             }
             // if the entry is an email, checks if its of a valid format
             if (entry.type.equals(id: "email") && !(entry.field.text!.isValidEmail())) {
-                emailError().show()
+                SlidErr.textFieldError(errorTitle: "Invalid Email", errorMessage: "Please enter a valid email address").show()
                 completeForm = false
             }
         }
@@ -60,15 +51,4 @@ extension String {
     }
 }
 
-// overrides the view heirarchy to present an alert
-public extension UIAlertController {
-    func show() {
-        let win = UIWindow(frame: UIScreen.main.bounds)
-        let vc = UIViewController()
-        vc.view.backgroundColor = .clear
-        win.rootViewController = vc
-        win.windowLevel = UIWindow.Level.alert + 1
-        win.makeKeyAndVisible()
-        vc.present(self, animated: true, completion: nil)
-    }
-}
+
