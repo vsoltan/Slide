@@ -11,9 +11,6 @@ import Foundation
 // an interface between the database and the user
 class User {
     
-    // sign up details
-    private var usr, email, pswd, name : String!
-    
     // creates a new user
     init() {
         

@@ -22,7 +22,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         
         // TODO fix empty textfields working
         // checks that the user passed information to the application
-        print("\(TextFieldParser.validate(textFields: signInInfo))")
+        
         if (TextFieldParser.validate(textFields: signInInfo) == true) {
             Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
                 if user != nil {
