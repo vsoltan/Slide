@@ -17,6 +17,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    // creates a qr code based on the passed String to the linkField
     @IBAction func generate(_ sender: Any) {
     let img = GenerateQR.generateQRCode(from: linkField.text!)
         QRView.image = img
