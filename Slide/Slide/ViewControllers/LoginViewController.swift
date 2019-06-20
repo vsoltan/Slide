@@ -28,18 +28,12 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
                 if user != nil {
                     self.performSegue(withIdentifier: "signInToMain", sender: self)
                 } else {
-                    SlidErr.textFieldError(errorTitle: "Login Error", errorMessage: error!.localizedDescription).show()
+                    SlideError.inputError(errorTitle: "Login Error", errorMessage: error!.localizedDescription).show()
                 }
             }
         }
     }
-
-    // to be implemented later for google signout...
-    //    @IBAction func didTapSignOut(_ sender: AnyObject) {
-    //        GIDSignIn.sharedInstance().signOut()
-    //    }
-
-    // 
+    
     func googleSignIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
                     withError error: NSError!) {
         if (error == nil) {
@@ -61,4 +55,11 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         // automatically signs the user into google.
          GIDSignIn.sharedInstance().signInSilently()
     }
+    
+    // to be implemented later for google signout...
+    //    @IBAction func didTapSignOut(_ sender: AnyObject) {
+    //        GIDSignIn.sharedInstance().signOut()
+    //    }
+    
+    //
 }

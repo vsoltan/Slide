@@ -16,6 +16,7 @@ class TextFieldParser {
         field.attributedPlaceholder = NSAttributedString(string: error, attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
     }
     
+    // verifies the format and completion of a text field entry
     static func validate(textFields: Array<(field: UITextField, type: String)>) -> Bool {
         
         var completeForm : Bool = true
@@ -26,9 +27,10 @@ class TextFieldParser {
                 emptyError(field: entry.field, error: "please enter your \(entry.type)")
                 completeForm = false
             }
-            // if the entry is an email, checks if its of a valid format
+            
+            // regex email matching
             if (entry.type.equals(id: "email") && !(entry.field.text!.isValidEmail())) {
-                SlidErr.textFieldError(errorTitle: "Invalid Email", errorMessage: "Please enter a valid email address").show()
+                SlideError.inputError(errorTitle: "Invalid Email", errorMessage: "Please enter a valid email address").show()
                 completeForm = false
             }
         }

@@ -24,7 +24,7 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    // go back to sign in view
+    // navigates back to sign in view
     @IBAction func chooseLogIn(_ sender: Any) {
         performSegue(withIdentifier: "toLogin", sender: self)
     }
@@ -34,18 +34,21 @@ class RegisterViewController: UIViewController {
         let registerInfo: Array<(field: UITextField, type: String)>
             = [(usrEmail, "email"), (usrName, "name"), (usrUsername, "username"), (usrPassword, "password")]
         
+        // verifies that textfields are properly formatted and creates a user
         if (TextFieldParser.validate(textFields: registerInfo)) {
             Auth.auth().createUser(withEmail: usrEmail.text!, password: usrPassword.text!) { (user, error) in
                 // successfully creates a new user and signs them into the application
                 if user != nil {
-                    self.performSegue(withIdentifier: "registerToHome", sender: self)
+                    
                     // Creates firestore document
                     let userID = (Auth.auth().currentUser)!.uid
                     print("Hello uid:", userID)
                     let db = Firestore.firestore()
                     db.collection("users").document(userID).setData([
-                        // Set any data entries
-                        "id": userID // just a placeholder
+                        // Set specified data entries
+                        "Name": self.usrName.text!,
+                        "ID": userID,
+                        "Email": self.usrEmail.text!,
                     ]) { err in
                         if let err = err {
                             print("Error writing document: \(err)")
@@ -54,12 +57,10 @@ class RegisterViewController: UIViewController {
                         }
                         
                     }
-                    
-
-                // error checking
+                    self.performSegue(withIdentifier: "registerToHome", sender: self)
+                // something went wrong
                 } else {
-                    // TODO make intuitive error alerts
-                    print("\(error!)")
+                    SlideError.inputError(errorTitle: "Account Creation", errorMessage: error!.localizedDescription).show()
                 }
             }
         }

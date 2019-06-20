@@ -7,12 +7,26 @@
 //
 
 import Foundation
+import FirebaseAuth
+import FirebaseFirestore
 
 // an interface between the database and the user
-class User {
+public class User {
+    private var name, email, ID : String?
+    
+    let db = Firestore.firestore()
     
     // creates a new user
-    init() {
-        
+    init(UID : String) {
+        let profile = db.collection("users").document(UID)
+        ID = UID
+        profile.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                print("Document data: \(dataDescription)")
+            } else {
+                print("Document does not exist")
+            }
+        }
     }
 }

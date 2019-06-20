@@ -19,7 +19,7 @@ class GenerateQR {
             filter.setValue(data, forKey: "inputMessage")
             
             // scaling transformation to fit any screen
-            let transform = CGAffineTransform(scaleX: 4, y: 4)
+            let transform = CGAffineTransform(scaleX: 100, y: 100)
             
             // image is rendered after transformation is applied
             if let output = filter.outputImage?.transformed(by: transform) {
