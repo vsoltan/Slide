@@ -80,11 +80,20 @@
                     </view>
                     <connections>
                         <outlet property="settingsTable" destination="AqZ-UB-twD" id="gLG-sV-ESk"/>
+                        <segue destination="KEq-JS-mqr" kind="show" identifier="Log out" id="kQ6-Rm-Etw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qAM-cT-iGC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5.7971014492753632" y="65.625"/>
+        </scene>
+        <!--LoginRegister-->
+        <scene sceneID="amS-ge-tsN">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LoginRegister" id="KEq-JS-mqr" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Axt-th-j4s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="748" y="207"/>
         </scene>
     </scenes>
 </document>

@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseCore
+import FirebaseFirestore
 
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -52,6 +54,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItem", for: indexPath)
         // sets the text of that cell to the strings enumerated in the corresponding array
         cell.textLabel!.text = allSections[indexPath.section][indexPath.row]
+        
         return cell
     }
 
@@ -59,4 +62,29 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return titles[section];
     }
+    
+    // whoopdie doo what happens if you click tho??
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // if a row is clicked, unclick and give it a fade out animation
+        tableView.deselectRow(at: indexPath, animated: true)
+        // special case to handle "Log out"
+        if (indexPath.section == 2 && indexPath.row == 3 ) {
+            print ("We did it")
+            let firebaseAuth = Auth.auth()
+            do {
+                try firebaseAuth.signOut()
+                if (firebaseAuth.currentUser == nil) {
+                    print ("Successfully signed out!")
+                }
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+            }
+            
+        }
+        // determines what page to segue to based on which cell is clicked
+        let segueLabel = allSections[indexPath.section][indexPath.row]
+        performSegue(withIdentifier: "Log out", sender: self)
+        
+    }
+    
 }
