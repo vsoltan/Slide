@@ -16,12 +16,72 @@
                 <viewControllerPlaceholder storyboardName="Settings" id="znL-d6-ReE" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cmr-Qh-S2u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="454" y="-226"/>
+            <point key="canvasLocation" x="958" y="-446"/>
         </scene>
-        <!--MainMenu-->
+        <!--GenerateQR-->
+        <scene sceneID="h43-9n-XlF">
+            <objects>
+                <viewController title="GenerateQR" id="xLV-2D-FaO" customClass="GenerationViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hcr-b9-pgp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KPw-o7-5TJ">
+                                <rect key="frame" x="285" y="106" width="64" height="30"/>
+                                <state key="normal" title="Generate"/>
+                                <connections>
+                                    <action selector="generateQRCode:" destination="xLV-2D-FaO" eventType="touchUpInside" id="YSD-TJ-e4E"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0eC-GV-E5f">
+                                <rect key="frame" x="29" y="106" width="236" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pHz-Fn-zbO">
+                                <rect key="frame" x="37" y="256" width="301" height="300"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="pHz-Fn-zbO" firstAttribute="leading" secondItem="cDT-se-s2C" secondAttribute="leading" constant="37" id="1rq-7u-QbQ"/>
+                            <constraint firstItem="cDT-se-s2C" firstAttribute="bottom" secondItem="pHz-Fn-zbO" secondAttribute="bottom" constant="222" id="3zr-MJ-kD9"/>
+                            <constraint firstItem="pHz-Fn-zbO" firstAttribute="centerX" secondItem="Hcr-b9-pgp" secondAttribute="centerX" id="5v6-Bk-bKx"/>
+                            <constraint firstItem="cDT-se-s2C" firstAttribute="trailing" secondItem="pHz-Fn-zbO" secondAttribute="trailing" constant="37" id="7rM-cj-qvd"/>
+                            <constraint firstItem="pHz-Fn-zbO" firstAttribute="centerY" secondItem="Hcr-b9-pgp" secondAttribute="centerY" id="8cB-j8-WbV"/>
+                            <constraint firstItem="pHz-Fn-zbO" firstAttribute="top" secondItem="0eC-GV-E5f" secondAttribute="bottom" constant="120" id="Ag5-Lu-Obb"/>
+                            <constraint firstItem="0eC-GV-E5f" firstAttribute="leading" secondItem="cDT-se-s2C" secondAttribute="leading" constant="29" id="EK7-xh-bZv"/>
+                            <constraint firstItem="0eC-GV-E5f" firstAttribute="top" secondItem="cDT-se-s2C" secondAttribute="top" constant="62" id="LuP-qQ-XcZ"/>
+                            <constraint firstItem="KPw-o7-5TJ" firstAttribute="leading" secondItem="0eC-GV-E5f" secondAttribute="trailing" constant="20" id="Xdr-T8-PC8"/>
+                            <constraint firstItem="KPw-o7-5TJ" firstAttribute="top" secondItem="cDT-se-s2C" secondAttribute="top" constant="62" id="g8D-Ot-qY0"/>
+                            <constraint firstItem="pHz-Fn-zbO" firstAttribute="top" secondItem="KPw-o7-5TJ" secondAttribute="bottom" constant="120" id="m8W-hM-OuO"/>
+                            <constraint firstItem="cDT-se-s2C" firstAttribute="trailing" secondItem="KPw-o7-5TJ" secondAttribute="trailing" constant="26" id="sbU-G3-Nby"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cDT-se-s2C"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="gnd-WR-gQw" appends="YES" id="F3m-El-TUA"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="QRView" destination="pHz-Fn-zbO" id="diD-64-nZy"/>
+                        <outlet property="linkField" destination="0eC-GV-E5f" id="uhc-4X-hgE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="74E-N1-Rp1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="gnd-WR-gQw">
+                    <connections>
+                        <segue destination="geV-7T-qZd" kind="presentation" id="WKJ-KO-R26"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="20" y="20.689655172413794"/>
+        </scene>
+        <!--Home-->
         <scene sceneID="NKf-KH-xe2">
             <objects>
-                <viewController title="MainMenu" id="geV-7T-qZd" customClass="ViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Home" id="geV-7T-qZd" customClass="HomeViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zMc-O2-ear">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,48 +93,29 @@
                                     <segue destination="znL-d6-ReE" kind="presentation" id="1da-dH-ztb"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MjK-EJ-j8R">
-                                <rect key="frame" x="20" y="142" width="243" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrj-Cr-QSm">
+                                <rect key="frame" x="20" y="122" width="131" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRT-qN-Rgs">
-                                <rect key="frame" x="295" y="142" width="64" height="30"/>
-                                <state key="normal" title="Generate"/>
-                                <connections>
-                                    <action selector="generate:" destination="geV-7T-qZd" eventType="touchUpInside" id="h4F-lp-ZxG"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8fV-DS-xQl">
-                                <rect key="frame" x="48" y="266" width="279" height="280"/>
-                            </imageView>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="esl-Ic-Cb0" firstAttribute="bottom" secondItem="8fV-DS-xQl" secondAttribute="bottom" constant="232" id="5Rw-l4-dQY"/>
-                            <constraint firstItem="fRT-qN-Rgs" firstAttribute="leading" secondItem="MjK-EJ-j8R" secondAttribute="trailing" constant="32" id="8AC-z1-2OV"/>
-                            <constraint firstItem="8fV-DS-xQl" firstAttribute="leading" secondItem="esl-Ic-Cb0" secondAttribute="leading" constant="48" id="DUm-VR-ptO"/>
-                            <constraint firstItem="fRT-qN-Rgs" firstAttribute="top" secondItem="esl-Ic-Cb0" secondAttribute="top" constant="98" id="Iq7-t2-f1l"/>
-                            <constraint firstItem="MjK-EJ-j8R" firstAttribute="top" secondItem="13x-xq-AwI" secondAttribute="bottom" constant="38" id="JmI-hd-Yla"/>
-                            <constraint firstItem="MjK-EJ-j8R" firstAttribute="leading" secondItem="esl-Ic-Cb0" secondAttribute="leading" constant="20" id="NNB-DP-7yd"/>
-                            <constraint firstItem="8fV-DS-xQl" firstAttribute="centerY" secondItem="zMc-O2-ear" secondAttribute="centerY" id="XMs-il-8gX"/>
-                            <constraint firstItem="8fV-DS-xQl" firstAttribute="centerX" secondItem="zMc-O2-ear" secondAttribute="centerX" id="o2G-cn-Zjz"/>
-                            <constraint firstItem="esl-Ic-Cb0" firstAttribute="trailing" secondItem="8fV-DS-xQl" secondAttribute="trailing" constant="48" id="okR-Se-b6p"/>
-                            <constraint firstItem="esl-Ic-Cb0" firstAttribute="trailing" secondItem="fRT-qN-Rgs" secondAttribute="trailing" constant="16" id="rAN-lI-Uvy"/>
                             <constraint firstItem="13x-xq-AwI" firstAttribute="leading" secondItem="esl-Ic-Cb0" secondAttribute="leading" constant="20" id="sxw-7A-ToW"/>
                             <constraint firstItem="13x-xq-AwI" firstAttribute="top" secondItem="esl-Ic-Cb0" secondAttribute="top" constant="30" id="ykf-7E-07X"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="esl-Ic-Cb0"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="RB7-l8-Rpu" appends="YES" id="8jb-sK-qG5"/>
+                            <outletCollection property="gestureRecognizers" destination="1sV-Qh-GK4" appends="YES" id="ycz-Sn-I0l"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="YfQ-22-Hb5"/>
                     <connections>
-                        <outlet property="QRView" destination="8fV-DS-xQl" id="2gt-Jb-Jhb"/>
-                        <outlet property="linkField" destination="MjK-EJ-j8R" id="gkp-H2-9Zf"/>
+                        <outlet property="NameLabel" destination="zrj-Cr-QSm" id="IAK-d8-5Dw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aV3-u5-IRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -83,13 +124,18 @@
                         <segue destination="lb8-9m-ZY2" kind="presentation" id="smv-gf-qZj"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="1sV-Qh-GK4">
+                    <connections>
+                        <segue destination="xLV-2D-FaO" kind="show" id="cBB-V2-DtB"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="957.60000000000002" y="20.689655172413794"/>
         </scene>
-        <!--QR Scanner-->
+        <!--ScanQR-->
         <scene sceneID="5wZ-0Z-QE4">
             <objects>
-                <viewController title="QR Scanner" id="lb8-9m-ZY2" customClass="QRScannerController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ScanQR" id="lb8-9m-ZY2" customClass="QRScannerController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Fd-re-NEX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

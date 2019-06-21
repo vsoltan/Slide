@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		04F596E022A8540D004AA63A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F596DF22A8540D004AA63A /* AppDelegate.swift */; };
-		04F596E222A8540D004AA63A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F596E122A8540D004AA63A /* ViewController.swift */; };
+		04F596E222A8540D004AA63A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F596E122A8540D004AA63A /* HomeViewController.swift */; };
 		04F596E722A8540F004AA63A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F596E622A8540F004AA63A /* Assets.xcassets */; };
 		9867CCE722B9BB8400B6F14B /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9867CCE622B9BB8400B6F14B /* Error.swift */; };
+		9867CCE922BD47F800B6F14B /* GenerationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9867CCE822BD47F800B6F14B /* GenerationViewController.swift */; };
 		98B3847422B1C0260097A073 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847322B1C0260097A073 /* User.swift */; };
 		98B3847822B2FCE90097A073 /* GenerateQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847722B2FCE90097A073 /* GenerateQR.swift */; };
 		98B3847B22B32B9C0097A073 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3847A22B32B9C0097A073 /* SafariServices.framework */; };
@@ -40,11 +41,12 @@
 		01566259063A6F98051587FA /* Pods_Slide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Slide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F596DC22A8540D004AA63A /* Slide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F596DF22A8540D004AA63A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		04F596E122A8540D004AA63A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		04F596E122A8540D004AA63A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		04F596E622A8540F004AA63A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04F596EB22A8540F004AA63A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6307111C166CE8B76E78A8BC /* Pods-Slide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slide.release.xcconfig"; path = "Target Support Files/Pods-Slide/Pods-Slide.release.xcconfig"; sourceTree = "<group>"; };
 		9867CCE622B9BB8400B6F14B /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		9867CCE822BD47F800B6F14B /* GenerationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationViewController.swift; sourceTree = "<group>"; };
 		98B3847322B1C0260097A073 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		98B3847722B2FCE90097A073 /* GenerateQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateQR.swift; sourceTree = "<group>"; };
 		98B3847A22B32B9C0097A073 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
@@ -152,10 +154,11 @@
 			isa = PBXGroup;
 			children = (
 				98B3A46622A9DD7F005FBCF2 /* SettingsViewController.swift */,
-				04F596E122A8540D004AA63A /* ViewController.swift */,
+				04F596E122A8540D004AA63A /* HomeViewController.swift */,
 				98B3A45622A8C9D7005FBCF2 /* RegisterViewController.swift */,
 				98B3A47122A9ED73005FBCF2 /* LoginViewController.swift */,
 				98B3848322B482950097A073 /* QRScannerViewController.swift */,
+				9867CCE822BD47F800B6F14B /* GenerationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -317,7 +320,8 @@
 				98B3848422B482950097A073 /* QRScannerViewController.swift in Sources */,
 				98B3847422B1C0260097A073 /* User.swift in Sources */,
 				9867CCE722B9BB8400B6F14B /* Error.swift in Sources */,
-				04F596E222A8540D004AA63A /* ViewController.swift in Sources */,
+				04F596E222A8540D004AA63A /* HomeViewController.swift in Sources */,
+				9867CCE922BD47F800B6F14B /* GenerationViewController.swift in Sources */,
 				04F596E022A8540D004AA63A /* AppDelegate.swift in Sources */,
 				98B3A46E22A9E878005FBCF2 /* TextFieldParser.swift in Sources */,
 				98B3A46722A9DD7F005FBCF2 /* SettingsViewController.swift in Sources */,

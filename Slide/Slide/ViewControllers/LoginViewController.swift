@@ -58,6 +58,10 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
          GIDSignIn.sharedInstance().signInSilently()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        var 
+    }
+    
     // to be implemented later for google signout...
     //    @IBAction func didTapSignOut(_ sender: AnyObject) {
     //        GIDSignIn.sharedInstance().signOut()
