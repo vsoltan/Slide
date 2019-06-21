@@ -13,6 +13,8 @@ import FirebaseFirestore
 // an interface between the database and the user
 class CurrentUser {
     
+    private static var name : String?
+    
     static var user = Auth.auth().currentUser!.uid
     
     // retrieves the data tree belonging to the current user
@@ -27,19 +29,25 @@ class CurrentUser {
                 completion(nil)
             } else {
                 // returns data
-                completion((snapshot?.documents)!)
+                completion((snapshot?.documents))
             }
         }
     }
     
-    static func getName() -> String {
-        // explicit String return type because error will be thrown in getDocument method
-        self.getDocument() { (userData) in
+    // sets private field to the name stored in the database
+    static func retrieveName() -> Void {
+        // no error checking because getDocument will throw user-not-found error
+        getDocument() { (userData) in
             for doc in userData! {
-//                TODO name = doc.data()["Name"] as? String
+                if let nameField = doc.data()["Name"] as? String {
+                    name = nameField
+                }
             }
         }
-        return "placeholderString"
     }
-
+    
+    // returns the explicit value of the name
+    static func getName() -> String {
+        return self.name!
+    }
 }

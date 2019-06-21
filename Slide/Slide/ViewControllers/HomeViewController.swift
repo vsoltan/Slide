@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NameLabel.attributedText = NSAttributedString(string: "HELLO WORLD", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+        CurrentUser.retrieveName()
         print(CurrentUser.getName())
     }
 }
