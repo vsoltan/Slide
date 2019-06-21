@@ -2,7 +2,7 @@
 //  SettingsViewController.swift
 //  Slide
 //
-//  Created by mac on 6/5/19.
+//  Created by Sam Lee on 6/5/19.
 //  Copyright © 2019 Roodac. All rights reserved.
 //
 
