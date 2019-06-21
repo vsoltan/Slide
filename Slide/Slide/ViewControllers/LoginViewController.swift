@@ -27,8 +27,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
             Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
                 if user != nil {
                     self.performSegue(withIdentifier: "signInToMain", sender: self)
-                    var usrProfile : User = User.init(UID: (Auth.auth().currentUser)!.uid)
-                    
                 } else {
                     SlideError.inputError(errorTitle: "Login Error", errorMessage: error!.localizedDescription).show()
                 }
