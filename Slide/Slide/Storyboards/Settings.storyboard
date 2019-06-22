@@ -46,7 +46,7 @@
                                     <fragment content="Settings">
                                         <attributes>
                                             <font key="NSFont" size="24" name="AppleSymbols"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -80,12 +80,117 @@
                     </view>
                     <connections>
                         <outlet property="settingsTable" destination="AqZ-UB-twD" id="gLG-sV-ESk"/>
-                        <segue destination="KEq-JS-mqr" kind="show" identifier="Log out" id="kQ6-Rm-Etw"/>
+                        <segue destination="KEq-JS-mqr" kind="show" identifier="Logout" id="kQ6-Rm-Etw"/>
+                        <segue destination="8cJ-iF-hPv" kind="show" identifier="Change Password" id="5Rm-Ku-eQC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qAM-cT-iGC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5.7971014492753632" y="65.625"/>
+        </scene>
+        <!--Change Password-->
+        <scene sceneID="Hrc-py-Aon">
+            <objects>
+                <viewController title="Change Password" id="8cJ-iF-hPv" customClass="PasswordViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5aM-vv-JmF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cy5-CZ-QdZ">
+                                <rect key="frame" x="20" y="59" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="eYC-rp-Cnv" kind="show" id="2gG-aG-9aa"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HnK-gy-zyC">
+                                <rect key="frame" x="109" y="61" width="196.5" height="28"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Change Password">
+                                        <attributes>
+                                            <font key="NSFont" size="24" name="AppleSymbols"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ohl-Xh-bH6">
+                                <rect key="frame" x="40" y="159" width="334" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j1R-Wb-rRc">
+                                <rect key="frame" x="40" y="209" width="334" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Il-OV-InN">
+                                <rect key="frame" x="40" y="259" width="334" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iUg-mi-tXw">
+                                <rect key="frame" x="80" y="329" width="254" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.2666666667" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="passwordSaved:" destination="8cJ-iF-hPv" eventType="touchUpInside" id="LN6-BB-7jL"/>
+                                    <segue destination="eYC-rp-Cnv" kind="show" id="gtP-Al-zTc"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cOL-UV-SOP">
+                                <rect key="frame" x="40" y="109" width="334" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iUg-mi-tXw" firstAttribute="centerX" secondItem="5aM-vv-JmF" secondAttribute="centerX" id="4FC-nj-J4X"/>
+                            <constraint firstItem="iUg-mi-tXw" firstAttribute="leading" secondItem="jUX-pz-VD4" secondAttribute="leading" constant="80" id="67O-YX-lQS"/>
+                            <constraint firstItem="ohl-Xh-bH6" firstAttribute="leading" secondItem="jUX-pz-VD4" secondAttribute="leading" constant="40" id="6P6-9o-iF7"/>
+                            <constraint firstItem="cOL-UV-SOP" firstAttribute="top" secondItem="HnK-gy-zyC" secondAttribute="bottom" constant="20" id="8ad-r2-aGb"/>
+                            <constraint firstItem="j1R-Wb-rRc" firstAttribute="top" secondItem="ohl-Xh-bH6" secondAttribute="bottom" constant="20" id="AVf-UK-fbD"/>
+                            <constraint firstItem="j1R-Wb-rRc" firstAttribute="centerX" secondItem="5aM-vv-JmF" secondAttribute="centerX" id="Dhe-b1-fon"/>
+                            <constraint firstItem="HnK-gy-zyC" firstAttribute="centerX" secondItem="5aM-vv-JmF" secondAttribute="centerX" id="Fi6-Bb-zXb"/>
+                            <constraint firstItem="jUX-pz-VD4" firstAttribute="trailing" secondItem="iUg-mi-tXw" secondAttribute="trailing" constant="80" id="GlJ-Do-gNR"/>
+                            <constraint firstItem="j1R-Wb-rRc" firstAttribute="leading" secondItem="jUX-pz-VD4" secondAttribute="leading" constant="40" id="HCA-hS-8pk"/>
+                            <constraint firstItem="iUg-mi-tXw" firstAttribute="top" secondItem="6Il-OV-InN" secondAttribute="bottom" constant="40" id="HeI-ic-In6"/>
+                            <constraint firstItem="jUX-pz-VD4" firstAttribute="trailing" secondItem="6Il-OV-InN" secondAttribute="trailing" constant="40" id="I3o-qX-3JL"/>
+                            <constraint firstItem="6Il-OV-InN" firstAttribute="top" secondItem="j1R-Wb-rRc" secondAttribute="bottom" constant="20" id="KYS-7F-pkn"/>
+                            <constraint firstItem="cOL-UV-SOP" firstAttribute="leading" secondItem="jUX-pz-VD4" secondAttribute="leading" constant="40" id="OD2-i9-qoP"/>
+                            <constraint firstItem="cy5-CZ-QdZ" firstAttribute="leading" secondItem="jUX-pz-VD4" secondAttribute="leading" constant="20" id="UbN-AP-INd"/>
+                            <constraint firstItem="cOL-UV-SOP" firstAttribute="centerX" secondItem="5aM-vv-JmF" secondAttribute="centerX" id="XAl-bX-915"/>
+                            <constraint firstItem="jUX-pz-VD4" firstAttribute="trailing" secondItem="j1R-Wb-rRc" secondAttribute="trailing" constant="40" id="XIK-KG-DVe"/>
+                            <constraint firstItem="ohl-Xh-bH6" firstAttribute="top" secondItem="cOL-UV-SOP" secondAttribute="bottom" constant="20" id="Z4I-zY-A5J"/>
+                            <constraint firstItem="6Il-OV-InN" firstAttribute="leading" secondItem="jUX-pz-VD4" secondAttribute="leading" constant="40" id="bVl-2Q-bbD"/>
+                            <constraint firstItem="cOL-UV-SOP" firstAttribute="centerX" secondItem="5aM-vv-JmF" secondAttribute="centerX" id="dGy-vd-mxj"/>
+                            <constraint firstItem="jUX-pz-VD4" firstAttribute="trailing" secondItem="ohl-Xh-bH6" secondAttribute="trailing" constant="40" id="gAq-nT-IIp"/>
+                            <constraint firstItem="HnK-gy-zyC" firstAttribute="top" secondItem="jUX-pz-VD4" secondAttribute="top" constant="17" id="rwt-st-diW"/>
+                            <constraint firstItem="cy5-CZ-QdZ" firstAttribute="top" secondItem="jUX-pz-VD4" secondAttribute="top" constant="15" id="tQG-lm-tTb"/>
+                            <constraint firstItem="6Il-OV-InN" firstAttribute="centerX" secondItem="5aM-vv-JmF" secondAttribute="centerX" id="vOL-cn-yXk"/>
+                            <constraint firstItem="ohl-Xh-bH6" firstAttribute="centerX" secondItem="5aM-vv-JmF" secondAttribute="centerX" id="xtJ-Pr-7wR"/>
+                            <constraint firstItem="jUX-pz-VD4" firstAttribute="trailing" secondItem="cOL-UV-SOP" secondAttribute="trailing" constant="40" id="zn4-WZ-9ws"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jUX-pz-VD4"/>
+                    </view>
+                    <connections>
+                        <outlet property="confirmNew" destination="6Il-OV-InN" id="YFw-R3-WXJ"/>
+                        <outlet property="curPassword" destination="ohl-Xh-bH6" id="Too-TE-4Co"/>
+                        <outlet property="newPassword" destination="j1R-Wb-rRc" id="xIJ-dp-i40"/>
+                        <outlet property="userEmail" destination="cOL-UV-SOP" id="oY1-Zq-gzf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QAY-Tl-1L0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="733.33333333333337" y="-140.625"/>
         </scene>
         <!--LoginRegister-->
         <scene sceneID="amS-ge-tsN">
@@ -93,7 +198,10 @@
                 <viewControllerPlaceholder storyboardName="LoginRegister" id="KEq-JS-mqr" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Axt-th-j4s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="748" y="207"/>
+            <point key="canvasLocation" x="667" y="473"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="gtP-Al-zTc"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -19,9 +19,9 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     // sections of the table
     let profileArray = ["Linked Media", "Cards", "Friends"]
     
-    let accountArray = ["Password", "Upgrade"]
+    let accountArray = ["Change Password", "Upgrade"]
     
-    let supportArray = ["About", "Contact", "Ratings", "Log out"]
+    let supportArray = ["About", "Contact", "Ratings", "Logout"]
     
     let titles = ["Profile", "Account", "Support"]
     
@@ -83,8 +83,15 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         // determines what page to segue to based on which cell is clicked
         let segueLabel = allSections[indexPath.section][indexPath.row]
-        performSegue(withIdentifier: "Log out", sender: self)
         
+        // Dev only: Temporary array of completed pages
+        let completed = ["Logout", "Change Password"]
+        
+        // Dev only: Temporary case handling for performSegue to avoid calling nonexistent segues
+        if let index = completed.firstIndex(of: segueLabel) {
+            performSegue(withIdentifier: segueLabel, sender: self)
+            print(index) // make compiler happy
+        }
     }
     
 }
