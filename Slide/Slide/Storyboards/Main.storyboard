@@ -135,7 +135,7 @@
         <!--ScanQR-->
         <scene sceneID="5wZ-0Z-QE4">
             <objects>
-                <viewController title="ScanQR" id="lb8-9m-ZY2" customClass="QRScannerController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ScanQR" id="lb8-9m-ZY2" customClass="QRScannerViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Fd-re-NEX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
