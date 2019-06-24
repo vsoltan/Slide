@@ -11,7 +11,7 @@ import Firebase
 
 // an interface between the database and the user
 class CurrentUser {
-    
+
     // the user ID of the currently signed in user
     static var user = Auth.auth().currentUser!.uid
     
@@ -47,8 +47,10 @@ class CurrentUser {
             }
         }
     }
+
     /*  NOTE: if we put a return statement here, it would execute before most of the
         code after the call to the getDocument method, therefore, nameData wouldn't get
         initialized...which is why we kept getting nil
     */
+
 }

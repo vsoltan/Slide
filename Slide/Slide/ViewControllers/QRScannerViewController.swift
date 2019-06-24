@@ -9,8 +9,8 @@
 import AVFoundation
 import UIKit
 
+
 class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
-    
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
@@ -99,8 +99,5 @@ class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsD
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portrait
-    }
 }
+

@@ -8,9 +8,6 @@
 
 import UIKit
 import Firebase
-import FirebaseAuth
-import FirebaseCore
-import FirebaseFirestore
 
 class RegisterViewController: UIViewController {
 
@@ -40,10 +37,10 @@ class RegisterViewController: UIViewController {
                 // successfully creates a new user and signs them into the application
                 if user != nil {
                     
-                    // Creates firestore document
                     let userID = (Auth.auth().currentUser)!.uid
-                    print("Hello uid:", userID)
                     let db = Firestore.firestore()
+                    
+                    // creates firestore document
                     db.collection("users").document(userID).setData([
                         // Set specified data entries
                         "Name": self.usrName.text!,
