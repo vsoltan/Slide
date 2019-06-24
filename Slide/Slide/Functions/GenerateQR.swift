@@ -10,9 +10,14 @@ import UIKit
 import Foundation
 
 class GenerateQR {
-    static func generateQRCode(from string : String) -> UIImage? {
+    static func generateQRCode(from string : String?) -> UIImage? {
+        if string == nil {
+            print("please pass a non-nil string")
+            return nil
+        }
+        
         // retrieves data from string and encodes it into ascii
-        let data = string.data(using: String.Encoding.ascii)
+        let data = string!.data(using: String.Encoding.ascii)
         
         // creates a filter and applies it to the data
         if let filter = CIFilter(name: "CIQRCodeGenerator") {
