@@ -17,10 +17,14 @@ class MediaSelectionViewController: UIViewController {
         } else {
             sender.isSelected = true
         }
-        
-        // retrieves the information from the field and appends it to the structure
-        
     }
+    
+    // retrieves the information from the field and appends it to the structure
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let generationController = segue.destination as! GenerationViewController
+        generationController.toBeShared = CurrentUser.getEmail()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

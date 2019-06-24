@@ -52,5 +52,9 @@ class CurrentUser {
         code after the call to the getDocument method, therefore, nameData wouldn't get
         initialized...which is why we kept getting nil
     */
-
+    
+    // explicit return type because every user has to have an email
+    static func getEmail() -> String {
+        return (Auth.auth().currentUser?.email)!
+    }
 }
