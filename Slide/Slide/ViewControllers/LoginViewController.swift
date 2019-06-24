@@ -33,7 +33,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
                 if user != nil {
                     self.performSegue(withIdentifier: "signInToMain", sender: self)
                 } else {
-                    SlideError.inputError(errorTitle: "Login Error", errorMessage: error!.localizedDescription).show()
+                    CustomError.createWith(errorTitle: "Login Error", errorMessage: error!.localizedDescription).show()
                 }
             }
         }
@@ -86,7 +86,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
             }
             let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
             // Perform login by calling Firebase APIs
-            Auth.auth().signInAndRetrieveData(with: credential) { (user, error) in
+            Auth.auth().signIn(with: credential, completion: { (user, error) in
                 if let error = error {
                     print("Login error: \(error.localizedDescription)")
                     let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
@@ -95,22 +95,32 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
                     self.present(alertController, animated: true, completion: nil)
                     return
                 }
-                // self.performSegue(withIdentifier: self.signInSegue, sender: nil)
-            }
+            })
+//            Auth.auth().signInAndRetrieveData(with: credential) { (user, error) in
+//                if let error = error {
+//                    print("Login error: \(error.localizedDescription)")
+//                    let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+//                    let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//                    alertController.addAction(okayAction)
+//                    self.present(alertController, animated: true, completion: nil)
+//                    return
+//                }
+//                // self.performSegue(withIdentifier: self.signInSegue, sender: nil)
+//            }
         }
     }
     
     func loginButton(_ loginButton: FBLoginButton!, didCompleteWith result: LoginManagerLoginResult!, error: Error!) {
         if let error = error {
-            print(error.localizedDescription)
+            CustomError.createWith(errorTitle: "Facebook Login Error", errorMessage: error.localizedDescription).show()
             return
         }
         
         let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
         
-        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+        Auth.auth().signIn(with: credential) { (authResult, error) in
             if let error = error {
-                // ...
+                CustomError.createWith(errorTitle: "Facebook Login Error", errorMessage: error.localizedDescription).show()
                 return
             }
             // User is signed in

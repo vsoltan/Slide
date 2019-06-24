@@ -37,13 +37,13 @@ class PasswordViewController: UIViewController {
         if (TextFieldParser.validate(textFields: passwordInfo) && newPassword.text == confirmNew.text) {
             usr?.reauthenticate(with: credential) { (user, error) in
                 if let error = error {
-                    SlideError.inputError(errorTitle: "Error", errorMessage: error.localizedDescription).show()
+                    CustomError.createWith(errorTitle: "Error", errorMessage: error.localizedDescription).show()
                 } else {
                     usr?.updatePassword(to: self.newPassword.text!)
                 }
             }
         } else {
-            SlideError.inputError(errorTitle: "Error", errorMessage: "you didn't follow instructions bitch").show()
+            CustomError.createWith(errorTitle: "Error", errorMessage: "you didn't follow instructions bitch").show()
         }
     }
     

@@ -25,7 +25,7 @@ class CurrentUser {
         db.collection("users").whereField("ID", isEqualTo: user).getDocuments { (snapshot, error) in
             if error != nil {
                 // user was not found
-                SlideError.inputError(errorTitle: "Data Retrieval", errorMessage: error!.localizedDescription).show()
+                CustomError.createWith(errorTitle: "Data Retrieval", errorMessage: error!.localizedDescription).show()
                 completionHandler(nil)
             } else {
                 // upon completion, returns a reference to the document

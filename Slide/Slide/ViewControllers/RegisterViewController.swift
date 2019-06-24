@@ -57,7 +57,7 @@ class RegisterViewController: UIViewController {
                     self.performSegue(withIdentifier: "registerToHome", sender: self)
                 // something went wrong
                 } else {
-                    SlideError.inputError(errorTitle: "Account Creation", errorMessage: error!.localizedDescription).show()
+                    CustomError.createWith(errorTitle: "Account Creation", errorMessage: error!.localizedDescription).show()
                 }
             }
         }

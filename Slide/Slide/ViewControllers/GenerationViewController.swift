@@ -13,6 +13,7 @@ class GenerationViewController: UIViewController {
     @IBOutlet weak var linkField: UITextField!
     @IBOutlet weak var QRView: UIImageView!
     
+    // applies a QR code filter on the text passed through the field
     @IBAction func generateQRCode(_ sender: Any) {
         let img = GenerateQR.generateQRCode(from: linkField.text!)
         QRView.image = img
@@ -21,10 +22,5 @@ class GenerationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-//    // creates a qr code based on the passed String to the linkField
-//
-//
-//    }
     
 }

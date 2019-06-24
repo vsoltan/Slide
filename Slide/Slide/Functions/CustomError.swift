@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-class SlideError : UIAlertController {
+class CustomError : UIAlertController {
     
     // creates a UIAlertController with prompts for the user
-    static func inputError(errorTitle: String, errorMessage: String) -> UIAlertController {
+    static func createWith(errorTitle: String, errorMessage: String) -> UIAlertController {
         // customization
         let error = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .actionSheet)
         let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)

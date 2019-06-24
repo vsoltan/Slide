@@ -30,7 +30,7 @@ class TextFieldParser {
             
             // regex email matching
             if (entry.type.equals(id: "email") && !(entry.field.text!.isValidEmail())) {
-                SlideError.inputError(errorTitle: "Invalid Email", errorMessage: "Please enter a valid email address").show()
+                CustomError.createWith(errorTitle: "Invalid Email", errorMessage: "Please enter a valid email address").show()
                 completeForm = false
             }
         }
