@@ -21,8 +21,6 @@ class HomeViewController: UIViewController {
         
         // TODO: look into the delay with the name pop-in
         super.viewDidLoad()
-        
-        
     }
 }
 
