@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         
         // sets the label to the current user's name
-        CurrentUser.getName { (name) in
+        CurrentUser.getName() { (name) in
             self.NameLabel.text = name
         }
         
