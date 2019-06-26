@@ -31,6 +31,7 @@
 		98B3A4A022B1860D005FBCF2 /* GoogleSignInDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3A49922B1860D005FBCF2 /* GoogleSignInDependencies.framework */; };
 		98B3A4A122B1860D005FBCF2 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3A49A22B1860D005FBCF2 /* GoogleSignIn.framework */; };
 		98C55E6622C171FA00B16A14 /* MediaSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C55E6522C171FA00B16A14 /* MediaSelectionViewController.swift */; };
+		98D2721522C183B600E300FE /* EncodedMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D2721422C183B600E300FE /* EncodedMedia.swift */; };
 		CFAC7373BBC82D12B63D7217 /* Pods_Slide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01566259063A6F98051587FA /* Pods_Slide.framework */; };
 		E7EF6C0222B35BD9005197FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7EF6C0122B35BD9005197FE /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 		98B3A49922B1860D005FBCF2 /* GoogleSignInDependencies.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignInDependencies.framework; sourceTree = "<group>"; };
 		98B3A49A22B1860D005FBCF2 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
 		98C55E6522C171FA00B16A14 /* MediaSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSelectionViewController.swift; sourceTree = "<group>"; };
+		98D2721422C183B600E300FE /* EncodedMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodedMedia.swift; sourceTree = "<group>"; };
 		E7EF6C0122B35BD9005197FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E7EF6C0322B35C45005197FE /* Firebase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
 		E8210633C78B72B2087F8D48 /* Pods-Slide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slide.debug.xcconfig"; path = "Target Support Files/Pods-Slide/Pods-Slide.debug.xcconfig"; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				98B3847322B1C0260097A073 /* CurrentUser.swift */,
 				98B3847722B2FCE90097A073 /* GenerateQR.swift */,
 				9867CCE622B9BB8400B6F14B /* CustomError.swift */,
+				98D2721422C183B600E300FE /* EncodedMedia.swift */,
 			);
 			path = Functions;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			files = (
 				98B3A47222A9ED73005FBCF2 /* LoginViewController.swift in Sources */,
 				98B3848422B482950097A073 /* QRScannerViewController.swift in Sources */,
+				98D2721522C183B600E300FE /* EncodedMedia.swift in Sources */,
 				98B3847422B1C0260097A073 /* CurrentUser.swift in Sources */,
 				9867CCE722B9BB8400B6F14B /* CustomError.swift in Sources */,
 				04F596E222A8540D004AA63A /* HomeViewController.swift in Sources */,

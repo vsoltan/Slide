@@ -13,13 +13,13 @@ class GenerationViewController: UIViewController {
     @IBOutlet weak var QRView: UIImageView!
     
     // structure passed from the media selection VC
-    var toBeShared = String()
+    var toBeShared : [String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // applies a QR code filter on the text passed through the field
-        let img = GenerateQR.generateQRCode(from: toBeShared)
+        let img = GenerateQR.generateQRCode(from: EncodedMedia.structToJSON(preparedData: toBeShared))
         QRView.image = img
     }
     

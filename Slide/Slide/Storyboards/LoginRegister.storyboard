@@ -128,14 +128,6 @@
             <point key="canvasLocation" x="5604.174228675136" y="114.3884892086331"/>
         </scene>
         <!--Main-->
-        <scene sceneID="nRX-4d-NHR">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" id="gLF-dF-64y" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="moG-hU-Mn7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4774" y="513"/>
-        </scene>
-        <!--Main-->
         <scene sceneID="vao-Ne-vAb">
             <objects>
                 <viewControllerPlaceholder storyboardName="Main" id="NQH-c5-24f" sceneMemberID="viewController"/>

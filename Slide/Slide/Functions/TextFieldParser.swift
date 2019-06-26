@@ -47,9 +47,15 @@ extension String {
 
 // establishes the format for accepted emails
 extension String {
+    // checks that an email string conforms to styling and format standards
     func isValidEmail() -> Bool {
         let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
         return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
+    }
+    
+    // removes whitespace from the beginning and end of the string
+    func trim() -> String {
+        return self.trimmingCharacters(in: NSCharacterSet.whitespaces)
     }
 }
 

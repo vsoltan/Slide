@@ -68,7 +68,14 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        var 
+        if (segue.identifier! == "signInToMain") {
+            let homeViewController = segue.destination as! HomeViewController
+            
+            // retrieves the user's information to customize their home page
+            CurrentUser.getName() { (name) in
+                homeViewController.NameLabel.text = name!
+            }
+        }
     }
     
     @IBAction func facebookLogin(sender: AnyObject) {

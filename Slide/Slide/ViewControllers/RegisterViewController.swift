@@ -45,16 +45,16 @@ class RegisterViewController: UIViewController {
                         // Set specified data entries
                         "Name": self.usrName.text!,
                         "ID": userID,
-                        "Email": self.usrEmail.text!,
+                        "Email": (self.usrEmail.text!).trim(),
                     ]) { err in
                         if let err = err {
                             print("Error writing document: \(err)")
                         } else {
                             print("Document successfully written!")
                         }
-                        
                     }
                     self.performSegue(withIdentifier: "registerToHome", sender: self)
+                    
                 // something went wrong
                 } else {
                     CustomError.createWith(errorTitle: "Account Creation", errorMessage: error!.localizedDescription).show()

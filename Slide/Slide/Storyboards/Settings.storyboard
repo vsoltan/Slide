@@ -16,7 +16,7 @@
                 <viewControllerPlaceholder storyboardName="Main" id="YeD-1B-o1a" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vPO-uf-xp9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-496" y="-207"/>
+            <point key="canvasLocation" x="-45" y="314"/>
         </scene>
         <!--Settings-->
         <scene sceneID="quF-9O-uXo">
@@ -86,7 +86,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qAM-cT-iGC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5.7971014492753632" y="65.625"/>
+            <point key="canvasLocation" x="-45" y="-160"/>
         </scene>
         <!--Change Password-->
         <scene sceneID="Hrc-py-Aon">
@@ -190,7 +190,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QAY-Tl-1L0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="733.33333333333337" y="-140.625"/>
+            <point key="canvasLocation" x="849" y="-160"/>
         </scene>
         <!--LoginRegister-->
         <scene sceneID="amS-ge-tsN">
@@ -198,7 +198,7 @@
                 <viewControllerPlaceholder storyboardName="LoginRegister" id="KEq-JS-mqr" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Axt-th-j4s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="667" y="473"/>
+            <point key="canvasLocation" x="342" y="314"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

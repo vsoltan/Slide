@@ -63,7 +63,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         return titles[section];
     }
     
-    // whoopdie doo what happens if you click tho??
+    // cell click handler
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // if a row is clicked, unclick and give it a fade out animation
         tableView.deselectRow(at: indexPath, animated: true)

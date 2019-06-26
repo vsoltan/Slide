@@ -22,7 +22,7 @@ class MediaSelectionViewController: UIViewController {
     // retrieves the information from the field and appends it to the structure
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let generationController = segue.destination as! GenerationViewController
-        generationController.toBeShared = CurrentUser.getEmail()
+        generationController.toBeShared = [CurrentUser.getEmail()]
     }
     
     override func viewDidLoad() {
