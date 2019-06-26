@@ -32,7 +32,6 @@ class PasswordViewController: UIViewController {
         
         let usr = Auth.auth().currentUser
         let credential = EmailAuthProvider.credential(withEmail: userEmail.text!, password: curPassword.text!)
-        // let dataResult = {[weak self] (error) in}
         
         if (TextFieldParser.validate(textFields: passwordInfo) && newPassword.text == confirmNew.text) {
             usr?.reauthenticate(with: credential) { (user, error) in
@@ -46,17 +45,4 @@ class PasswordViewController: UIViewController {
             CustomError.createWith(errorTitle: "Error", errorMessage: "you didn't follow instructions bitch").show()
         }
     }
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
