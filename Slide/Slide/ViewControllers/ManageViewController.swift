@@ -14,19 +14,24 @@ class ManageViewController: UIViewController, UITableViewDataSource, UITableView
     let numSections = 1
     
     // sections of the table
-    let profileArray = ["Delete Account"]
+    let manageArray = ["Delete Account"]
     
     
     @IBOutlet weak var ManageTable: UITableView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
-        
-        
+        //place holder
+        return 1
+
+
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        // retrieves a cell from the table given the index
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ManageItem", for: indexPath)
+        // sets the text of that cell to the strings enumerated in the corresponding array
+        cell.textLabel!.text = manageArray[0]
+        return cell
     }
     
 
