@@ -14,6 +14,11 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // sets the namefield to the retrieved information
+        CurrentUser.getName { (name) in
+            self.NameLabel.text = name!
+        }
     }
 }
 

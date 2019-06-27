@@ -93,10 +93,13 @@ class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsD
     }
     
     func found(code: String) {
+        if (code == "") {
+           print("json conversion failed, please check the data pipeline")
+        }
+        // decodes the information to be shared and stores it in a struct
         let derivedMedia : EncodedMedia.Media = EncodedMedia.JSONtoStruct(source: code)!
-        print(derivedMedia.name)
-        print(derivedMedia.phoneNumber)
-        print(derivedMedia.email)
+        // example print, TODO: do something with the data
+        print(derivedMedia.email!)
     }
     
     override var prefersStatusBarHidden: Bool {

@@ -16,12 +16,12 @@ class EncodedMedia{
         var name, phoneNumber, email : String?
     }
     
+    // creates a json string representation of the object
     static func structToJSON(preparedData: Media?) -> String? {
         // make sure that data is being passed to the function
         if (preparedData == nil) {
             return nil
         }
-    
         let jsonData = try! JSONEncoder().encode(preparedData)
         let formatString = String(data: jsonData, encoding: .utf8)!
         
@@ -31,7 +31,7 @@ class EncodedMedia{
     // decoder function to be used by the QR reader
     static func JSONtoStruct(source: String) -> Media? {
         let jsonData = source.data(using: .utf8)!
-        let userMedia : Media = try! JSONDecoder().decode(Media.self, from: jsonData)
+        let userMedia = try! JSONDecoder().decode(Media.self, from: jsonData)
         return userMedia
     }
 }
