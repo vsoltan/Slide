@@ -13,13 +13,7 @@ class EncodedMedia{
     
     // of type codable to allow for easy de/serialization
     struct Media : Codable {
-        var name, phoneNumber, email : String
-        
-        init(name: String?, phone: String?, email: String?) {
-            self.name = name!
-            self.phoneNumber = phone!
-            self.email = email!
-        }
+        var name, phoneNumber, email : String?
     }
     
     static func structToJSON(preparedData: Media?) -> String? {

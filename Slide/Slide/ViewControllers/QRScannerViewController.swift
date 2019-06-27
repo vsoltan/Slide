@@ -96,6 +96,7 @@ class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsD
         let derivedMedia : EncodedMedia.Media = EncodedMedia.JSONtoStruct(source: code)!
         print(derivedMedia.name)
         print(derivedMedia.phoneNumber)
+        print(derivedMedia.email)
     }
     
     override var prefersStatusBarHidden: Bool {
