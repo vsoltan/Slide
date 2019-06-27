@@ -19,7 +19,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     // sections of the table
     let profileArray = ["Linked Media", "Cards", "Friends"]
     
-    let accountArray = ["Change Password", "Upgrade"]
+    let accountArray = ["Change Password", "Manage"]
     
     let supportArray = ["About", "Contact", "Ratings", "Logout"]
     
@@ -85,7 +85,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         let segueLabel = allSections[indexPath.section][indexPath.row]
         
         // Dev only: Temporary array of completed pages
-        let completed = ["Logout", "Change Password"]
+        let completed = ["Logout", "Change Password", "Manage"]
         
         // Dev only: Temporary case handling for performSegue to avoid calling nonexistent segues
         if let index = completed.firstIndex(of: segueLabel) {

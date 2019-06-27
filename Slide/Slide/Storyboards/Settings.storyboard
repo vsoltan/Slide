@@ -82,6 +82,7 @@
                         <outlet property="settingsTable" destination="AqZ-UB-twD" id="gLG-sV-ESk"/>
                         <segue destination="KEq-JS-mqr" kind="show" identifier="Logout" id="kQ6-Rm-Etw"/>
                         <segue destination="8cJ-iF-hPv" kind="show" identifier="Change Password" id="5Rm-Ku-eQC"/>
+                        <segue destination="jrR-xF-OOD" kind="show" identifier="Manage" id="8Nf-T2-zTr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qAM-cT-iGC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -190,7 +191,71 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QAY-Tl-1L0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="849" y="-160"/>
+            <point key="canvasLocation" x="1542" y="-902"/>
+        </scene>
+        <!--Manage View Controller-->
+        <scene sceneID="e6F-HS-eVX">
+            <objects>
+                <viewController id="jrR-xF-OOD" customClass="ManageViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="L7O-ZK-EeJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AT0-xa-sV1">
+                                <rect key="frame" x="163.5" y="61" width="87" height="28"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Manage">
+                                        <attributes>
+                                            <font key="NSFont" size="24" name="AppleSymbols"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dr2-Lv-cov">
+                                <rect key="frame" x="20" y="59" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="eYC-rp-Cnv" kind="show" id="L1G-U1-ARp"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WxR-3W-9zu" userLabel="Manage Table">
+                                <rect key="frame" x="10" y="110" width="394" height="752"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="4eq-hI-vlD" userLabel="ManageItem">
+                                        <rect key="frame" x="0.0" y="28" width="394" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4eq-hI-vlD" id="FaJ-zA-Km8">
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Dr2-Lv-cov" firstAttribute="top" secondItem="SNC-IN-Svl" secondAttribute="top" constant="15" id="E0H-oj-p9A"/>
+                            <constraint firstItem="WxR-3W-9zu" firstAttribute="top" secondItem="SNC-IN-Svl" secondAttribute="top" constant="66" id="JVL-S1-o7f"/>
+                            <constraint firstItem="WxR-3W-9zu" firstAttribute="leading" secondItem="SNC-IN-Svl" secondAttribute="leading" constant="10" id="PQG-hA-KeF"/>
+                            <constraint firstItem="AT0-xa-sV1" firstAttribute="top" secondItem="SNC-IN-Svl" secondAttribute="top" constant="17" id="V7u-nC-moy"/>
+                            <constraint firstItem="Dr2-Lv-cov" firstAttribute="leading" secondItem="SNC-IN-Svl" secondAttribute="leading" constant="20" id="cJX-pS-wzv"/>
+                            <constraint firstItem="SNC-IN-Svl" firstAttribute="bottom" secondItem="WxR-3W-9zu" secondAttribute="bottom" id="it0-vf-Pm8"/>
+                            <constraint firstItem="SNC-IN-Svl" firstAttribute="trailing" secondItem="WxR-3W-9zu" secondAttribute="trailing" constant="10" id="ppb-jy-rhX"/>
+                            <constraint firstItem="WxR-3W-9zu" firstAttribute="centerX" secondItem="L7O-ZK-EeJ" secondAttribute="centerX" id="wdC-Bq-BwC"/>
+                            <constraint firstItem="AT0-xa-sV1" firstAttribute="centerX" secondItem="L7O-ZK-EeJ" secondAttribute="centerX" id="zLR-f9-4EY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SNC-IN-Svl"/>
+                    </view>
+                    <connections>
+                        <outlet property="ManageTable" destination="WxR-3W-9zu" id="ZFx-KJ-ePs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pwx-rg-98o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1949" y="-106"/>
         </scene>
         <!--LoginRegister-->
         <scene sceneID="amS-ge-tsN">
@@ -202,6 +267,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gtP-Al-zTc"/>
+        <segue reference="L1G-U1-ARp"/>
     </inferredMetricsTieBreakers>
 </document>
