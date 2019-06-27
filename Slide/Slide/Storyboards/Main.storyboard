@@ -210,6 +210,9 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="cp6-0U-4vq"/>
+                    <connections>
+                        <segue destination="GxD-Nd-ZIb" kind="show" identifier="toMediaReceived" id="Bq8-g2-wDn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYj-IQ-TOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="gw7-6n-KSs">
@@ -220,12 +223,53 @@
             </objects>
             <point key="canvasLocation" x="1828" y="21"/>
         </scene>
+        <!--ReceivedVC-->
+        <scene sceneID="qVE-SD-ZCB">
+            <objects>
+                <viewController title="ReceivedVC" id="GxD-Nd-ZIb" customClass="ReceivedViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oNb-Zr-ESs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HEY ROY U SEXC BEEST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UqX-i9-2Te">
+                                <rect key="frame" x="72" y="195" width="231" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="from" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUe-XZ-LBo">
+                                <rect key="frame" x="169" y="250" width="36" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVb-Cr-a4a">
+                                <rect key="frame" x="72" y="350" width="231" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Sbx-uV-v5H"/>
+                    </view>
+                    <connections>
+                        <outlet property="receivedInfoLabel" destination="nVb-Cr-a4a" id="v1N-5p-GK6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CTh-PZ-9Sd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2661.5999999999999" y="20.689655172413794"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Checkbox" width="60" height="60"/>
         <image name="UnCheckbox" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WKJ-KO-R26"/>
+        <segue reference="XWq-Nm-r85"/>
     </inferredMetricsTieBreakers>
 </document>

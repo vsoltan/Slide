@@ -14,6 +14,8 @@ class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsD
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
+    var receivedInformation : EncodedMedia.Media?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -97,9 +99,16 @@ class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsD
            print("json conversion failed, please check the data pipeline")
         }
         // decodes the information to be shared and stores it in a struct
-        let derivedMedia : EncodedMedia.Media = EncodedMedia.JSONtoStruct(source: code)!
+        receivedInformation = EncodedMedia.JSONtoStruct(source: code)!
         // example print, TODO: do something with the data
-        print(derivedMedia.email!)
+        performSegue(withIdentifier: "toMediaReceived", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toMediaReceived") {
+            let recievedVC = segue.destination as! ReceivedViewController
+            recievedVC.receivedInfo = self.receivedInformation!
+        }
     }
     
     override var prefersStatusBarHidden: Bool {
