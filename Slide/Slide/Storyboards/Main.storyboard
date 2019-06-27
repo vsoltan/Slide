@@ -125,13 +125,17 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
-                                    <segue destination="KOy-JS-FTF" kind="show" id="jbg-PW-eKL"/>
+                                    <action selector="selectionComplete:" destination="PR1-od-sZB" eventType="touchUpInside" id="LjB-dt-Wxq"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="yXP-PY-5Mh"/>
                     </view>
+                    <connections>
+                        <outlet property="emailButton" destination="EbH-Mh-V8t" id="5zK-eJ-X88"/>
+                        <segue destination="KOy-JS-FTF" kind="show" identifier="toQRCodeView" id="Xdp-eM-7We"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZYx-Ay-i0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
