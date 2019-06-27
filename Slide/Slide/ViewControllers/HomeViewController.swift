@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
         
         // sets the namefield to the retrieved information
         CurrentUser.getName { (name) in
-            self.NameLabel.text = name!
+//            self.NameLabel.text = name!
         }
     }
 }

@@ -11,8 +11,6 @@ import UIKit
 import GoogleSignIn
 import FacebookCore
 import Firebase
-import FirebaseCore
-import FirebaseFirestore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -43,24 +41,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        // use Firebase library to configure APIs
+        FirebaseApp.configure()
+        
         GIDSignIn.sharedInstance().clientID = "705100307106-3ivsiu3cbvjv2drsihtdbv5nkc8vmblk.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
+        
 //        UIApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
 //        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        // use Firebase library to configure APIs
-        FirebaseApp.configure()
-        let db = Firestore.firestore()
-        // let db = Database.database().reference()
+        // initialize the window container
+        //self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        print(db) // silence warning
-
+        // checks if user is already signed in
+        if (Auth.auth().currentUser != nil) {
+            print("already logged in")
+            // TODO set home as root VC else login
+        }
         return true
     }
-    
 
-    
-    
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return GIDSignIn.sharedInstance().handle(url as URL?,
             sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,

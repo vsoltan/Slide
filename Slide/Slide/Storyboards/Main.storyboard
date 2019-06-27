@@ -144,7 +144,7 @@
         <!--Home-->
         <scene sceneID="NKf-KH-xe2">
             <objects>
-                <viewController title="Home" id="geV-7T-qZd" customClass="HomeViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeStoryboardID" title="Home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="geV-7T-qZd" customClass="HomeViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zMc-O2-ear">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

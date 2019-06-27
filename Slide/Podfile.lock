@@ -199,6 +199,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Firestore
   - FirebaseUI
+  - Protobuf
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -261,6 +262,6 @@ SPEC CHECKSUMS:
   Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
 
-PODFILE CHECKSUM: fb1aea9627359c057862cd61d57ac359f1667ef3
+PODFILE CHECKSUM: e092544d8f367093c933e01de0d0d666e40e9918
 
 COCOAPODS: 1.7.2

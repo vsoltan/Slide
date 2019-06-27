@@ -16,6 +16,9 @@ target 'Slide' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare'
+  
+  # temporary solution to warnings
+  pod 'Protobuf', :inhibit_warnings => true
 
 end
  

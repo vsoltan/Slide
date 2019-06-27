@@ -28,7 +28,6 @@
 		98B3A46722A9DD7F005FBCF2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3A46622A9DD7F005FBCF2 /* SettingsViewController.swift */; };
 		98B3A46E22A9E878005FBCF2 /* TextFieldParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3A46D22A9E878005FBCF2 /* TextFieldParser.swift */; };
 		98B3A47222A9ED73005FBCF2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3A47122A9ED73005FBCF2 /* LoginViewController.swift */; };
-		98B3A49D22B1860D005FBCF2 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 98B3A49622B1860D005FBCF2 /* GoogleSignIn.bundle */; };
 		98B3A4A022B1860D005FBCF2 /* GoogleSignInDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3A49922B1860D005FBCF2 /* GoogleSignInDependencies.framework */; };
 		98B3A4A122B1860D005FBCF2 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3A49A22B1860D005FBCF2 /* GoogleSignIn.framework */; };
 		98C55E6622C171FA00B16A14 /* MediaSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C55E6522C171FA00B16A14 /* MediaSelectionViewController.swift */; };
@@ -271,7 +270,6 @@
 				98B3A44B22A87384005FBCF2 /* LaunchScreen.storyboard in Resources */,
 				98B3A44922A87384005FBCF2 /* LoginRegister.storyboard in Resources */,
 				98B3A44E22A87A8A005FBCF2 /* Main.storyboard in Resources */,
-				98B3A49D22B1860D005FBCF2 /* GoogleSignIn.bundle in Resources */,
 				98B3A46522A9DD78005FBCF2 /* Settings.storyboard in Resources */,
 				E7EF6C0222B35BD9005197FE /* GoogleService-Info.plist in Resources */,
 			);
