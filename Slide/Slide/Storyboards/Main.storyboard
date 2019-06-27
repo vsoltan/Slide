@@ -114,7 +114,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EbH-Mh-V8t">
-                                <rect key="frame" x="54" y="187" width="25" height="25"/>
+                                <rect key="frame" x="41" y="167" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="UnCheckbox"/>
                                 <state key="selected" image="Checkbox"/>
@@ -123,14 +123,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select Media" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXY-Cz-Vms">
-                                <rect key="frame" x="45" y="118" width="163" height="42"/>
+                                <rect key="frame" x="41" y="72" width="163" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6W-kg-ReO">
-                                <rect key="frame" x="109" y="184" width="116" height="31"/>
+                                <rect key="frame" x="102" y="164" width="116" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
@@ -144,12 +144,29 @@
                                     <action selector="selectionComplete:" destination="PR1-od-sZB" eventType="touchUpInside" id="LjB-dt-Wxq"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Pt-8l-RTt">
+                                <rect key="frame" x="41" y="231" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="UnCheckbox"/>
+                                <state key="selected" image="Checkbox"/>
+                                <connections>
+                                    <action selector="nameCheckbox:" destination="PR1-od-sZB" eventType="touchUpInside" id="Qqw-Gh-272"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEX-gX-XoD">
+                                <rect key="frame" x="102" y="233" width="66" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="yXP-PY-5Mh"/>
                     </view>
                     <connections>
                         <outlet property="emailButton" destination="EbH-Mh-V8t" id="5zK-eJ-X88"/>
+                        <outlet property="nameButton" destination="5Pt-8l-RTt" id="v7R-UW-NDR"/>
                         <segue destination="KOy-JS-FTF" kind="show" identifier="toQRCodeView" id="Xdp-eM-7We"/>
                     </connections>
                 </viewController>
@@ -253,6 +270,7 @@
         <image name="UnCheckbox" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Xdp-eM-7We"/>
         <segue reference="XWq-Nm-r85"/>
         <segue reference="cPU-pa-WRE"/>
     </inferredMetricsTieBreakers>

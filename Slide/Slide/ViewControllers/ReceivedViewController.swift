@@ -13,10 +13,12 @@ class ReceivedViewController: UIViewController {
     var receivedInfo : EncodedMedia.Media?
 
     @IBOutlet weak var receivedInfoLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
         receivedInfoLabel.text = receivedInfo?.email!
+        nameLabel.text = receivedInfo?.name!
     }
 }
