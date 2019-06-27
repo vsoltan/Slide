@@ -12,6 +12,7 @@
 		04F596E722A8540F004AA63A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F596E622A8540F004AA63A /* Assets.xcassets */; };
 		04F9B36922BDA6BC00D87528 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F9B36822BDA6BC00D87528 /* PasswordViewController.swift */; };
 		04F9B36B22C4088C00D87528 /* ManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F9B36A22C4088C00D87528 /* ManageViewController.swift */; };
+		9807A69D22C5618E00627887 /* Received.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9807A69C22C5618E00627887 /* Received.storyboard */; };
 		9867CCE722B9BB8400B6F14B /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9867CCE622B9BB8400B6F14B /* CustomError.swift */; };
 		9867CCE922BD47F800B6F14B /* GenerationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9867CCE822BD47F800B6F14B /* GenerationViewController.swift */; };
 		98B3847422B1C0260097A073 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847322B1C0260097A073 /* CurrentUser.swift */; };
@@ -49,6 +50,7 @@
 		04F9B36A22C4088C00D87528 /* ManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageViewController.swift; sourceTree = "<group>"; };
 		0D3496B522BDC10800891BDD /* Slide.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Slide.entitlements; sourceTree = "<group>"; };
 		6307111C166CE8B76E78A8BC /* Pods-Slide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slide.release.xcconfig"; path = "Target Support Files/Pods-Slide/Pods-Slide.release.xcconfig"; sourceTree = "<group>"; };
+		9807A69C22C5618E00627887 /* Received.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Received.storyboard; sourceTree = "<group>"; };
 		9867CCE622B9BB8400B6F14B /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		9867CCE822BD47F800B6F14B /* GenerationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationViewController.swift; sourceTree = "<group>"; };
 		98B3847322B1C0260097A073 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				98B3A44822A87384005FBCF2 /* LaunchScreen.storyboard */,
 				98B3A44622A87384005FBCF2 /* LoginRegister.storyboard */,
 				98B3A44D22A87A8A005FBCF2 /* Main.storyboard */,
+				9807A69C22C5618E00627887 /* Received.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04F596E722A8540F004AA63A /* Assets.xcassets in Resources */,
+				9807A69D22C5618E00627887 /* Received.storyboard in Resources */,
 				98B3A44B22A87384005FBCF2 /* LaunchScreen.storyboard in Resources */,
 				98B3A44922A87384005FBCF2 /* LoginRegister.storyboard in Resources */,
 				98B3A44E22A87A8A005FBCF2 /* Main.storyboard in Resources */,

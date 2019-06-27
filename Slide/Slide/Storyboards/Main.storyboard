@@ -76,16 +76,32 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1EH-yV-aae">
                                 <rect key="frame" x="37" y="256" width="300" height="300"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="IDM-PU-j3L"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="yTV-Qy-yO8" appends="YES" id="Dsy-X9-kAH"/>
+                            <outletCollection property="gestureRecognizers" destination="3UR-z5-97x" appends="YES" id="LpH-6z-2mn"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="QRView" destination="1EH-yV-aae" id="Rug-XE-34q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oWz-4R-js8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="yTV-Qy-yO8">
+                    <connections>
+                        <segue destination="PR1-od-sZB" kind="show" id="cPU-pa-WRE"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="down" id="3UR-z5-97x">
+                    <connections>
+                        <segue destination="geV-7T-qZd" kind="show" id="oay-vt-5ME"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-959.20000000000005" y="439.65517241379314"/>
         </scene>
@@ -144,7 +160,7 @@
         <!--Home-->
         <scene sceneID="NKf-KH-xe2">
             <objects>
-                <viewController storyboardIdentifier="HomeStoryboardID" title="Home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="geV-7T-qZd" customClass="HomeViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="geV-7T-qZd" customClass="HomeViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zMc-O2-ear">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -198,7 +214,7 @@
         <!--ScanQR-->
         <scene sceneID="5wZ-0Z-QE4">
             <objects>
-                <viewController title="ScanQR" id="lb8-9m-ZY2" customClass="QRScannerViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QRScanner" title="ScanQR" id="lb8-9m-ZY2" customClass="QRScannerViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Fd-re-NEX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -211,7 +227,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="cp6-0U-4vq"/>
                     <connections>
-                        <segue destination="GxD-Nd-ZIb" kind="show" identifier="toMediaReceived" id="Bq8-g2-wDn"/>
+                        <segue destination="AiY-5p-B5i" kind="show" identifier="toMediaReceived" id="9MT-zb-88l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYj-IQ-TOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -223,46 +239,13 @@
             </objects>
             <point key="canvasLocation" x="1828" y="21"/>
         </scene>
-        <!--ReceivedVC-->
-        <scene sceneID="qVE-SD-ZCB">
+        <!--Received-->
+        <scene sceneID="3dg-Js-oeA">
             <objects>
-                <viewController title="ReceivedVC" id="GxD-Nd-ZIb" customClass="ReceivedViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="oNb-Zr-ESs">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HEY ROY U SEXC BEEST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UqX-i9-2Te">
-                                <rect key="frame" x="72" y="195" width="231" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="from" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUe-XZ-LBo">
-                                <rect key="frame" x="169" y="250" width="36" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVb-Cr-a4a">
-                                <rect key="frame" x="72" y="350" width="231" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Sbx-uV-v5H"/>
-                    </view>
-                    <connections>
-                        <outlet property="receivedInfoLabel" destination="nVb-Cr-a4a" id="v1N-5p-GK6"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CTh-PZ-9Sd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Received" id="AiY-5p-B5i" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vFC-rJ-BmJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2661.5999999999999" y="20.689655172413794"/>
+            <point key="canvasLocation" x="2510" y="8"/>
         </scene>
     </scenes>
     <resources>
@@ -271,5 +254,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XWq-Nm-r85"/>
+        <segue reference="cPU-pa-WRE"/>
     </inferredMetricsTieBreakers>
 </document>

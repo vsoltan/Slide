@@ -22,8 +22,6 @@ class ManageViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //place holder
         return 1
-
-
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -34,14 +32,12 @@ class ManageViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
     /*
     // MARK: - Navigation
 

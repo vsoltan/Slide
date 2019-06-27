@@ -16,7 +16,7 @@ class ReceivedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         receivedInfoLabel.text = receivedInfo?.email!
     }
 }
