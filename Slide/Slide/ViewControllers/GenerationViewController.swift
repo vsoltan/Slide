@@ -13,7 +13,7 @@ class GenerationViewController: UIViewController {
     @IBOutlet weak var QRView: UIImageView!
     
     // structure passed from the media selection VC
-    var toBeShared : [String]?
+    var toBeShared : EncodedMedia.Media?
     
     override func viewDidLoad() {
         super.viewDidLoad()

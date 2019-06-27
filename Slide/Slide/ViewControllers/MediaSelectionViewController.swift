@@ -9,9 +9,11 @@
 import UIKit
 
 class MediaSelectionViewController: UIViewController {
+    
+    var selectedMedia = EncodedMedia.Media.init(name: "name", phone: "5089047060", email: "v@gmail.com")
 
     @IBAction func emailCheckbox(_ sender: UIButton) {
-        // animates the checkbox button
+        // animates the checkbox button and stages the email to be encoded
         if sender.isSelected {
             sender.isSelected = false
         } else {
@@ -22,7 +24,7 @@ class MediaSelectionViewController: UIViewController {
     // retrieves the information from the field and appends it to the structure
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let generationController = segue.destination as! GenerationViewController
-        generationController.toBeShared = [CurrentUser.getEmail()]
+        generationController.toBeShared = selectedMedia
     }
     
     override func viewDidLoad() {

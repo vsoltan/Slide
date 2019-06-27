@@ -13,34 +13,32 @@ class EncodedMedia{
     
     // of type codable to allow for easy de/serialization
     struct Media : Codable {
-        var name, phoneNumber : String
+        var name, phoneNumber, email : String
+        
+        init(name: String?, phone: String?, email: String?) {
+            self.name = name!
+            self.phoneNumber = phone!
+            self.email = email!
+        }
     }
     
-    static func structToJSON(preparedData: [String]?) -> String? {
+    static func structToJSON(preparedData: Media?) -> String? {
         // make sure that data is being passed to the function
-        if preparedData == nil {
+        if (preparedData == nil) {
             return nil
         }
-        // convert the data to the json format
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: preparedData!, options: .prettyPrinted)
-            return String(data: jsonData, encoding: String.Encoding.utf8)
-        } catch let error {
-            print("error converting to json: \(error)")
-            return nil
-        }
+    
+        let jsonData = try! JSONEncoder().encode(preparedData)
+        let formatString = String(data: jsonData, encoding: .utf8)!
+        
+        return formatString
     }
     
     // decoder function to be used by the QR reader
-    static func JSONtoStruct(source: String?) {
-        print(source!)
-        let src = Data(source!.utf8)
-        do {
-            let data = try JSONDecoder().decode([Media].self, from: src)
-            print(data)
-        } catch {
-            print(error.localizedDescription)
-        }
+    static func JSONtoStruct(source: String) -> Media? {
+        let jsonData = source.data(using: .utf8)!
+        let userMedia : Media = try! JSONDecoder().decode(Media.self, from: jsonData)
+        return userMedia
     }
 }
     
