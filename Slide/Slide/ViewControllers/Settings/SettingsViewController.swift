@@ -19,7 +19,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     // sections of the table
     let profileArray = ["Linked Media", "Cards", "Friends"]
     
-    let accountArray = ["Change Password", "Manage"]
+    let accountArray = ["Change Password", "Manage", "Add Media"]
     
     let supportArray = ["About", "Contact", "Ratings", "Logout"]
     
@@ -63,11 +63,13 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         return titles[section];
     }
     
-    // cell click handler
+    // cell activation handler
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         // if a row is clicked, unclick and give it a fade out animation
         tableView.deselectRow(at: indexPath, animated: true)
-        // special case to handle "Log out"
+        
+        // log out
         if (indexPath.section == 2 && indexPath.row == 3 ) {
             print ("We did it")
             let firebaseAuth = Auth.auth()
@@ -81,14 +83,15 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             }
             
         }
+        
         // determines what page to segue to based on which cell is clicked
         let segueLabel = allSections[indexPath.section][indexPath.row]
+
+        // array of all actionable pages
+        let tabs = ["Logout", "Change Password", "Manage", "About", "Add Media"]
         
-        // Dev only: Temporary array of completed pages
-        let completed = ["Logout", "Change Password", "Manage", "About"]
-        
-        // Dev only: Temporary case handling for performSegue to avoid calling nonexistent segues
-        if let index = completed.firstIndex(of: segueLabel) {
+        // executes the segue corresponding to the tab selected
+        if let index = tabs.firstIndex(of: segueLabel) {
             performSegue(withIdentifier: segueLabel, sender: self)
             print(index) // make compiler happy
         }

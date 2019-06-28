@@ -13,6 +13,7 @@
 		04F9B36922BDA6BC00D87528 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F9B36822BDA6BC00D87528 /* PasswordViewController.swift */; };
 		04F9B36B22C4088C00D87528 /* ManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F9B36A22C4088C00D87528 /* ManageViewController.swift */; };
 		9807A69D22C5618E00627887 /* Received.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9807A69C22C5618E00627887 /* Received.storyboard */; };
+		9807A6A122C5929000627887 /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9807A6A022C5929000627887 /* SyncViewController.swift */; };
 		9867CCE722B9BB8400B6F14B /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9867CCE622B9BB8400B6F14B /* CustomError.swift */; };
 		9867CCE922BD47F800B6F14B /* GenerationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9867CCE822BD47F800B6F14B /* GenerationViewController.swift */; };
 		98B3847422B1C0260097A073 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847322B1C0260097A073 /* CurrentUser.swift */; };
@@ -51,6 +52,7 @@
 		0D3496B522BDC10800891BDD /* Slide.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Slide.entitlements; sourceTree = "<group>"; };
 		6307111C166CE8B76E78A8BC /* Pods-Slide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slide.release.xcconfig"; path = "Target Support Files/Pods-Slide/Pods-Slide.release.xcconfig"; sourceTree = "<group>"; };
 		9807A69C22C5618E00627887 /* Received.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Received.storyboard; sourceTree = "<group>"; };
+		9807A6A022C5929000627887 /* SyncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
 		9867CCE622B9BB8400B6F14B /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		9867CCE822BD47F800B6F14B /* GenerationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationViewController.swift; sourceTree = "<group>"; };
 		98B3847322B1C0260097A073 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
@@ -131,6 +133,39 @@
 			path = Slide;
 			sourceTree = "<group>";
 		};
+		9807A6A222C592AB00627887 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E7D0CC7C22C4513E00D73B44 /* AboutViewController.swift */,
+				04F9B36A22C4088C00D87528 /* ManageViewController.swift */,
+				98B3A46622A9DD7F005FBCF2 /* SettingsViewController.swift */,
+				9807A6A022C5929000627887 /* SyncViewController.swift */,
+				04F9B36822BDA6BC00D87528 /* PasswordViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		9807A6A322C592E400627887 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				04F596E122A8540D004AA63A /* HomeViewController.swift */,
+				98D2721622C478D600E300FE /* ReceivedViewController.swift */,
+				98B3848322B482950097A073 /* QRScannerViewController.swift */,
+				9867CCE822BD47F800B6F14B /* GenerationViewController.swift */,
+				98C55E6522C171FA00B16A14 /* MediaSelectionViewController.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		9807A6A422C5931A00627887 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				98B3A45622A8C9D7005FBCF2 /* RegisterViewController.swift */,
+				98B3A47122A9ED73005FBCF2 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		98B3847922B32B8A0097A073 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,17 +192,9 @@
 		98B3A45322A8C03F005FBCF2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				98B3A46622A9DD7F005FBCF2 /* SettingsViewController.swift */,
-				04F9B36A22C4088C00D87528 /* ManageViewController.swift */,
-				04F596E122A8540D004AA63A /* HomeViewController.swift */,
-				E7D0CC7C22C4513E00D73B44 /* AboutViewController.swift */,
-				04F9B36822BDA6BC00D87528 /* PasswordViewController.swift */,
-				98B3A45622A8C9D7005FBCF2 /* RegisterViewController.swift */,
-				98B3A47122A9ED73005FBCF2 /* LoginViewController.swift */,
-				98B3848322B482950097A073 /* QRScannerViewController.swift */,
-				9867CCE822BD47F800B6F14B /* GenerationViewController.swift */,
-				98C55E6522C171FA00B16A14 /* MediaSelectionViewController.swift */,
-				98D2721622C478D600E300FE /* ReceivedViewController.swift */,
+				9807A6A422C5931A00627887 /* Login */,
+				9807A6A322C592E400627887 /* Application */,
+				9807A6A222C592AB00627887 /* Settings */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -350,6 +377,7 @@
 				98D2721522C183B600E300FE /* EncodedMedia.swift in Sources */,
 				98B3847422B1C0260097A073 /* CurrentUser.swift in Sources */,
 				9867CCE722B9BB8400B6F14B /* CustomError.swift in Sources */,
+				9807A6A122C5929000627887 /* SyncViewController.swift in Sources */,
 				98D2721722C478D600E300FE /* ReceivedViewController.swift in Sources */,
 				04F596E222A8540D004AA63A /* HomeViewController.swift in Sources */,
 				9867CCE922BD47F800B6F14B /* GenerationViewController.swift in Sources */,
