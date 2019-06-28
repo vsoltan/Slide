@@ -15,8 +15,10 @@ class MediaSelectionViewController: UIViewController {
     @IBOutlet weak var emailButton: UIButton!
     @IBOutlet weak var nameButton: UIButton!
     
-    @IBAction func emailCheckbox(_ sender: UIButton) {
-        // radio button (is selected if not already)
+    lazy var allButtons : Array<UIButton> = [emailButton, nameButton]
+    
+    // radio button (is selected if not already)
+    fileprivate func checkbox(_ sender: UIButton) {
         if sender.isSelected {
             sender.isSelected = false
         } else {
@@ -24,18 +26,13 @@ class MediaSelectionViewController: UIViewController {
         }
     }
     
-    @IBAction func nameCheckbox(_ sender: UIButton) {
-        if sender.isSelected {
-            sender.isSelected = false
-        } else {
-            sender.isSelected = true
-        }
-    }
+    @IBAction func emailCheckbox(_ sender: UIButton) {checkbox(emailButton)}
+    @IBAction func nameCheckbox(_ sender: UIButton)  {checkbox(nameButton)}
     
     // stages the media properties to be added to the encoding structure
     @IBAction func selectionComplete(_ sender: Any) {
         
-        // safeguard against async processes not being able to complete
+        // safeguard against async processes not being able to complete in time
         let myGroup = DispatchGroup()
         
         if (emailButton.isSelected) {
@@ -61,7 +58,7 @@ class MediaSelectionViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    // passes data generated in this view controller to the GenerationVC
+    // passes data accumuated in this view controller to the GenerationVC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toQRCodeView") {
             let generationController = segue.destination as! GenerationViewController
