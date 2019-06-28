@@ -50,13 +50,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 //        UIApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
 //        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        // initialize the window container
-        //self.window = UIWindow(frame: UIScreen.main.bounds)
-        
         // checks if user is already signed in
-        if (Auth.auth().currentUser != nil) {
-            print("already logged in")
-            // TODO set home as root VC else login
+        if (Auth.auth().currentUser == nil) {
+            print("user is not logged in")
+            
+            // initializes the container for the view controller
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            
+            // specifies the destination and creates an instance of that view controller
+            let storyboard = UIStoryboard(name: "LoginRegister", bundle: nil)
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+            
+            // sets the root view controller to the desination and renders it
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+
         }
         return true
     }

@@ -96,14 +96,21 @@ class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsD
     
     func found(code: String) {
         if (code == "") {
-           print("json conversion failed, please check the data pipeline")
+            print("json conversion failed, please check the data pipeline")
         }
         // decodes the information to be shared and stores it in a struct
         receivedInformation = EncodedMedia.JSONtoStruct(source: code)!
-        // example print, TODO: do something with the data
+        
+        // set the current view controller as root to conform to view hierarchy
+        let initialViewController = UIStoryboard(name: "Main", bundle:nil).instantiateViewController(withIdentifier: "QRScanner")
+        let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        appDelegate.window?.rootViewController = initialViewController
+        
+        // transitions to the receiving interface
         performSegue(withIdentifier: "toMediaReceived", sender: self)
     }
     
+    // updates ReceivedVC's properties with the Slide's information
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toMediaReceived") {
             let recievedVC = segue.destination as! ReceivedViewController
@@ -111,8 +118,8 @@ class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsD
         }
     }
     
+    // doesn't show battery and cellular status
     override var prefersStatusBarHidden: Bool {
         return true
     }
 }
-
