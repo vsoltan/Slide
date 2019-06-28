@@ -39,12 +39,14 @@ class MediaSelectionViewController: UIViewController {
             self.selectedMedia.email = CurrentUser.getEmail()
         }
         
-        // waits and notifies the main thread once the proc retrieves the field
-        myGroup.enter()
         if (nameButton.isSelected) {
-            CurrentUser.getName { (name) in
-                self.selectedMedia.name = name!
-                myGroup.leave()
+            // waits and notifies the main thread once the proc retrieves the field
+            myGroup.enter()
+            if (nameButton.isSelected) {
+                CurrentUser.getName { (name) in
+                    self.selectedMedia.name = name!
+                    myGroup.leave()
+                }
             }
         }
         
