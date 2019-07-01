@@ -41,7 +41,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="cDT-se-s2C"/>
                         <connections>
@@ -99,7 +99,7 @@
                 </swipeGestureRecognizer>
                 <swipeGestureRecognizer direction="down" id="3UR-z5-97x">
                     <connections>
-                        <segue destination="geV-7T-qZd" kind="show" id="oay-vt-5ME"/>
+                        <segue destination="geV-7T-qZd" kind="show" customClass="SwipeDown" customModule="Slide" customModuleProvider="target" id="oay-vt-5ME"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -270,7 +270,7 @@
         <image name="UnCheckbox" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XWq-Nm-r85"/>
-        <segue reference="tWq-5o-dMb"/>
+        <segue reference="oay-vt-5ME"/>
+        <segue reference="cPU-pa-WRE"/>
     </inferredMetricsTieBreakers>
 </document>
