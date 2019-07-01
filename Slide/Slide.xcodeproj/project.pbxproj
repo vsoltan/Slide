@@ -35,6 +35,8 @@
 		98C55E6622C171FA00B16A14 /* MediaSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C55E6522C171FA00B16A14 /* MediaSelectionViewController.swift */; };
 		98D2721522C183B600E300FE /* EncodedMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D2721422C183B600E300FE /* EncodedMedia.swift */; };
 		98D2721722C478D600E300FE /* ReceivedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D2721622C478D600E300FE /* ReceivedViewController.swift */; };
+		98E9D6D522CAB7BE009A0968 /* SwipeLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E9D6D422CAB7BE009A0968 /* SwipeLeft.swift */; };
+		98E9D6D822CAC501009A0968 /* SwipeRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E9D6D722CAC501009A0968 /* SwipeRight.swift */; };
 		CFAC7373BBC82D12B63D7217 /* Pods_Slide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01566259063A6F98051587FA /* Pods_Slide.framework */; };
 		E7D0CC7D22C4513E00D73B44 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0CC7C22C4513E00D73B44 /* AboutViewController.swift */; };
 		E7EF6C0222B35BD9005197FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7EF6C0122B35BD9005197FE /* GoogleService-Info.plist */; };
@@ -75,6 +77,8 @@
 		98C55E6522C171FA00B16A14 /* MediaSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSelectionViewController.swift; sourceTree = "<group>"; };
 		98D2721422C183B600E300FE /* EncodedMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodedMedia.swift; sourceTree = "<group>"; };
 		98D2721622C478D600E300FE /* ReceivedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedViewController.swift; sourceTree = "<group>"; };
+		98E9D6D422CAB7BE009A0968 /* SwipeLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeLeft.swift; sourceTree = "<group>"; };
+		98E9D6D722CAC501009A0968 /* SwipeRight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRight.swift; sourceTree = "<group>"; };
 		E7D0CC7C22C4513E00D73B44 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E7EF6C0122B35BD9005197FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E7EF6C0322B35C45005197FE /* Firebase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
@@ -119,6 +123,7 @@
 		04F596DE22A8540D004AA63A /* Slide */ = {
 			isa = PBXGroup;
 			children = (
+				98E9D6D622CAC4EF009A0968 /* Segues */,
 				0D3496B522BDC10800891BDD /* Slide.entitlements */,
 				98B3A49322B1860D005FBCF2 /* Frameworks */,
 				98B3A46A22A9E60A005FBCF2 /* Functions */,
@@ -219,6 +224,15 @@
 				98B3A49A22B1860D005FBCF2 /* GoogleSignIn.framework */,
 			);
 			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		98E9D6D622CAC4EF009A0968 /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+				98E9D6D422CAB7BE009A0968 /* SwipeLeft.swift */,
+				98E9D6D722CAC501009A0968 /* SwipeRight.swift */,
+			);
+			path = Segues;
 			sourceTree = "<group>";
 		};
 		F52E42079EA3AD0EFB1F5453 /* Pods */ = {
@@ -377,6 +391,7 @@
 				98D2721522C183B600E300FE /* EncodedMedia.swift in Sources */,
 				98B3847422B1C0260097A073 /* CurrentUser.swift in Sources */,
 				9867CCE722B9BB8400B6F14B /* CustomError.swift in Sources */,
+				98E9D6D822CAC501009A0968 /* SwipeRight.swift in Sources */,
 				9807A6A122C5929000627887 /* SyncViewController.swift in Sources */,
 				98D2721722C478D600E300FE /* ReceivedViewController.swift in Sources */,
 				04F596E222A8540D004AA63A /* HomeViewController.swift in Sources */,
@@ -386,6 +401,7 @@
 				04F596E022A8540D004AA63A /* AppDelegate.swift in Sources */,
 				98B3A46E22A9E878005FBCF2 /* TextFieldParser.swift in Sources */,
 				98B3A46722A9DD7F005FBCF2 /* SettingsViewController.swift in Sources */,
+				98E9D6D522CAB7BE009A0968 /* SwipeLeft.swift in Sources */,
 				98B3847822B2FCE90097A073 /* GenerateQR.swift in Sources */,
 				98B3A45722A8C9D7005FBCF2 /* RegisterViewController.swift in Sources */,
 				E7D0CC7D22C4513E00D73B44 /* AboutViewController.swift in Sources */,

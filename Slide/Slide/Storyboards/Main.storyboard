@@ -52,7 +52,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="74E-N1-Rp1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="left" id="gnd-WR-gQw">
                     <connections>
-                        <segue destination="geV-7T-qZd" kind="presentation" id="WKJ-KO-R26"/>
+                        <segue destination="geV-7T-qZd" kind="presentation" customClass="SwipeRight" customModule="Slide" customModuleProvider="target" id="WKJ-KO-R26"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -167,7 +167,7 @@
                     <connections>
                         <outlet property="emailButton" destination="EbH-Mh-V8t" id="5zK-eJ-X88"/>
                         <outlet property="nameButton" destination="5Pt-8l-RTt" id="v7R-UW-NDR"/>
-                        <segue destination="KOy-JS-FTF" kind="show" identifier="toQRCodeView" id="Xdp-eM-7We"/>
+                        <segue destination="KOy-JS-FTF" kind="presentation" identifier="toQRCodeView" id="Xdp-eM-7We"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZYx-Ay-i0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -222,7 +222,7 @@
                 </swipeGestureRecognizer>
                 <swipeGestureRecognizer direction="right" id="1sV-Qh-GK4">
                     <connections>
-                        <segue destination="xLV-2D-FaO" kind="show" id="fwv-ky-SFb"/>
+                        <segue destination="xLV-2D-FaO" kind="show" identifier="" customClass="SwipeLeft" customModule="Slide" customModuleProvider="target" id="fwv-ky-SFb"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -270,8 +270,7 @@
         <image name="UnCheckbox" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Xdp-eM-7We"/>
         <segue reference="XWq-Nm-r85"/>
-        <segue reference="cPU-pa-WRE"/>
+        <segue reference="tWq-5o-dMb"/>
     </inferredMetricsTieBreakers>
 </document>
