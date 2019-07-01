@@ -53,7 +53,7 @@ class RegisterViewController: UIViewController {
                         }
                     }
                     self.performSegue(withIdentifier: "registerToHome", sender: self)
-                // something went wrong
+                // something went wrong iwth user initialization
                 } else {
                     CustomError.createWith(errorTitle: "Account Creation", errorMessage: error!.localizedDescription).show()
                 }
