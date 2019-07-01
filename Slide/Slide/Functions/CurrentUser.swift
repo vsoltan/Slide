@@ -13,7 +13,7 @@ import Firebase
 class CurrentUser {
 
     // the user ID of the currently signed in user
-    static var user = Auth.auth().currentUser!.uid
+    static var userID = Auth.auth().currentUser!.uid
     
     // retrieves the data tree belonging to the current user
     static func getDocument(completionHandler: @escaping ([QueryDocumentSnapshot]?) -> Void) {
@@ -22,7 +22,7 @@ class CurrentUser {
         let db = Firestore.firestore()
 
         // asynchronous call to the database
-        db.collection("users").whereField("ID", isEqualTo: user).getDocuments { (snapshot, error) in
+        db.collection("users").whereField("ID", isEqualTo: userID).getDocuments { (snapshot, error) in
             if error != nil {
                 // user was not found
                 CustomError.createWith(errorTitle: "Data Retrieval", errorMessage: error!.localizedDescription).show()
