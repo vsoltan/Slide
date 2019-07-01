@@ -31,15 +31,19 @@ class MediaSelectionViewController: UIViewController {
     
     // stages the media properties to be added to the encoding structure
     @IBAction func selectionComplete(_ sender: Any) {
+        // keeps track of the number of fields selected
+        var numChecked = 0
         
         // safeguard against async processes not being able to complete in time
         let myGroup = DispatchGroup()
         
         if (emailButton.isSelected) {
+            numChecked += 1
             self.selectedMedia.email = CurrentUser.getEmail()
         }
         
         if (nameButton.isSelected) {
+            numChecked += 1
             // waits and notifies the main thread once the proc retrieves the field
             myGroup.enter()
             if (nameButton.isSelected) {
@@ -48,6 +52,12 @@ class MediaSelectionViewController: UIViewController {
                     myGroup.leave()
                 }
             }
+        }
+        
+        // no fields selected
+        if (numChecked <= 0) {
+            CustomError.createWith(errorTitle: "No Media Selected", errorMessage: "Please choose at least one option to share").show()
+            return
         }
         
         myGroup.notify(queue: .main) {

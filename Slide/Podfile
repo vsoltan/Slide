@@ -5,7 +5,7 @@ target 'Slide' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for Slide
+  # Firebase
   pod 'Firebase'
   pod 'Firebase/Analytics'
   pod 'Firebase/Core'
@@ -13,6 +13,8 @@ target 'Slide' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'FirebaseUI'
+  
+  # Facebook
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare'
