@@ -29,7 +29,7 @@ class TextFieldParser {
             }
             
             // regex email matching
-            if (entry.type.equals(id: "email") && !(entry.field.text!.isValidEmail())) {
+            if (entry.type.equals(id: "email") && !((entry.field.text!).trim().isValidEmail())) {
                 CustomError.createWith(errorTitle: "Invalid Email", errorMessage: "Please enter a valid email address").show()
                 completeForm = false
             }

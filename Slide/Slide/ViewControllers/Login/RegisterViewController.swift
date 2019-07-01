@@ -11,7 +11,7 @@ import Firebase
 
 class RegisterViewController: UIViewController {
 
-    // text fields
+    // input text fields
     @IBOutlet weak var usrEmail: UITextField!
     @IBOutlet weak var usrName: UITextField!
     @IBOutlet weak var usrUsername: UITextField!
@@ -33,16 +33,15 @@ class RegisterViewController: UIViewController {
         
         // verifies that textfields are properly formatted and creates a user
         if (TextFieldParser.validate(textFields: registerInfo)) {
-            print((usrEmail.text!).trim())
             Auth.auth().createUser(withEmail: (usrEmail.text!).trim(), password: usrPassword.text!) { (user, error) in
                 // successfully creates a new user and signs them into the application
                 if user != nil {
-                    let userID = (Auth.auth().currentUser)!.uid
+                    let userID = CurrentUser.userID
                     let db = Firestore.firestore()
                     
                     // creates firestore document
                     db.collection("users").document(userID).setData([
-                        // Set specified data entries
+                        // set specified data entries
                         "Name": self.usrName.text!,
                         "ID": userID,
                         "Email": (self.usrEmail.text!).trim(),
@@ -54,8 +53,7 @@ class RegisterViewController: UIViewController {
                         }
                     }
                     self.performSegue(withIdentifier: "registerToHome", sender: self)
-                    
-                // something went wrong
+                // something went wrong iwth user initialization
                 } else {
                     CustomError.createWith(errorTitle: "Account Creation", errorMessage: error!.localizedDescription).show()
                 }

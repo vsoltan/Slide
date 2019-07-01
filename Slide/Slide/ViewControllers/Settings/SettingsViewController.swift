@@ -3,6 +3,7 @@
 //  Slide
 //
 //  Created by Sam Lee on 6/5/19.
+//          and Jennifer Kim :D
 //  Copyright © 2019 Roodac. All rights reserved.
 //
 
