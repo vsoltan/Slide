@@ -10,15 +10,25 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    var customizationInfo = NSCache<AnyObject, AnyObject>()
+    
+    var nameString = String()
+    
     @IBOutlet weak var NameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // sets the namefield to the retrieved information
-        CurrentUser.getName { (name) in
-            self.NameLabel.text = name!
+        if customizationInfo.object(forKey: "name" as AnyObject) != nil {
+            
+        } else {
+            CurrentUser.getName { (name) in
+                self.NameLabel.text = name!
+                self.customizationInfo.setObject(name as AnyObject, forKey: "name" as AnyObject)
+            }
         }
+        // sets the namefield to the retrieved information
+        NameLabel.text = nameString
     }
 }
 

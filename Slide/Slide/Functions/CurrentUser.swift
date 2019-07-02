@@ -20,8 +20,6 @@ class CurrentUser {
         
         // reference to the database
         let db = Firestore.firestore()
-        
-        
 
         // asynchronous call to the database
         db.collection("users").whereField("ID", isEqualTo: userID).getDocuments { (snapshot, error) in

@@ -72,7 +72,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         
         // log out
         if (indexPath.section == 2 && indexPath.row == 3 ) {
-            print ("We did it")
             let firebaseAuth = Auth.auth()
             do {
                 try firebaseAuth.signOut()

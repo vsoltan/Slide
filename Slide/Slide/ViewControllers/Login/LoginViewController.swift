@@ -8,7 +8,6 @@
 
 import UIKit
 import GoogleSignIn
-import FirebaseAuth
 import Firebase
 import FacebookCore
 import FacebookLogin
@@ -16,10 +15,11 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 
-class LoginViewController: UIViewController, GIDSignInUIDelegate {
+class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDelegate {
     
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var facebookButton: FBLoginButton!
     
     @IBAction func LogInActivated(_ sender: Any) {
         let signInInfo: Array<(field: UITextField, type: String)>
@@ -48,16 +48,12 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         }
     }
 
- 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // creates login button from FBSDKLoginKit
-//        let loginButton = FBLoginButton()
-//        loginButton.delegate = self
-        if (AccessToken.current != nil) {
-            // User is logged in, do work such as go to next view controller.
-        }
+        // creates facebook login button
+        let loginButton = FBLoginButton()
+        loginButton.delegate = self
 
         // creates login button from GoogleSignIn
         GIDSignIn.sharedInstance().uiDelegate = self
@@ -89,6 +85,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
                     alertController.addAction(okayAction)
                     self.present(alertController, animated: true, completion: nil)
                     return
+                } else {
+                    self.performSegue(withIdentifier: "signInToMain", sender: self)
                 }
             })
 //            Auth.auth().signInAndRetrieveData(with: credential) { (user, error) in
@@ -105,7 +103,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         }
     }
     
-    func loginButton(_ loginButton: FBLoginButton!, didCompleteWith result: LoginManagerLoginResult!, error: Error!) {
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         if let error = error {
             CustomError.createWith(errorTitle: "Facebook Login Error", errorMessage: error.localizedDescription).show()
             return
@@ -118,17 +116,25 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
                 CustomError.createWith(errorTitle: "Facebook Login Error", errorMessage: error.localizedDescription).show()
                 return
             }
-            // User is signed in
-            // ...
         }
-        // ...
     }
     
-    func loginButtonDidLogOut(_ loginButton: FBLoginButton!) {
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         // Do something when the user logout
         print("Logged out")
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "signInToMain") {
+            let dst = segue.destination as! HomeViewController
+            CurrentUser.getName { (name) in
+                dst.NameLabel.text = name!
+                dst.customizationInfo.setObject(name as AnyObject, forKey: "name" as AnyObject)
+            }
+            
+        }
+    }
+    
     // to be implemented later for google signout...
     //    @IBAction func didTapSignOut(_ sender: AnyObject) {
     //        GIDSignIn.sharedInstance().signOut()
