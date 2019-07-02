@@ -65,9 +65,12 @@
                                     <segue destination="Jhi-YG-4kD" kind="presentation" identifier="ToRegisterView" id="eIc-NK-u24"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhE-Oh-KAX" customClass="FBSDKLoginButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhE-Oh-KAX" customClass="FBSDKButton">
                                 <rect key="frame" x="95" y="425" width="185" height="30"/>
                                 <state key="normal" title="Continue with Facebook"/>
+                                <connections>
+                                    <action selector="facebookLoginWithSender:" destination="rjZ-1j-7WL" eventType="touchUpInside" id="7Fx-z3-zgt"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6EE-Im-l8G" customClass="GIDSignInButton">
                                 <rect key="frame" x="95" y="485" width="185" height="30"/>
@@ -119,6 +122,7 @@
                     <navigationItem key="navigationItem" id="F1r-qx-AEw"/>
                     <connections>
                         <outlet property="email" destination="5db-Uf-43k" id="wOe-ap-pVQ"/>
+                        <outlet property="facebookButton" destination="IhE-Oh-KAX" id="MPL-zJ-98x"/>
                         <outlet property="password" destination="RZ7-00-Igd" id="srC-E5-wTY"/>
                         <segue destination="NQH-c5-24f" kind="show" identifier="signInToMain" id="aZn-3M-5PI"/>
                     </connections>

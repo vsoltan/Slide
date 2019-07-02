@@ -10,6 +10,8 @@
 import UIKit
 import GoogleSignIn
 import FacebookCore
+import FBSDKCoreKit
+import FBSDKLoginKit
 import Firebase
 
 @UIApplicationMain
@@ -44,35 +46,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // use Firebase library to configure APIs
         FirebaseApp.configure()
         
+        let fbconfig = ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         GIDSignIn.sharedInstance().clientID = "705100307106-3ivsiu3cbvjv2drsihtdbv5nkc8vmblk.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
         
-//        UIApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-//        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        
         // checks if user is already signed in
-        if (Auth.auth().currentUser == nil) {
-            print("user is not logged in")
+        if (Auth.auth().currentUser != nil) {
             
             // initializes the container for the view controller
             self.window = UIWindow(frame: UIScreen.main.bounds)
             
             // specifies the destination and creates an instance of that view controller
-            let storyboard = UIStoryboard(name: "LoginRegister", bundle: nil)
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "Home")
             
             // sets the root view controller to the desination and renders it
             self.window?.rootViewController = initialViewController
+//            let dst = self.window?.rootViewController as! HomeViewController
+//            dst.nameString = "Valeriy Soltan"
+            
             self.window?.makeKeyAndVisible()
-
         }
-        return true
+        return fbconfig
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url as URL?,
-            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-            annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+        return ApplicationDelegate.shared.application(app, open: url, options: options)
+//        return GIDSignIn.sharedInstance().handle(url as URL?,
+//            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+//            annotation: options[UIApplication.OpenURLOptionsKey.annotation])
     }
 
 
