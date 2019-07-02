@@ -86,9 +86,38 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                     self.present(alertController, animated: true, completion: nil)
                     return
                 } else {
+                    let r = GraphRequest(graphPath: "me", parameters: ["fields":"email,name"], tokenString: AccessToken.current?.tokenString, version: nil, httpMethod: HTTPMethod(rawValue: "GET"))
+                    
+                    r.start(completionHandler: { (test, result, error) in
+                        if(error == nil) {
+                            let r = result as! NSDictionary
+                            Auth.auth().createUser(withEmail: r["email"] as! String, password: "placeholder") { (user, error) in
+                                    // successfully creates a new user and signs them into the application
+                                    if user != nil {
+                                        let userID = CurrentUser.userID
+                                        let db = Firestore.firestore()
+                                        
+                                        // creates firestore document
+                                        db.collection("users").document(userID).setData([
+                                            // set specified data entries
+                                            "Name": r["name"] as! String,
+                                            "ID": userID,
+                                            "Email": r["email"] as! String,
+                                        ]) { err in
+                                            if let err = err {
+                                                print("Error writing document: \(err)")
+                                            } else {
+                                                print("Document successfully written!")
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        })
+                    
                     self.performSegue(withIdentifier: "signInToMain", sender: self)
                 }
-            })
+
 //            Auth.auth().signInAndRetrieveData(with: credential) { (user, error) in
 //                if let error = error {
 //                    print("Login error: \(error.localizedDescription)")
@@ -100,8 +129,8 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
 //                }
 //                // self.performSegue(withIdentifier: self.signInSegue, sender: nil)
 //            }
+            }
         }
-    }
     
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         if let error = error {
