@@ -12,8 +12,8 @@
 		04F596E722A8540F004AA63A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F596E622A8540F004AA63A /* Assets.xcassets */; };
 		04F9B36922BDA6BC00D87528 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F9B36822BDA6BC00D87528 /* PasswordViewController.swift */; };
 		04F9B36B22C4088C00D87528 /* ManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F9B36A22C4088C00D87528 /* ManageViewController.swift */; };
-		04F9B36D22CD236600D87528 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F9B36C22CD236600D87528 /* GroupsViewController.swift */; };
 		04F9B37122CD24C600D87528 /* Groups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F9B37022CD24C600D87528 /* Groups.storyboard */; };
+		04F9B37322CD49D200D87528 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F9B37222CD49D200D87528 /* GroupsViewController.swift */; };
 		9807A69D22C5618E00627887 /* Received.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9807A69C22C5618E00627887 /* Received.storyboard */; };
 		9807A6A122C5929000627887 /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9807A6A022C5929000627887 /* SyncViewController.swift */; };
 		9867CCE722B9BB8400B6F14B /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9867CCE622B9BB8400B6F14B /* CustomError.swift */; };
@@ -55,8 +55,8 @@
 		04F596EB22A8540F004AA63A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04F9B36822BDA6BC00D87528 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		04F9B36A22C4088C00D87528 /* ManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageViewController.swift; sourceTree = "<group>"; };
-		04F9B36C22CD236600D87528 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GroupsViewController.swift; path = ../../../../../../../../Documents/GroupsViewController.swift; sourceTree = "<group>"; };
 		04F9B37022CD24C600D87528 /* Groups.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Groups.storyboard; sourceTree = "<group>"; };
+		04F9B37222CD49D200D87528 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		0D3496B522BDC10800891BDD /* Slide.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Slide.entitlements; sourceTree = "<group>"; };
 		6307111C166CE8B76E78A8BC /* Pods-Slide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slide.release.xcconfig"; path = "Target Support Files/Pods-Slide/Pods-Slide.release.xcconfig"; sourceTree = "<group>"; };
 		9807A69C22C5618E00627887 /* Received.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Received.storyboard; sourceTree = "<group>"; };
@@ -149,13 +149,13 @@
 		9807A6A222C592AB00627887 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				04F9B37222CD49D200D87528 /* GroupsViewController.swift */,
 				E7D0CC7C22C4513E00D73B44 /* AboutViewController.swift */,
 				04F9B36A22C4088C00D87528 /* ManageViewController.swift */,
 				98B3A46622A9DD7F005FBCF2 /* SettingsViewController.swift */,
 				9807A6A022C5929000627887 /* SyncViewController.swift */,
 				E7F6370D22CCF617009B24C4 /* AddMediaViewController.swift */,
 				04F9B36822BDA6BC00D87528 /* PasswordViewController.swift */,
-				04F9B36C22CD236600D87528 /* GroupsViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -418,8 +418,8 @@
 				04F9B36B22C4088C00D87528 /* ManageViewController.swift in Sources */,
 				04F596E022A8540D004AA63A /* AppDelegate.swift in Sources */,
 				98B3A46E22A9E878005FBCF2 /* TextFieldParser.swift in Sources */,
+				04F9B37322CD49D200D87528 /* GroupsViewController.swift in Sources */,
 				98B3A46722A9DD7F005FBCF2 /* SettingsViewController.swift in Sources */,
-				04F9B36D22CD236600D87528 /* GroupsViewController.swift in Sources */,
 				98E9D6D522CAB7BE009A0968 /* SwipeLeft.swift in Sources */,
 				98B3847822B2FCE90097A073 /* GenerateQR.swift in Sources */,
 				98B3A45722A8C9D7005FBCF2 /* RegisterViewController.swift in Sources */,
