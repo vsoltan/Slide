@@ -41,6 +41,7 @@
 		CFAC7373BBC82D12B63D7217 /* Pods_Slide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01566259063A6F98051587FA /* Pods_Slide.framework */; };
 		E7D0CC7D22C4513E00D73B44 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0CC7C22C4513E00D73B44 /* AboutViewController.swift */; };
 		E7EF6C0222B35BD9005197FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7EF6C0122B35BD9005197FE /* GoogleService-Info.plist */; };
+		E7F6370E22CCF617009B24C4 /* AddMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F6370D22CCF617009B24C4 /* AddMediaViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		E7D0CC7C22C4513E00D73B44 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E7EF6C0122B35BD9005197FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E7EF6C0322B35C45005197FE /* Firebase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
+		E7F6370D22CCF617009B24C4 /* AddMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMediaViewController.swift; sourceTree = "<group>"; };
 		E8210633C78B72B2087F8D48 /* Pods-Slide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slide.debug.xcconfig"; path = "Target Support Files/Pods-Slide/Pods-Slide.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,6 +149,7 @@
 				04F9B36A22C4088C00D87528 /* ManageViewController.swift */,
 				98B3A46622A9DD7F005FBCF2 /* SettingsViewController.swift */,
 				9807A6A022C5929000627887 /* SyncViewController.swift */,
+				E7F6370D22CCF617009B24C4 /* AddMediaViewController.swift */,
 				04F9B36822BDA6BC00D87528 /* PasswordViewController.swift */,
 			);
 			path = Settings;
@@ -286,6 +289,9 @@
 							com.apple.Keychain = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 				};
@@ -400,6 +406,7 @@
 				98D2721722C478D600E300FE /* ReceivedViewController.swift in Sources */,
 				04F596E222A8540D004AA63A /* HomeViewController.swift in Sources */,
 				9867CCE922BD47F800B6F14B /* GenerationViewController.swift in Sources */,
+				E7F6370E22CCF617009B24C4 /* AddMediaViewController.swift in Sources */,
 				04F9B36922BDA6BC00D87528 /* PasswordViewController.swift in Sources */,
 				04F9B36B22C4088C00D87528 /* ManageViewController.swift in Sources */,
 				04F596E022A8540D004AA63A /* AppDelegate.swift in Sources */,

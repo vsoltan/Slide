@@ -21,7 +21,7 @@
         <!--AddMedia-->
         <scene sceneID="CJn-Gw-GB2">
             <objects>
-                <viewController title="AddMedia" id="bZb-fz-oww" customClass="SyncViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="AddMedia" id="bZb-fz-oww" customClass="AddMediaViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7BB-FE-J3F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,14 +65,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZPd-8v-ZKg">
+                                <rect key="frame" x="130" y="196" width="185" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="wxA-bb-RqF"/>
                     </view>
+                    <connections>
+                        <outlet property="phoneNum" destination="ZPd-8v-ZKg" id="SjR-Yt-3yS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SSN-Bz-4C4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-804.34782608695662" y="-160.04464285714286"/>
+            <point key="canvasLocation" x="-805.60000000000002" y="-160.34482758620689"/>
         </scene>
         <!--Settings-->
         <scene sceneID="quF-9O-uXo">
