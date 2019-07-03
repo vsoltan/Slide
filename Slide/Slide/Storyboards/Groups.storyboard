@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sMb-Rm-5BQ">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Group Manager-->
+        <scene sceneID="B0T-4a-Gxo">
+            <objects>
+                <viewController title="Group Manager" id="sMb-Rm-5BQ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N3r-uu-BRB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fr-x9-SGe">
+                                <rect key="frame" x="137.5" y="61" width="139.5" height="28"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Slide Groups">
+                                        <attributes>
+                                            <font key="NSFont" size="24" name="AppleSymbols"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5j-tJ-Qsr">
+                                <rect key="frame" x="20" y="59" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4G0-Ud-bmp">
+                                <rect key="frame" x="20" y="109" width="102" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Create New"/>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nLB-it-nvg" userLabel="GroupsTable">
+                                <rect key="frame" x="10" y="165" width="394" height="697"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="kZw-eX-udd" userLabel="GroupsItem">
+                                        <rect key="frame" x="0.0" y="28" width="394" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kZw-eX-udd" id="A1D-tx-X3a">
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4G0-Ud-bmp" firstAttribute="leading" secondItem="DNf-7y-qjx" secondAttribute="leading" constant="20" id="F4k-Wo-Fx7"/>
+                            <constraint firstItem="3fr-x9-SGe" firstAttribute="centerX" secondItem="N3r-uu-BRB" secondAttribute="centerX" id="Llm-SW-f6U"/>
+                            <constraint firstItem="L5j-tJ-Qsr" firstAttribute="top" secondItem="DNf-7y-qjx" secondAttribute="top" constant="15" id="QK7-xh-pah"/>
+                            <constraint firstItem="nLB-it-nvg" firstAttribute="centerX" secondItem="N3r-uu-BRB" secondAttribute="centerX" id="WmW-jS-xcq"/>
+                            <constraint firstItem="nLB-it-nvg" firstAttribute="leading" secondItem="DNf-7y-qjx" secondAttribute="leading" constant="10" id="XQw-pw-3o6"/>
+                            <constraint firstItem="nLB-it-nvg" firstAttribute="bottom" secondItem="DNf-7y-qjx" secondAttribute="bottom" id="eyE-81-Fp0"/>
+                            <constraint firstItem="4G0-Ud-bmp" firstAttribute="top" secondItem="L5j-tJ-Qsr" secondAttribute="bottom" constant="20" id="jab-wg-biF"/>
+                            <constraint firstItem="3fr-x9-SGe" firstAttribute="top" secondItem="DNf-7y-qjx" secondAttribute="top" constant="17" id="nLG-TI-2eY"/>
+                            <constraint firstItem="nLB-it-nvg" firstAttribute="top" secondItem="4G0-Ud-bmp" secondAttribute="bottom" constant="20" id="qlc-6q-cCS"/>
+                            <constraint firstItem="L5j-tJ-Qsr" firstAttribute="leading" secondItem="DNf-7y-qjx" secondAttribute="leading" constant="20" id="tpB-ey-3yZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DNf-7y-qjx"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vSs-1F-JvJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-330.43478260869568" y="-139.28571428571428"/>
+        </scene>
+    </scenes>
+</document>
