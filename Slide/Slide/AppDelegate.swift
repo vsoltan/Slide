@@ -63,6 +63,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             
             // sets the root view controller to the desination and renders it
             self.window?.rootViewController = initialViewController
+            
+            // TODO implement user defaults to retrieve name
+            
 //            let dst = self.window?.rootViewController as! HomeViewController
 //            dst.nameString = "Valeriy Soltan"
             

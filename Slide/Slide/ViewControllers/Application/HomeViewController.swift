@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeViewController: UIViewController {
     
@@ -14,21 +15,30 @@ class HomeViewController: UIViewController {
     
     var nameString = String()
     
-    @IBOutlet weak var NameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if customizationInfo.object(forKey: "name" as AnyObject) != nil {
-            
-        } else {
-            CurrentUser.getName { (name) in
-                self.NameLabel.text = name!
-                self.customizationInfo.setObject(name as AnyObject, forKey: "name" as AnyObject)
-            }
+        CurrentUser.getName { (name) in
+            self.nameLabel.text = name!
         }
-        // sets the namefield to the retrieved information
-        NameLabel.text = nameString
+        
+        // user defaults
+        // nameLabel.text = nameString
     }
+    
+    
+//        if customizationInfo.object(forKey: "name" as AnyObject) != nil {
+//
+//        } else {
+//            CurrentUser.getName { (name) in
+//                self.NameLabel.text = name!
+////                self.customizationInfo.setObject(name as AnyObject, forKey: "name" as AnyObject)
+//            }
+//        }
+//        // sets the namefield to the retrieved information
+//        NameLabel.text = nameString
 }
 

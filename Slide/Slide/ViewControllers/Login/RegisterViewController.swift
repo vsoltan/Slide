@@ -32,11 +32,14 @@ class RegisterViewController: UIViewController {
             = [(usrEmail, "email"), (usrName, "name"), (usrUsername, "username"), (usrPassword, "password")]
         
         // verifies that textfields are properly formatted and creates a user
+        let auth = Auth.auth()
+        
         if (TextFieldParser.validate(textFields: registerInfo)) {
-            Auth.auth().createUser(withEmail: (usrEmail.text!).trim(), password: usrPassword.text!) { (user, error) in
+            auth.createUser(withEmail: (usrEmail.text!).trim(), password: usrPassword.text!) { (user, error) in
                 // successfully creates a new user and signs them into the application
                 if user != nil {
-                    let userID = CurrentUser.userID
+                    // has to be Auth.auth
+                    let userID = auth.currentUser!.uid
                     let db = Firestore.firestore()
                     
                     // creates firestore document
