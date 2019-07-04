@@ -13,23 +13,23 @@ import Firebase
 class CurrentUser {
 
     // the user ID of the currently signed in user
-    static var userID = Auth.auth().currentUser!.uid
+    static var user = Auth.auth().currentUser!
     
     // retrieves the data tree belonging to the current user
-    static func getDocument(completionHandler: @escaping ([QueryDocumentSnapshot]?) -> Void) {
+    static func getDocument(completionHandler: @escaping ([QueryDocumentSnapshot]?, Error?) -> Void) {
         
         // reference to the database
         let db = Firestore.firestore()
 
         // asynchronous call to the database
-        db.collection("users").whereField("ID", isEqualTo: userID).getDocuments { (snapshot, error) in
+        db.collection("users").whereField("ID", isEqualTo: user.uid).getDocuments { (snapshot, error) in
             if error != nil {
                 // user was not found
                 CustomError.createWith(errorTitle: "Data Retrieval", errorMessage: error!.localizedDescription).show()
-                completionHandler(nil)
+                completionHandler(nil, error)
             } else {
                 // upon completion, returns a reference to the document
-                completionHandler((snapshot?.documents)!)
+                completionHandler((snapshot?.documents)!, nil)
             }
         }
     }
@@ -37,13 +37,17 @@ class CurrentUser {
     // parses through the user's doc tree and finds their name
     static func getName(completion: @escaping (String?) -> Void) {
         // thread deployed to interact with database
-        self.getDocument() { (userData) in
-            // iterates through the array, as there may be several docs
-            for document in userData! {
-                if let nameData = document.data()["Name"] as? String {
-                    // waits for the thread to complete and returns
-                    completion(nameData)
+        self.getDocument() { (userData, error) in
+            if (userData != nil) {
+                // iterates through the array, as there may be several docs
+                for document in userData! {
+                    if let nameData = document.data()["Name"] as? String {
+                        // waits for the thread to complete and returns
+                        completion(nameData)
+                    }
                 }
+            } else {
+                print("\(error!)")
             }
         }
     }

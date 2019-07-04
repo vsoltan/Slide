@@ -123,22 +123,4 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         // Do something when the user logout
         print("Logged out")
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "signInToMain") {
-            let dst = segue.destination as! HomeViewController
-            CurrentUser.getName { (name) in
-                dst.NameLabel.text = name!
-                dst.customizationInfo.setObject(name as AnyObject, forKey: "name" as AnyObject)
-            }
-            
-        }
-    }
-    
-    // to be implemented later for google signout...
-    //    @IBAction func didTapSignOut(_ sender: AnyObject) {
-    //        GIDSignIn.sharedInstance().signOut()
-    //    }
-    
-    //
 }
