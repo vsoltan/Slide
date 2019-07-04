@@ -5,11 +5,9 @@
 //  Created by mac on 6/5/19.
 //  Copyright © 2019 Roodac. All rights reserved.
 //
-// hi from Jen
 
 import UIKit
 import GoogleSignIn
-import FacebookCore
 import FBSDKCoreKit
 import FBSDKLoginKit
 import Firebase
@@ -95,8 +93,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        // Activates Facebook Events
-//        FBSDKAppEvents.activateApp()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
