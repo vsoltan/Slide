@@ -18,6 +18,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var facebookButton: FBLoginButton!
+    @IBOutlet weak var googleButton: GIDSignInButton!
     
     @IBAction func LogInActivated(_ sender: Any) {
         let signInInfo: Array<(field: UITextField, type: String)>
@@ -46,6 +47,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         }
     }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,9 +59,11 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         GIDSignIn.sharedInstance().uiDelegate = self
         
         // automatically signs the user into google.
-        GIDSignIn.sharedInstance().signInSilently()
+        GIDSignIn.sharedInstance().signIn()
+        
+        // TODO: Configure the sign-in button look/feel
     }
-    
+
     @IBAction func facebookLogin(sender: AnyObject) {
         let LoginManage = LoginManager()
         
