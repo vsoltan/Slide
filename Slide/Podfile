@@ -19,6 +19,9 @@ target 'Slide' do
   pod 'FacebookLogin'
   pod 'FacebookShare'
   
+  # Google
+  pod 'GoogleSignIn'
+  
   # temporary solution to warnings
   pod 'Protobuf', :inhibit_warnings => true
 

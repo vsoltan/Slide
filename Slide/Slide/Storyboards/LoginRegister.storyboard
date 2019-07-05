@@ -123,6 +123,7 @@
                     <connections>
                         <outlet property="email" destination="5db-Uf-43k" id="wOe-ap-pVQ"/>
                         <outlet property="facebookButton" destination="IhE-Oh-KAX" id="MPL-zJ-98x"/>
+                        <outlet property="googleButton" destination="6EE-Im-l8G" id="b4c-0a-0Uy"/>
                         <outlet property="password" destination="RZ7-00-Igd" id="srC-E5-wTY"/>
                         <segue destination="NQH-c5-24f" kind="show" identifier="signInToMain" id="aZn-3M-5PI"/>
                     </connections>
