@@ -38,14 +38,14 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         }
     }
     
-    func googleSignIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
-                    withError error: NSError!) {
-        if (error == nil) {
-                // Perform any operations on signed in user here.
-        } else {
-            print("\(error.localizedDescription)")
-        }
-    }
+//    func googleSignIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
+//                    withError error: NSError!) {
+//        if (error == nil) {
+//                // Perform any operations on signed in user here.
+//        } else {
+//            print("\(error.localizedDescription)")
+//        }
+//    }
 
     
     override func viewDidLoad() {
@@ -56,10 +56,10 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         loginButton.delegate = self
 
         // creates login button from GoogleSignIn
-        GIDSignIn.sharedInstance().uiDelegate = self
+        //GIDSignIn.sharedInstance().uiDelegate = self
         
         // automatically signs the user into google.
-        GIDSignIn.sharedInstance().signIn()
+        //GIDSignIn.sharedInstance().signIn()
         
         // TODO: Configure the sign-in button look/feel
     }
@@ -96,29 +96,45 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                         if(error == nil) {
                             let data = result as! NSDictionary
                             
-                            Auth.auth().createUser(withEmail: data["email"] as! String, password: "placeholder") { (user, error) in
-                                // successfully creates a new user and signs them into the application
-                                if user != nil {
-                                    let userID = CurrentUser.userID
-                                    let db = Firestore.firestore()
-                                    
-                                    print("data", data)
-                                    // creates firestore document
-                                    db.collection("users").document(userID).setData([
-                                        // set specified data entries
-                                        "Name": data["name"] as! String,
-                                        "ID": userID,
-                                        "Email": data["email"] as! String,
-                                    ]) { err in
-                                        if let err = err {
-                                            print("Error writing document: \(err)")
-                                        } else {
-                                            print("Document successfully written!")
-                                        }
+                            // retrieves the data of the user
+//                            let email = data["email"] as! String
+                            
+                            if (AccessToken.isCurrentAccessTokenActive) {
+                                Auth.auth().signIn(with: credential, completion: { (result, error) in
+                                    // if sign in successful
+                                    if (result != nil) {
+                                        print("segue complete")
+                                        self.performSegue(withIdentifier: "signInToMain", sender: self)
                                     }
-                                } else {
-                                    print("we got played")
-                                    print("Error: \(error)")
+                                })
+                                
+                            } else {
+                                Auth.auth().createUser(withEmail: data["email"] as! String, password: "placeholder") { (user, error) in
+                                    print("created user")
+                                    // successfully creates a new user and signs them into the application
+                                    if user != nil {
+                                        let userID = CurrentUser.userID
+                                        let db = Firestore.firestore()
+                                        
+                                        print("data", data)
+                                        // creates firestore document
+                                        db.collection("users").document(userID).setData([
+                                            // set specified data entries
+                                            "Name": data["name"] as! String,
+                                            "ID": userID,
+                                            "Email": data["email"] as! String,
+                                        ]) { err in
+                                            if let err = err {
+                                                print("Error writing document: \(err)")
+                                            } else {
+                                                print("Document successfully written!")
+                                            }
+                                        }
+                                        print("completed")
+                                    } else {
+                                        print("we got played")
+//                                        print("Error: \(error)")
+                                    }
                                 }
                             }
                         }
@@ -130,6 +146,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         }
     }
     
+    // Login Button protocol
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         if let error = error {
             CustomError.createWith(errorTitle: "Facebook Login Error", errorMessage: error.localizedDescription).show()
@@ -151,16 +168,16 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         print("Logged out")
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "signInToMain") {
-            let dst = segue.destination as! HomeViewController
-            CurrentUser.getName { (name) in
-                dst.NameLabel.text = name!
-                dst.customizationInfo.setObject(name as AnyObject, forKey: "name" as AnyObject)
-            }
-            
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if (segue.identifier == "signInToMain") {
+//            let dst = segue.destination as! HomeViewController
+//            CurrentUser.getName { (name) in
+//                dst.NameLabel.text = name!
+//                //dst.customizationInfo.setObject(name as AnyObject, forKey: "name" as AnyObject)
+//            }
+//
+//        }
+//    }
     
     // to be implemented later for google signout...
     //    @IBAction func didTapSignOut(_ sender: AnyObject) {

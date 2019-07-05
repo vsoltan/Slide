@@ -13,36 +13,36 @@ import FBSDKLoginKit
 import Firebase
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
-    
+class AppDelegate: UIResponder, UIApplicationDelegate  {
+    //GIDSignInDelegate
     // handles the google signin process
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        // ...
-        if let error = error {
-            // ...
-            return
-        }
-        
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
-        // ...
-        Auth.auth().signIn(with: credential) { (authResult, error) in
-            if let error = error {
-                // ...
-                return
-            }
-            // User is signed in
-            // ...
-        }
-        
-
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-        // ...
-    }
+//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+//        // ...
+//        if let error = error {
+//            // ...
+//            return
+//        }
+//
+//        guard let authentication = user.authentication else { return }
+//        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+//                                                       accessToken: authentication.accessToken)
+//        // ...
+//        Auth.auth().signIn(with: credential) { (authResult, error) in
+//            if let error = error {
+//                // ...
+//                return
+//            }
+//            // User is signed in
+//            // ...
+//        }
+//
+//
+//    }
+//
+//    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+//        // Perform any operations when the user disconnects from app here.
+//        // ...
+//    }
 
     var window: UIWindow?
 
@@ -53,8 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         let fbconfig = ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
+        //GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        //GIDSignIn.sharedInstance().delegate = self
         
         // checks if user is already signed in
         if (Auth.auth().currentUser != nil) {
@@ -76,13 +76,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         return fbconfig
     }
 
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-//        return ApplicationDelegate.shared.application(app, open: url, options: options)
-        return GIDSignIn.sharedInstance().handle(url,
-        sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-        annotation: [:])
-    }
- 
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+////        return ApplicationDelegate.shared.application(app, open: url, options: options)
+//        return GIDSignIn.sharedInstance().handle(url,
+//        sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+//        annotation: [:])
+//    }
+//
 
     
 
