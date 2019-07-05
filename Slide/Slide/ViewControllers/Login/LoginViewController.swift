@@ -31,6 +31,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         if (TextFieldParser.validate(textFields: signInInfo) == true) {
             Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
                 if user != nil {
+                    print("USERID", Auth.auth().currentUser!.uid)
                     self.performSegue(withIdentifier: "signInToMain", sender: self)
                 } else {
                     CustomError.createWith(errorTitle: "Login Error", errorMessage: error!.localizedDescription).show()
@@ -50,6 +51,8 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(Auth.auth().currentUser?.uid)
         
         // creates facebook login button
         let loginButton = FBLoginButton()

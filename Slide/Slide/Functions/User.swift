@@ -10,19 +10,16 @@ import Foundation
 import Firebase
 
 // an interface between the database and the user
-class CurrentUser {
-
-    // the user ID of the currently signed in user
-    static var user = Auth.auth().currentUser!
+class User {
     
     // retrieves the data tree belonging to the current user
-    static func getDocument(completionHandler: @escaping ([QueryDocumentSnapshot]?, Error?) -> Void) {
+    static func getDocument(currentUserID: String, completionHandler: @escaping ([QueryDocumentSnapshot]?, Error?) -> Void) {
         
         // reference to the database
         let db = Firestore.firestore()
 
         // asynchronous call to the database
-        db.collection("users").whereField("ID", isEqualTo: user.uid).getDocuments { (snapshot, error) in
+        db.collection("users").whereField("ID", isEqualTo: currentUserID).getDocuments { (snapshot, error) in
             if error != nil {
                 // user was not found
                 CustomError.createWith(errorTitle: "Data Retrieval", errorMessage: error!.localizedDescription).show()
@@ -35,9 +32,9 @@ class CurrentUser {
     }
     
     // parses through the user's doc tree and finds their name
-    static func getName(completion: @escaping (String?) -> Void) {
+    static func getName(userID: String, completion: @escaping (String?) -> Void) {
         // thread deployed to interact with database
-        self.getDocument() { (userData, error) in
+        self.getDocument(currentUserID: userID) { (userData, error) in
             if (userData != nil) {
                 // iterates through the array, as there may be several docs
                 for document in userData! {
