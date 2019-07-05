@@ -84,6 +84,14 @@
             </objects>
             <point key="canvasLocation" x="-805.60000000000002" y="-160.34482758620689"/>
         </scene>
+        <!--Groups-->
+        <scene sceneID="5DS-qP-saA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Groups" id="1nD-md-ptf" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DP7-aW-yNw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="16" y="-663"/>
+        </scene>
         <!--Settings-->
         <scene sceneID="quF-9O-uXo">
             <objects>
@@ -150,6 +158,7 @@
                         <segue destination="jrR-xF-OOD" kind="show" identifier="Manage" id="8Nf-T2-zTr"/>
                         <segue destination="oJX-k0-kSv" kind="show" identifier="About" id="jYM-6y-g9q"/>
                         <segue destination="bZb-fz-oww" kind="show" identifier="Add Media" id="K8K-lf-M5Y"/>
+                        <segue destination="1nD-md-ptf" kind="show" identifier="Slide Groups" id="TPU-zK-9ta"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qAM-cT-iGC" userLabel="First Responder" sceneMemberID="firstResponder"/>

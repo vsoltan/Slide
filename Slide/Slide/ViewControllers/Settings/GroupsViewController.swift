@@ -17,6 +17,9 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
     // constant for the number of sections in the groups table
     let numSections = 1
     
+    @IBAction func createNew(_ sender: Any) {
+        // TODO: Set data
+    }
     // retrieve groups created by the user from database
     // TODO: deal with the whole asynchronous thing
     func getGroups() {

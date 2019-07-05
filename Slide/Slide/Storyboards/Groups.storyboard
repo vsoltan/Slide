@@ -10,6 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Settings-->
+        <scene sceneID="2f7-aS-n8l">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="wxc-RG-b3o" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pk3-Sg-Smb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-869" y="-383"/>
+        </scene>
         <!--Group Manager-->
         <scene sceneID="B0T-4a-Gxo">
             <objects>
@@ -33,11 +41,18 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5j-tJ-Qsr">
                                 <rect key="frame" x="20" y="59" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="wxc-RG-b3o" kind="show" id="E7E-EE-XW1"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4G0-Ud-bmp">
                                 <rect key="frame" x="20" y="109" width="102" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Create New"/>
+                                <connections>
+                                    <action selector="createNew:" destination="sMb-Rm-5BQ" eventType="touchUpInside" id="YCW-JV-jgI"/>
+                                    <segue destination="aWm-8U-3Zy" kind="show" id="aGr-QM-5PP"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nLB-it-nvg" userLabel="GroupsTable">
                                 <rect key="frame" x="10" y="165" width="394" height="697"/>
@@ -76,6 +91,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vSs-1F-JvJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-330.43478260869568" y="-139.28571428571428"/>
+        </scene>
+        <!--Create View Controller-->
+        <scene sceneID="Q53-tQ-u7z">
+            <objects>
+                <viewController id="aWm-8U-3Zy" customClass="CreateViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yvB-Vx-nw7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ad-GB-e3c">
+                                <rect key="frame" x="20" y="64" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="sMb-Rm-5BQ" kind="show" id="4eV-Di-n5d"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXX-eh-QyB">
+                                <rect key="frame" x="143.5" y="61" width="127" height="28"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Create New">
+                                        <attributes>
+                                            <font key="NSFont" size="24" name="AppleSymbols"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0ad-GB-e3c" firstAttribute="leading" secondItem="ziT-05-0Bf" secondAttribute="leading" constant="20" id="FBj-AN-hRQ"/>
+                            <constraint firstItem="rXX-eh-QyB" firstAttribute="top" secondItem="ziT-05-0Bf" secondAttribute="top" constant="17" id="FQ9-hL-izo"/>
+                            <constraint firstItem="rXX-eh-QyB" firstAttribute="centerX" secondItem="yvB-Vx-nw7" secondAttribute="centerX" id="wXc-K0-R3U"/>
+                            <constraint firstItem="0ad-GB-e3c" firstAttribute="top" secondItem="ziT-05-0Bf" secondAttribute="top" constant="20" id="xvZ-Vu-rZu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ziT-05-0Bf"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y3v-Cm-euo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="361" y="-139"/>
         </scene>
     </scenes>
 </document>
