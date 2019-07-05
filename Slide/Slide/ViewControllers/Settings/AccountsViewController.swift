@@ -10,9 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-class AddMediaViewController: UIViewController {
-    
-    @IBOutlet weak var phoneNum: UITextField!
+class AccountsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
