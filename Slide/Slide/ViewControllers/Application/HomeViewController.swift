@@ -11,7 +11,7 @@ import Firebase
 
 class HomeViewController: UIViewController {
     
-    var customizationInfo = NSCache<AnyObject, AnyObject>()
+    //var customizationInfo = NSCache<AnyObject, AnyObject>()
     
     var nameString = String()
     
@@ -21,8 +21,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        CurrentUser.getName { (name) in
-            self.nameLabel.text = name!
+        User.getName(userID: Auth.auth().currentUser!.uid) { (name) in
+            self.nameLabel.text = name
         }
         
         // user defaults

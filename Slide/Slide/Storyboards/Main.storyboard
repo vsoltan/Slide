@@ -271,6 +271,7 @@
         <image name="UnCheckbox" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Xdp-eM-7We"/>
         <segue reference="oay-vt-5ME"/>
         <segue reference="cPU-pa-WRE"/>
     </inferredMetricsTieBreakers>
