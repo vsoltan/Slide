@@ -18,47 +18,6 @@
             </objects>
             <point key="canvasLocation" x="-45" y="314"/>
         </scene>
-        <!--AddMedia-->
-        <scene sceneID="CJn-Gw-GB2">
-            <objects>
-                <viewController title="AddMedia" id="bZb-fz-oww" customClass="AccountsViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7BB-FE-J3F">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLY-p3-Emy">
-                                <rect key="frame" x="22" y="62" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <segue destination="eYC-rp-Cnv" kind="show" id="VSG-a9-0Oa"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okq-sE-Dgb">
-                                <rect key="frame" x="97.666666666666686" y="61" width="180" height="28"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Linked Accounts">
-                                        <attributes>
-                                            <font key="NSFont" size="24" name="AppleSymbols"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="okq-sE-Dgb" firstAttribute="top" secondItem="wxA-bb-RqF" secondAttribute="top" constant="17" id="GsO-Wf-hkd"/>
-                            <constraint firstItem="okq-sE-Dgb" firstAttribute="centerX" secondItem="7BB-FE-J3F" secondAttribute="centerX" id="Lfn-Fx-SJK"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="wxA-bb-RqF"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SSN-Bz-4C4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-805.60000000000002" y="-160.34482758620689"/>
-        </scene>
         <!--Groups-->
         <scene sceneID="5DS-qP-saA">
             <objects>
@@ -66,6 +25,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DP7-aW-yNw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="16" y="-663"/>
+        </scene>
+        <!--LinkedAccounts-->
+        <scene sceneID="pd4-oI-MEJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LinkedAccounts" id="mkm-C5-sNp" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="poU-ad-OWL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-786" y="313"/>
         </scene>
         <!--Settings-->
         <scene sceneID="quF-9O-uXo">
@@ -127,13 +94,13 @@
                         <viewLayoutGuide key="safeArea" id="BsO-VU-0d2"/>
                     </view>
                     <connections>
-                        <outlet property="settingsTable" destination="AqZ-UB-twD" id="gLG-sV-ESk"/>
+                        <outlet property="settingsTable" destination="AqZ-UB-twD" id="nUF-Ef-gQc"/>
                         <segue destination="KEq-JS-mqr" kind="show" identifier="Logout" id="kQ6-Rm-Etw"/>
                         <segue destination="8cJ-iF-hPv" kind="show" identifier="Change Password" id="5Rm-Ku-eQC"/>
                         <segue destination="jrR-xF-OOD" kind="show" identifier="Manage" id="8Nf-T2-zTr"/>
                         <segue destination="oJX-k0-kSv" kind="show" identifier="About" id="jYM-6y-g9q"/>
-                        <segue destination="bZb-fz-oww" kind="show" identifier="Linked Accounts" id="K8K-lf-M5Y"/>
                         <segue destination="1nD-md-ptf" kind="show" identifier="Slide Groups" id="TPU-zK-9ta"/>
+                        <segue destination="mkm-C5-sNp" kind="show" id="BfE-TN-wHS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qAM-cT-iGC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -381,6 +348,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VSG-a9-0Oa"/>
+        <segue reference="f5R-RL-3BU"/>
     </inferredMetricsTieBreakers>
 </document>
