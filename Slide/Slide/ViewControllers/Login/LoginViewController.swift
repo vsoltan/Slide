@@ -45,16 +45,6 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         }
     }
     
-//    func googleSignIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
-//                    withError error: NSError!) {
-//        if (error == nil) {
-//                // Perform any operations on signed in user here.
-//        } else {
-//            print("\(error.localizedDescription)")
-//        }
-//    }
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -72,83 +62,10 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
     }
 
     @IBAction func facebookLogin(sender: AnyObject) {
-        let LoginManage = LoginManager()
+        let loginManager = LoginManager()
         
-        LoginManage.logIn(permissions: ["public_profile", "email"], from: self) { (result, error) in
-            
-            if let error = error {
-                print("Failed to login: \(error.localizedDescription)")
-                return
-            }
-            guard let accessToken = AccessToken.current else {
-                print("Failed to get access token")
-                return
-            }
-            
-            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
-            // Perform login by calling Firebase APIs
-            Auth.auth().signIn(with: credential, completion: { (user, error) in
-                if let error = error {
-                    print("Login error: \(error.localizedDescription)")
-                    let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
-                    let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(okayAction)
-                    self.present(alertController, animated: true, completion: nil)
-                    return
-                } else {
-                    let r = GraphRequest(graphPath: "me", parameters: ["fields":"email,name"], tokenString: AccessToken.current?.tokenString, version: nil, httpMethod: HTTPMethod(rawValue: "GET"))
-
-                    
-                    r.start(completionHandler: { (test, result, error) in
-                        if(error == nil) {
-                            let data = result as! NSDictionary
-                            
-                            // retrieves the data of the user
-//                            let email = data["email"] as! String
-                            
-                            if (AccessToken.isCurrentAccessTokenActive) {
-                                Auth.auth().signIn(with: credential, completion: { (result, error) in
-                                    // if sign in successful
-                                    if (result != nil) {
-                                        print("segue complete")
-                                        self.performSegue(withIdentifier: "signInToMain", sender: self)
-                                    }
-                                })
-                                
-                            } else {
-                                Auth.auth().createUser(withEmail: data["email"] as! String, password: "placeholder") { (user, error) in
-                                    print("created user")
-                                    // successfully creates a new user and signs them into the application
-                                    if user != nil {
-                                        let userID = Auth.auth().currentUser!.uid
-                                        let db = Firestore.firestore()
-                                        
-                                        print("data", data)
-                                        // creates firestore document
-                                        db.collection("users").document(userID).setData([
-                                            // set specified data entries
-                                            "Name": data["name"] as! String,
-                                            "ID": userID,
-                                            "Email": data["email"] as! String,
-                                        ]) { err in
-                                            if let err = err {
-                                                print("Error writing document: \(err)")
-                                            } else {
-                                                print("Document successfully written!")
-                                            }
-                                        }
-                                        print("completed")
-                                    } else {
-                                        print("Error: \(String(describing: error))")
-                                    }
-                                }
-                            }
-                        }
-                    })
-                    
-                    self.performSegue(withIdentifier: "signInToMain", sender: self)
-                }
-            })
+        loginManager.logIn(permissions: ["public_profile", "email"], from: self) { (loginResult, error) in
+            self.loginButton(self.facebookButton, didCompleteWith: loginResult, error: error)
         }
     }
     
@@ -161,10 +78,33 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         
         let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
         
+        // creates a new account and signs in the user
         Auth.auth().signIn(with: credential) { (authResult, error) in
             if let error = error {
                 CustomError.createWith(errorTitle: "Facebook Login Error", errorMessage: error.localizedDescription).show()
                 return
+            } else {
+                // checks if a document exists under this user's alias
+                if ((authResult?.additionalUserInfo!.isNewUser)!) {
+                    
+                    let userID = Auth.auth().currentUser!.uid
+                    let db = Firestore.firestore()
+                    
+                    db.collection("users").document(userID).setData([
+                        // set specified data entries
+                        "Name": "test",
+                        "ID": userID,
+                        "Email": "test@gmail.com",
+                    ]) { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                        } else {
+                            print("Document successfully written!")
+                        }
+                    }
+                }
+                print("successfully logged in")
+                self.performSegue(withIdentifier: "signInToMain", sender: self)
             }
         }
     }
@@ -173,4 +113,23 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         // Do something when the user logout
         print("Logged out")
     }
+    
+    // GOOGLE STUFF
+    
+    // to be implemented later for google signout...
+    //    @IBAction func didTapSignOut(_ sender: AnyObject) {
+    //        GIDSignIn.sharedInstance().signOut()
+    //    }
+    
+    //
+    
+    //    func googleSignIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
+    //                    withError error: NSError!) {
+    //        if (error == nil) {
+    //                // Perform any operations on signed in user here.
+    //        } else {
+    //            print("\(error.localizedDescription)")
+    //        }
+    //    }
+
 }
