@@ -55,7 +55,14 @@ class RegisterViewController: UIViewController {
                             print("Document successfully written!")
                         }
                     }
-                    self.performSegue(withIdentifier: "registerToHome", sender: self)
+                    // possible optimization: pass the registration data to defaults as it's being added to the database
+                    User.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
+                        if (error != nil) {
+                            print("something went wrong")
+                        } else {
+                            self.performSegue(withIdentifier: "registerToHome", sender: self)
+                        }
+                    })
                 // something went wrong iwth user initialization
                 } else {
                     CustomError.createWith(errorTitle: "Account Creation", errorMessage: error!.localizedDescription).show()

@@ -23,11 +23,9 @@ class User {
             if error != nil {
                 // user was not found
                 CustomError.createWith(errorTitle: "Data Retrieval", errorMessage: error!.localizedDescription).show()
-                print("Hello 6")
                 completionHandler(nil, error)
             } else {
                 // upon completion, returns a reference to the document
-               print("Hello 7")
                 completionHandler((snapshot?.documents)!, nil)
             }
         }
@@ -78,7 +76,6 @@ class User {
 
 // Contains "fields" for UserDefaults
 enum UserDefaultsKeys : String {
-    
     case localEmail
     case localID
     case localName
