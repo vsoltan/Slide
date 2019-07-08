@@ -82,37 +82,40 @@ enum UserDefaultsKeys : String {
     case localEmail
     case localID
     case localName
+    case localGroups
 }
 
 // Functions to set and get data from UserDefaults
 extension UserDefaults {
     
-    // Set localEmail
+    // Set and retrieve localEmail
     func setEmail(value: String) {
         set(value, forKey: UserDefaultsKeys.localEmail.rawValue)
     }
-    
-    // Retrieve localEmail
     func getEmail() -> String {
         return string(forKey: UserDefaultsKeys.localEmail.rawValue)!
     }
     
-    // Set localID
+    // Set and retrieve localID
     func setID(value: String){
         set(value, forKey: UserDefaultsKeys.localID.rawValue)
     }
-    
-    // Retrieve localID
     func getID() -> String{
         return string(forKey: UserDefaultsKeys.localID.rawValue)!
     }
     
-    // Set localName
+    // Set and retrieve localName
     func setName(value: String){
         set(value, forKey: UserDefaultsKeys.localName.rawValue)
     }
+    func getName() -> String {
+        return string(forKey: UserDefaultsKeys.localName.rawValue)!
+    }
     
-    // Retrieve localName
+    // Set and retrieve localGroups
+    func setName(value: String){
+        set(value, forKey: UserDefaultsKeys.localName.rawValue)
+    }
     func getName() -> String {
         return string(forKey: UserDefaultsKeys.localName.rawValue)!
     }
