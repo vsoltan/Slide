@@ -71,6 +71,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
     
     // Login Button protocol
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        
         if let error = error {
             CustomError.createWith(errorTitle: "Facebook Login Error", errorMessage: error.localizedDescription).show()
             return
@@ -86,24 +87,37 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
             } else {
                 // checks if a document exists under this user's alias
                 if ((authResult?.additionalUserInfo!.isNewUser)!) {
+                    // retrieves the data from the user's supplied facebook account
+                    let r = GraphRequest(graphPath: "me", parameters: ["fields":"name, email"], tokenString: AccessToken.current?.tokenString, version: nil, httpMethod: HTTPMethod(rawValue: "GET"))
                     
-                    let userID = Auth.auth().currentUser!.uid
-                    let db = Firestore.firestore()
-                    
-                    db.collection("users").document(userID).setData([
-                        // set specified data entries
-                        "Name": "test",
-                        "ID": userID,
-                        "Email": "test@gmail.com",
-                    ]) { err in
-                        if let err = err {
-                            print("Error writing document: \(err)")
+                    r.start(completionHandler: { (test, result, error) in
+                        if(error != nil) {
+                            print("something went wrong")
                         } else {
-                            print("Document successfully written!")
+                            let data = result as! NSDictionary
+                            let userID = Auth.auth().currentUser!.uid
+                            let db = Firestore.firestore()
+                            
+                            
+                            db.collection("users").document(userID).setData([
+                                // set specified data entries
+                                "Name": data["name"] as! String,
+                                "ID": userID,
+                                "Email": data["email"] as! String,
+                            ]) { err in
+                                if let err = err {
+                                    print("Error writing document: \(err)")
+                                } else {
+                                    print("Document successfully written!")
+                                }
+                            }
+                            
                         }
-                    }
+                    })
                 }
-                print("successfully logged in")
+                // update user defaults
+                User.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in})
+                
                 self.performSegue(withIdentifier: "signInToMain", sender: self)
             }
         }
