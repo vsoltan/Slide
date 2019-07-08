@@ -36,7 +36,7 @@ class RegisterViewController: UIViewController {
             Auth.auth().createUser(withEmail: (usrEmail.text!).trim(), password: usrPassword.text!) { (user, error) in
                 // successfully creates a new user and signs them into the application
                 if user != nil {
-                    let userID = CurrentUser.userID
+                    let userID = Auth.auth().currentUser!.uid
                     let db = Firestore.firestore()
                     
                     // creates firestore document
