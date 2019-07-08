@@ -21,8 +21,14 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        User.getName(userID: Auth.auth().currentUser!.uid) { (name) in
-            self.nameLabel.text = name
+        // Sets nameLabel with side effect of loading user data into UserDefaults for persistance across app
+        User.getUser(userID: Auth.auth().currentUser!.uid) { (error) in
+            if error != nil {
+                print("\(error!)")
+            } else {
+                self.nameLabel.text = UserDefaults.standard.getName()
+            }
+            
         }
         
         // user defaults
