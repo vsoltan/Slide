@@ -29,8 +29,16 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         
         if (TextFieldParser.validate(textFields: signInInfo) == true) {
             Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
-                if user != nil {
-                    self.performSegue(withIdentifier: "signInToMain", sender: self)
+                if (user != nil) {
+                    // retrieve the user's information
+                    User.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
+                        if (error != nil) {
+                            print("something went wrong")
+                        } else {
+                            self.performSegue(withIdentifier: "signInToMain", sender: self)
+                        }
+                    })
+                    
                 } else {
                     CustomError.createWith(errorTitle: "Login Error", errorMessage: error!.localizedDescription).show()
                 }
@@ -132,8 +140,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                                         }
                                         print("completed")
                                     } else {
-                                        print("we got played")
-//                                        print("Error: \(error)")
+                                        print("Error: \(String(describing: error))")
                                     }
                                 }
                             }
