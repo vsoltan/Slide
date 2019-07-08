@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import Firebase
 
 class MediaSelectionViewController: UIViewController {
     
@@ -34,23 +35,15 @@ class MediaSelectionViewController: UIViewController {
         // keeps track of the number of fields selected
         var numChecked = 0
         
-        // safeguard against async processes not being able to complete in time
-        let myGroup = DispatchGroup()
-        
         if (emailButton.isSelected) {
             numChecked += 1
-            self.selectedMedia.email = CurrentUser.getEmail()
+            self.selectedMedia.email = User.getEmail()
         }
         
         if (nameButton.isSelected) {
             numChecked += 1
-            // waits and notifies the main thread once the proc retrieves the field
-            myGroup.enter()
             if (nameButton.isSelected) {
-                CurrentUser.getName { (name) in
-                    self.selectedMedia.name = name!
-                    myGroup.leave()
-                }
+                self.selectedMedia.name = UserDefaults.standard.getName()
             }
         }
         
@@ -60,10 +53,8 @@ class MediaSelectionViewController: UIViewController {
             return
         }
         
-        myGroup.notify(queue: .main) {
-            // performs the segue once all the info was solicited
-            self.performSegue(withIdentifier: "toQRCodeView", sender: self)
-        }
+        // performs the segue once all the info was solicited
+        self.performSegue(withIdentifier: "toQRCodeView", sender: self)
     }
     
     override func viewDidLoad() {

@@ -57,7 +57,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         //GIDSignIn.sharedInstance().delegate = self
         
         // checks if user is already signed in
-        if (Auth.auth().currentUser != nil) {
+        let currusr = Auth.auth().currentUser
+        
+        if (currusr != nil) {
             
             // initializes the container for the view controller
             self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -68,7 +70,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
             
             // sets the root view controller to the desination and renders it
             self.window?.rootViewController = initialViewController
-//            let dst = self.window?.rootViewController as! HomeViewController
+            
+            // TODO implement user defaults to retrieve name
+            
+            User.getUser(userID: currusr!.uid) { (error) in}
+            
 //            dst.nameString = "Valeriy Soltan"
             
             self.window?.makeKeyAndVisible()
@@ -83,8 +89,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
 //        annotation: [:])
 //    }
 //
-
-    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

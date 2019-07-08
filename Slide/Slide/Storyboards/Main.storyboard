@@ -212,6 +212,7 @@
                     <navigationItem key="navigationItem" id="YfQ-22-Hb5"/>
                     <connections>
                         <outlet property="NameLabel" destination="zrj-Cr-QSm" id="IAK-d8-5Dw"/>
+                        <outlet property="nameLabel" destination="zrj-Cr-QSm" id="Pqp-rh-mge"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aV3-u5-IRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -270,6 +271,7 @@
         <image name="UnCheckbox" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Xdp-eM-7We"/>
         <segue reference="oay-vt-5ME"/>
         <segue reference="cPU-pa-WRE"/>
     </inferredMetricsTieBreakers>

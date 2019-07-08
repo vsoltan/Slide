@@ -32,11 +32,14 @@ class RegisterViewController: UIViewController {
             = [(usrEmail, "email"), (usrName, "name"), (usrUsername, "username"), (usrPassword, "password")]
         
         // verifies that textfields are properly formatted and creates a user
+        let auth = Auth.auth()
+        
         if (TextFieldParser.validate(textFields: registerInfo)) {
-            Auth.auth().createUser(withEmail: (usrEmail.text!).trim(), password: usrPassword.text!) { (user, error) in
+            auth.createUser(withEmail: (usrEmail.text!).trim(), password: usrPassword.text!) { (user, error) in
                 // successfully creates a new user and signs them into the application
                 if user != nil {
-                    let userID = Auth.auth().currentUser!.uid
+                    // has to be Auth.auth
+                    let userID = auth.currentUser!.uid
                     let db = Firestore.firestore()
                     
                     // creates firestore document
@@ -52,7 +55,14 @@ class RegisterViewController: UIViewController {
                             print("Document successfully written!")
                         }
                     }
-                    self.performSegue(withIdentifier: "registerToHome", sender: self)
+                    // possible optimization: pass the registration data to defaults as it's being added to the database
+                    User.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
+                        if (error != nil) {
+                            print("something went wrong")
+                        } else {
+                            self.performSegue(withIdentifier: "registerToHome", sender: self)
+                        }
+                    })
                 // something went wrong iwth user initialization
                 } else {
                     CustomError.createWith(errorTitle: "Account Creation", errorMessage: error!.localizedDescription).show()

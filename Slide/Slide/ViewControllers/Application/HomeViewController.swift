@@ -7,28 +7,27 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeViewController: UIViewController {
     
-    var customizationInfo = NSCache<AnyObject, AnyObject>()
-    
     var nameString = String()
     
-    @IBOutlet weak var NameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if customizationInfo.object(forKey: "name" as AnyObject) != nil {
-            
-        } else {
-            CurrentUser.getName { (name) in
-                self.NameLabel.text = name!
-                self.customizationInfo.setObject(name as AnyObject, forKey: "name" as AnyObject)
-            }
-        }
-        // sets the namefield to the retrieved information
-        NameLabel.text = nameString
+        nameLabel.text = UserDefaults.standard.getName()
+        
+        // sets nameLabel with side effect of loading user data into UserDefaults for persistance across app
+//        User.getUser(userID: Auth.auth().currentUser!.uid) { (error) in
+//            if error != nil {
+//                print("\(error!)")
+//            } else {
+//                self.nameLabel.text = UserDefaults.standard.getName()
+//            }
+//        }
     }
 }
 

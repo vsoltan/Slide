@@ -11,6 +11,7 @@ import Foundation
 
 class GenerateQR {
     static func generateQRCode(from string : String?) -> UIImage? {
+        // makes sure that some data is being passed to the generator
         if string == nil {
             print("please pass a non-nil string")
             return nil

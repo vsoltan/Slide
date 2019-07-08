@@ -98,6 +98,7 @@ class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsD
         if (code == "") {
             print("json conversion failed, please check the data pipeline")
         }
+        
         // decodes the information to be shared and stores it in a struct
         receivedInformation = EncodedMedia.JSONtoStruct(source: code)!
         
