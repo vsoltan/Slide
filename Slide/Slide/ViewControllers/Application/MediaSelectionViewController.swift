@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MediaSelectionViewController: UIViewController {
     
@@ -39,7 +40,7 @@ class MediaSelectionViewController: UIViewController {
         
         if (emailButton.isSelected) {
             numChecked += 1
-            self.selectedMedia.email = CurrentUser.getEmail()
+            self.selectedMedia.email = User.getEmail()
         }
         
         if (nameButton.isSelected) {
@@ -47,10 +48,11 @@ class MediaSelectionViewController: UIViewController {
             // waits and notifies the main thread once the proc retrieves the field
             myGroup.enter()
             if (nameButton.isSelected) {
-                CurrentUser.getName { (name) in
-                    self.selectedMedia.name = name!
-                    myGroup.leave()
-                }
+//                User.getName(userID: Auth.auth().currentUser!.uid) { (name) in
+//                    self.selectedMedia.name = name!
+//                    myGroup.leave()
+//                }
+                self.selectedMedia.name = UserDefaults.standard.getName()
             }
         }
         

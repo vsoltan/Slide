@@ -167,4 +167,12 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         // Do something when the user logout
         print("Logged out")
     }
+    
+    // to be implemented later for google signout...
+    //    @IBAction func didTapSignOut(_ sender: AnyObject) {
+    //        GIDSignIn.sharedInstance().signOut()
+    //    }
+    
+    //
+
 }

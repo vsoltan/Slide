@@ -123,6 +123,7 @@
                     <connections>
                         <outlet property="email" destination="5db-Uf-43k" id="wOe-ap-pVQ"/>
                         <outlet property="facebookButton" destination="IhE-Oh-KAX" id="MPL-zJ-98x"/>
+                        <outlet property="googleButton" destination="6EE-Im-l8G" id="b4c-0a-0Uy"/>
                         <outlet property="password" destination="RZ7-00-Igd" id="srC-E5-wTY"/>
                         <segue destination="NQH-c5-24f" kind="show" identifier="signInToMain" id="aZn-3M-5PI"/>
                     </connections>
@@ -137,7 +138,7 @@
                 <viewControllerPlaceholder storyboardName="Main" id="NQH-c5-24f" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rjy-Rc-zT6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5009" y="511"/>
+            <point key="canvasLocation" x="5603" y="558"/>
         </scene>
         <!--Register-->
         <scene sceneID="KWc-na-h4s">

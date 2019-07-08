@@ -19,7 +19,7 @@
 		9807A6A122C5929000627887 /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9807A6A022C5929000627887 /* SyncViewController.swift */; };
 		9867CCE722B9BB8400B6F14B /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9867CCE622B9BB8400B6F14B /* CustomError.swift */; };
 		9867CCE922BD47F800B6F14B /* GenerationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9867CCE822BD47F800B6F14B /* GenerationViewController.swift */; };
-		98B3847422B1C0260097A073 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847322B1C0260097A073 /* CurrentUser.swift */; };
+		98B3847422B1C0260097A073 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847322B1C0260097A073 /* User.swift */; };
 		98B3847822B2FCE90097A073 /* GenerateQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847722B2FCE90097A073 /* GenerateQR.swift */; };
 		98B3847B22B32B9C0097A073 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3847A22B32B9C0097A073 /* SafariServices.framework */; };
 		98B3847D22B32BB30097A073 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3847C22B32BB30097A073 /* SystemConfiguration.framework */; };
@@ -67,7 +67,7 @@
 		9807A6A022C5929000627887 /* SyncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
 		9867CCE622B9BB8400B6F14B /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		9867CCE822BD47F800B6F14B /* GenerationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationViewController.swift; sourceTree = "<group>"; };
-		98B3847322B1C0260097A073 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
+		98B3847322B1C0260097A073 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		98B3847722B2FCE90097A073 /* GenerateQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateQR.swift; sourceTree = "<group>"; };
 		98B3847A22B32B9C0097A073 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		98B3847C22B32BB30097A073 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -228,7 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				98B3A46D22A9E878005FBCF2 /* TextFieldParser.swift */,
-				98B3847322B1C0260097A073 /* CurrentUser.swift */,
+				98B3847322B1C0260097A073 /* User.swift */,
 				98B3847722B2FCE90097A073 /* GenerateQR.swift */,
 				9867CCE622B9BB8400B6F14B /* CustomError.swift */,
 				98D2721422C183B600E300FE /* EncodedMedia.swift */,
@@ -415,7 +415,7 @@
 				98B3A47222A9ED73005FBCF2 /* LoginViewController.swift in Sources */,
 				98B3848422B482950097A073 /* QRScannerViewController.swift in Sources */,
 				98D2721522C183B600E300FE /* EncodedMedia.swift in Sources */,
-				98B3847422B1C0260097A073 /* CurrentUser.swift in Sources */,
+				98B3847422B1C0260097A073 /* User.swift in Sources */,
 				9867CCE722B9BB8400B6F14B /* CustomError.swift in Sources */,
 				E70FB49C22CFF58A0052485F /* AddPhoneNumViewController.swift in Sources */,
 				98E9D6D822CAC501009A0968 /* SwipeRight.swift in Sources */,

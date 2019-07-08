@@ -28,6 +28,7 @@ class EncodedMedia{
         return formatString
     }
     
+    // TODO check if this actually works
     // decoder function to be used by the QR reader
     static func JSONtoStruct(source: String) -> Media? {
         let jsonData = source.data(using: .utf8)!
