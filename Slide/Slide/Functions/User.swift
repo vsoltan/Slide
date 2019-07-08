@@ -101,11 +101,11 @@ extension UserDefaults {
         return string(forKey: UserDefaultsKeys.localID.rawValue)!
     }
     
-    // Set and retrieve localName
-    func setName(value: String){
+    // Set and retrieve localGroup
+    func setGroup(value: String){
         set(value, forKey: UserDefaultsKeys.localName.rawValue)
     }
-    func getName() -> String {
+    func getGroup() -> String {
         return string(forKey: UserDefaultsKeys.localName.rawValue)!
     }
     
