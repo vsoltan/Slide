@@ -161,8 +161,8 @@
 				04F9B36A22C4088C00D87528 /* ManageViewController.swift */,
 				98B3A46622A9DD7F005FBCF2 /* SettingsViewController.swift */,
 				9807A6A022C5929000627887 /* SyncViewController.swift */,
-				E7F6370D22CCF617009B24C4 /* AccountsViewController.swift */,
 				04F9B36822BDA6BC00D87528 /* PasswordViewController.swift */,
+				E7F6370D22CCF617009B24C4 /* AccountsViewController.swift */,
 				E70FB49B22CFF58A0052485F /* AddPhoneNumViewController.swift */,
 			);
 			path = Settings;
