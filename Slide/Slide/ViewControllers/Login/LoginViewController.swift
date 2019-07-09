@@ -48,9 +48,13 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        googleButton.style = GIDSignInButtonStyle.wide
+        
         // creates facebook login button
         let loginButton = FBLoginButton()
         loginButton.delegate = self
+        
+        loginButton.frame = CGRect(x: 0, y: 0, width: 180, height: 50)
 
         // creates login button from GoogleSignIn
         //GIDSignIn.sharedInstance().uiDelegate = self

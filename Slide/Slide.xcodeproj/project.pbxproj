@@ -12,6 +12,9 @@
 		04F596E722A8540F004AA63A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F596E622A8540F004AA63A /* Assets.xcassets */; };
 		04F9B36922BDA6BC00D87528 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F9B36822BDA6BC00D87528 /* PasswordViewController.swift */; };
 		04F9B36B22C4088C00D87528 /* ManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F9B36A22C4088C00D87528 /* ManageViewController.swift */; };
+		04F9B37122CD24C600D87528 /* Groups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F9B37022CD24C600D87528 /* Groups.storyboard */; };
+		04F9B37322CD49D200D87528 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F9B37222CD49D200D87528 /* GroupsViewController.swift */; };
+		04F9B37522CFD8D600D87528 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F9B37422CFD8D600D87528 /* CreateViewController.swift */; };
 		9807A69D22C5618E00627887 /* Received.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9807A69C22C5618E00627887 /* Received.storyboard */; };
 		9807A6A122C5929000627887 /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9807A6A022C5929000627887 /* SyncViewController.swift */; };
 		9867CCE722B9BB8400B6F14B /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9867CCE622B9BB8400B6F14B /* CustomError.swift */; };
@@ -39,8 +42,11 @@
 		98E9D6D822CAC501009A0968 /* SwipeRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E9D6D722CAC501009A0968 /* SwipeRight.swift */; };
 		98E9D6DC22CACD67009A0968 /* SwipeDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E9D6DB22CACD67009A0968 /* SwipeDown.swift */; };
 		CFAC7373BBC82D12B63D7217 /* Pods_Slide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01566259063A6F98051587FA /* Pods_Slide.framework */; };
+		E70FB49C22CFF58A0052485F /* AddPhoneNumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70FB49B22CFF58A0052485F /* AddPhoneNumViewController.swift */; };
+		E70FB49E22CFF7470052485F /* LinkedAccounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E70FB49D22CFF7470052485F /* LinkedAccounts.storyboard */; };
 		E7D0CC7D22C4513E00D73B44 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D0CC7C22C4513E00D73B44 /* AboutViewController.swift */; };
 		E7EF6C0222B35BD9005197FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7EF6C0122B35BD9005197FE /* GoogleService-Info.plist */; };
+		E7F6370E22CCF617009B24C4 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F6370D22CCF617009B24C4 /* AccountsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +58,9 @@
 		04F596EB22A8540F004AA63A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04F9B36822BDA6BC00D87528 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		04F9B36A22C4088C00D87528 /* ManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageViewController.swift; sourceTree = "<group>"; };
+		04F9B37022CD24C600D87528 /* Groups.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Groups.storyboard; sourceTree = "<group>"; };
+		04F9B37222CD49D200D87528 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
+		04F9B37422CFD8D600D87528 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		0D3496B522BDC10800891BDD /* Slide.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Slide.entitlements; sourceTree = "<group>"; };
 		6307111C166CE8B76E78A8BC /* Pods-Slide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slide.release.xcconfig"; path = "Target Support Files/Pods-Slide/Pods-Slide.release.xcconfig"; sourceTree = "<group>"; };
 		9807A69C22C5618E00627887 /* Received.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Received.storyboard; sourceTree = "<group>"; };
@@ -81,9 +90,12 @@
 		98E9D6D422CAB7BE009A0968 /* SwipeLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeLeft.swift; sourceTree = "<group>"; };
 		98E9D6D722CAC501009A0968 /* SwipeRight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRight.swift; sourceTree = "<group>"; };
 		98E9D6DB22CACD67009A0968 /* SwipeDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDown.swift; sourceTree = "<group>"; };
+		E70FB49B22CFF58A0052485F /* AddPhoneNumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhoneNumViewController.swift; sourceTree = "<group>"; };
+		E70FB49D22CFF7470052485F /* LinkedAccounts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LinkedAccounts.storyboard; sourceTree = "<group>"; };
 		E7D0CC7C22C4513E00D73B44 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E7EF6C0122B35BD9005197FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E7EF6C0322B35C45005197FE /* Firebase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
+		E7F6370D22CCF617009B24C4 /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
 		E8210633C78B72B2087F8D48 /* Pods-Slide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slide.debug.xcconfig"; path = "Target Support Files/Pods-Slide/Pods-Slide.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,11 +155,15 @@
 		9807A6A222C592AB00627887 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				04F9B37222CD49D200D87528 /* GroupsViewController.swift */,
+				04F9B37422CFD8D600D87528 /* CreateViewController.swift */,
 				E7D0CC7C22C4513E00D73B44 /* AboutViewController.swift */,
 				04F9B36A22C4088C00D87528 /* ManageViewController.swift */,
 				98B3A46622A9DD7F005FBCF2 /* SettingsViewController.swift */,
 				9807A6A022C5929000627887 /* SyncViewController.swift */,
 				04F9B36822BDA6BC00D87528 /* PasswordViewController.swift */,
+				E7F6370D22CCF617009B24C4 /* AccountsViewController.swift */,
+				E70FB49B22CFF58A0052485F /* AddPhoneNumViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -187,6 +203,8 @@
 		98B3A44522A8737D005FBCF2 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				04F9B37022CD24C600D87528 /* Groups.storyboard */,
+				E70FB49D22CFF7470052485F /* LinkedAccounts.storyboard */,
 				98B3A46422A9DD78005FBCF2 /* Settings.storyboard */,
 				98B3A44822A87384005FBCF2 /* LaunchScreen.storyboard */,
 				98B3A44622A87384005FBCF2 /* LoginRegister.storyboard */,
@@ -286,6 +304,9 @@
 							com.apple.Keychain = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 				};
@@ -313,10 +334,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F9B37122CD24C600D87528 /* Groups.storyboard in Resources */,
 				04F596E722A8540F004AA63A /* Assets.xcassets in Resources */,
 				9807A69D22C5618E00627887 /* Received.storyboard in Resources */,
 				98B3A44B22A87384005FBCF2 /* LaunchScreen.storyboard in Resources */,
 				98B3A44922A87384005FBCF2 /* LoginRegister.storyboard in Resources */,
+				E70FB49E22CFF7470052485F /* LinkedAccounts.storyboard in Resources */,
 				98B3A44E22A87A8A005FBCF2 /* Main.storyboard in Resources */,
 				98B3A46522A9DD78005FBCF2 /* Settings.storyboard in Resources */,
 				E7EF6C0222B35BD9005197FE /* GoogleService-Info.plist in Resources */,
@@ -394,16 +417,20 @@
 				98D2721522C183B600E300FE /* EncodedMedia.swift in Sources */,
 				98B3847422B1C0260097A073 /* User.swift in Sources */,
 				9867CCE722B9BB8400B6F14B /* CustomError.swift in Sources */,
+				E70FB49C22CFF58A0052485F /* AddPhoneNumViewController.swift in Sources */,
 				98E9D6D822CAC501009A0968 /* SwipeRight.swift in Sources */,
 				9807A6A122C5929000627887 /* SyncViewController.swift in Sources */,
 				98E9D6DC22CACD67009A0968 /* SwipeDown.swift in Sources */,
+				04F9B37522CFD8D600D87528 /* CreateViewController.swift in Sources */,
 				98D2721722C478D600E300FE /* ReceivedViewController.swift in Sources */,
 				04F596E222A8540D004AA63A /* HomeViewController.swift in Sources */,
 				9867CCE922BD47F800B6F14B /* GenerationViewController.swift in Sources */,
+				E7F6370E22CCF617009B24C4 /* AccountsViewController.swift in Sources */,
 				04F9B36922BDA6BC00D87528 /* PasswordViewController.swift in Sources */,
 				04F9B36B22C4088C00D87528 /* ManageViewController.swift in Sources */,
 				04F596E022A8540D004AA63A /* AppDelegate.swift in Sources */,
 				98B3A46E22A9E878005FBCF2 /* TextFieldParser.swift in Sources */,
+				04F9B37322CD49D200D87528 /* GroupsViewController.swift in Sources */,
 				98B3A46722A9DD7F005FBCF2 /* SettingsViewController.swift in Sources */,
 				98E9D6D522CAB7BE009A0968 /* SwipeLeft.swift in Sources */,
 				98B3847822B2FCE90097A073 /* GenerateQR.swift in Sources */,
