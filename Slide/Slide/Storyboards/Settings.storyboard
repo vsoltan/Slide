@@ -100,7 +100,7 @@
                         <segue destination="jrR-xF-OOD" kind="show" identifier="Manage" id="8Nf-T2-zTr"/>
                         <segue destination="oJX-k0-kSv" kind="show" identifier="About" id="jYM-6y-g9q"/>
                         <segue destination="1nD-md-ptf" kind="show" identifier="Slide Groups" id="TPU-zK-9ta"/>
-                        <segue destination="mkm-C5-sNp" kind="show" id="BfE-TN-wHS"/>
+                        <segue destination="mkm-C5-sNp" kind="show" identifier="Linked Accounts" id="BfE-TN-wHS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qAM-cT-iGC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -328,7 +328,7 @@
                                 <rect key="frame" x="20" y="59" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="eYC-rp-Cnv" kind="show" id="f5R-RL-3BU"/>
+                                    <segue destination="eYC-rp-Cnv" kind="show" identifier="" id="f5R-RL-3BU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -348,6 +348,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="f5R-RL-3BU"/>
+        <segue reference="gtP-Al-zTc"/>
     </inferredMetricsTieBreakers>
 </document>

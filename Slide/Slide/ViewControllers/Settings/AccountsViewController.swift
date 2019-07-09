@@ -36,7 +36,7 @@ class AccountsViewController: UIViewController, UITableViewDataSource, UITableVi
         // retrieves a cell from the table given the index
         let cell = tableView.dequeueReusableCell(withIdentifier: "AccountsItem", for: indexPath)
         // sets the text of that cell to the strings enumerated in the corresponding array
-        cell.textLabel!.text = accountsArray[0]
+        cell.textLabel!.text = accountsArray[indexPath.row]
         return cell
     }
     
@@ -47,7 +47,7 @@ class AccountsViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.deselectRow(at: indexPath, animated: true)
         
         // determines what page to segue to based on which cell is clicked
-        let segueLabel = accountsArray[0]
+        let segueLabel = accountsArray[indexPath.row]
         
         // array of all actionable pages
         let tabs = ["Phone Number"]

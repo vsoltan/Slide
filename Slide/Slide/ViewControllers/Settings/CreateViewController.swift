@@ -13,11 +13,12 @@ class CreateViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var titleField: UITextField!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItem", for: indexPath)
+        return cell
     }
     
 
