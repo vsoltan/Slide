@@ -38,24 +38,22 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tCS-dQ-7ln">
-                                <rect key="frame" x="22" y="62" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tCS-dQ-7ln">
+                                <rect key="frame" x="20" y="59" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
                                     <segue destination="oaC-9g-3Li" kind="show" id="ek2-od-BsB"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SaX-YZ-wOE" userLabel="Accounts Table">
-                                <rect key="frame" x="20" y="120" width="374" height="742"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SaX-YZ-wOE" userLabel="Accounts Table">
+                                <rect key="frame" x="0.0" y="114" width="414" height="748"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Accounts Item" id="V6z-Bu-DS7" userLabel="AccountsItem">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V6z-Bu-DS7" id="eeY-BL-TXt">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -68,6 +66,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Qfc-U7-8YC" firstAttribute="top" secondItem="eHk-Lh-abG" secondAttribute="top" constant="17" id="1Eg-23-16B"/>
+                            <constraint firstItem="SaX-YZ-wOE" firstAttribute="bottom" secondItem="eHk-Lh-abG" secondAttribute="bottom" id="BnA-y7-fr5"/>
+                            <constraint firstItem="tCS-dQ-7ln" firstAttribute="leading" secondItem="eHk-Lh-abG" secondAttribute="leading" constant="20" id="GNb-em-Nfn"/>
+                            <constraint firstItem="SaX-YZ-wOE" firstAttribute="leading" secondItem="eHk-Lh-abG" secondAttribute="leading" id="Kzk-ZB-DLO"/>
+                            <constraint firstItem="eHk-Lh-abG" firstAttribute="trailing" secondItem="SaX-YZ-wOE" secondAttribute="trailing" id="NKR-jR-K0G"/>
+                            <constraint firstItem="tCS-dQ-7ln" firstAttribute="top" secondItem="eHk-Lh-abG" secondAttribute="top" constant="15" id="ShZ-L0-jRk"/>
+                            <constraint firstItem="SaX-YZ-wOE" firstAttribute="top" secondItem="eHk-Lh-abG" secondAttribute="top" constant="70" id="onH-wZ-2NU"/>
                             <constraint firstItem="Qfc-U7-8YC" firstAttribute="centerX" secondItem="ps8-z9-VCy" secondAttribute="centerX" id="qob-hC-83g"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eHk-Lh-abG"/>
