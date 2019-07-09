@@ -58,6 +58,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="bzN-EW-kMB" kind="show" identifier="Phone Number" id="OD0-zv-mA6"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -104,7 +107,7 @@
                                 <rect key="frame" x="20" y="59" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="Blx-y4-GzP" kind="show" id="hEl-ax-hdJ"/>
+                                    <segue destination="Blx-y4-GzP" kind="show" identifier="" id="hEl-ax-hdJ"/>
                                 </connections>
                             </button>
                         </subviews>
