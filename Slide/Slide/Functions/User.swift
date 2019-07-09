@@ -51,6 +51,10 @@ class User {
                         UserDefaults.standard.setID(value: idData)
                     }
                     
+                    if let phoneData = document.data() ["Phone"] as? String {
+                        UserDefaults.standard.setPhoneNumber(value: phoneData)
+                    }
+                    
                 }
                 // No error
                 completionHandler(nil)
@@ -79,13 +83,14 @@ enum UserDefaultsKeys : String {
     case localEmail
     case localID
     case localName
+    case localPhone
     case localGroups
 }
 
-// Functions to set and get data from UserDefaults
+// functions to set and get data from UserDefaults
 extension UserDefaults {
     
-    // Set and retrieve localEmail
+    // set and retrieve localEmail
     func setEmail(value: String) {
         set(value, forKey: UserDefaultsKeys.localEmail.rawValue)
     }
@@ -93,7 +98,7 @@ extension UserDefaults {
         return string(forKey: UserDefaultsKeys.localEmail.rawValue)!
     }
     
-    // Set and retrieve localID
+    // set and retrieve localID
     func setID(value: String){
         set(value, forKey: UserDefaultsKeys.localID.rawValue)
     }
@@ -101,7 +106,7 @@ extension UserDefaults {
         return string(forKey: UserDefaultsKeys.localID.rawValue)!
     }
     
-    // Set and retrieve localGroup
+    // set and retrieve localGroup
     func setGroup(value: String){
         set(value, forKey: UserDefaultsKeys.localName.rawValue)
     }
@@ -109,11 +114,19 @@ extension UserDefaults {
         return string(forKey: UserDefaultsKeys.localName.rawValue)!
     }
     
-    // Set and retrieve localGroups
+    // set and retrieve localGroups
     func setName(value: String){
         set(value, forKey: UserDefaultsKeys.localName.rawValue)
     }
     func getName() -> String {
         return string(forKey: UserDefaultsKeys.localName.rawValue)!
+    }
+    
+    // set and retrieve localPhone
+    func setPhoneNumber(value: String){
+        set(value, forKey: UserDefaultsKeys.localPhone.rawValue)
+    }
+    func getPhoneNumber() -> String? {
+        return string(forKey: UserDefaultsKeys.localPhone.rawValue)
     }
 }

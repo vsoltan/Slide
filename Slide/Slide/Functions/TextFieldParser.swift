@@ -36,6 +36,10 @@ class TextFieldParser {
         }
         return completeForm
     }
+    
+    static func validate(phoneNumber: String) -> Bool {
+        return phoneNumber.isValidatePhoneNumber()
+    }
 }
 
 // string equality method for readability
@@ -51,6 +55,13 @@ extension String {
     func isValidEmail() -> Bool {
         let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
         return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
+    }
+    
+    func isValidatePhoneNumber() -> Bool {
+        let PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        let result = phoneTest.evaluate(with: self)
+        return result
     }
     
     // removes whitespace from the beginning and end of the string
