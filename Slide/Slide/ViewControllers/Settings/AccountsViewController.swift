@@ -28,20 +28,34 @@ class AccountsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // returns the number of cells in each section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return accountsArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        print("hello")
     }
     
     // creates labels in the table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // retrieves a cell from the table given the index
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AccountsItem", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Accounts Item", for: indexPath)
         // sets the text of that cell to the strings enumerated in the corresponding array
         cell.textLabel!.text = accountsArray[indexPath.row]
+        
+        let switchObj = UISwitch(frame: CGRect(x: 1, y: 1, width: 10, height: 10))
+        switchObj.isOn = false
+        cell.accessoryView = switchObj
+
         return cell
     }
     
     // cell activation handler
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // TODO create a mask for the cell to create a textfield that accepts
+        // the user's phone number
+        
+//        tableView.cellForRow(at: indexPath).
         
         // if a row is clicked, unclick and give it a fade out animation
         tableView.deselectRow(at: indexPath, animated: true)
