@@ -8,9 +8,10 @@
 
 import UIKit
 
-class AddPhoneNumViewController: UIViewController {
+class PhoneNumViewController: UIViewController {
     
     
+    @IBOutlet weak var phoneNumber: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()

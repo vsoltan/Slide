@@ -84,15 +84,15 @@
         <!--Add Phone Number-->
         <scene sceneID="BDF-hK-XCO">
             <objects>
-                <viewController title="About" id="bzN-EW-kMB" userLabel="Add Phone Number" customClass="AddPhoneNumViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="About" id="bzN-EW-kMB" userLabel="Add Phone Number" customClass="PhoneNumViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fiv-QI-i0H">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BG1-98-zUd">
-                                <rect key="frame" x="100.5" y="61" width="213" height="28"/>
+                                <rect key="frame" x="126" y="61" width="162" height="28"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Add Phone Number">
+                                    <fragment content="Phone Number">
                                         <attributes>
                                             <font key="NSFont" size="24" name="AppleSymbols"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -108,6 +108,13 @@
                                     <segue destination="Blx-y4-GzP" kind="show" identifier="" id="hEl-ax-hdJ"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LSA-Ug-dcZ">
+                                <rect key="frame" x="61" y="132" width="293" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -118,10 +125,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MOU-gX-aU8"/>
                     </view>
+                    <connections>
+                        <outlet property="phoneNumber" destination="LSA-Ug-dcZ" id="sQL-RO-EiJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rtc-2e-8tk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-306" y="-27"/>
+            <point key="canvasLocation" x="-307.24637681159425" y="-27.455357142857142"/>
         </scene>
     </scenes>
 </document>
