@@ -34,6 +34,55 @@
             </objects>
             <point key="canvasLocation" x="-786" y="313"/>
         </scene>
+        <!--Sync View Controller-->
+        <scene sceneID="MRt-4U-jff">
+            <objects>
+                <viewController id="zW7-hg-nmy" customClass="SyncViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M3Z-7q-Pcf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clB-sB-2zJ">
+                                <rect key="frame" x="117" y="64" width="141" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Select Media">
+                                        <attributes>
+                                            <font key="NSFont" size="24" name="AppleSymbols"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="DhS-5S-sEQ">
+                                <rect key="frame" x="59" y="163" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select the media that you would like to sync with your account" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNc-T5-Jqj">
+                                <rect key="frame" x="59" y="100" width="256" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9M-GW-WY0">
+                                <rect key="frame" x="16" y="64" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="eYC-rp-Cnv" kind="show" id="BIO-HD-gQb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="an1-kr-daK"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="txX-bG-JLz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-991.20000000000005" y="-164.03940886699507"/>
+        </scene>
         <!--Settings-->
         <scene sceneID="quF-9O-uXo">
             <objects>
@@ -101,6 +150,7 @@
                         <segue destination="oJX-k0-kSv" kind="show" identifier="About" id="jYM-6y-g9q"/>
                         <segue destination="1nD-md-ptf" kind="show" identifier="Slide Groups" id="TPU-zK-9ta"/>
                         <segue destination="mkm-C5-sNp" kind="show" identifier="Linked Accounts" id="BfE-TN-wHS"/>
+                        <segue destination="zW7-hg-nmy" kind="show" identifier="Sync Media" id="kZl-WQ-gc0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qAM-cT-iGC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -348,6 +398,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gtP-Al-zTc"/>
+        <segue reference="BIO-HD-gQb"/>
     </inferredMetricsTieBreakers>
 </document>

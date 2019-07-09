@@ -20,7 +20,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     // sections of the table
     let profileArray = ["Slide Groups", "Cards", "Friends"]
     
-    let accountArray = ["Change Password", "Manage", "Linked Accounts"]
+    let accountArray = ["Change Password", "Manage", "Linked Accounts", "Sync Media"]
     
     let supportArray = ["About", "Contact", "Ratings", "Logout"]
     
@@ -88,7 +88,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         let segueLabel = allSections[indexPath.section][indexPath.row]
 
         // array of all actionable pages
-        let tabs = ["Logout", "Change Password", "Manage", "About", "Linked Accounts", "Slide Groups"]
+        let tabs = ["Logout", "Change Password", "Manage", "About", "Linked Accounts", "Slide Groups", "Sync Media"]
         
         // executes the segue corresponding to the tab selected
         if let index = tabs.firstIndex(of: segueLabel) {

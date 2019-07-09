@@ -11,6 +11,14 @@
     </dependencies>
     <scenes>
         <!--Settings-->
+        <scene sceneID="YU6-mw-47e">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="aTT-UL-tEA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="01y-9A-dYf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1792" y="-273"/>
+        </scene>
+        <!--Settings-->
         <scene sceneID="lmD-VV-Zsi">
             <objects>
                 <viewControllerPlaceholder storyboardName="Settings" id="oaC-9g-3Li" sceneMemberID="viewController"/>
@@ -42,6 +50,9 @@
                                 <rect key="frame" x="22" y="62" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="aTT-UL-tEA" kind="show" id="Dbp-yl-iH2"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SaX-YZ-wOE" userLabel="Accounts Table">
                                 <rect key="frame" x="20" y="120" width="374" height="742"/>
