@@ -87,14 +87,20 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
             } else {
                 // checks if a document exists under this user's alias
                 if ((authResult?.additionalUserInfo!.isNewUser)!) {
+                    print("passed checkpoint 1")
                     // retrieves the data from the user's supplied facebook account
                     let r = GraphRequest(graphPath: "me", parameters: ["fields":"name, email"], tokenString: AccessToken.current?.tokenString, version: nil, httpMethod: HTTPMethod(rawValue: "GET"))
                     
                     r.start(completionHandler: { (test, result, error) in
                         if(error != nil) {
                             print("something went wrong")
-                        } else {
+                        }
+                        if (result == nil) {
+                            print("well shit")
+                        }
+                        else {
                             let data = result as! NSDictionary
+                            print(data["name"] as! String)
                             let userID = Auth.auth().currentUser!.uid
                             let db = Firestore.firestore()
                             
