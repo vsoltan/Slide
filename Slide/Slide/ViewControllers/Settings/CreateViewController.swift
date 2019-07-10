@@ -17,7 +17,7 @@ class CreateViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItem", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OptionsItem", for: indexPath)
         return cell
     }
     
