@@ -81,6 +81,11 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         
         // creates a new account and signs in the user
         Auth.auth().signIn(with: credential) { (authResult, error) in
+            // something happened while logging in
+            if (authResult == nil) {
+                print("login cancelled")
+                return
+            }
             if let error = error {
                 CustomError.createWith(errorTitle: "Facebook Login Error", errorMessage: error.localizedDescription).show()
                 return
@@ -95,16 +100,16 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                         if(error != nil) {
                             print("something went wrong")
                         }
-                        if (result == nil) {
-                            print("well shit")
-                        }
                         else {
+                            print("we made it?")
                             let data = result as! NSDictionary
-                            print(data["name"] as! String)
+                            print("WOOOOO", data["name"] as! String)
                             let userID = Auth.auth().currentUser!.uid
                             let db = Firestore.firestore()
                             
+                            let myGroup = DispatchGroup()
                             
+                            myGroup.enter()
                             db.collection("users").document(userID).setData([
                                 // set specified data entries
                                 "Name": data["name"] as! String,
@@ -115,12 +120,13 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                                     print("Error writing document: \(err)")
                                 } else {
                                     print("Document successfully written!")
+                                    myGroup.leave()
                                 }
                             }
-                            
                         }
                     })
                 }
+                print("this runs btw")
                 // update user defaults
                 User.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in})
                 

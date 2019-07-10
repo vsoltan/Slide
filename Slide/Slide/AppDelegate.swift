@@ -27,21 +27,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         // checks if user is already signed in
         let currusr = Auth.auth().currentUser
         
-        if (currusr != nil) {
-            
-            // initializes the container for the view controller
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            
-            // specifies the destination and creates an instance of that view controller
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-            
-            // sets the root view controller to the desination and renders it
-            self.window?.rootViewController = initialViewController
-            
-            User.getUser(userID: currusr!.uid) { (error) in}
-            self.window?.makeKeyAndVisible()
-        }
+//        if (currusr != nil) {
+//
+//            // initializes the container for the view controller
+//            self.window = UIWindow(frame: UIScreen.main.bounds)
+//
+//            // specifies the destination and creates an instance of that view controller
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let initialViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+//
+//            // sets the root view controller to the desination and renders it
+//            self.window?.rootViewController = initialViewController
+//
+//            User.getUser(userID: currusr!.uid) { (error) in}
+//            self.window?.makeKeyAndVisible()
+//        }
         return fbconfig
     }
 
