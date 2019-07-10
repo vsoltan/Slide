@@ -85,6 +85,11 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         
         // creates a new account and signs in the user
         Auth.auth().signIn(with: credential) { (authResult, error) in
+            // something happened while logging in
+            if (authResult == nil) {
+                print("login cancelled")
+                return
+            }
             if let error = error {
                 CustomError.createWith(errorTitle: "Facebook Login Error", errorMessage: error.localizedDescription).show()
                 return
@@ -99,16 +104,16 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                         if(error != nil) {
                             print("something went wrong")
                         }
-                        if (result == nil) {
-                            print("well shit")
-                        }
                         else {
                             let data = result as! NSDictionary
-                            print(data["name"] as! String)
                             let userID = Auth.auth().currentUser!.uid
                             let db = Firestore.firestore()
                             
+                            // safeguard against the thread proceeding without necessary data
+                            let myGroup = DispatchGroup()
                             
+                            // thread execution is temporarily suspended as database functions execute
+                            myGroup.enter()
                             db.collection("users").document(userID).setData([
                                 // set specified data entries
                                 "Name": data["name"] as! String,
@@ -119,15 +124,16 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                                     print("Error writing document: \(err)")
                                 } else {
                                     print("Document successfully written!")
+                                    // once the document is created, thread an proceed
+                                    myGroup.leave()
                                 }
                             }
-                            
                         }
                     })
                 }
+                
                 // update user defaults
                 User.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in})
-                
                 self.performSegue(withIdentifier: "signInToMain", sender: self)
             }
         }

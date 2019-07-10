@@ -11,6 +11,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseCore
 import FirebaseFirestore
+import FBSDKLoginKit
 
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -77,6 +78,12 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 try firebaseAuth.signOut()
                 if (firebaseAuth.currentUser == nil) {
                     print ("Successfully signed out!")
+                }
+                // checks if the user logged in using facebook
+                if AccessToken.current != nil {
+                    print("we got em")
+                    let loginManager = LoginManager()
+                    loginManager.logOut()
                 }
             } catch let signOutError as NSError {
                 print ("Error signing out: %@", signOutError)
