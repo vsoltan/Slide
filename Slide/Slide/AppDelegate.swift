@@ -14,35 +14,6 @@ import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate  {
-    //GIDSignInDelegate
-    // handles the google signin process
-//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-//        // ...
-//        if let error = error {
-//            // ...
-//            return
-//        }
-//
-//        guard let authentication = user.authentication else { return }
-//        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-//                                                       accessToken: authentication.accessToken)
-//        // ...
-//        Auth.auth().signIn(with: credential) { (authResult, error) in
-//            if let error = error {
-//                // ...
-//                return
-//            }
-//            // User is signed in
-//            // ...
-//        }
-//
-//
-//    }
-//
-//    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-//        // Perform any operations when the user disconnects from app here.
-//        // ...
-//    }
 
     var window: UIWindow?
 
@@ -52,9 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         FirebaseApp.configure()
         
         let fbconfig = ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        
-        //GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        //GIDSignIn.sharedInstance().delegate = self
         
         // checks if user is already signed in
         let currusr = Auth.auth().currentUser
@@ -71,24 +39,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
             // sets the root view controller to the desination and renders it
             self.window?.rootViewController = initialViewController
             
-            // TODO implement user defaults to retrieve name
-            
             User.getUser(userID: currusr!.uid) { (error) in}
-            
-//            dst.nameString = "Valeriy Soltan"
-            
             self.window?.makeKeyAndVisible()
         }
         return fbconfig
     }
-
-//    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-////        return ApplicationDelegate.shared.application(app, open: url, options: options)
-//        return GIDSignIn.sharedInstance().handle(url,
-//        sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-//        annotation: [:])
-//    }
-//
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
