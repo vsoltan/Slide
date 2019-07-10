@@ -101,14 +101,14 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                             print("something went wrong")
                         }
                         else {
-                            print("we made it?")
                             let data = result as! NSDictionary
-                            print("WOOOOO", data["name"] as! String)
                             let userID = Auth.auth().currentUser!.uid
                             let db = Firestore.firestore()
                             
+                            // safeguard against the thread proceeding without necessary data
                             let myGroup = DispatchGroup()
                             
+                            // thread execution is temporarily suspended as database functions execute
                             myGroup.enter()
                             db.collection("users").document(userID).setData([
                                 // set specified data entries
@@ -120,16 +120,16 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                                     print("Error writing document: \(err)")
                                 } else {
                                     print("Document successfully written!")
+                                    // once the document is created, thread an proceed
                                     myGroup.leave()
                                 }
                             }
                         }
                     })
                 }
-                print("this runs btw")
+                
                 // update user defaults
                 User.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in})
-                
                 self.performSegue(withIdentifier: "signInToMain", sender: self)
             }
         }
