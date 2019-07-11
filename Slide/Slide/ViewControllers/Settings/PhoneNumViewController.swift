@@ -12,15 +12,16 @@ import FirebaseAuth
 
 class PhoneNumViewController: UIViewController {
     
-    
+    // textfield for modifying a user's number
     @IBOutlet weak var setPhone: UITextField!
     
+    // if on the app can use the user's phone number as part of their slide
     @IBOutlet weak var userPermission: UISwitch!
     
-    @IBAction func goBackAndSave(_ sender: Any) {
+    @IBAction func phoneModified(_ sender: Any) {
         // checks that the phone is provided in the proper format
         if ((setPhone.text)?.isValidatePhoneNumber() == false) {
-            print("poorly formatted number")
+            CustomError.createWith(errorTitle: "Poorly Formated Number", errorMessage: "enter a number like XXX-XXX-XXXX").show()
             return
         }
         
@@ -48,20 +49,21 @@ class PhoneNumViewController: UIViewController {
                 UserDefaults.standard.setPhoneNumber(value: setPhone.text!)
                 db.updateData([
                     "Phone": passedData,
-                ])
+                    ])
             }
         } else {
             // TODO grey out the options so the user cannot interact with them
             print("user has to give permission")
             return
         }
-        self.performSegue(withIdentifier: "backToSettings", sender: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        // display the user's synced number if already associated with the account
+        if let phoneNumber = UserDefaults.standard.getPhoneNumber() {
+            setPhone.placeholder = phoneNumber
+        }
     }
-
-
 }

@@ -105,7 +105,7 @@
                                 <rect key="frame" x="20" y="59" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <action selector="goBackAndSave:" destination="bzN-EW-kMB" eventType="touchUpInside" id="LlT-e7-CNz"/>
+                                    <segue destination="Blx-y4-GzP" kind="show" id="NBv-K1-wF4"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="(xxx)-xxx-xxxx" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LSA-Ug-dcZ">
@@ -114,6 +114,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="phoneModified:" destination="bzN-EW-kMB" eventType="editingDidEnd" id="VIF-IJ-GS6"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mobile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jfp-Nt-Vcd">
                                 <rect key="frame" x="20" y="211" width="57" height="30"/>
@@ -146,7 +149,6 @@
                     <connections>
                         <outlet property="setPhone" destination="LSA-Ug-dcZ" id="sQL-RO-EiJ"/>
                         <outlet property="userPermission" destination="y1w-JJ-bdx" id="NxJ-pm-o4h"/>
-                        <segue destination="Blx-y4-GzP" kind="show" identifier="backToSettings" id="VAy-xs-oMP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rtc-2e-8tk" userLabel="First Responder" sceneMemberID="firstResponder"/>
