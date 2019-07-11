@@ -8,6 +8,8 @@
 
 import Foundation
 import Firebase
+import FBSDKCoreKit
+import GoogleSignIn
 
 // an interface between the database and the user
 class User {
@@ -31,7 +33,7 @@ class User {
         }
     }
     
-    // parses through the user's doc tree and finds their name
+    // downloads user data to local storage
     static func getUser(userID: String, completionHandler: @escaping (Error?) -> Void) {
         // thread deployed to interact with database
         self.getDocument(currentUserID: userID) { (userData, error) in
@@ -66,13 +68,126 @@ class User {
         }
     }
     
-    // Clear UserDefaults
-    static func removeUser() {
+    // clear UserDefaults
+    static func clearLocalData() {
         UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.localEmail.rawValue)
         UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.localID.rawValue)
         UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.localName.rawValue)
         UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.localGroups.rawValue)
         UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.localPhone.rawValue)
+    }
+    
+    // delete user
+    static func deleteUser(caller: UIViewController) {
+        if let user = Auth.auth().currentUser {
+            let id = user.uid
+            user.delete(completion: { (error) in
+                if (error != nil) {
+                    CustomError.createWith(errorTitle: "Delete User Error", errorMessage: error!.localizedDescription).show()
+                    // Try to re-authenticate if there is an error
+                    self.getProvider(clientVC: caller)
+                } else {
+                    self.deleteData(userID: id)
+                }
+            })
+        }
+    }
+    
+    // finds which authentication method was used
+    static func getProvider(clientVC: UIViewController){
+        if let providerData = Auth.auth().currentUser?.providerData {
+            for userInfo in providerData {
+                switch userInfo.providerID {
+                case "facebook.com":
+                    if let credential = facebookCredential(){
+                        self.reauthenticate(credential: credential)
+                    }
+                case "google.com":
+                    if let credential = googleCredential(){
+                        self.reauthenticate(credential: credential)
+                    }
+                    print("user is signed in with google")
+                case "password":
+                    let alert = UIAlertController(title: "Sign In", message: "Please sign in again to confirm you want to delete all your account data", preferredStyle: .alert)
+                    alert.addTextField { (textField: UITextField) in
+                        textField.placeholder = "Email"
+                    }
+                    alert.addTextField { (textField: UITextField) in
+                        textField.placeholder = "Password"
+                        textField.isSecureTextEntry = true
+                    }
+                    let noAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                    
+                    let yesAction = UIAlertAction(title: "OK", style: .destructive, handler: { (action:UIAlertAction) in
+                        let emailTextField = alert.textFields![0]
+                        let passwordTextField = alert.textFields![1]
+                        
+                        if let credential = self.emailCredential(email: emailTextField.text!, password: passwordTextField.text!){
+                            self.reauthenticate(credential: credential)
+                        }else{
+                            print("error")
+                        }
+                    })
+                    alert.addAction(yesAction)
+                    alert.addAction(noAction)
+                    
+                    clientVC.present(alert, animated: true, completion: nil)
+                default:
+                    print("unknown auth provider")
+                    
+                }
+            }
+        }
+    }
+    
+    static func reauthenticate(credential: AuthCredential){
+        
+        Auth.auth().currentUser?.reauthenticate(with: credential, completion: { (user, error) in
+            if let error = error {
+                print("reauth error \(error.localizedDescription)")
+            } else {
+                print("no reauth error")
+                Auth.auth().currentUser?.delete { error in
+                    if let error = error {
+                        CustomError.createWith(errorTitle: "Reauthenticate User Error", errorMessage: error.localizedDescription).show()
+                    } else {
+                        print("Successfully reauthenticated user")
+                    }
+                }
+            }
+        })
+    }
+    
+    static func facebookCredential() -> AuthCredential? {
+        let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
+        return credential
+    }
+    
+    static func emailCredential(email:String,password:String) -> AuthCredential? {
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        return credential
+    }
+    
+    static func googleCredential() -> AuthCredential? {
+        guard let user = GIDSignIn.sharedInstance().currentUser else {return nil}
+        guard let authentication = user.authentication else {return nil}
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        return credential
+    }
+    
+    // deletes all other data in user's documents and local storage
+    static func deleteData(userID : String){
+        
+        let db = Firestore.firestore()
+        
+        db.collection("cities").document(userID).delete() { error in
+            if let error = error {
+                CustomError.createWith(errorTitle: "Document Removal Error", errorMessage: error.localizedDescription).show()
+            } else {
+                print("Document successfully removed")
+            }
+        }
+        User.clearLocalData()
     }
 
     /*  NOTE: if we put a return statement here, it would execute before most of the

@@ -259,12 +259,21 @@
                         <viewLayoutGuide key="safeArea" id="SNC-IN-Svl"/>
                     </view>
                     <connections>
-                        <outlet property="ManageTable" destination="WxR-3W-9zu" id="ZFx-KJ-ePs"/>
+                        <outlet property="manageTable" destination="WxR-3W-9zu" id="Pbq-Su-vjv"/>
+                        <segue destination="Dlp-Bi-Evv" kind="show" identifier="Delete Account" id="YXv-l9-sO7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pwx-rg-98o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1949" y="-106"/>
+        </scene>
+        <!--LoginRegister-->
+        <scene sceneID="GYN-nx-hJO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LoginRegister" id="Dlp-Bi-Evv" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7aq-ue-Caa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2338" y="-540"/>
         </scene>
         <!--LoginRegister-->
         <scene sceneID="amS-ge-tsN">
