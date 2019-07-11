@@ -85,6 +85,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                     let loginManager = LoginManager()
                     loginManager.logOut()
                 }
+                // removes user data from local storage
+                User.removeUser()
             } catch let signOutError as NSError {
                 print ("Error signing out: %@", signOutError)
             }
