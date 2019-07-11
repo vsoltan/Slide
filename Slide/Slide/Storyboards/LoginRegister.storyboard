@@ -35,10 +35,17 @@
                                 </connections>
                             </button>
                             <stackView verifyAmbiguity="ignoreSizes" opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="yk8-8l-C5c" userLabel="Alt Logins">
-                                <rect key="frame" x="95" y="432" width="185" height="50"/>
+                                <rect key="frame" x="95" y="432" width="185" height="119.99999999999994"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8jI-Wn-CSs">
+                                        <rect key="frame" x="0.0" y="0.0" width="185" height="30"/>
+                                        <state key="normal" title="Sign in with Facebook"/>
+                                        <connections>
+                                            <action selector="facebookLogin:" destination="rjZ-1j-7WL" eventType="touchUpInside" id="hnx-bS-4Dg"/>
+                                        </connections>
+                                    </button>
                                     <view verifyAmbiguity="ignoreSizes" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6EE-Im-l8G" customClass="GIDSignInButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="185" height="50"/>
+                                        <rect key="frame" x="0.0" y="70" width="185" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
@@ -85,14 +92,6 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8jI-Wn-CSs">
-                                <rect key="frame" x="95" y="432" width="185" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Sign in with Facebook"/>
-                                <connections>
-                                    <action selector="facebookLogin:" destination="rjZ-1j-7WL" eventType="touchUpInside" id="hnx-bS-4Dg"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
