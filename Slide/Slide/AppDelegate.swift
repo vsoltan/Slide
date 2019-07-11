@@ -13,7 +13,31 @@ import FBSDKLoginKit
 import Firebase
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate  {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            // TODO: replace with custom error probably
+            print(error.localizedDescription)
+            return
+        } else {
+            guard let authentication = user.authentication else { return }
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+            Auth.auth().signIn(with: credential) { (authResult, error) in
+                if error == nil {
+                    print(authResult?.user.email)
+                    print(authResult?.user.displayName)
+                } else {
+                    // TODO: custom error again...
+                    print(error?.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    // TODO: after making sure Google works at all, consider implementing the other methods (i.e. didDisconnect) provided by the Firebase docs
+    
+    
 
     var window: UIWindow?
 
@@ -21,6 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         
         // use Firebase library to configure APIs
         FirebaseApp.configure()
+        
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
         
         let fbconfig = ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
@@ -43,6 +70,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
             self.window?.makeKeyAndVisible()
         }
         return fbconfig
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+    }
+    
+    // for iOS 8 or older
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

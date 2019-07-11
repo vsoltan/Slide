@@ -127,6 +127,8 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         // creates facebook login button
         let loginButton = FBLoginButton()
         loginButton.delegate = self
+        // for Google login
+        GIDSignIn.sharedInstance()?.uiDelegate = self
         
         // determines layout and renders the button
 //        loginButton.center = view.center
