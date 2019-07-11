@@ -22,6 +22,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb359252934729605</string>
+				<string>com.googleusercontent.apps.851278275557-56irg4hgruflgo1ji7d80q8n9trdv2c1</string>
 			</array>
 		</dict>
 		<dict>
@@ -29,7 +30,8 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.705100307106-3ivsiu3cbvjv2drsihtdbv5nkc8vmblk</string>
+				<string>com.googleusercontent.apps.851278275557-56irg4hgruflgo1ji7d80q8n9trdv2c1
+</string>
 			</array>
 		</dict>
 	</array>

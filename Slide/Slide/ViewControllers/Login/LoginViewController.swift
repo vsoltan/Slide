@@ -128,6 +128,9 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         let loginButton = FBLoginButton()
         loginButton.delegate = self
         
+        // sets Google signin UIdelegate to self
+        GIDSignIn.sharedInstance()?.uiDelegate = self
+        
         // determines layout and renders the button
 //        loginButton.center = view.center
 //        view.addSubview(loginButton)

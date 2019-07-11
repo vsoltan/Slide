@@ -13,7 +13,80 @@ import FBSDKLoginKit
 import Firebase
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate  {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+    
+    // Signin function for Google
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+        if let error = error {
+            CustomError.createWith(errorTitle: "Google Login Error", errorMessage: error.localizedDescription).show()
+            return
+        } else {
+            
+            // Send the user to Google's login system
+            guard let authentication = user.authentication else { return }
+            
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+            
+            Auth.auth().signIn(with: credential) { (authResult, error) in
+                // Successfully logged in with Google
+                if error == nil {
+
+                    let db = Firestore.firestore()
+                    
+                    let userID = Auth.auth().currentUser!.uid
+                    
+                    // creates firestore document for Google user
+                    db.collection("users").document(userID).setData([
+                        // set specified data entries
+                        "Name": authResult?.user.displayName as Any,
+                        "ID": userID,
+                        "Email": authResult?.user.email as Any,
+                    ]) { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                        } else {
+                            print("Document successfully written!")
+                        }
+                    }
+                    
+                    // store Google user's data locally
+                    User.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
+                        if (error != nil) {
+                            print("something went wrong")
+                        } else {
+                            // print results to console and take user to Home
+                            print(authResult?.user.email as Any)
+                            print(authResult?.user.displayName as Any)
+                            
+                            // initializes the container for the view controller
+                            self.window = UIWindow(frame: UIScreen.main.bounds)
+                            
+                            // specifies the destination and creates an instance of that view controller
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let initialViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                            
+                            // sets the root view controller to the desination and renders it
+                            self.window?.rootViewController = initialViewController
+                            let currusr = Auth.auth().currentUser
+                            User.getUser(userID: currusr!.uid) { (error) in}
+                            self.window?.makeKeyAndVisible()
+                        }
+                    })
+                }
+                // Failed
+                else {
+                    print(error?.localizedDescription as Any)
+                    CustomError.createWith(errorTitle: "Google Authentication Error", errorMessage: error!.localizedDescription).show()
+                }
+            }
+            
+        }
+    }
+    
+    // TODO: after making sure Google works at all, consider implementing the other methods (i.e. didDisconnect) provided by the Firebase docs
+    
+    
 
     var window: UIWindow?
 
@@ -21,6 +94,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         
         // use Firebase library to configure APIs
         FirebaseApp.configure()
+        
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
         
         let fbconfig = ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
@@ -43,6 +119,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
             self.window?.makeKeyAndVisible()
         }
         return fbconfig
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+    }
+    
+    // for iOS 8 or older
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
