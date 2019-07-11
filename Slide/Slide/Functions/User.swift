@@ -65,6 +65,15 @@ class User {
             }
         }
     }
+    
+    // Clear UserDefaults
+    static func removeUser() {
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.localEmail.rawValue)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.localID.rawValue)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.localName.rawValue)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.localGroups.rawValue)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.localPhone.rawValue)
+    }
 
     /*  NOTE: if we put a return statement here, it would execute before most of the
         code after the call to the getDocument method, therefore, nameData wouldn't get
@@ -106,7 +115,7 @@ extension UserDefaults {
         return string(forKey: UserDefaultsKeys.localID.rawValue)!
     }
     
-    // set and retrieve localGroup
+    // set and retrieve localName
     func setGroup(value: String){
         set(value, forKey: UserDefaultsKeys.localName.rawValue)
     }
