@@ -86,11 +86,8 @@ class User {
                     CustomError.createWith(errorTitle: "Delete User Error", errorMessage: error!.localizedDescription).show()
                     // Try to re-authenticate if there is an error
                     self.getProvider(clientVC: caller)
-                } else {
-                    self.deleteData(userID: id)
-                    print("WHat's up")
                 }
-                
+                self.deleteData(userID: id)
             })
         }
     }
@@ -182,7 +179,7 @@ class User {
         
         let db = Firestore.firestore()
         
-        db.collection("cities").document(userID).delete() { error in
+        db.collection("users").document(userID).delete() { error in
             if let error = error {
                 CustomError.createWith(errorTitle: "Document Removal Error", errorMessage: error.localizedDescription).show()
             } else {
