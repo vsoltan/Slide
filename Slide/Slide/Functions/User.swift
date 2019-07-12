@@ -88,7 +88,9 @@ class User {
                     self.getProvider(clientVC: caller)
                 } else {
                     self.deleteData(userID: id)
+                    print("WHat's up")
                 }
+                
             })
         }
     }

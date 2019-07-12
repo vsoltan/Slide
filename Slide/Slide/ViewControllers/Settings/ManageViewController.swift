@@ -49,7 +49,7 @@ class ManageViewController: UIViewController, UITableViewDataSource, UITableView
         let myGroup = DispatchGroup()
 
         // delete account
-        if (indexPath.row == 1) {
+        if (indexPath.row == 0) {
             myGroup.enter()
             
             User.deleteUser(caller: self)
@@ -64,12 +64,13 @@ class ManageViewController: UIViewController, UITableViewDataSource, UITableView
         let tabs = ["Delete Account"]
         
         // executes the segue corresponding to the tab selected
-        if let index = tabs.firstIndex(of: segueLabel) {
-            myGroup.notify(queue: .main) {
-                self.performSegue(withIdentifier: segueLabel, sender: self)
-                print(index) // make compiler happy
-            }
-        }
+//        if let index = tabs.firstIndex(of: segueLabel) {
+//            myGroup.wait()
+//            myGroup.notify(queue: .main) {
+//                self.performSegue(withIdentifier: segueLabel, sender: self)
+//                print(index) // make compiler happy
+//            }
+//        }
     }
     
     /*
