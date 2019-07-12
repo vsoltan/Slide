@@ -66,13 +66,13 @@ class User {
         }
     }
     
-    // Clear UserDefaults
+    // clear UserDefaults
     static func removeUser() {
-        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.localEmail.rawValue)
-        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.localID.rawValue)
-        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.localName.rawValue)
-        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.localGroups.rawValue)
-        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.localPhone.rawValue)
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
     }
 
     /*  NOTE: if we put a return statement here, it would execute before most of the
@@ -87,7 +87,7 @@ class User {
     
 }
 
-// Contains "fields" for UserDefaults
+// contains "fields" for UserDefaults
 enum UserDefaultsKeys : String {
     case localEmail
     case localID
