@@ -88,6 +88,12 @@ class User {
                     self.getProvider(clientVC: caller)
                 }
                 self.deleteData(userID: id)
+                
+                let mySB = UIStoryboard(name: "LoginRegister", bundle: nil)
+                let next = mySB.instantiateViewController(withIdentifier: "LoginViewController")
+
+                caller.present(next, animated: true, completion: nil)
+                print("Accomplished!")
             })
         }
     }
