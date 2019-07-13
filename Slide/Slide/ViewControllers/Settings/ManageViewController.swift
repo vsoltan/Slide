@@ -46,15 +46,9 @@ class ManageViewController: UIViewController, UITableViewDataSource, UITableView
         // if a row is clicked, unclick and give it a fade out animation
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let myGroup = DispatchGroup()
-
-        // delete account
+        // check if Delete Account was clicked
         if (indexPath.row == 0) {
-            myGroup.enter()
-            
             User.deleteUser(caller: self)
-            
-            myGroup.leave()
         }
         
         // determines what page to segue to based on which cell is clicked
@@ -63,14 +57,6 @@ class ManageViewController: UIViewController, UITableViewDataSource, UITableView
         // array of all actionable pages
         let tabs = ["Delete Account"]
         
-        // executes the segue corresponding to the tab selected
-//        if let index = tabs.firstIndex(of: segueLabel) {
-//            myGroup.wait()
-//            myGroup.notify(queue: .main) {
-//                self.performSegue(withIdentifier: segueLabel, sender: self)
-//                print(index) // make compiler happy
-//            }
-//        }
     }
     
     /*
