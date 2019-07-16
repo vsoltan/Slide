@@ -84,7 +84,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         }
     }
     
-    // TODO: after making sure Google works at all, consider implementing the other methods (i.e. didDisconnect) provided by the Firebase docs
+    // Finished disconnecting user from app if error is null
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        if error != nil {
+            CustomError.createWith(errorTitle: "Google Signout Error", errorMessage: error!.localizedDescription).show()
+        } else {
+            print("Successfully disconnected user from Slide")
+        }
+    }
     
     var window: UIWindow?
 
