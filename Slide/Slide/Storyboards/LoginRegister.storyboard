@@ -37,7 +37,7 @@
                             <stackView verifyAmbiguity="ignoreSizes" opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="yk8-8l-C5c" userLabel="Alt Logins">
                                 <rect key="frame" x="95" y="432" width="185" height="119.99999999999994"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8jI-Wn-CSs">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8jI-Wn-CSs" customClass="FBSDKLoginButton">
                                         <rect key="frame" x="0.0" y="0.0" width="185" height="30"/>
                                         <state key="normal" title="Sign in with Facebook"/>
                                         <connections>
