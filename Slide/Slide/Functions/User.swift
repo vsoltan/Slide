@@ -8,6 +8,8 @@
 
 import Foundation
 import Firebase
+import FBSDKCoreKit
+import GoogleSignIn
 
 // an interface between the database and the user
 class User {
@@ -31,7 +33,7 @@ class User {
         }
     }
     
-    // parses through the user's doc tree and finds their name
+    // downloads user data to local storage
     static func getUser(userID: String, completionHandler: @escaping (Error?) -> Void) {
         // thread deployed to interact with database
         self.getDocument(currentUserID: userID) { (userData, error) in
@@ -67,18 +69,149 @@ class User {
     }
     
     // clear UserDefaults
-    static func removeUser() {
+    static func clearLocalData() {
         let defaults = UserDefaults.standard
         let dictionary = defaults.dictionaryRepresentation()
         dictionary.keys.forEach { key in
             defaults.removeObject(forKey: key)
         }
     }
-
-    /*  NOTE: if we put a return statement here, it would execute before most of the
-        code after the call to the getDocument method, therefore, nameData wouldn't get
-        initialized...which is why we kept getting nil
-    */
+    
+    // delete user
+    static func deleteUser(caller: UIViewController) {
+        
+        if let user = Auth.auth().currentUser {
+            let id = user.uid
+            // attempt to delete
+            user.delete(completion: { (error) in
+                // reauthenticate if user hasn't authenticated in a hot second
+                if (error != nil) {
+                    self.getProvider(clientVC: caller)
+                }
+                // clear user's database data
+                self.deleteData(userID: id)
+                
+                // segue into LoginViewController
+                let mySB = UIStoryboard(name: "LoginRegister", bundle: nil)
+                let next = mySB.instantiateViewController(withIdentifier: "LoginViewController")
+                caller.present(next, animated: true, completion: nil)
+            })
+        }
+    }
+    
+    // TODO: replace error messages with CustomError
+    // finds which authentication method was used
+    static func getProvider(clientVC: UIViewController){
+    
+        if let providerData = Auth.auth().currentUser?.providerData {
+            // reauthenticate for every auth. method linked to user account
+            for userInfo in providerData {
+                switch userInfo.providerID {
+                case "facebook.com":
+                    if let credential = facebookCredential(){
+                        self.reauthenticate(credential: credential)
+                    }
+                case "google.com":
+                    if let credential = googleCredential(){
+                        self.reauthenticate(credential: credential)
+                    }
+                    print("user is signed in with google")
+                case "password":
+                    // prompt user to reenter login information
+                    let alert = UIAlertController(title: "Sign In", message: "Please sign in again to confirm you want to delete all your account data", preferredStyle: .alert)
+                    alert.addTextField { (textField: UITextField) in
+                        textField.placeholder = "Email"
+                    }
+                    alert.addTextField { (textField: UITextField) in
+                        textField.placeholder = "Password"
+                        textField.isSecureTextEntry = true
+                    }
+                    // button for user to cancel
+                    let noAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                    
+                    // button for user to confirm
+                    let yesAction = UIAlertAction(title: "OK", style: .destructive, handler: { (action:UIAlertAction) in
+                        let emailTextField = alert.textFields![0]
+                        let passwordTextField = alert.textFields![1]
+                        
+                        //TODO: this is generic code. Match up with our login method
+                        // check if user login makes sense
+                        if let credential = self.emailCredential(email: emailTextField.text!, password: passwordTextField.text!){
+                            self.reauthenticate(credential: credential)
+                        } else {
+                            print("error")
+                        }
+                    })
+                    // create the buttons on the prompt
+                    alert.addAction(yesAction)
+                    alert.addAction(noAction)
+                    
+                    // create the prompt
+                    clientVC.present(alert, animated: true, completion: nil)
+                
+                // couldn't find auth method
+                default:
+                    print("unknown auth provider")
+                    
+                }
+            }
+        }
+    }
+    
+    // reauthenticate user using provided credential
+    static func reauthenticate(credential: AuthCredential){
+        
+        Auth.auth().currentUser?.reauthenticate(with: credential, completion: { (user, error) in
+            if let error = error {
+                print("reauth error \(error.localizedDescription)")
+            } else {
+                print("no reauth error")
+                // reattempt deletion
+                Auth.auth().currentUser?.delete { error in
+                    if let error = error {
+                        CustomError.createWith(errorTitle: "Reauthenticate User Error", errorMessage: error.localizedDescription).show()
+                    } else {
+                        print("Successfully reauthenticated user")
+                    }
+                }
+            }
+        })
+    }
+    
+    // get facebook credential
+    static func facebookCredential() -> AuthCredential? {
+        let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
+        return credential
+    }
+    
+    // get email-password credendial
+    static func emailCredential(email:String,password:String) -> AuthCredential? {
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        return credential
+    }
+    
+    // get google credential
+    static func googleCredential() -> AuthCredential? {
+        guard let user = GIDSignIn.sharedInstance().currentUser else {return nil}
+        guard let authentication = user.authentication else {return nil}
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        return credential
+    }
+    
+    // deletes all other data in user's documents and local storage
+    static func deleteData(userID : String){
+        
+        let db = Firestore.firestore()
+        
+        db.collection("users").document(userID).delete() { error in
+            if let error = error {
+                CustomError.createWith(errorTitle: "Document Removal Error", errorMessage: error.localizedDescription).show()
+            } else {
+                print("Document successfully removed")
+            }
+        }
+        User.clearLocalData()
+    }
     
     // explicit return type because every user has to have an email
     static func getEmail() -> String {

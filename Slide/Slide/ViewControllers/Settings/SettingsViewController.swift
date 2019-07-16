@@ -97,9 +97,18 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             // end the user session in firebase
             do {
                 try firebaseAuth.signOut()
-                // clear user defaults
-                User.removeUser()
-                
+                if (firebaseAuth.currentUser == nil) {
+                    print ("Successfully signed out!")
+                }
+                // checks if the user logged in using facebook
+                if AccessToken.current != nil {
+                    print("we got em")
+                    let loginManager = LoginManager()
+                    loginManager.logOut()
+                }
+                // removes user data from local storage
+                User.clearLocalData()
+            
             } catch let signOutError as NSError {
                 print ("Error signing out: %@", signOutError)
             }
