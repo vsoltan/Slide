@@ -16,14 +16,22 @@ class ManageViewController: UIViewController, UITableViewDataSource, UITableView
     // sections of the table
     let manageArray = ["Delete Account"]
     
+    @IBOutlet weak var manageTable: UITableView!
     
-    @IBOutlet weak var ManageTable: UITableView!
+    // initialization
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        manageTable.dataSource = self
+        manageTable.delegate = self
+    }
     
+    // returns the number of cells in each section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //place holder
         return 1
     }
 
+    // creates the labels in the table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // retrieves a cell from the table given the index
         let cell = tableView.dequeueReusableCell(withIdentifier: "ManageItem", for: indexPath)
@@ -32,10 +40,23 @@ class ManageViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    // cell activation handler
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // if a row is clicked, unclick and give it a fade out animation
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        // check if Delete Account was clicked
+        if (indexPath.row == 0) {
+            User.deleteUser(caller: self)
+        }
+        
+        // determines what page to segue to based on which cell is clicked
+        let segueLabel = manageArray[indexPath.row]
+        
+        // array of all actionable pages
+        let tabs = ["Delete Account"]
+        
     }
     
     /*

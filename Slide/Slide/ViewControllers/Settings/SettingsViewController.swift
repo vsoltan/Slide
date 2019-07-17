@@ -12,6 +12,7 @@ import FirebaseAuth
 import FirebaseCore
 import FirebaseFirestore
 import FBSDKLoginKit
+import GoogleSignIn
 
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -74,6 +75,26 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         // log out
         if (indexPath.section == 2 && indexPath.row == 3 ) {
             let firebaseAuth = Auth.auth()
+            
+            // check the provider
+            if let providerData = firebaseAuth.currentUser?.providerData {
+                for userInfo in providerData {
+                    switch userInfo.providerID {
+                        // the user logged in using Facebook
+                        case "facebook.com":
+                            let loginManager = LoginManager()
+                            loginManager.logOut()
+                        
+                        // the user logged in using Google
+                        case "google.com":
+                            GIDSignIn.sharedInstance()?.signOut()
+                        default:
+                            print("provider is \(userInfo.providerID)")
+                    }
+                }
+            }
+            
+            // end the user session in firebase
             do {
                 try firebaseAuth.signOut()
                 if (firebaseAuth.currentUser == nil) {
@@ -85,10 +106,12 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                     let loginManager = LoginManager()
                     loginManager.logOut()
                 }
+                // removes user data from local storage
+                User.clearLocalData()
+            
             } catch let signOutError as NSError {
                 print ("Error signing out: %@", signOutError)
             }
-            
         }
         
         // determines what page to segue to based on which cell is clicked

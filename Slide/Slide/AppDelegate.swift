@@ -15,42 +15,44 @@ import Firebase
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
-    // Signin function for Google
+    // sign in function for Google
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        
         if let error = error {
             CustomError.createWith(errorTitle: "Google Login Error", errorMessage: error.localizedDescription).show()
             return
         } else {
             
-            // Send the user to Google's login system
+            // send the user to google's login system
             guard let authentication = user.authentication else { return }
             
+            // login token linked to the specified google acount
             let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
             
+            // use the token to sign into firebase
             Auth.auth().signIn(with: credential) { (authResult, error) in
-                // Successfully logged in with Google
-                if error == nil {
-
-                    let db = Firestore.firestore()
-                    
-                    let userID = Auth.auth().currentUser!.uid
-                    
-                    // creates firestore document for Google user
-                    db.collection("users").document(userID).setData([
-                        // set specified data entries
-                        "Name": authResult?.user.displayName as Any,
-                        "ID": userID,
-                        "Email": authResult?.user.email as Any,
-                    ]) { err in
-                        if let err = err {
-                            print("Error writing document: \(err)")
-                        } else {
-                            print("Document successfully written!")
+                if (error == nil) {
+                    // the user was just created
+                    if ((authResult?.additionalUserInfo!.isNewUser)!) {
+                        // reference to the database
+                        let db = Firestore.firestore()
+                        let userID = Auth.auth().currentUser!.uid
+                        
+                        // creates firestore document for google user
+                        db.collection("users").document(userID).setData([
+                            // set specified data entries
+                            "Name": authResult?.user.displayName as Any,
+                            "ID": userID,
+                            "Email": authResult?.user.email as Any,
+                        ]) { err in
+                            if let err = err {
+                                print("Error writing document: \(err)")
+                            } else {
+                                print("Document successfully written!")
+                            }
                         }
                     }
                     
-                    // store Google user's data locally
+                    // store google user's data locally
                     User.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
                         if (error != nil) {
                             print("something went wrong")
@@ -68,13 +70,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                             
                             // sets the root view controller to the desination and renders it
                             self.window?.rootViewController = initialViewController
-                            let currusr = Auth.auth().currentUser
-                            User.getUser(userID: currusr!.uid) { (error) in}
                             self.window?.makeKeyAndVisible()
                         }
                     })
                 }
-                // Failed
+                // failed
                 else {
                     print(error?.localizedDescription as Any)
                     CustomError.createWith(errorTitle: "Google Authentication Error", errorMessage: error!.localizedDescription).show()
@@ -93,8 +93,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         }
     }
     
-    
-
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

@@ -18,16 +18,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // welcome page displays the user's name
         nameLabel.text = UserDefaults.standard.getName()
-        
-        // sets nameLabel with side effect of loading user data into UserDefaults for persistance across app
-//        User.getUser(userID: Auth.auth().currentUser!.uid) { (error) in
-//            if error != nil {
-//                print("\(error!)")
-//            } else {
-//                self.nameLabel.text = UserDefaults.standard.getName()
-//            }
-//        }
     }
 }
 
