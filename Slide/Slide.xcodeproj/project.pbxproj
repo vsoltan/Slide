@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		048F56E622DEDAAF00B59402 /* FaceBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048F56E522DEDAAF00B59402 /* FaceBookViewController.swift */; };
 		04F596E022A8540D004AA63A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F596DF22A8540D004AA63A /* AppDelegate.swift */; };
 		04F596E222A8540D004AA63A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F596E122A8540D004AA63A /* HomeViewController.swift */; };
 		04F596E722A8540F004AA63A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F596E622A8540F004AA63A /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		01566259063A6F98051587FA /* Pods_Slide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Slide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		048F56E522DEDAAF00B59402 /* FaceBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceBookViewController.swift; sourceTree = "<group>"; };
 		04F596DC22A8540D004AA63A /* Slide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F596DF22A8540D004AA63A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04F596E122A8540D004AA63A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				04F9B36822BDA6BC00D87528 /* PasswordViewController.swift */,
 				E7F6370D22CCF617009B24C4 /* AccountsViewController.swift */,
 				E70FB49B22CFF58A0052485F /* PhoneNumViewController.swift */,
+				048F56E522DEDAAF00B59402 /* FaceBookViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				04F9B37522CFD8D600D87528 /* CreateViewController.swift in Sources */,
 				98D2721722C478D600E300FE /* ReceivedViewController.swift in Sources */,
 				04F596E222A8540D004AA63A /* HomeViewController.swift in Sources */,
+				048F56E622DEDAAF00B59402 /* FaceBookViewController.swift in Sources */,
 				9867CCE922BD47F800B6F14B /* GenerationViewController.swift in Sources */,
 				E7F6370E22CCF617009B24C4 /* AccountsViewController.swift in Sources */,
 				04F9B36922BDA6BC00D87528 /* PasswordViewController.swift in Sources */,
