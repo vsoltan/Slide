@@ -15,6 +15,9 @@
 		04F9B37122CD24C600D87528 /* Groups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F9B37022CD24C600D87528 /* Groups.storyboard */; };
 		04F9B37322CD49D200D87528 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F9B37222CD49D200D87528 /* GroupsViewController.swift */; };
 		04F9B37522CFD8D600D87528 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F9B37422CFD8D600D87528 /* CreateViewController.swift */; };
+		0D08E33422EB5575009EAA68 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D08E33322EB5575009EAA68 /* ContactsViewController.swift */; };
+		0D08E33622EB5C97009EAA68 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D08E33522EB5C97009EAA68 /* ContactViewController.swift */; };
+		0D08E33822EB5DA0009EAA68 /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D08E33722EB5DA0009EAA68 /* BrowserViewController.swift */; };
 		9807A69D22C5618E00627887 /* Received.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9807A69C22C5618E00627887 /* Received.storyboard */; };
 		9807A6A122C5929000627887 /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9807A6A022C5929000627887 /* SyncViewController.swift */; };
 		9867CCE722B9BB8400B6F14B /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9867CCE622B9BB8400B6F14B /* CustomError.swift */; };
@@ -61,6 +64,9 @@
 		04F9B37022CD24C600D87528 /* Groups.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Groups.storyboard; sourceTree = "<group>"; };
 		04F9B37222CD49D200D87528 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		04F9B37422CFD8D600D87528 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
+		0D08E33322EB5575009EAA68 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		0D08E33522EB5C97009EAA68 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		0D08E33722EB5DA0009EAA68 /* BrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
 		0D3496B522BDC10800891BDD /* Slide.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Slide.entitlements; sourceTree = "<group>"; };
 		6307111C166CE8B76E78A8BC /* Pods-Slide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slide.release.xcconfig"; path = "Target Support Files/Pods-Slide/Pods-Slide.release.xcconfig"; sourceTree = "<group>"; };
 		9807A69C22C5618E00627887 /* Received.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Received.storyboard; sourceTree = "<group>"; };
@@ -176,6 +182,9 @@
 				98B3848322B482950097A073 /* QRScannerViewController.swift */,
 				9867CCE822BD47F800B6F14B /* GenerationViewController.swift */,
 				98C55E6522C171FA00B16A14 /* MediaSelectionViewController.swift */,
+				0D08E33322EB5575009EAA68 /* ContactsViewController.swift */,
+				0D08E33522EB5C97009EAA68 /* ContactViewController.swift */,
+				0D08E33722EB5DA0009EAA68 /* BrowserViewController.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -413,9 +422,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				98B3A47222A9ED73005FBCF2 /* LoginViewController.swift in Sources */,
+				0D08E33822EB5DA0009EAA68 /* BrowserViewController.swift in Sources */,
+				0D08E33422EB5575009EAA68 /* ContactsViewController.swift in Sources */,
 				98B3848422B482950097A073 /* QRScannerViewController.swift in Sources */,
 				98D2721522C183B600E300FE /* EncodedMedia.swift in Sources */,
 				98B3847422B1C0260097A073 /* User.swift in Sources */,
+				0D08E33622EB5C97009EAA68 /* ContactViewController.swift in Sources */,
 				9867CCE722B9BB8400B6F14B /* CustomError.swift in Sources */,
 				E70FB49C22CFF58A0052485F /* PhoneNumViewController.swift in Sources */,
 				98E9D6D822CAC501009A0968 /* SwipeRight.swift in Sources */,
