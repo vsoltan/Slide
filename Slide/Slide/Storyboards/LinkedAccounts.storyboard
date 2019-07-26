@@ -80,6 +80,7 @@
                         <outlet property="accountsTable" destination="SaX-YZ-wOE" id="Ib6-Ey-1Zg"/>
                         <segue destination="bzN-EW-kMB" kind="show" identifier="Phone Number" id="RjH-Sa-gWE"/>
                         <segue destination="94t-i8-1E8" kind="show" identifier="Facebook" id="Hqt-Ls-cda"/>
+                        <segue destination="WR9-eB-8CC" kind="show" identifier="Snapchat" id="DfJ-cH-Cc8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Cn-Aj-UA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -160,6 +161,48 @@
             </objects>
             <point key="canvasLocation" x="-307.24637681159425" y="-27.455357142857142"/>
         </scene>
+        <!--Snapchat-->
+        <scene sceneID="S6e-ZF-uAt">
+            <objects>
+                <viewController title="Snapchat" id="WR9-eB-8CC" customClass="SnapchatViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HHz-cB-7YZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flt-kM-iJy">
+                                <rect key="frame" x="155.5" y="61" width="103" height="28"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Snapchat">
+                                        <attributes>
+                                            <font key="NSFont" size="24" name="AppleSymbols"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CM2-1s-PwM">
+                                <rect key="frame" x="20" y="59" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="Blx-y4-GzP" kind="show" id="mDh-a4-LNa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="flt-kM-iJy" firstAttribute="centerX" secondItem="HHz-cB-7YZ" secondAttribute="centerX" id="0M5-bV-ZNF"/>
+                            <constraint firstItem="flt-kM-iJy" firstAttribute="top" secondItem="nqR-zA-so7" secondAttribute="top" constant="17" id="9ql-HR-Mep"/>
+                            <constraint firstItem="CM2-1s-PwM" firstAttribute="leading" secondItem="HHz-cB-7YZ" secondAttribute="leading" constant="20" id="wxf-fY-QoT"/>
+                            <constraint firstItem="CM2-1s-PwM" firstAttribute="top" secondItem="nqR-zA-so7" secondAttribute="top" constant="15" id="yAr-rO-qYD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nqR-zA-so7"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xKZ-9i-np4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1235" y="700"/>
+        </scene>
         <!--Facebook-->
         <scene sceneID="1OC-F4-vns">
             <objects>
@@ -175,11 +218,25 @@
                                     <segue destination="Blx-y4-GzP" kind="show" id="F2g-U0-YBO"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FaY-y1-UxC">
+                                <rect key="frame" x="153.5" y="61" width="107" height="28"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Facebook">
+                                        <attributes>
+                                            <font key="NSFont" size="24" name="AppleSymbols"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="FaY-y1-UxC" firstAttribute="centerX" secondItem="Gs3-AO-ant" secondAttribute="centerX" id="HIC-ps-Ea3"/>
                             <constraint firstItem="tq6-lz-MMG" firstAttribute="leading" secondItem="tnT-9L-ebR" secondAttribute="leading" constant="20" id="O83-HY-xh2"/>
                             <constraint firstItem="tq6-lz-MMG" firstAttribute="top" secondItem="tnT-9L-ebR" secondAttribute="top" constant="15" id="lH7-ga-hRJ"/>
+                            <constraint firstItem="FaY-y1-UxC" firstAttribute="top" secondItem="tnT-9L-ebR" secondAttribute="top" constant="17" id="lqw-CK-tN7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tnT-9L-ebR"/>
                     </view>
@@ -190,6 +247,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="F2g-U0-YBO"/>
+        <segue reference="mDh-a4-LNa"/>
     </inferredMetricsTieBreakers>
 </document>

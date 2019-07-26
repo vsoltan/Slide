@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		048F56E622DEDAAF00B59402 /* FaceBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048F56E522DEDAAF00B59402 /* FaceBookViewController.swift */; };
+		048F56E822EAA97100B59402 /* SnapchatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048F56E722EAA97100B59402 /* SnapchatViewController.swift */; };
 		04F596E022A8540D004AA63A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F596DF22A8540D004AA63A /* AppDelegate.swift */; };
 		04F596E222A8540D004AA63A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F596E122A8540D004AA63A /* HomeViewController.swift */; };
 		04F596E722A8540F004AA63A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F596E622A8540F004AA63A /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 /* Begin PBXFileReference section */
 		01566259063A6F98051587FA /* Pods_Slide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Slide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		048F56E522DEDAAF00B59402 /* FaceBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceBookViewController.swift; sourceTree = "<group>"; };
+		048F56E722EAA97100B59402 /* SnapchatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SnapchatViewController.swift; path = Slide/ViewControllers/Settings/SnapchatViewController.swift; sourceTree = SOURCE_ROOT; };
 		04F596DC22A8540D004AA63A /* Slide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F596DF22A8540D004AA63A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04F596E122A8540D004AA63A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				E7F6370D22CCF617009B24C4 /* AccountsViewController.swift */,
 				E70FB49B22CFF58A0052485F /* PhoneNumViewController.swift */,
 				048F56E522DEDAAF00B59402 /* FaceBookViewController.swift */,
+				048F56E722EAA97100B59402 /* SnapchatViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				98B3A46E22A9E878005FBCF2 /* TextFieldParser.swift in Sources */,
 				04F9B37322CD49D200D87528 /* GroupsViewController.swift in Sources */,
 				98B3A46722A9DD7F005FBCF2 /* SettingsViewController.swift in Sources */,
+				048F56E822EAA97100B59402 /* SnapchatViewController.swift in Sources */,
 				98E9D6D522CAB7BE009A0968 /* SwipeLeft.swift in Sources */,
 				98B3847822B2FCE90097A073 /* GenerateQR.swift in Sources */,
 				98B3A45722A8C9D7005FBCF2 /* RegisterViewController.swift in Sources */,
