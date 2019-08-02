@@ -52,21 +52,10 @@ class ManageViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
         // determines what page to segue to based on which cell is clicked
-        let segueLabel = manageArray[indexPath.row]
+        _ = manageArray[indexPath.row]
         
         // array of all actionable pages
-        let tabs = ["Delete Account"]
+        _ = ["Delete Account"]
         
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
