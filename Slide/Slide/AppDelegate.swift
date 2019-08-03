@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     }
                     
                     // store google user's data locally
-                    User.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
+                    SlideUser.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
                         if (error != nil) {
                             print("something went wrong")
                         } else {
@@ -120,7 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             // sets the root view controller to the desination and renders it
             self.window?.rootViewController = initialViewController
 
-            User.getUser(userID: currusr!.uid) { (error) in}
+            SlideUser.getUser(userID: currusr!.uid) { (error) in}
             self.window?.makeKeyAndVisible()
         }
         return fbconfig

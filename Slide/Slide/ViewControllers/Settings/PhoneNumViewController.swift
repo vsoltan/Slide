@@ -18,45 +18,69 @@ class PhoneNumViewController: UIViewController {
     // if on the app can use the user's phone number as part of their slide
     @IBOutlet weak var userPermission: UISwitch!
     
+    // prepare doc for modifications
+    let db = Firestore.firestore().collection("users").document(Auth.auth().currentUser!.uid)
+    
     @IBAction func phoneModified(_ sender: Any) {
         // checks that the phone is provided in the proper format
-        if ((setPhone.text)?.isValidatePhoneNumber() == false) {
-            CustomError.createWith(errorTitle: "Poorly Formated Number", errorMessage: "enter a number like XXX-XXX-XXXX").show()
-            return
-        }
-        
-        // if the user authorizes us to work with their number
-        if (userPermission.isOn) {
-            let currPhone = UserDefaults.standard.getPhoneNumber()
-            let passedData = setPhone.text!
-            let db = Firestore.firestore().collection("users").document(Auth.auth().currentUser!.uid)
-            
-            // phoneNumber hasn't been set yet
-            if (currPhone == nil) {
-                // create a new document for the user
-                db.setData([
-                    // set specified data entries
-                    "Phone": passedData,
-                ], merge: true) { err in
-                    if let err = err {
-                        print("Error writing document: \(err)")
-                    } else {
-                        print("Document successfully written!")
+        if (checkFormat()) {
+            // if the user authorizes the app to work with their number
+            if (userPermission.isOn) {
+                let currPhone = UserDefaults.standard.getPhoneNumber()
+                let passedData = setPhone.text!
+                
+                // phoneNumber hasn't been set yet
+                if (currPhone == nil) {
+                    // create a new document for the user
+                    db.setData([
+                        // set specified data entries
+                        "Phone": passedData,
+                    ], merge: true) { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                        } else {
+                            print("Document successfully written!")
+                        }
                     }
                 }
-            }
-            if (setPhone.text != currPhone) {
-                UserDefaults.standard.setPhoneNumber(value: setPhone.text!)
-                db.updateData([
-                    "Phone": passedData,
+                if (setPhone.text != currPhone) {
+                    UserDefaults.standard.setPhoneNumber(value: setPhone.text!)
+                    db.updateData([
+                        "Phone": passedData,
                     ])
+                }
             }
-        } else {
-            // TODO grey out the options so the user cannot interact with them
-            print("user has to give permission")
-            return
+        }
+        return
+    }
+    
+    @IBAction func goBack(_ sender: Any) {
+        // make modification in background
+        if (userPermission.isOn == false) {
+            print("this is happening")
+            UserDefaults.standard.setPhoneNumber(value: nil)
+            db.updateData([
+                "Phone": FieldValue.delete(),
+            ]) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
         }
     }
+
+    func checkFormat() -> Bool {
+        let result = (setPhone.text)?.isValidPhoneNumber()
+        if (result! == false) {
+            CustomError.createWith(errorTitle: "Poorly Formated Number", errorMessage: "enter a number like XXX-XXX-XXXX").show()
+        }
+        return result!
+    }
+    
+    // TODO
+    // create an action for the switch that grays out the options for phone input
     
     override func viewDidLoad() {
         super.viewDidLoad()

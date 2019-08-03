@@ -56,7 +56,7 @@ class RegisterViewController: UIViewController {
                         }
                     }
                     // possible optimization: pass the registration data to defaults as it's being added to the database
-                    User.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
+                    SlideUser.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
                         if (error != nil) {
                             print("something went wrong")
                         } else {

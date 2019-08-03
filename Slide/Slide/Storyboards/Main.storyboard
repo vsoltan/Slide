@@ -26,23 +26,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create A Custom Slide!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lns-s1-0YQ">
-                                <rect key="frame" x="99.000000000000014" y="61.000000000000007" width="177.33333333333337" height="20.333333333333336"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqE-3G-ftr">
                                 <rect key="frame" x="313" y="716" width="22" height="22"/>
                                 <connections>
                                     <segue destination="PR1-od-sZB" kind="show" id="tWq-5o-dMb"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create A Custom Slide!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lns-s1-0YQ">
+                                <rect key="frame" x="75" y="61.000000000000007" width="225" height="20.333333333333336"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="lns-s1-0YQ" firstAttribute="centerX" secondItem="Hcr-b9-pgp" secondAttribute="centerX" id="Afx-45-glU"/>
+                            <constraint firstItem="cDT-se-s2C" firstAttribute="trailing" secondItem="lns-s1-0YQ" secondAttribute="trailing" constant="75" id="Utz-3X-GPl"/>
+                            <constraint firstItem="lns-s1-0YQ" firstAttribute="leading" secondItem="cDT-se-s2C" secondAttribute="leading" constant="75" id="XHQ-EW-Cxi"/>
                             <constraint firstItem="lns-s1-0YQ" firstAttribute="top" secondItem="cDT-se-s2C" secondAttribute="top" constant="17" id="hh3-L6-dii"/>
                             <constraint firstItem="cDT-se-s2C" firstAttribute="trailing" secondItem="bqE-3G-ftr" secondAttribute="trailing" constant="40" id="vry-YW-X0A"/>
                             <constraint firstItem="cDT-se-s2C" firstAttribute="bottom" secondItem="bqE-3G-ftr" secondAttribute="bottom" constant="40" id="yLB-xd-RYv"/>
@@ -71,7 +73,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan to Share!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFC-nX-T4J">
-                                <rect key="frame" x="131.66666666666666" y="61.000000000000007" width="111.66666666666666" height="20.333333333333336"/>
+                                <rect key="frame" x="131.66666666666666" y="60.999999999999993" width="112" height="20.666666666666664"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -126,18 +128,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Media" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXY-Cz-Vms">
-                                <rect key="frame" x="112" y="61" width="151" height="32.333333333333343"/>
+                                <rect key="frame" x="112" y="61" width="151" height="32.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKH-ay-zuv">
-                                <rect key="frame" x="148" y="679" width="78" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Done"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bc-HO-46n">
-                                <rect key="frame" x="148" y="679" width="78" height="42"/>
+                                <rect key="frame" x="148" y="676" width="78" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
@@ -146,17 +143,26 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="sXY-Cz-Vms" firstAttribute="top" secondItem="yXP-PY-5Mh" secondAttribute="top" constant="17" id="dlt-EX-xgs"/>
                             <constraint firstItem="sXY-Cz-Vms" firstAttribute="centerX" secondItem="BUy-uG-tWk" secondAttribute="centerX" id="iyj-Qd-v64"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yXP-PY-5Mh"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="vXw-1O-3v0" appends="YES" id="zUh-zE-pvw"/>
+                        </connections>
                     </view>
                     <connections>
                         <segue destination="KOy-JS-FTF" kind="presentation" identifier="toQRCodeView" id="Xdp-eM-7We"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZYx-Ay-i0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="vXw-1O-3v0">
+                    <connections>
+                        <segue destination="geV-7T-qZd" kind="custom" customClass="SwipeRight" customModule="Slide" customModuleProvider="target" id="TGd-0r-vSG"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="45.600000000000001" y="730.78817733990149"/>
         </scene>
@@ -253,8 +259,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Xdp-eM-7We"/>
-        <segue reference="oay-vt-5ME"/>
-        <segue reference="cPU-pa-WRE"/>
+        <segue reference="WKJ-KO-R26"/>
+        <segue reference="tWq-5o-dMb"/>
     </inferredMetricsTieBreakers>
 </document>

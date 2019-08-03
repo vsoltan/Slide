@@ -12,7 +12,7 @@ import FBSDKCoreKit
 import GoogleSignIn
 
 // an interface between the database and the user
-class User {
+class SlideUser {
     
     // retrieves the data tree belonging to the current user
     private static func getDocument(currentUserID: String, completionHandler: @escaping ([QueryDocumentSnapshot]?, Error?) -> Void) {
@@ -75,7 +75,7 @@ class User {
             "name"   : defaults.getName(),
             "email"  : defaults.getEmail(),
             // probably need a better way of handling unset media
-            "mobile" : defaults.getPhoneNumber() ?? "nil",
+            "mobile" : defaults.getPhoneNumber() ?? "none",
         ]
         return dictionary
     }
@@ -96,77 +96,79 @@ class User {
             let id = user.uid
             // attempt to delete
             user.delete(completion: { (error) in
-                // reauthenticate if user hasn't authenticated in a hot second
-                if (error != nil) {
-                    self.getProvider(clientVC: caller)
-                }
+            
+                // reauthenticate to verify deletion
+                print("reauthenticating")
+                self.getProvider(clientVC: caller, currUser: user)
+                
+                print("clearing data")
                 // clear user's database data
                 self.deleteData(userID: id)
                 
+                
+                // TODO this segue does not happen
+                print("performing segue")
                 // segue into LoginViewController
                 let mySB = UIStoryboard(name: "LoginRegister", bundle: nil)
                 let next = mySB.instantiateViewController(withIdentifier: "LoginViewController")
                 caller.present(next, animated: true, completion: nil)
+                print("completed")
             })
         }
     }
     
     // TODO: replace error messages with CustomError
     // finds which authentication method was used
-    static func getProvider(clientVC: UIViewController){
-    
-        if let providerData = Auth.auth().currentUser?.providerData {
-            // reauthenticate for every auth. method linked to user account
-            for userInfo in providerData {
-                switch userInfo.providerID {
-                case "facebook.com":
-                    if let credential = facebookCredential(){
-                        self.reauthenticate(credential: credential)
-                    }
-                case "google.com":
-                    if let credential = googleCredential(){
-                        self.reauthenticate(credential: credential)
-                    }
-                    print("user is signed in with google")
-                case "password":
-                    // prompt user to reenter login information
-                    let alert = UIAlertController(title: "Sign In", message: "Please sign in again to confirm you want to delete all your account data", preferredStyle: .alert)
-                    alert.addTextField { (textField: UITextField) in
-                        textField.placeholder = "Email"
-                    }
-                    alert.addTextField { (textField: UITextField) in
-                        textField.placeholder = "Password"
-                        textField.isSecureTextEntry = true
-                    }
-                    // button for user to cancel
-                    let noAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                    
-                    // button for user to confirm
-                    let yesAction = UIAlertAction(title: "OK", style: .destructive, handler: { (action:UIAlertAction) in
-                        let emailTextField = alert.textFields![0]
-                        let passwordTextField = alert.textFields![1]
-                        
-                        //TODO: this is generic code. Match up with our login method
-                        // check if user login makes sense
-                        if let credential = self.emailCredential(email: emailTextField.text!, password: passwordTextField.text!){
-                            self.reauthenticate(credential: credential)
-                        } else {
-                            print("error")
-                        }
-                    })
-                    // create the buttons on the prompt
-                    alert.addAction(yesAction)
-                    alert.addAction(noAction)
-                    
-                    // create the prompt
-                    clientVC.present(alert, animated: true, completion: nil)
-                
-                // couldn't find auth method
-                default:
-                    print("unknown auth provider")
-                    
-                }
+    static func getProvider(clientVC: UIViewController, currUser : User) {
+        // reauthenticate for auth method linked to user account
+        switch currUser.providerID {
+        case "facebook.com":
+            if let credential = facebookCredential(){
+                self.reauthenticate(credential: credential)
             }
+        case "google.com":
+            if let credential = googleCredential(){
+                self.reauthenticate(credential: credential)
+            }
+            print("user is signed in with google")
+        case "Firebase":
+            // prompt user to reenter login information
+            let alert = UIAlertController(title: "Sign In", message: "Please sign in again to confirm you want to delete all your account data", preferredStyle: .alert)
+            alert.addTextField { (textField: UITextField) in
+                textField.placeholder = "Email"
+            }
+            alert.addTextField { (textField: UITextField) in
+                textField.placeholder = "Password"
+                textField.isSecureTextEntry = true
+            }
+            // button for user to cancel
+            let noAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+            // button for user to confirm
+            let yesAction = UIAlertAction(title: "OK", style: .destructive, handler: { (action:UIAlertAction) in
+                let emailTextField = alert.textFields![0]
+                let passwordTextField = alert.textFields![1]
+
+                //TODO: this is generic code. Match up with our login method
+                // check if user login makes sense
+
+                if let credential = self.emailCredential(email: emailTextField.text!, password: passwordTextField.text!){
+                    self.reauthenticate(credential: credential)
+                } else {
+                    print("error")
+                }
+            })
+            // create the buttons on the prompt
+            alert.addAction(yesAction)
+            alert.addAction(noAction)
+
+            // create the prompt
+            clientVC.present(alert, animated: true, completion: nil)
+
+        // couldn't find auth method
+        default:
+            print(currUser.providerID)
+            print("unknown auth provider")
         }
     }
     
@@ -222,14 +224,13 @@ class User {
                 print("Document successfully removed")
             }
         }
-        User.clearLocalData()
+        SlideUser.clearLocalData()
     }
     
     // explicit return type because every user has to have an email
     static func getEmail() -> String {
         return (Auth.auth().currentUser?.email)!
     }
-    
 }
 
 // contains "fields" for UserDefaults
@@ -240,6 +241,12 @@ enum UserDefaultsKeys : String {
     case localPhone
     case localGroups
 }
+
+
+// TODO implement settings so phone number switch can be saved
+//enum UserDefaultSettings {
+//    case phoneNumberPermissions
+//}
 
 // functions to set and get data from UserDefaults
 extension UserDefaults {
@@ -277,7 +284,7 @@ extension UserDefaults {
     }
     
     // set and retrieve localPhone
-    func setPhoneNumber(value: String){
+    func setPhoneNumber(value: String?){
         set(value, forKey: UserDefaultsKeys.localPhone.rawValue)
     }
     func getPhoneNumber() -> String? {

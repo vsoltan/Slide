@@ -12,11 +12,7 @@ class MediaSelectionViewController: UIViewController {
     
     // QR Encoding structure
     var selectedMedia = EncodedMedia.Media.init(name: nil, phoneNumber: nil, email: nil)
-    
-    // stores the user's information
-    let supportedMedia = User.generateKeyDictionary()
-    
-    
+
     // stores the buttons and corresponding data
     var selections = [(button: UIButton, data: (key: Any, value: Any))]()
     
@@ -29,35 +25,41 @@ class MediaSelectionViewController: UIViewController {
         
         super.viewDidLoad()
         
+        // stores the user's information
+        let supportedMedia = SlideUser.generateKeyDictionary()
+        
         var verticalOffset: CGFloat = 120
     
         for media in supportedMedia {
             
-            let mediaType = media.key as! String
+            if (media.value as! String != "none") {
             
-            // descriptions of media being selected
-            let mediaButtonlabel = UILabel()
-            mediaButtonlabel.text = mediaType
-            mediaButtonlabel.frame = CGRect(x: 100, y: verticalOffset, width: 100.0, height: 30.0)
-            
-            let mediaButton = UIButton(frame: CGRect(x: 50, y: verticalOffset, width: 30, height: 30))
-            
-            // customization
-            mediaButton.setImage(unchecked, for: UIControl.State.normal)
-            mediaButton.setTitle(mediaType, for: UIControl.State.normal)
-            mediaButton.isSelected = false
-            
-            // spacing between generated buttons
-            verticalOffset = verticalOffset + 50
-            
-            // add action to button
-            mediaButton.addTarget(self, action: #selector(mediaSelected), for: .touchUpInside)
-            
-            selections.append((mediaButton, media))
-            
-            // render
-            self.view.addSubview(mediaButton)
-            self.view.addSubview(mediaButtonlabel)
+                let mediaType = media.key as! String
+                
+                // descriptions of media being selected
+                let mediaButtonlabel = UILabel()
+                mediaButtonlabel.text = mediaType
+                mediaButtonlabel.frame = CGRect(x: 100, y: verticalOffset, width: 100.0, height: 30.0)
+                
+                let mediaButton = UIButton(frame: CGRect(x: 50, y: verticalOffset, width: 30, height: 30))
+                
+                // customization
+                mediaButton.setImage(unchecked, for: UIControl.State.normal)
+                mediaButton.setTitle(mediaType, for: UIControl.State.normal)
+                mediaButton.isSelected = false
+                
+                // spacing between generated buttons
+                verticalOffset = verticalOffset + 50
+                
+                // add action to button
+                mediaButton.addTarget(self, action: #selector(mediaSelected), for: .touchUpInside)
+                
+                selections.append((mediaButton, media))
+                
+                // render
+                self.view.addSubview(mediaButton)
+                self.view.addSubview(mediaButtonlabel)
+            }
         }
     }
     
@@ -91,7 +93,7 @@ class MediaSelectionViewController: UIViewController {
                 case "email":
                     self.selectedMedia.email = data
                 case "mobile":
-                    if (data != "nil") {
+                    if (data != "none") {
                         self.selectedMedia.phoneNumber = data
                     }
                 default:

@@ -20,6 +20,20 @@ class HomeViewController: UIViewController {
         
         // welcome page displays the user's name
         nameLabel.text = UserDefaults.standard.getName()
+        
+        if let providerData = Auth.auth().currentUser?.providerData {
+            for userInfo in providerData {
+                switch userInfo.providerID {
+                case "facebook.com":
+                    print("user is signed in with facebook")
+                case "google.com":
+                    print("user is signed in with google")
+                default:
+                    print("user is signed in with \(userInfo.providerID)")
+                }
+            }
+        }
+
     }
 }
 
