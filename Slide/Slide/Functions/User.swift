@@ -68,6 +68,18 @@ class User {
         }
     }
     
+    static func generateKeyDictionary() -> NSDictionary {
+        let defaults = UserDefaults.standard
+        
+        let dictionary : NSDictionary = [
+            "name"   : defaults.getName(),
+            "email"  : defaults.getEmail(),
+            // probably need a better way of handling unset media
+            "mobile" : defaults.getPhoneNumber() ?? "nil",
+        ]
+        return dictionary
+    }
+    
     // clear UserDefaults
     static func clearLocalData() {
         let defaults = UserDefaults.standard
