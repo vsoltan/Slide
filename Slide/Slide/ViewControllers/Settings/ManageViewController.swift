@@ -50,12 +50,5 @@ class ManageViewController: UIViewController, UITableViewDataSource, UITableView
         if (indexPath.row == 0) {
             SlideUser.deleteUser(caller: self)
         }
-        
-        // determines what page to segue to based on which cell is clicked
-        let segueLabel = manageArray[indexPath.row]
-        
-        // array of all actionable pages
-        let tabs = ["Delete Account"]
-        
     }
 }

@@ -1,5 +1,5 @@
 //
-//  CurrentUser.swift
+//  SlideUser.swift
 //  Slide
 //
 //  Created by Valeriy Soltan on 6/12/19.
@@ -14,6 +14,8 @@ import GoogleSignIn
 // an interface between the database and the user
 class SlideUser {
     
+/* METHODS that directy interact with backend and local storage */
+ 
     // retrieves the data tree belonging to the current user
     private static func getDocument(currentUserID: String, completionHandler: @escaping ([QueryDocumentSnapshot]?, Error?) -> Void) {
         
@@ -36,29 +38,14 @@ class SlideUser {
     // downloads user data to local storage
     static func getUser(userID: String, completionHandler: @escaping (Error?) -> Void) {
         // thread deployed to interact with database
-        self.getDocument(currentUserID: userID) { (userData, error) in
-            if (userData != nil) {
+        getDocument(currentUserID: userID) { (userData, error) in
+            if (error == nil && userData != nil) {
                 // iterates through the array, as there may be several docs
                 for document in userData! {
-                    // Retrieves user data from Firebase into UserDefaults
-                    if let nameData = document.data()["Name"] as? String {
-                        UserDefaults.standard.setName(value: nameData)
-                    }
-                    
-                    if let emailData = document.data() ["Email"] as? String {
-                        UserDefaults.standard.setEmail(value: emailData)
-                    }
-                    
-                    if let idData = document.data() ["ID"] as? String {
-                        UserDefaults.standard.setID(value: idData)
-                    }
-                    
-                    if let phoneData = document.data() ["Phone"] as? String {
-                        UserDefaults.standard.setPhoneNumber(value: phoneData)
-                    }
-                    
+                    // retrieves user data from Firebase into UserDefaults
+                    UserDefaults.standard.getAll(source: document)
                 }
-                // No error
+                // no error
                 completionHandler(nil)
             } else {
                 print("\(error!)")
@@ -68,19 +55,7 @@ class SlideUser {
         }
     }
     
-    static func generateKeyDictionary() -> NSDictionary {
-        let defaults = UserDefaults.standard
-        
-        let dictionary : NSDictionary = [
-            "name"   : defaults.getName(),
-            "email"  : defaults.getEmail(),
-            // probably need a better way of handling unset media
-            "mobile" : defaults.getPhoneNumber() ?? "none",
-        ]
-        return dictionary
-    }
-    
-    // clear UserDefaults
+    // wipe defaults
     static func clearLocalData() {
         let defaults = UserDefaults.standard
         let dictionary = defaults.dictionaryRepresentation()
@@ -89,127 +64,110 @@ class SlideUser {
         }
     }
     
-    // delete user
-    static func deleteUser(caller: UIViewController) {
+    // retrieve key value pairs in defaults for processing
+    static func generateKeyDictionary() -> NSDictionary {
+        let defaults = UserDefaults.standard
         
-        if let user = Auth.auth().currentUser {
-            let id = user.uid
-            // attempt to delete
-            user.delete(completion: { (error) in
-            
-                // reauthenticate to verify deletion
-                print("reauthenticating")
-                self.getProvider(clientVC: caller, currUser: user)
-                
-                print("clearing data")
-                // clear user's database data
-                self.deleteData(userID: id)
-                
-                
-                // TODO this segue does not happen
-                print("performing segue")
-                // segue into LoginViewController
-                let mySB = UIStoryboard(name: "LoginRegister", bundle: nil)
-                let next = mySB.instantiateViewController(withIdentifier: "LoginViewController")
-                caller.present(next, animated: true, completion: nil)
-                print("completed")
-            })
-        }
+        let dictionary : NSDictionary = [
+            "name"   : defaults.getName(),
+            "email"  : defaults.getEmail(),
+            "mobile" : defaults.getPhoneNumber() ?? NSNull.self,
+        ]
+        return dictionary
     }
     
-    // TODO: replace error messages with CustomError
-    // finds which authentication method was used
-    static func getProvider(clientVC: UIViewController, currUser : User) {
+/* METHODS implementing account deletion functionality */
+    
+    static func deleteUser(caller: UIViewController) {
+        
         // reauthenticate for auth method linked to user account
-        switch currUser.providerID {
-        case "facebook.com":
-            if let credential = facebookCredential(){
-                self.reauthenticate(credential: credential)
-            }
-        case "google.com":
-            if let credential = googleCredential(){
-                self.reauthenticate(credential: credential)
-            }
-            print("user is signed in with google")
-        case "Firebase":
-            // prompt user to reenter login information
-            let alert = UIAlertController(title: "Sign In", message: "Please sign in again to confirm you want to delete all your account data", preferredStyle: .alert)
-            alert.addTextField { (textField: UITextField) in
-                textField.placeholder = "Email"
-            }
-            alert.addTextField { (textField: UITextField) in
-                textField.placeholder = "Password"
-                textField.isSecureTextEntry = true
-            }
-            // button for user to cancel
-            let noAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-
-            // button for user to confirm
-            let yesAction = UIAlertAction(title: "OK", style: .destructive, handler: { (action:UIAlertAction) in
-                let emailTextField = alert.textFields![0]
-                let passwordTextField = alert.textFields![1]
-
-                //TODO: this is generic code. Match up with our login method
-                // check if user login makes sense
-
-                if let credential = self.emailCredential(email: emailTextField.text!, password: passwordTextField.text!){
-                    self.reauthenticate(credential: credential)
-                } else {
-                    print("error")
+        if let user = Auth.auth().currentUser {
+            
+            switch user.providerID {
+                
+            case "facebook.com":
+                if let credential = facebookCredential(){
+                    self.reauthenticateAndDelete(credential: credential, currUser: user, caller: caller)
                 }
-            })
-            // create the buttons on the prompt
-            alert.addAction(yesAction)
-            alert.addAction(noAction)
-
-            // create the prompt
-            clientVC.present(alert, animated: true, completion: nil)
-
-        // couldn't find auth method
-        default:
-            print(currUser.providerID)
-            print("unknown auth provider")
+                
+            case "google.com":
+                if let credential = googleCredential(){
+                    self.reauthenticateAndDelete(credential: credential, currUser: user, caller: caller)
+                }
+                
+            case "Firebase":
+                reauthenticateAlert(usr: user, caller: caller)
+                
+            // couldn't find auth method
+            default:
+                print(user.providerID)
+                print("unknown auth provider")
+            }
         }
     }
     
     // reauthenticate user using provided credential
-    static func reauthenticate(credential: AuthCredential){
+    static func reauthenticateAndDelete(credential: AuthCredential, currUser: User, caller: UIViewController){
         
         Auth.auth().currentUser?.reauthenticate(with: credential, completion: { (user, error) in
             if let error = error {
                 print("reauth error \(error.localizedDescription)")
             } else {
                 print("no reauth error")
-                // reattempt deletion
-                Auth.auth().currentUser?.delete { error in
-                    if let error = error {
-                        CustomError.createWith(errorTitle: "Reauthenticate User Error", errorMessage: error.localizedDescription).show()
-                    } else {
-                        print("Successfully reauthenticated user")
+                // attempt to delete
+                currUser.delete(completion: { (error) in
+                    if (error == nil) {
+                        // clear user's database data
+                        self.deleteData(userID: currUser.uid)
+                        
+                        // segue into LoginViewController
+                        let mySB = UIStoryboard(name: "LoginRegister", bundle: nil)
+                        let next = mySB.instantiateViewController(withIdentifier: "LoginViewController")
+                        caller.present(next, animated: true, completion: nil)
+                        print("completed")
                     }
-                }
+                })
             }
         })
     }
     
-    // get facebook credential
-    static func facebookCredential() -> AuthCredential? {
-        let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
-        return credential
-    }
-    
-    // get email-password credendial
-    static func emailCredential(email:String,password:String) -> AuthCredential? {
-        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
-        return credential
-    }
-    
-    // get google credential
-    static func googleCredential() -> AuthCredential? {
-        guard let user = GIDSignIn.sharedInstance().currentUser else {return nil}
-        guard let authentication = user.authentication else {return nil}
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-        return credential
+    // prompts the user to reenter login information before account deletion
+    static func reauthenticateAlert(usr: User, caller: UIViewController) {
+
+        let alert = UIAlertController(title: "Sign In", message: "Sign in to confirm deletion of all account data", preferredStyle: .alert)
+        
+        alert.addTextField { (textField: UITextField) in
+            textField.placeholder = "Email"}
+        
+        alert.addTextField { (textField: UITextField) in
+            textField.placeholder = "Password"
+            textField.isSecureTextEntry = true
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let confirm = UIAlertAction(title: "OK", style: .destructive, handler: { (action: UIAlertAction) in
+            let email = alert.textFields![0]
+            let password = alert.textFields![1]
+            
+            let signInInfo: Array<(field: UITextField, type: String)>
+                = [(email, "username"), (password, "password")]
+            
+            if (TextFieldParser.validate(textFields: signInInfo)) {
+                if let credential = self.emailCredential(email: email.text!, password: password.text!) {
+                    self.reauthenticateAndDelete(credential: credential, currUser: usr, caller: caller)
+                } else {
+                    print("error")
+                }
+            }
+        })
+        
+        // create the buttons on the prompt
+        alert.addAction(confirm)
+        alert.addAction(cancel)
+        
+        // create the prompt
+        caller.present(alert, animated: true, completion: nil)
     }
     
     // deletes all other data in user's documents and local storage
@@ -227,13 +185,33 @@ class SlideUser {
         SlideUser.clearLocalData()
     }
     
-    // explicit return type because every user has to have an email
-    static func getEmail() -> String {
-        return (Auth.auth().currentUser?.email)!
+    
+/* API METHODS */
+    
+    // get facebook credential
+    static func facebookCredential() -> AuthCredential? {
+        let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
+        return credential
+    }
+    
+    // get email-password credendtial
+    static func emailCredential(email:String,password:String) -> AuthCredential? {
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        return credential
+    }
+    
+    // get google credential
+    static func googleCredential() -> AuthCredential? {
+        guard let user = GIDSignIn.sharedInstance().currentUser else { return nil }
+        guard let authentication = user.authentication else { return nil }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        return credential
     }
 }
 
-// contains "fields" for UserDefaults
+/* USER DEFAULTS */
+
+// implemented properties for UserDefaults
 enum UserDefaultsKeys : String {
     case localEmail
     case localID
@@ -242,16 +220,11 @@ enum UserDefaultsKeys : String {
     case localGroups
 }
 
-
 // TODO implement settings so phone number switch can be saved
-//enum UserDefaultSettings {
-//    case phoneNumberPermissions
-//}
 
-// functions to set and get data from UserDefaults
+// setter and getter functions for local data
 extension UserDefaults {
     
-    // set and retrieve localEmail
     func setEmail(value: String) {
         set(value, forKey: UserDefaultsKeys.localEmail.rawValue)
     }
@@ -259,7 +232,6 @@ extension UserDefaults {
         return string(forKey: UserDefaultsKeys.localEmail.rawValue)!
     }
     
-    // set and retrieve localID
     func setID(value: String){
         set(value, forKey: UserDefaultsKeys.localID.rawValue)
     }
@@ -267,15 +239,14 @@ extension UserDefaults {
         return string(forKey: UserDefaultsKeys.localID.rawValue)!
     }
     
-    // set and retrieve localName
     func setGroup(value: String){
         set(value, forKey: UserDefaultsKeys.localName.rawValue)
     }
+    
     func getGroup() -> String {
         return string(forKey: UserDefaultsKeys.localName.rawValue)!
     }
     
-    // set and retrieve localGroups
     func setName(value: String){
         set(value, forKey: UserDefaultsKeys.localName.rawValue)
     }
@@ -283,11 +254,29 @@ extension UserDefaults {
         return string(forKey: UserDefaultsKeys.localName.rawValue)!
     }
     
-    // set and retrieve localPhone
     func setPhoneNumber(value: String?){
         set(value, forKey: UserDefaultsKeys.localPhone.rawValue)
     }
     func getPhoneNumber() -> String? {
         return string(forKey: UserDefaultsKeys.localPhone.rawValue)
+    }
+    
+    func getAll(source: QueryDocumentSnapshot) {
+        
+        if let nameData = source.data()["Name"] as? String {
+            UserDefaults.standard.setName(value: nameData)
+        }
+        
+        if let emailData = source.data()["Email"] as? String {
+            UserDefaults.standard.setEmail(value: emailData)
+        }
+        
+        if let idData = source.data() ["ID"] as? String {
+            UserDefaults.standard.setID(value: idData)
+        }
+        
+        if let phoneData = source.data() ["Phone"] as? String {
+            UserDefaults.standard.setPhoneNumber(value: phoneData)
+        }
     }
 }
