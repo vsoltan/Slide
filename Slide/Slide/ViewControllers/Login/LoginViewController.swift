@@ -25,6 +25,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardOnGesture()
         
         // creates facebook login button
         let loginButton = FBLoginButton()

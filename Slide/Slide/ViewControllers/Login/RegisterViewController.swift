@@ -19,6 +19,7 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardOnGesture() 
     }
     
     // navigates back to sign in view
