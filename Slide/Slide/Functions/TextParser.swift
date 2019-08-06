@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class TextFieldParser {
+class TextParser {
 
     // sets the placeholder text to red and displays an appropriate error message
     static func emptyError(field: UITextField, error: String) {
@@ -40,12 +40,25 @@ class TextFieldParser {
     static func validate(phoneNumber: String) -> Bool {
         return phoneNumber.isValidPhoneNumber()
     }
+    
+    static func splitName(fullName: String) -> (first: String, last: String) {
+        let split = fullName.lastIndex(of: " ")
+        let range = fullName.distance(from: fullName.startIndex, to: split!)
+        return (fullName[0..<range], fullName[range..<fullName.count])
+    }
 }
 
-// string equality method for readability
 extension String {
+    // string equality method for readability
     func equals(id: String) -> Bool {
         return String(format: self) == id
+    }
+    
+    // substring
+    subscript(_ range: CountableRange<Int>) -> String {
+        let idx1 = index(startIndex, offsetBy: max(0, range.lowerBound))
+        let idx2 = index(startIndex, offsetBy: min(self.count, range.upperBound))
+        return String(self[idx1..<idx2])
     }
 }
 

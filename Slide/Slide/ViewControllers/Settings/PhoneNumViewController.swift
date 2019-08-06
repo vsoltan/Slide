@@ -31,6 +31,7 @@ class PhoneNumViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         self.setPhone.delegate = self
         self.hideKeyboardOnGesture()
+        setPhone.keyboardType = .phonePad
         
         // display the user's synced number if already associated with the account
         if let phoneNumber = UserDefaults.standard.getPhoneNumber() {

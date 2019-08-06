@@ -35,7 +35,7 @@ class RegisterViewController: UIViewController {
         // verifies that textfields are properly formatted and creates a user
         let auth = Auth.auth()
         
-        if (TextFieldParser.validate(textFields: registerInfo)) {
+        if (TextParser.validate(textFields: registerInfo)) {
             auth.createUser(withEmail: (usrEmail.text!).trim(), password: usrPassword.text!) { (user, error) in
                 // successfully creates a new user and signs them into the application
                 if user != nil {

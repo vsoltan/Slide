@@ -20,6 +20,7 @@ class HomeViewController: UIViewController {
         
         // welcome page displays the user's name
         nameLabel.text = UserDefaults.standard.getName()
+        TextParser.splitName(fullName: "Valeriy Soltan")
     }
 }
 

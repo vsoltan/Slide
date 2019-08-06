@@ -153,7 +153,7 @@ class SlideUser {
             let signInInfo: Array<(field: UITextField, type: String)>
                 = [(email, "username"), (password, "password")]
             
-            if (TextFieldParser.validate(textFields: signInInfo)) {
+            if (TextParser.validate(textFields: signInInfo)) {
                 if let credential = self.emailCredential(email: email.text!, password: password.text!) {
                     self.reauthenticateAndDelete(credential: credential, currUser: usr, caller: caller)
                 } else {

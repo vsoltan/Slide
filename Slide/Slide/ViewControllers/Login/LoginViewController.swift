@@ -42,7 +42,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
             = [(email, "username"), (password, "password")]
         
         // checks that the user passed information to the application
-        if (TextFieldParser.validate(textFields: signInInfo) == true) {
+        if (TextParser.validate(textFields: signInInfo) == true) {
             Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
                 if (user != nil) {
                     // retrieves user data to create defaults for the current session
