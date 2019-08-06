@@ -15,26 +15,54 @@ class PhoneNumViewController: UIViewController {
     // textfield for modifying a user's number
     @IBOutlet weak var setPhone: UITextField!
     
-    // if on the app can use the user's phone number as part of their slide
+    // shows if the user's phone number can be a part of their slide
     @IBOutlet weak var userPermission: UISwitch!
+    
+    // resets each time the page loads
+    var wasModified = false
+    
+    let currPhone = UserDefaults.standard.getPhoneNumber()
+    var newPhone = String()
     
     // prepare doc for modifications
     let db = Firestore.firestore().collection("users").document(Auth.auth().currentUser!.uid)
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.hideKeyboardOnGesture()
+        
+        // display the user's synced number if already associated with the account
+        if let phoneNumber = UserDefaults.standard.getPhoneNumber() {
+            setPhone.placeholder = phoneNumber
+        }
+    }
+    
+    func checkFormat() -> Bool {
+        return newPhone.isValidPhoneNumber()
+    }
+    
+    // after editing is finished compares new and old numbers
     @IBAction func phoneModified(_ sender: Any) {
-        // checks that the phone is provided in the proper format
-        if (checkFormat()) {
-            // if the user authorizes the app to work with their number
-            if (userPermission.isOn) {
-                let currPhone = UserDefaults.standard.getPhoneNumber()
-                let passedData = setPhone.text!
-                
-                // phoneNumber hasn't been set yet
-                if (currPhone == nil) {
-                    // create a new document for the user
+        // checks if there were any changes made
+        newPhone = setPhone.text!
+        if (newPhone != currPhone) {
+            wasModified = true
+        }
+    }
+    
+    // user is ready to commit changes
+    func checkAndUpdatePhone() -> Bool {
+        
+        // determines if the user can return to linked accounts page
+        var canContinue : Bool = true
+        
+        // if the user authorizes the app to work with their number
+        if (userPermission.isOn) {
+            if (wasModified) {
+                if (checkFormat()) {
+                    // modify document for the user
                     db.setData([
-                        // set specified data entries
-                        "Phone": passedData,
+                        "Phone": newPhone,
                     ], merge: true) { err in
                         if let err = err {
                             print("Error writing document: \(err)")
@@ -42,52 +70,35 @@ class PhoneNumViewController: UIViewController {
                             print("Document successfully written!")
                         }
                     }
+                    UserDefaults.standard.setPhoneNumber(value: newPhone)
+                } else {
+                    CustomError.createWith(errorTitle: "Poorly Formated Number", errorMessage: "enter a number like XXX-XXX-XXXX").show()
+                    canContinue = false
                 }
-                if (setPhone.text != currPhone) {
-                    UserDefaults.standard.setPhoneNumber(value: setPhone.text!)
-                    db.updateData([
-                        "Phone": passedData,
-                    ])
+            } else {
+                
+                setPhone.placeholder = "XXX-XXX-XXXX"
+                
+                // make modification in background
+                UserDefaults.standard.setPhoneNumber(value: nil)
+                
+                db.updateData([
+                    "Phone": FieldValue.delete(),
+                ]) { err in
+                    if let err = err {
+                        print("Error updating document: \(err)")
+                    } else {
+                        print("Document successfully updated")
+                    }
                 }
             }
         }
-        return
+        return canContinue
     }
     
     @IBAction func goBack(_ sender: Any) {
-        // make modification in background
-        if (userPermission.isOn == false) {
-            print("this is happening")
-            UserDefaults.standard.setPhoneNumber(value: nil)
-            db.updateData([
-                "Phone": FieldValue.delete(),
-            ]) { err in
-                if let err = err {
-                    print("Error updating document: \(err)")
-                } else {
-                    print("Document successfully updated")
-                }
-            }
-        }
-    }
-
-    func checkFormat() -> Bool {
-        let result = (setPhone.text)?.isValidPhoneNumber()
-        if (result! == false) {
-            CustomError.createWith(errorTitle: "Poorly Formated Number", errorMessage: "enter a number like XXX-XXX-XXXX").show()
-        }
-        return result!
-    }
-    
-    // TODO
-    // create an action for the switch that grays out the options for phone input
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // display the user's synced number if already associated with the account
-        if let phoneNumber = UserDefaults.standard.getPhoneNumber() {
-            setPhone.placeholder = phoneNumber
+        if (checkAndUpdatePhone()) {
+            performSegue(withIdentifier: "phoneToLinked", sender: self)
         }
     }
 }
