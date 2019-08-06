@@ -71,7 +71,7 @@ class SlideUser {
         let dictionary : NSDictionary = [
             "name"   : defaults.getName(),
             "email"  : defaults.getEmail(),
-            "mobile" : defaults.getPhoneNumber() ?? NSNull.self,
+            "mobile" : defaults.getPhoneNumber() ?? NSNull(),
         ]
         return dictionary
     }
