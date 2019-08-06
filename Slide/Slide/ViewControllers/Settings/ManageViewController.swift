@@ -48,14 +48,7 @@ class ManageViewController: UIViewController, UITableViewDataSource, UITableView
         
         // check if Delete Account was clicked
         if (indexPath.row == 0) {
-            User.deleteUser(caller: self)
+            SlideUser.deleteUser(caller: self)
         }
-        
-        // determines what page to segue to based on which cell is clicked
-        _ = manageArray[indexPath.row]
-        
-        // array of all actionable pages
-        _ = ["Delete Account"]
-        
     }
 }

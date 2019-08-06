@@ -45,7 +45,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
             Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
                 if (user != nil) {
                     // retrieves user data to create defaults for the current session
-                    User.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
+                    SlideUser.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
                         if (error != nil) {
                             print("something went wrong")
                         } else {
@@ -132,7 +132,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                 
                 // suspends program execution until defaults are updated
                 myGroup.enter()
-                User.getUser(userID: userID, completionHandler: { (error) in
+                SlideUser.getUser(userID: userID, completionHandler: { (error) in
                     if let error = error {
                         print("trouble retrieving user data, \(error.localizedDescription)")
                     } else {

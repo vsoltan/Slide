@@ -7,43 +7,99 @@
 //
 
 import UIKit
-//import Firebase
 
 class MediaSelectionViewController: UIViewController {
     
+    // QR Encoding structure
     var selectedMedia = EncodedMedia.Media.init(name: nil, phoneNumber: nil, email: nil)
+
+    // stores the buttons and corresponding data
+    var selections = [(button: UIButton, data: (key: Any, value: Any))]()
     
-    @IBOutlet weak var emailButton: UIButton!
-    @IBOutlet weak var nameButton: UIButton!
+    // visual assets
+    let unchecked = UIImage(named: "UnCheckbox")!
+    let checked = UIImage(named: "Checkbox")!
     
-    lazy var allButtons : Array<UIButton> = [emailButton, nameButton]
+    // generates choices for sharing based on what is synced to the account
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        // stores the user's information
+        let supportedMedia = SlideUser.generateKeyDictionary()
+        
+        var verticalOffset: CGFloat = 120
     
-    // radio button (is selected if not already)
-    fileprivate func checkbox(_ sender: UIButton) {
-        if sender.isSelected {
-            sender.isSelected = false
-        } else {
-            sender.isSelected = true
+        for media in supportedMedia {
+            
+            // don't create a button if media is not synced
+            if (media.value is NSNull) {} else {
+            
+                let mediaType = media.key as! String
+
+                // descriptions of media being selected
+                let mediaButtonlabel = UILabel()
+                mediaButtonlabel.text = mediaType
+                mediaButtonlabel.frame = CGRect(x: 100, y: verticalOffset, width: 100.0, height: 30.0)
+
+                let mediaButton = UIButton(frame: CGRect(x: 50, y: verticalOffset, width: 30, height: 30))
+
+                // customization
+                mediaButton.setImage(unchecked, for: UIControl.State.normal)
+                mediaButton.setTitle(mediaType, for: UIControl.State.normal)
+                mediaButton.isSelected = false
+
+                // spacing between generated buttons
+                verticalOffset = verticalOffset + 50
+
+                // add action to button
+                mediaButton.addTarget(self, action: #selector(mediaSelected), for: .touchUpInside)
+
+                selections.append((mediaButton, media))
+
+                // render
+                self.view.addSubview(mediaButton)
+                self.view.addSubview(mediaButtonlabel)
+            }
         }
     }
     
-    @IBAction func emailCheckbox(_ sender: UIButton) {checkbox(emailButton)}
-    @IBAction func nameCheckbox(_ sender: UIButton)  {checkbox(nameButton)}
+    // radio button functionality
+    @objc func mediaSelected(sender: UIButton!) {
+        if sender.isSelected {
+            sender.isSelected = false
+            sender.setImage(unchecked, for: UIControl.State.normal)
+        } else {
+            sender.isSelected = true
+            sender.setImage(checked, for: UIControl.State.normal)
+        }
+    }
     
     // stages the media properties to be added to the encoding structure
     @IBAction func selectionComplete(_ sender: Any) {
         // keeps track of the number of fields selected
         var numChecked = 0
         
-        if (emailButton.isSelected) {
-            numChecked += 1
-            self.selectedMedia.email = User.getEmail()
-        }
-        
-        if (nameButton.isSelected) {
-            numChecked += 1
-            if (nameButton.isSelected) {
-                self.selectedMedia.name = UserDefaults.standard.getName()
+        for selection in selections {
+            if (selection.button.isSelected) {
+                numChecked += 1
+                
+                let type = selection.data.key as! String
+                let data = selection.data.value as! String
+                
+                switch(type) {
+                
+                case "name":
+                    self.selectedMedia.name = data
+                case "email":
+                    self.selectedMedia.email = data
+                case "mobile":
+                    if (data != "none") {
+                        self.selectedMedia.phoneNumber = data
+                    }
+                default:
+                    continue
+                }
             }
         }
         
@@ -55,10 +111,6 @@ class MediaSelectionViewController: UIViewController {
         
         // performs the segue once all the info was solicited
         self.performSegue(withIdentifier: "toQRCodeView", sender: self)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
     
     // passes data accumuated in this view controller to the GenerationVC

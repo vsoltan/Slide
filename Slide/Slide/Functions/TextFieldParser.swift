@@ -38,7 +38,7 @@ class TextFieldParser {
     }
     
     static func validate(phoneNumber: String) -> Bool {
-        return phoneNumber.isValidatePhoneNumber()
+        return phoneNumber.isValidPhoneNumber()
     }
 }
 
@@ -57,7 +57,7 @@ extension String {
         return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
     }
     
-    func isValidatePhoneNumber() -> Bool {
+    func isValidPhoneNumber() -> Bool {
         let PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$"
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
         let result = phoneTest.evaluate(with: self)
