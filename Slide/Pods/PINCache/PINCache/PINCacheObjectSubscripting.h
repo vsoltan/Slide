@@ -22,8 +22,7 @@
 
 /**
  This method enables using literals on the receiving object, such as `cache[@"key"] = object;`.
- 
- @param object An object to be assigned for the key.
+ @param obj object to be assigned for the key.
  @param key A key to associate with the object. This string will be copied.
  */
 - (void)setObject:(id)obj forKeyedSubscript:(NSString *)key;
