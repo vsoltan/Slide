@@ -36,19 +36,32 @@ class RegisterViewController: UIViewController {
         let auth = Auth.auth()
         
         if (TextParser.validate(textFields: registerInfo)) {
-            auth.createUser(withEmail: (usrEmail.text!).trim(), password: usrPassword.text!) { (user, error) in
-                // successfully creates a new user and signs them into the application
+            
+            // formats the user's input
+            for input in registerInfo {
+                let data = input.field.text
+                // can use whitespace in passwords
+                if (input.type != "password") {
+                    input.field.text = data?.trim()
+                }
+            }
+            
+            let register = (name : usrName.text!, email : usrEmail.text!,
+                            password : usrPassword.text!)
+            
+            // creates a new user
+            auth.createUser(withEmail: register.email, password: register.password) { (user, error) in
+                // successful user creation and sign in
                 if user != nil {
-                    // has to be Auth.auth
                     let userID = auth.currentUser!.uid
                     let db = Firestore.firestore()
                     
                     // creates firestore document
                     db.collection("users").document(userID).setData([
                         // set specified data entries
-                        "Name": self.usrName.text!,
+                        "Name": register.name,
                         "ID": userID,
-                        "Email": (self.usrEmail.text!).trim(),
+                        "Email": register.email,
                     ]) { err in
                         if let err = err {
                             print("Error writing document: \(err)")
@@ -56,17 +69,15 @@ class RegisterViewController: UIViewController {
                             print("Document successfully written!")
                         }
                     }
-                    // possible optimization: pass the registration data to defaults as it's being added to the database
-                    SlideUser.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
-                        if (error != nil) {
-                            print("something went wrong")
-                        } else {
-                            self.performSegue(withIdentifier: "registerToHome", sender: self)
-                        }
-                    })
-                // something went wrong iwth user initialization
+                    
+                // sets default without having to ping database
+                UserDefaults.standard.setDefaultsAtRegister(name: register.name, email: register.email)
+                    
+                // continues with main thread execution on home page
+                self.performSegue(withIdentifier: "registerToHome", sender: self)
+                    
                 } else {
-                    CustomError.createWith(errorTitle: "Account Creation", errorMessage: error!.localizedDescription).show()
+                    CustomError.createWith(errorTitle: "Account Creation", errorMessage: error!.localizedDescription)
                 }
             }
         }

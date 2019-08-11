@@ -11,14 +11,13 @@ import Foundation
 
 class GenerateQR {
     static func generateQRCode(from string : String?) -> UIImage? {
-        // makes sure that some data is being passed to the generator
-        if string == nil {
-            print("please pass a non-nil string")
-            return nil
-        }
         
         // retrieves data from string and encodes it into ascii
-        let data = string!.data(using: String.Encoding.ascii)
+        guard let data = string!.data(using: String.Encoding.ascii) else {
+            // makes sure that some data is being passed to the generator
+            print("no data passed to filter")
+            return nil
+        }
         
         // creates a filter and applies it to the data
         if let filter = CIFilter(name: "CIQRCodeGenerator") {

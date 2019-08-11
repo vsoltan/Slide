@@ -11,8 +11,6 @@ import Firebase
 
 class HomeViewController: UIViewController {
     
-    var nameString = String()
-    
     @IBOutlet weak var nameLabel: UILabel!
     
     override func viewDidLoad() {
@@ -20,7 +18,6 @@ class HomeViewController: UIViewController {
         
         // welcome page displays the user's name
         nameLabel.text = UserDefaults.standard.getName()
-        TextParser.splitName(fullName: "Valeriy Soltan")
     }
 }
 

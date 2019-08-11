@@ -6,7 +6,6 @@
 //  Copyright © 2019 Roodac. All rights reserved.
 //
 
-import Foundation
 import Firebase
 import FBSDKCoreKit
 import GoogleSignIn
@@ -26,7 +25,7 @@ class SlideUser {
         db.collection("users").whereField("ID", isEqualTo: currentUserID).getDocuments { (snapshot, error) in
             if error != nil {
                 // user was not found
-                CustomError.createWith(errorTitle: "Data Retrieval", errorMessage: error!.localizedDescription).show()
+                CustomError.createWith(errorTitle: "Data Retrieval", errorMessage: error!.localizedDescription)
                 completionHandler(nil, error)
             } else {
                 // upon completion, returns a reference to the document
@@ -177,7 +176,7 @@ class SlideUser {
         
         db.collection("users").document(userID).delete() { error in
             if let error = error {
-                CustomError.createWith(errorTitle: "Document Removal Error", errorMessage: error.localizedDescription).show()
+                CustomError.createWith(errorTitle: "Document Removal Error", errorMessage: error.localizedDescription)
             } else {
                 print("Document successfully removed")
             }
@@ -278,5 +277,11 @@ extension UserDefaults {
         if let phoneData = source.data() ["Phone"] as? String {
             UserDefaults.standard.setPhoneNumber(value: phoneData)
         }
+    }
+    
+    func setDefaultsAtRegister(name : String, email : String) {
+        let defaults = UserDefaults.standard
+        defaults.setName(value: name)
+        defaults.setEmail(value: email)
     }
 }

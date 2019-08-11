@@ -79,7 +79,7 @@ class PhoneNumViewController: UIViewController, UITextFieldDelegate {
                     }
                     UserDefaults.standard.setPhoneNumber(value: newPhone)
                 } else {
-                    CustomError.createWith(errorTitle: "Poorly Formated Number", errorMessage: "enter a number like XXX-XXX-XXXX").show()
+                    CustomError.createWith(errorTitle: "Poorly Formated Number", errorMessage: "enter a number like XXX-XXX-XXXX")
                     canContinue = false
                 }
             }

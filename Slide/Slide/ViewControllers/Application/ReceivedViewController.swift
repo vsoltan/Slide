@@ -8,9 +8,10 @@
 
 import UIKit
 import Contacts
+import ContactsUI
 import AddressBook
 
-class ReceivedViewController: UIViewController {
+class ReceivedViewController: UIViewController, CNContactViewControllerDelegate {
     
     var receivedInfo : EncodedMedia.Media?
 
@@ -26,15 +27,33 @@ class ReceivedViewController: UIViewController {
     
     @IBAction func createContact(_ sender: Any) {
         let newContact = contactDataScrape(data: receivedInfo!)
-        do {
-            let saveRequest = CNSaveRequest()
-            // TODO actually add the new contact
-            // also implement updating old contacts
-//            saveRequest.add(saveRequest, toContainerWithIdentifier: nil)
+        
+        if (addToAddressBook(contact: newContact)) {
+            let contactVC = CNContactViewController(forNewContact: newContact)
+            contactVC.delegate = self
+            let navigationController = UINavigationController(rootViewController: contactVC)
+            self.present(navigationController, animated: true, completion: nil)
+        } else {
+            CustomError.createWith(errorTitle: "Something went wrong", errorMessage:
+                "couldn't add contact to address book")
         }
     }
     
-    func contactDataScrape(data: EncodedMedia.Media) -> CNContact {
+    func addToAddressBook(contact : CNMutableContact) -> Bool {
+        let request = CNSaveRequest()
+        let store = CNContactStore()
+        
+        request.add(contact, toContainerWithIdentifier: nil)
+        do {
+            try store.execute(request)
+            return true
+        } catch let err {
+            print("Failed to save the contact. \(err)")
+            return false
+        }
+    }
+
+    func contactDataScrape(data: EncodedMedia.Media) -> CNMutableContact {
         
         // creating a mutable object to add to the contact
         let contact = CNMutableContact()
@@ -42,15 +61,12 @@ class ReceivedViewController: UIViewController {
         // TODO retrieve profile picture
         // contact.imageData = NSData()
         
-        print(data.name!)
-//        let fullName = TextParser.splitName(fullName: data.name!)
-//        contact.givenName = fullName.first
-//        contact.familyName = fullName.last
+        // TODO fix bug where no last name is passed
+        let fullName = TextParser.splitName(fullName: data.name!)
+        contact.givenName = fullName.first
+        contact.familyName = fullName.last
         
-        contact.givenName = "test"
-        contact.familyName = "user"
-        
-        let personalEmail = CNLabeledValue(label: CNLabelHome, value: data.email! as NSString)
+        let personalEmail = CNLabeledValue(label: "personal", value: data.email! as NSString)
 
         contact.emailAddresses = [personalEmail]
         
@@ -59,4 +75,10 @@ class ReceivedViewController: UIViewController {
         
         return contact
     }
+}
+
+extension CNMutableContact {
+    // TODO
+//    func isDuplicate() -> Bool {
+//    }
 }

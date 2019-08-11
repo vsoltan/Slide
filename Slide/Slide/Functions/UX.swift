@@ -9,9 +9,7 @@
 import Foundation
 import UIKit
 
-class UX {
-    
-}
+class UX {}
 
 // allows the user to dismiss the keyboard once they are done editing
 extension UIViewController {
