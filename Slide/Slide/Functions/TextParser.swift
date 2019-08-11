@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Foundation
 
 class TextParser {
 
@@ -30,7 +29,7 @@ class TextParser {
             
             // regex email matching
             if (entry.type.equals(id: "email") && !((entry.field.text!).trim().isValidEmail())) {
-                CustomError.createWith(errorTitle: "Invalid Email", errorMessage: "Please enter a valid email address").show()
+                CustomError.createWith(errorTitle: "Invalid Email", errorMessage: "Please enter a valid email address")
                 completeForm = false
             }
         }
@@ -44,27 +43,26 @@ class TextParser {
     static func splitName(fullName: String) -> (first: String, last: String) {
         let split = fullName.lastIndex(of: " ")
         let range = fullName.distance(from: fullName.startIndex, to: split!)
-        return (fullName[0..<range], fullName[range..<fullName.count])
-    }
-}
-
-extension String {
-    // string equality method for readability
-    func equals(id: String) -> Bool {
-        return String(format: self) == id
-    }
-    
-    // substring
-    subscript(_ range: CountableRange<Int>) -> String {
-        let idx1 = index(startIndex, offsetBy: max(0, range.lowerBound))
-        let idx2 = index(startIndex, offsetBy: min(self.count, range.upperBound))
-        return String(self[idx1..<idx2])
+        return (fullName[0..<range], fullName[range + 1..<fullName.count])
     }
 }
 
 // establishes the format for accepted emails
 extension String {
-    // checks that an email string conforms to styling and format standards
+    
+    // string equality method for readability
+    func equals(id: String) -> Bool {
+        return String(format: self) == id
+    }
+    
+    // shorthand method to retrieve substring
+    subscript(_ range: CountableRange<Int>) -> String {
+        let idx1 = index(startIndex, offsetBy: max(0, range.lowerBound))
+        let idx2 = index(startIndex, offsetBy: min(self.count, range.upperBound))
+        return String(self[idx1..<idx2])
+    }
+    
+    // checks that email and phone # conform to format standards
     func isValidEmail() -> Bool {
         let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
         return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
