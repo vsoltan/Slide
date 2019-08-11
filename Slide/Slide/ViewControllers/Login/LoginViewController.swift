@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import GoogleSignIn
 import Firebase
+import GoogleSignIn
 import FBSDKCoreKit
 import FBSDKLoginKit
-
 
 class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDelegate {
     
@@ -43,7 +42,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         
         // checks that the user passed information to the application
         if (TextParser.validate(textFields: signInInfo) == true) {
-            Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
+            Auth.auth().signIn(withEmail: email.text!.trim(), password: password.text!) { (user, error) in
                 if (user != nil) {
                     // retrieves user data to create defaults for the current session
                     SlideUser.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
@@ -54,7 +53,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                         }
                     })
                 } else {
-                    CustomError.createWith(errorTitle: "Login Error", errorMessage: error!.localizedDescription).show()
+                    CustomError.createWith(errorTitle: "Login Error", errorMessage: error!.localizedDescription)
                 }
             }
         }
@@ -67,7 +66,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         let fbReadPermissions: [String] = ["public_profile", "email"]
         
         loginManager.logIn(permissions: fbReadPermissions, from: self) { (result, error) in
-            if (error == nil) {
+            if let error = error {
                 self.loginButton(self.facebookButton, didCompleteWith: result, error: error)
             } else {
                 print("custom facebook button failed")
@@ -88,13 +87,14 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         // safeguard against async tasks completing after the main thread needs data
         let myGroup = DispatchGroup()
         
+        // TODO fix this
         // firebase uses the facebook token to log in
         Auth.auth().signIn(with: credential) { (authResult, error) in
             if let error = error {
-                CustomError.createWith(errorTitle: "Login Failed", errorMessage: error.localizedDescription).show()
+                CustomError.createWith(errorTitle: "Login Failed", errorMessage: error.localizedDescription)
                 return
             } else {
-                // establishes reference to the database
+                // reference to the database
                 let db = Firestore.firestore()
                 let userID = Auth.auth().currentUser!.uid
                 
