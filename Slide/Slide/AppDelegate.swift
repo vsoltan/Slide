@@ -80,7 +80,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     CustomError.createWith(errorTitle: "Google Authentication Error", errorMessage: error!.localizedDescription).show()
                 }
             }
-            
         }
     }
     
