@@ -105,7 +105,7 @@ class MediaSelectionViewController: UIViewController {
         
         // no fields selected
         if (numChecked <= 0) {
-            CustomError.createWith(errorTitle: "No Media Selected", errorMessage: "Please choose at least one option to share").show()
+            CustomError.createWith(errorTitle: "No Media Selected", errorMessage: "Please choose at least one option to share")
             return
         }
         

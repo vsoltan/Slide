@@ -35,7 +35,7 @@ class ReceivedViewController: UIViewController, CNContactViewControllerDelegate 
             self.present(navigationController, animated: true, completion: nil)
         } else {
             CustomError.createWith(errorTitle: "Something went wrong", errorMessage:
-                "couldn't add contact to address book").show()
+                "couldn't add contact to address book")
         }
     }
     
@@ -61,15 +61,12 @@ class ReceivedViewController: UIViewController, CNContactViewControllerDelegate 
         // TODO retrieve profile picture
         // contact.imageData = NSData()
         
-        print(data.name!)
+        // TODO fix bug where no last name is passed
         let fullName = TextParser.splitName(fullName: data.name!)
         contact.givenName = fullName.first
         contact.familyName = fullName.last
         
-//        contact.givenName = "test"
-//        contact.familyName = "user"
-        
-        let personalEmail = CNLabeledValue(label: CNLabelHome, value: data.email! as NSString)
+        let personalEmail = CNLabeledValue(label: "personal", value: data.email! as NSString)
 
         contact.emailAddresses = [personalEmail]
         
@@ -78,4 +75,10 @@ class ReceivedViewController: UIViewController, CNContactViewControllerDelegate 
         
         return contact
     }
+}
+
+extension CNMutableContact {
+    // TODO
+//    func isDuplicate() -> Bool {
+//    }
 }
