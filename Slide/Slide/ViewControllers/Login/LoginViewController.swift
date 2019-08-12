@@ -87,6 +87,9 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         // creates a unique firebase login token
         let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
         
+        // TOOD implement temp overlay for api logins
+        //self.performSegue(withIdentifier: "", sender: self)
+        
         // safeguard against async tasks completing after the main thread needs data
         let myGroup = DispatchGroup()
         
@@ -146,8 +149,8 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                 
                 // wait till defaults are updated before proceeding to main page
                 SlideUser.getUser(userID: userID, completionHandler: { (error) in
-                    if let error = error {
-                        print("trouble retrieving user data, \(error.localizedDescription)")
+                    if (error != nil) {
+                        print("trouble retrieving user data, \(error!.localizedDescription)")
                     } else {
                         // user is redirected back to the home page
                         self.performSegue(withIdentifier: "signInToMain", sender: self)

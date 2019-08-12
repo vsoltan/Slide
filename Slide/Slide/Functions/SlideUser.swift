@@ -17,9 +17,6 @@ class SlideUser {
  
     // retrieves the data tree belonging to the current user
     private static func getDocument(currentUserID: String, completionHandler: @escaping ([QueryDocumentSnapshot]?, Error?) -> Void) {
-        print("getting doc...")
-        print("curruserid:", currentUserID)
-        
         // reference to the database
         let db = Firestore.firestore()
 
@@ -30,7 +27,6 @@ class SlideUser {
                 CustomError.createWith(errorTitle: "Data Retrieval", errorMessage: error!.localizedDescription)
                 completionHandler(nil, error)
             } else {
-                print("succeeded")
                 // upon completion, returns a reference to the document
                 completionHandler((snapshot?.documents)!, nil)
             }
@@ -39,18 +35,15 @@ class SlideUser {
     
     // downloads user data to local storage
     static func getUser(userID: String, completionHandler: @escaping (Error?) -> Void) {
-        print("called method")
         // thread deployed to interact with database
         getDocument(currentUserID: userID) { (userData, error) in
             if (error == nil && userData != nil) {
                 // iterates through the array, as there may be several docs
                 for document in userData! {
-                    print("got the doc")
                     // retrieves user data from Firebase into UserDefaults
                     UserDefaults.standard.getAll(source: document)
+                    completionHandler(nil)
                 }
-                // no error
-                completionHandler(nil)
             } else {
                 print("\(error!)")
                 // Notify that there was indeed an error
@@ -73,9 +66,10 @@ class SlideUser {
         let defaults = UserDefaults.standard
         
         let dictionary : NSDictionary = [
-            "name"   : defaults.getName(),
-            "email"  : defaults.getEmail(),
-            "mobile" : defaults.getPhoneNumber() ?? NSNull(),
+            "name"     : defaults.getName(),
+            "email"    : defaults.getEmail(),
+            "mobile"   : defaults.getPhoneNumber() ?? NSNull(),
+            "facebook" : defaults.getFacebookID() ?? NSNull(),
         ]
         return dictionary
     }
@@ -222,6 +216,7 @@ enum UserDefaultsKeys : String {
     case localName
     case localPhone
     case localGroups
+    case localfbID
 }
 
 // TODO implement settings so phone number switch can be saved
@@ -265,9 +260,16 @@ extension UserDefaults {
         return string(forKey: UserDefaultsKeys.localPhone.rawValue)
     }
     
+    // TOOD store in a URL
+    func setFacebookID(value : String) {
+        set(value, forKey: UserDefaultsKeys.localfbID.rawValue)
+    }
+    
+    func getFacebookID() -> String? {
+        return string(forKey: UserDefaultsKeys.localfbID.rawValue)
+    }
+    
     func getAll(source: QueryDocumentSnapshot) {
-        
-        print("made it into the function call")
         
         if let nameData = source.data()["Name"] as? String {
             UserDefaults.standard.setName(value: nameData)

@@ -9,22 +9,25 @@
 import UIKit
 
 class LaunchViewController: UIViewController {
+    
+    var currentID = String()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        // bypasses login and goes to home page if logged in
+        print("currentid:", currentID)
+       
+        print("entered")
+        SlideUser.getUser(userID: currentID) { (error) in
+            
+            if (error == nil) {
+                self.performSegue(withIdentifier: "existingUserToHome", sender: self)
+            } else {
+                CustomError.createWith(errorTitle: "Oops! Something went wrong!", errorMessage: "please try logging in again")
+                self.performSegue(withIdentifier: "errorBackToLogin", sender: self)
+            }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
     }
-    */
-
 }

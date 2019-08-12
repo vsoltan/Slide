@@ -13,7 +13,7 @@
         <!--Login-->
         <scene sceneID="FbC-Ss-sxX">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" title="Login" id="rjZ-1j-7WL" customClass="LoginViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" title="Login" id="rjZ-1j-7WL" customClass="LoginViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sfa-Oo-JDb" customClass="UILabel">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -122,6 +122,7 @@
                         <outlet property="googleButton" destination="6EE-Im-l8G" id="b4c-0a-0Uy"/>
                         <outlet property="password" destination="RZ7-00-Igd" id="srC-E5-wTY"/>
                         <segue destination="NQH-c5-24f" kind="show" identifier="signInToMain" id="aZn-3M-5PI"/>
+                        <segue destination="iDO-7A-08s" kind="show" identifier="toTempOverlay" id="Qyh-0N-7cq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wZG-tN-rGT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -135,6 +136,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rjy-Rc-zT6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5603" y="558"/>
+        </scene>
+        <!--Launch View Controller-->
+        <scene sceneID="4h7-PM-GI7">
+            <objects>
+                <viewController storyboardIdentifier="Launch" id="gV3-jc-EXv" customClass="LaunchViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jjX-ma-0zC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jLV-Kr-yJ7">
+                                <rect key="frame" x="177" y="396" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.82352941176470584" green="1" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="ean-79-w7A"/>
+                    </view>
+                    <connections>
+                        <segue destination="NQH-c5-24f" kind="show" identifier="existingUserToHome" id="XT4-Yv-ekD"/>
+                        <segue destination="rjZ-1j-7WL" kind="show" identifier="errorBackToLogin" id="dnV-Gq-3TB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AMb-5m-Lkt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4631" y="114"/>
+        </scene>
+        <!--TempOverlayAPI-->
+        <scene sceneID="F7k-sH-bUf">
+            <objects>
+                <viewController title="TempOverlayAPI" id="iDO-7A-08s" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cfF-Nr-qJ2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="82L-dX-y2r"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dtq-ey-Qop" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5602" y="-649"/>
         </scene>
         <!--Register-->
         <scene sceneID="KWc-na-h4s">
@@ -284,4 +325,8 @@
             <point key="canvasLocation" x="7193.4664246823959" y="106.4748201438849"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="aZn-3M-5PI"/>
+        <segue reference="dnV-Gq-3TB"/>
+    </inferredMetricsTieBreakers>
 </document>

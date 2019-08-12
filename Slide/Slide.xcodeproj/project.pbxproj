@@ -39,6 +39,7 @@
 		98B3A47222A9ED73005FBCF2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3A47122A9ED73005FBCF2 /* LoginViewController.swift */; };
 		98B3A4A022B1860D005FBCF2 /* GoogleSignInDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3A49922B1860D005FBCF2 /* GoogleSignInDependencies.framework */; };
 		98B3A4A122B1860D005FBCF2 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3A49A22B1860D005FBCF2 /* GoogleSignIn.framework */; };
+		98BA75C823011B860086D83F /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BA75C723011B860086D83F /* LaunchViewController.swift */; };
 		98C55E6622C171FA00B16A14 /* MediaSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C55E6522C171FA00B16A14 /* MediaSelectionViewController.swift */; };
 		98D2721522C183B600E300FE /* EncodedMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D2721422C183B600E300FE /* EncodedMedia.swift */; };
 		98D2721722C478D600E300FE /* ReceivedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D2721622C478D600E300FE /* ReceivedViewController.swift */; };
@@ -92,6 +93,7 @@
 		98B3A49622B1860D005FBCF2 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
 		98B3A49922B1860D005FBCF2 /* GoogleSignInDependencies.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignInDependencies.framework; sourceTree = "<group>"; };
 		98B3A49A22B1860D005FBCF2 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
+		98BA75C723011B860086D83F /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		98C55E6522C171FA00B16A14 /* MediaSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSelectionViewController.swift; sourceTree = "<group>"; };
 		98D2721422C183B600E300FE /* EncodedMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodedMedia.swift; sourceTree = "<group>"; };
 		98D2721622C478D600E300FE /* ReceivedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			children = (
 				98B3A45622A8C9D7005FBCF2 /* RegisterViewController.swift */,
 				98B3A47122A9ED73005FBCF2 /* LoginViewController.swift */,
+				98BA75C723011B860086D83F /* LaunchViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98B3A47222A9ED73005FBCF2 /* LoginViewController.swift in Sources */,
+				98BA75C823011B860086D83F /* LaunchViewController.swift in Sources */,
 				0D08E33822EB5DA0009EAA68 /* BrowserViewController.swift in Sources */,
 				98B3848422B482950097A073 /* QRScannerViewController.swift in Sources */,
 				98D2721522C183B600E300FE /* EncodedMedia.swift in Sources */,
