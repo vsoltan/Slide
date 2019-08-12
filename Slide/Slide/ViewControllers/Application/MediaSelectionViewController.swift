@@ -31,6 +31,7 @@ class MediaSelectionViewController: UIViewController {
         var verticalOffset: CGFloat = 120
     
         for media in supportedMedia {
+            print(media.key as! String)
             
             // don't create a button if media is not synced
             if (media.value is NSNull) {} else {

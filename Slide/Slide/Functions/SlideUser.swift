@@ -41,7 +41,7 @@ class SlideUser {
                 // iterates through the array, as there may be several docs
                 for document in userData! {
                     // retrieves user data from Firebase into UserDefaults
-                    UserDefaults.standard.getAll(source: document)
+                    UserDefaults.standard.setAllDefaults(source: document)
                     completionHandler(nil)
                 }
             } else {
@@ -71,6 +71,7 @@ class SlideUser {
             "mobile"   : defaults.getPhoneNumber() ?? NSNull(),
             "facebook" : defaults.getFacebookID() ?? NSNull(),
         ]
+        print(dictionary)
         return dictionary
     }
     
@@ -269,22 +270,28 @@ extension UserDefaults {
         return string(forKey: UserDefaultsKeys.localfbID.rawValue)
     }
     
-    func getAll(source: QueryDocumentSnapshot) {
+    func setAllDefaults(source: QueryDocumentSnapshot) {
+        
+        let defaults = UserDefaults.standard
         
         if let nameData = source.data()["Name"] as? String {
-            UserDefaults.standard.setName(value: nameData)
+            defaults.setName(value: nameData)
         }
         
         if let emailData = source.data()["Email"] as? String {
-            UserDefaults.standard.setEmail(value: emailData)
+            defaults.setEmail(value: emailData)
         }
         
         if let idData = source.data() ["ID"] as? String {
-            UserDefaults.standard.setID(value: idData)
+            defaults.setID(value: idData)
         }
         
         if let phoneData = source.data() ["Phone"] as? String {
-            UserDefaults.standard.setPhoneNumber(value: phoneData)
+            defaults.setPhoneNumber(value: phoneData)
+        }
+        
+        if let fbdata = source.data()["Facebook"] as? String {
+            defaults.setFacebookID(value: fbdata)
         }
     }
 }
