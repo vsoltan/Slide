@@ -105,31 +105,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         let fbconfig = ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        /*
+         * if a user is already signed in, then we have to ping the server to update user defaults
+         *      - getUser takes time to execute
+         *      - in the meantime the root view controller will be launchScreen
+         *
+         * if user does not exist, then the root view controller will be set to loginRegister
+         */
+
         // checks if user is already signed in
-        let currusr = Auth.auth().currentUser
-        
-        if (currusr != nil) {
-            print("user active")
+        if let current = Auth.auth().currentUser?.uid {
+            // initializes the container for the root view controller
+            self.window = UIWindow(frame: UIScreen.main.bounds)
             
-            // load in user defaults
-            SlideUser.getUser(userID: currusr!.uid) { (error) in
-                if error != nil {
-                    print("something went wrong")
-                } else {
-                    // initializes the container for the view controller
-                    self.window = UIWindow(frame: UIScreen.main.bounds)
-                    
-                    // specifies the destination and creates an instance of that view controller
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let initialViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-                    
-                    // sets the root view controller to the desination and renders it
-                    self.window?.rootViewController = initialViewController
-                    
-                    
-                    self.window?.makeKeyAndVisible()
-                }
-            }
+            // goes to launch screen
+            self.window?.rootViewController = UIStoryboard(name: "LoginRegister",
+                                                           bundle: nil).instantiateViewController(withIdentifier: "Launch")
+            
+            // passes the current user's id to the next vc
+            let destination = self.window?.rootViewController as! LaunchViewController
+            destination.currentID = current
+            
+            // renders
+            self.window?.makeKeyAndVisible()
         }
         return fbconfig
     }
