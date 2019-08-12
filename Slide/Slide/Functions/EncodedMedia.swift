@@ -13,7 +13,11 @@ class EncodedMedia{
     
     // of type codable to allow for easy de/serialization
     struct Media : Codable {
+        // business
         var name, phoneNumber, email : String?
+        
+        // social media
+        var fbid : String?
     }
     
     // creates a json string representation of the object

@@ -109,19 +109,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let currusr = Auth.auth().currentUser
         
         if (currusr != nil) {
-
-            // initializes the container for the view controller
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-
-            // specifies the destination and creates an instance of that view controller
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-
-            // sets the root view controller to the desination and renders it
-            self.window?.rootViewController = initialViewController
-
-            SlideUser.getUser(userID: currusr!.uid) { (error) in}
-            self.window?.makeKeyAndVisible()
+            print("user active")
+            
+            // load in user defaults
+            SlideUser.getUser(userID: currusr!.uid) { (error) in
+                if error != nil {
+                    print("something went wrong")
+                } else {
+                    // initializes the container for the view controller
+                    self.window = UIWindow(frame: UIScreen.main.bounds)
+                    
+                    // specifies the destination and creates an instance of that view controller
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let initialViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                    
+                    // sets the root view controller to the desination and renders it
+                    self.window?.rootViewController = initialViewController
+                    
+                    
+                    self.window?.makeKeyAndVisible()
+                }
+            }
         }
         return fbconfig
     }

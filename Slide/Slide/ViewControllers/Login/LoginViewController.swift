@@ -61,6 +61,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
     
     // custom button that fulfills facebook login function
     @IBAction func facebookLogin(_ sender: Any) {
+        
         let loginManager = LoginManager()
         
         let fbReadPermissions: [String] = ["public_profile", "email"]
@@ -105,21 +106,32 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                     // data retrieved from profile if user was just created
                     let userData = GraphRequest(graphPath: "me", parameters: ["fields":"name, email"], tokenString: AccessToken.current?.tokenString, version: nil, httpMethod: HTTPMethod(rawValue: "GET"))
                     
+                
+                        //guard let userInfo = result as? [String : Any] else { return }
+                        
+                        //The url is nested 3 layers deep into the result so it's pretty messy
+                        //if let imageURL = ((userInfo["picture"] as? [String: Any])?["data"] as? [String: Any])?["url"] as? String {
+                            //Download image from imageURL
+                        //}
+                    
                     // blocks off main thread from continuing execution before doc is created
                     myGroup.enter()
-                    userData.start(completionHandler: { (test, result, error) in
+                    userData.start(completionHandler: { (connection, result, error) in
                         if (error != nil) {
                             print("something went wrong")
                         } else {
                             // data consolidated into a readable array
                             let data = result as! NSDictionary
                             
+                            print(data)
+                            
                             // new document is created for the user
                             db.collection("users").document(userID).setData([
                                 // set specified data entries
-                                "Name": data["name"] as! String,
-                                "ID": userID,
-                                "Email": data["email"] as! String,
+                                "Name"     : data["name"] as! String,
+                                "ID"       : userID,
+                                "Email"    : data["email"] as! String,
+                                "Facebook" : data["id"] as! String,
                             ]) { error in
                                 if let error = error {
                                     print("Error writing document: \(error.localizedDescription)")
@@ -132,22 +144,15 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                     })
                 }
                 
-                // suspends program execution until defaults are updated
-                myGroup.enter()
+                // wait till defaults are updated before proceeding to main page
                 SlideUser.getUser(userID: userID, completionHandler: { (error) in
                     if let error = error {
                         print("trouble retrieving user data, \(error.localizedDescription)")
                     } else {
-                        myGroup.leave()
+                        // user is redirected back to the home page
+                        self.performSegue(withIdentifier: "signInToMain", sender: self)
                     }
                 })
-                
-                // sends a signal to the main thread that it can continue
-                myGroup.notify(queue: .main) {
-                    print("boss")
-                    // user is redirected back to the home page
-                    self.performSegue(withIdentifier: "signInToMain", sender: self)
-                }
             }
         }
     }

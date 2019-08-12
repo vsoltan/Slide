@@ -11,7 +11,7 @@ import UIKit
 class MediaSelectionViewController: UIViewController {
     
     // QR Encoding structure
-    var selectedMedia = EncodedMedia.Media.init(name: nil, phoneNumber: nil, email: nil)
+    var selectedMedia = EncodedMedia.Media.init()
 
     // stores the buttons and corresponding data
     var selections = [(button: UIButton, data: (key: Any, value: Any))]()
