@@ -53,7 +53,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                         }
                     })
                 } else {
-                    CustomError.createWith(errorTitle: "Login Error", errorMessage: error!.localizedDescription).show()
+                    CustomError.createWith(errorTitle: "Login Error", errorMessage: error!.localizedDescription)
                 }
             }
         }
@@ -90,7 +90,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         // firebase uses the facebook token to log in
         Auth.auth().signIn(with: credential) { (authResult, error) in
             if let error = error {
-                CustomError.createWith(errorTitle: "Login Failed", errorMessage: error.localizedDescription).show()
+                CustomError.createWith(errorTitle: "Login Failed", errorMessage: error.localizedDescription)
                 return
             } else {
                 // establishes reference to the database

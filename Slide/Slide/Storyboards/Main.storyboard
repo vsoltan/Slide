@@ -10,27 +10,27 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Contacts View Controller-->
+        <!--View Controller-->
         <scene sceneID="dJ9-jp-Fpi">
             <objects>
-                <viewController id="Dhf-gO-FV4" customClass="ContactsViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Dhf-gO-FV4" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lKN-nO-v5Y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Contacts" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MgO-hG-1fb">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Contacts" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MgO-hG-1fb">
                                 <rect key="frame" x="54" y="53" width="266" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVk-Qc-CDx">
-                                <rect key="frame" x="129" y="184" width="117" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZX-TC-0eZ">
+                                <rect key="frame" x="154" y="132" width="67" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Example Contact"/>
+                                <state key="normal" title="Facebook"/>
                                 <connections>
-                                    <segue destination="6Xo-25-tgg" kind="presentation" id="imm-fg-9kg"/>
+                                    <segue destination="CL5-6C-xiA" kind="presentation" id="L79-Sp-icr"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -41,31 +41,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="web-FP-tmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1836" y="-692.36453201970448"/>
-        </scene>
-        <!--Contact View Controller-->
-        <scene sceneID="Qd6-B2-r7C">
-            <objects>
-                <viewController id="6Xo-25-tgg" customClass="ContactViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vcV-Uw-qqA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZX-TC-0eZ">
-                                <rect key="frame" x="154" y="177" width="67" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Facebook"/>
-                                <connections>
-                                    <segue destination="CL5-6C-xiA" kind="presentation" id="L79-Sp-icr"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="7hZ-uf-PhI"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4c6-PA-QQd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2722" y="-695"/>
         </scene>
         <!--Browser View Controller-->
         <scene sceneID="Xwz-1U-EHz">
@@ -80,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ass-J4-MoB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3900" y="-708"/>
+            <point key="canvasLocation" x="2641" y="-692"/>
         </scene>
         <!--Settings-->
         <scene sceneID="0Lt-Vm-umS">
