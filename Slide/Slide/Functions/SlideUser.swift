@@ -278,10 +278,4 @@ extension UserDefaults {
             UserDefaults.standard.setPhoneNumber(value: phoneData)
         }
     }
-    
-    func setDefaultsAtRegister(name : String, email : String) {
-        let defaults = UserDefaults.standard
-        defaults.setName(value: name)
-        defaults.setEmail(value: email)
-    }
 }

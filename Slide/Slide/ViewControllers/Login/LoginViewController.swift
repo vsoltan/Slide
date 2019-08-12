@@ -33,7 +33,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         // google delegate setup
         GIDSignIn.sharedInstance()?.uiDelegate = self
     }
-    
+
     // supporting action for when user signs in with email and password
     @IBAction func LogInActivated(_ sender: Any) {
         // consolidate provided data
@@ -66,10 +66,10 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         let fbReadPermissions: [String] = ["public_profile", "email"]
         
         loginManager.logIn(permissions: fbReadPermissions, from: self) { (result, error) in
-            if let error = error {
-                self.loginButton(self.facebookButton, didCompleteWith: result, error: error)
-            } else {
+            if error != nil {
                 print("custom facebook button failed")
+            } else {
+                self.loginButton(self.facebookButton, didCompleteWith: result, error: error)
             }
         }
     }
@@ -81,13 +81,14 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
             return
         }
         
+        if (result!.isCancelled) { return }
+        
         // creates a unique firebase login token
         let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
         
         // safeguard against async tasks completing after the main thread needs data
         let myGroup = DispatchGroup()
         
-        // TODO fix this
         // firebase uses the facebook token to log in
         Auth.auth().signIn(with: credential) { (authResult, error) in
             if let error = error {
@@ -143,6 +144,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                 
                 // sends a signal to the main thread that it can continue
                 myGroup.notify(queue: .main) {
+                    print("boss")
                     // user is redirected back to the home page
                     self.performSegue(withIdentifier: "signInToMain", sender: self)
                 }

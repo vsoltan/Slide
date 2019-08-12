@@ -71,7 +71,10 @@ class RegisterViewController: UIViewController {
                     }
                     
                 // sets default without having to ping database
-                UserDefaults.standard.setDefaultsAtRegister(name: register.name, email: register.email)
+                let defaults = UserDefaults.standard
+                defaults.setName(value: register.name)
+                defaults.setEmail(value: register.email)
+                defaults.setID(value: userID)
                     
                 // continues with main thread execution on home page
                 self.performSegue(withIdentifier: "registerToHome", sender: self)

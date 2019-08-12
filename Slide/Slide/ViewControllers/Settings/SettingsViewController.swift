@@ -102,7 +102,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 }
                 // checks if the user logged in using facebook
                 if AccessToken.current != nil {
-                    print("we got em")
                     let loginManager = LoginManager()
                     loginManager.logOut()
                 }
@@ -121,9 +120,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         let tabs = ["Logout", "Change Password", "Manage", "About", "Linked Accounts", "Slide Groups"]
         
         // executes the segue corresponding to the tab selected
-        if let index = tabs.firstIndex(of: segueLabel) {
+        if let _ = tabs.firstIndex(of: segueLabel) {
             performSegue(withIdentifier: segueLabel, sender: self)
-            print(index) // make compiler happy
         }
     }
     
