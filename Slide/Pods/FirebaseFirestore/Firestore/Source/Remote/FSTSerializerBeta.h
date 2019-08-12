@@ -20,6 +20,7 @@
 #include <vector>
 
 #include "Firestore/core/include/firebase/firestore/timestamp.h"
+#include "Firestore/core/src/firebase/firestore/core/field_filter.h"
 #include "Firestore/core/src/firebase/firestore/model/database_id.h"
 #include "Firestore/core/src/firebase/firestore/model/document_key.h"
 #include "Firestore/core/src/firebase/firestore/model/field_mask.h"
@@ -36,7 +37,6 @@
 @class FSTObjectValue;
 @class FSTQuery;
 @class FSTQueryData;
-@class FSTRelationFilter;
 
 @class GCFSBatchGetDocumentsResponse;
 @class GCFSDocument;
@@ -44,6 +44,8 @@
 @class GCFSDocumentTransform_FieldTransform;
 @class GCFSListenResponse;
 @class GCFSStructuredQuery_Filter;
+@class GCFSStructuredQuery_FieldFilter;
+@class GCFSStructuredQuery_UnaryFilter;
 @class GCFSTarget;
 @class GCFSTarget_DocumentsTarget;
 @class GCFSTarget_QueryTarget;
@@ -53,6 +55,7 @@
 
 @class GPBTimestamp;
 
+namespace core = firebase::firestore::core;
 namespace model = firebase::firestore::model;
 namespace remote = firebase::firestore::remote;
 
@@ -119,7 +122,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (GCFSTarget_QueryTarget *)encodedQueryTarget:(FSTQuery *)query;
 - (FSTQuery *)decodedQueryFromQueryTarget:(GCFSTarget_QueryTarget *)target;
 
-- (GCFSStructuredQuery_Filter *)encodedRelationFilter:(FSTRelationFilter *)filter;
+- (GCFSStructuredQuery_Filter *)encodedUnaryOrFieldFilter:(const core::FieldFilter &)filter;
+- (std::shared_ptr<core::FieldFilter>)decodedFieldFilter:(GCFSStructuredQuery_FieldFilter *)proto;
+- (std::shared_ptr<core::FieldFilter>)decodedUnaryFilter:(GCFSStructuredQuery_UnaryFilter *)proto;
 
 - (std::unique_ptr<remote::WatchChange>)decodedWatchChange:(GCFSListenResponse *)watchChange;
 - (model::SnapshotVersion)versionFromListenResponse:(GCFSListenResponse *)watchChange;

@@ -11,8 +11,6 @@ import Firebase
 
 class HomeViewController: UIViewController {
     
-    var nameString = String()
-    
     @IBOutlet weak var nameLabel: UILabel!
     
     override func viewDidLoad() {

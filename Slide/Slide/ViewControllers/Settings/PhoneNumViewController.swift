@@ -10,60 +10,113 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
-class PhoneNumViewController: UIViewController {
+class PhoneNumViewController: UIViewController, UITextFieldDelegate {
     
     // textfield for modifying a user's number
     @IBOutlet weak var setPhone: UITextField!
     
-    // if on the app can use the user's phone number as part of their slide
+    // shows if the user's phone number can be a part of their slide
     @IBOutlet weak var userPermission: UISwitch!
     
-    @IBAction func phoneModified(_ sender: Any) {
-        // checks that the phone is provided in the proper format
-        if ((setPhone.text)?.isValidatePhoneNumber() == false) {
-            CustomError.createWith(errorTitle: "Poorly Formated Number", errorMessage: "enter a number like XXX-XXX-XXXX").show()
-            return
-        }
-        
-        // if the user authorizes us to work with their number
-        if (userPermission.isOn) {
-            let currPhone = UserDefaults.standard.getPhoneNumber()
-            let passedData = setPhone.text!
-            let db = Firestore.firestore().collection("users").document(Auth.auth().currentUser!.uid)
-            
-            // phoneNumber hasn't been set yet
-            if (currPhone == nil) {
-                // create a new document for the user
-                db.setData([
-                    // set specified data entries
-                    "Phone": passedData,
-                ], merge: true) { err in
-                    if let err = err {
-                        print("Error writing document: \(err)")
-                    } else {
-                        print("Document successfully written!")
-                    }
-                }
-            }
-            if (setPhone.text != currPhone) {
-                UserDefaults.standard.setPhoneNumber(value: setPhone.text!)
-                db.updateData([
-                    "Phone": passedData,
-                    ])
-            }
-        } else {
-            // TODO grey out the options so the user cannot interact with them
-            print("user has to give permission")
-            return
-        }
-    }
+    // resets each time the page loads
+    var wasModified = false
+    
+    let currPhone = UserDefaults.standard.getPhoneNumber()
+    var newPhone = String()
+    
+    // prepare doc for modifications
+    let db = Firestore.firestore().collection("users").document(Auth.auth().currentUser!.uid)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setPhone.delegate = self
+        self.hideKeyboardOnGesture()
+        setPhone.keyboardType = .phonePad
         
         // display the user's synced number if already associated with the account
         if let phoneNumber = UserDefaults.standard.getPhoneNumber() {
-            setPhone.placeholder = phoneNumber
+            setPhone.text = phoneNumber
+        }
+    }
+    
+    func checkFormat() -> Bool {
+        return newPhone.isValidPhoneNumber()
+    }
+    
+    // after editing is finished compares new and old numbers
+    @IBAction func phoneModified(_ sender: Any) {
+        // checks if there were any changes made
+        newPhone = setPhone.text!
+        if (newPhone != currPhone) {
+            wasModified = true
+        }
+        
+        // if user removes their number automatically turn off sync
+        if (newPhone.isEmpty) {
+            userPermission.isOn = false
+        }
+    }
+    
+    // user is ready to commit changes
+    func checkAndUpdatePhone() -> Bool {
+        
+        // determines if the user can return to linked accounts page
+        var canContinue : Bool = true
+        
+        // if the user authorizes the app to work with their number
+        if (userPermission.isOn) {
+            if (wasModified) {
+                if (checkFormat()) {
+                    // modify document for the user
+                    db.setData([
+                        "Phone": newPhone,
+                    ], merge: true) { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                        } else {
+                            print("Document successfully written!")
+                        }
+                    }
+                    UserDefaults.standard.setPhoneNumber(value: newPhone)
+                } else {
+                    CustomError.createWith(errorTitle: "Poorly Formated Number", errorMessage: "enter a number like XXX-XXX-XXXX")
+                    canContinue = false
+                }
+            }
+        } else {
+            setPhone.placeholder = "XXX-XXX-XXXX"
+            
+            // make modification in background
+            UserDefaults.standard.setPhoneNumber(value: nil)
+            
+            db.updateData([
+                "Phone": FieldValue.delete(),
+            ]) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
+        }
+        return canContinue
+    }
+    
+    @IBAction func goBack(_ sender: Any) {
+        if (checkAndUpdatePhone()) {
+            performSegue(withIdentifier: "phoneToLinked", sender: self)
+        }
+    }
+    
+    // TODO get the program to auto format the number so user doesn't have to
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+    }
+    
+    func autoFormat() {
+        // 10 digit number, 2 parens, and 2 dashes
+        while (setPhone.text?.count ?? 0 <= 14) {
+            
         }
     }
 }

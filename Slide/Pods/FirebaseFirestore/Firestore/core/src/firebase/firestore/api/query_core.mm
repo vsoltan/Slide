@@ -24,33 +24,34 @@
 #import "Firestore/Source/Core/FSTQuery.h"
 
 #include "Firestore/core/src/firebase/firestore/api/firestore.h"
+#include "Firestore/core/src/firebase/firestore/core/field_filter.h"
+#include "Firestore/core/src/firebase/firestore/core/filter.h"
 #include "Firestore/core/src/firebase/firestore/model/field_value.h"
-
-namespace util = firebase::firestore::util;
-using firebase::firestore::api::Firestore;
-using firebase::firestore::api::ListenerRegistration;
-using firebase::firestore::api::SnapshotMetadata;
-using firebase::firestore::api::Source;
-using firebase::firestore::api::ThrowInvalidArgument;
-using firebase::firestore::core::AsyncEventListener;
-using firebase::firestore::core::Direction;
-using firebase::firestore::core::EventListener;
-using firebase::firestore::core::Filter;
-using firebase::firestore::core::ListenOptions;
-using firebase::firestore::core::QueryListener;
-using firebase::firestore::core::ViewSnapshot;
-using firebase::firestore::model::DocumentKey;
-using firebase::firestore::model::FieldPath;
-using firebase::firestore::model::FieldValue;
-using firebase::firestore::model::ResourcePath;
-using firebase::firestore::util::Status;
-using firebase::firestore::util::StatusOr;
+#include "absl/algorithm/container.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 namespace firebase {
 namespace firestore {
 namespace api {
+
+namespace util = firebase::firestore::util;
+using core::AsyncEventListener;
+using core::Direction;
+using core::EventListener;
+using core::FieldFilter;
+using core::Filter;
+using core::ListenOptions;
+using core::QueryListener;
+using core::ViewSnapshot;
+using model::DocumentKey;
+using model::FieldPath;
+using model::FieldValue;
+using model::ResourcePath;
+using util::Status;
+using util::StatusOr;
+
+using Operator = Filter::Operator;
 
 Query::Query(FSTQuery* query, std::shared_ptr<Firestore> firestore)
     : firestore_{std::move(firestore)}, query_{query} {
@@ -103,7 +104,7 @@ void Query::GetDocuments(Source source, QuerySnapshot::Listener&& callback) {
 
       if (snapshot.metadata().from_cache() && source_ == Source::Server) {
         listener_->OnEvent(Status{
-            FirestoreErrorCode::Unavailable,
+            Error::Unavailable,
             "Failed to get documents from server. (However, these documents "
             "may exist in the local cache. Run again without setting source to "
             "FirestoreSourceServer to retrieve the cached documents.)"});
@@ -223,13 +224,9 @@ Query Query::Filter(FieldPath field_path,
     }
   }
 
-  FSTFilter* filter = [FSTFilter filterWithField:field_path
-                                  filterOperator:op
-                                           value:field_value];
-
-  if ([filter isKindOfClass:[FSTRelationFilter class]]) {
-    ValidateNewRelationFilter(static_cast<FSTRelationFilter*>(filter));
-  }
+  std::shared_ptr<FieldFilter> filter =
+      FieldFilter::Create(field_path, op, field_value);
+  ValidateNewFilter(*filter);
 
   return Wrap([query_ queryByAddingFilter:filter]);
 }
@@ -271,25 +268,46 @@ Query Query::EndAt(FSTBound* bound) const {
   return Wrap([query() queryByAddingEndAt:bound]);
 }
 
-void Query::ValidateNewRelationFilter(FSTRelationFilter* filter) const {
-  if ([filter isInequality]) {
-    const FieldPath* existingField = [query_ inequalityFilterField];
-    if (existingField && *existingField != filter.field) {
-      ThrowInvalidArgument(
-          "Invalid Query. All where filters with an inequality (lessThan, "
-          "lessThanOrEqual, greaterThan, or greaterThanOrEqual) must be on the "
-          "same field. But you have inequality filters on '%s' and '%s'",
-          existingField->CanonicalString(), filter.field.CanonicalString());
-    }
+namespace {
 
-    const FieldPath* firstOrderByField = [query_ firstSortOrderField];
-    if (firstOrderByField) {
-      ValidateOrderByField(*firstOrderByField, filter.field);
-    }
-  } else if (filter.filterOperator == Filter::Operator::ArrayContains) {
-    if ([query_ hasArrayContainsFilter]) {
-      ThrowInvalidArgument(
-          "Invalid Query. Queries only support a single arrayContains filter.");
+constexpr Operator kArrayOps[] = {
+    Operator::ArrayContains,
+};
+
+}
+
+void Query::ValidateNewFilter(const class Filter& filter) const {
+  if (filter.IsAFieldFilter()) {
+    const auto& field_filter = static_cast<const FieldFilter&>(filter);
+
+    if (field_filter.IsInequality()) {
+      const FieldPath* existing_inequality = [query_ inequalityFilterField];
+      const FieldPath* new_inequality = &filter.field();
+
+      if (existing_inequality && *existing_inequality != *new_inequality) {
+        ThrowInvalidArgument(
+            "Invalid Query. All where filters with an inequality (lessThan, "
+            "lessThanOrEqual, greaterThan, or greaterThanOrEqual) must be on "
+            "the same field. But you have inequality filters on '%s' and '%s'",
+            existing_inequality->CanonicalString(),
+            new_inequality->CanonicalString());
+      }
+
+      const FieldPath* first_order_by_field = [query_ firstSortOrderField];
+      if (first_order_by_field) {
+        ValidateOrderByField(*first_order_by_field, filter.field());
+      }
+
+    } else {
+      // You can have at most 1 disjunctive filter and 1 array filter. Check if
+      // the new filter conflicts with an existing one.
+      Operator filter_op = field_filter.op();
+      bool is_array_op = absl::c_linear_search(kArrayOps, filter_op);
+
+      if (is_array_op && [query_ hasArrayContainsFilter]) {
+        ThrowInvalidArgument("Invalid Query. Queries only support a single "
+                             "arrayContains filter.");
+      }
     }
   }
 }

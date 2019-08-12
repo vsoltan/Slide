@@ -33,7 +33,6 @@
 
 OBJC_CLASS(FSTBound);
 OBJC_CLASS(FSTQuery);
-OBJC_CLASS(FSTRelationFilter);
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -164,7 +163,7 @@ class Query {
   }
 
  private:
-  void ValidateNewRelationFilter(FSTRelationFilter* filter) const;
+  void ValidateNewFilter(const core::Filter& filter) const;
   void ValidateNewOrderByPath(const model::FieldPath& fieldPath) const;
   void ValidateOrderByField(const model::FieldPath& orderByField,
                             const model::FieldPath& inequalityField) const;

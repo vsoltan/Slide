@@ -22,6 +22,9 @@ target 'Slide' do
   # Google
   pod 'GoogleSignIn'
   
+  # Snap
+  pod 'SnapSDK'
+  
   # temporary solution to warnings
   pod 'Protobuf', :inhibit_warnings => true
 

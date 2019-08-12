@@ -27,7 +27,6 @@
 #import "Firestore/Source/API/FIRFirestoreSource+Internal.h"
 #import "Firestore/Source/API/FIRListenerRegistration+Internal.h"
 #import "Firestore/Source/API/FSTUserDataConverter.h"
-#import "Firestore/Source/Core/FSTEventManager.h"
 #import "Firestore/Source/Core/FSTQuery.h"
 
 #include "Firestore/core/src/firebase/firestore/api/document_reference.h"
@@ -114,7 +113,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (NSString *)documentID {
-  return util::WrapNSString(_documentReference.document_id());
+  return util::MakeNSString(_documentReference.document_id());
 }
 
 - (FIRCollectionReference *)parent {
@@ -122,7 +121,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (NSString *)path {
-  return util::WrapNSString(_documentReference.Path());
+  return util::MakeNSString(_documentReference.Path());
 }
 
 - (FIRCollectionReference *)collectionWithPath:(NSString *)collectionPath {

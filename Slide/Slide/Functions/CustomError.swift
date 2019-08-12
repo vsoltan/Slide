@@ -6,18 +6,17 @@
 //  Copyright © 2019 Roodac. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class CustomError : UIAlertController {
     
     // creates a UIAlertController with prompts for the user
-    static func createWith(errorTitle: String, errorMessage: String) -> UIAlertController {
+    static func createWith(errorTitle: String, errorMessage: String) {
         // customization
         let error = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .actionSheet)
         let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         error.addAction(defaultAction)
-        return error
+        error.show()
     }
 }
 

@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import GoogleSignIn
 import Firebase
+import GoogleSignIn
 import FBSDKCoreKit
 import FBSDKLoginKit
-
 
 class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDelegate {
     
@@ -25,6 +24,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardOnGesture()
         
         // creates facebook login button
         let loginButton = FBLoginButton()
@@ -33,7 +33,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         // google delegate setup
         GIDSignIn.sharedInstance()?.uiDelegate = self
     }
-    
+
     // supporting action for when user signs in with email and password
     @IBAction func LogInActivated(_ sender: Any) {
         // consolidate provided data
@@ -41,11 +41,11 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
             = [(email, "username"), (password, "password")]
         
         // checks that the user passed information to the application
-        if (TextFieldParser.validate(textFields: signInInfo) == true) {
-            Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
+        if (TextParser.validate(textFields: signInInfo) == true) {
+            Auth.auth().signIn(withEmail: email.text!.trim(), password: password.text!) { (user, error) in
                 if (user != nil) {
                     // retrieves user data to create defaults for the current session
-                    User.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
+                    SlideUser.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
                         if (error != nil) {
                             print("something went wrong")
                         } else {
@@ -66,10 +66,10 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
         let fbReadPermissions: [String] = ["public_profile", "email"]
         
         loginManager.logIn(permissions: fbReadPermissions, from: self) { (result, error) in
-            if (error == nil) {
-                self.loginButton(self.facebookButton, didCompleteWith: result, error: error)
-            } else {
+            if error != nil {
                 print("custom facebook button failed")
+            } else {
+                self.loginButton(self.facebookButton, didCompleteWith: result, error: error)
             }
         }
     }
@@ -80,6 +80,8 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
             print(error.localizedDescription)
             return
         }
+        
+        if (result!.isCancelled) { return }
         
         // creates a unique firebase login token
         let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
@@ -93,7 +95,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                 CustomError.createWith(errorTitle: "Login Failed", errorMessage: error.localizedDescription)
                 return
             } else {
-                // establishes reference to the database
+                // reference to the database
                 let db = Firestore.firestore()
                 let userID = Auth.auth().currentUser!.uid
                 
@@ -132,7 +134,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                 
                 // suspends program execution until defaults are updated
                 myGroup.enter()
-                User.getUser(userID: userID, completionHandler: { (error) in
+                SlideUser.getUser(userID: userID, completionHandler: { (error) in
                     if let error = error {
                         print("trouble retrieving user data, \(error.localizedDescription)")
                     } else {
@@ -142,6 +144,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                 
                 // sends a signal to the main thread that it can continue
                 myGroup.notify(queue: .main) {
+                    print("boss")
                     // user is redirected back to the home page
                     self.performSegue(withIdentifier: "signInToMain", sender: self)
                 }

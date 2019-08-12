@@ -33,16 +33,16 @@ class PasswordViewController: UIViewController {
         let usr = Auth.auth().currentUser
         let credential = EmailAuthProvider.credential(withEmail: userEmail.text!, password: curPassword.text!)
         
-        if (TextFieldParser.validate(textFields: passwordInfo) && newPassword.text == confirmNew.text) {
+        if (TextParser.validate(textFields: passwordInfo) && newPassword.text == confirmNew.text) {
             usr?.reauthenticate(with: credential) { (user, error) in
                 if let error = error {
-                    CustomError.createWith(errorTitle: "Error", errorMessage: error.localizedDescription).show()
+                    CustomError.createWith(errorTitle: "Error", errorMessage: error.localizedDescription)
                 } else {
                     usr?.updatePassword(to: self.newPassword.text!)
                 }
             }
         } else {
-            CustomError.createWith(errorTitle: "Error", errorMessage: "you didn't follow instructions bitch").show()
+            CustomError.createWith(errorTitle: "Error", errorMessage: "something went wrong")
         }
     }
 }

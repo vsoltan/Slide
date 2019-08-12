@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     // sign in function for Google
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
-            CustomError.createWith(errorTitle: "Google Login Error", errorMessage: error.localizedDescription).show()
+            CustomError.createWith(errorTitle: "Google Login Error", errorMessage: error.localizedDescription)
             return
         } else {
             
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     }
                     
                     // store google user's data locally
-                    User.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
+                    SlideUser.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
                         if (error != nil) {
                             print("something went wrong")
                         } else {
@@ -77,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 // failed
                 else {
                     print(error?.localizedDescription as Any)
-                    CustomError.createWith(errorTitle: "Google Authentication Error", errorMessage: error!.localizedDescription).show()
+                    CustomError.createWith(errorTitle: "Google Authentication Error", errorMessage: error!.localizedDescription)
                 }
             }
             
@@ -87,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     // Finished disconnecting user from app if error is null
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         if error != nil {
-            CustomError.createWith(errorTitle: "Google Signout Error", errorMessage: error!.localizedDescription).show()
+            CustomError.createWith(errorTitle: "Google Signout Error", errorMessage: error!.localizedDescription)
         } else {
             print("Successfully disconnected user from Slide")
         }
@@ -120,7 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             // sets the root view controller to the desination and renders it
             self.window?.rootViewController = initialViewController
 
-            User.getUser(userID: currusr!.uid) { (error) in}
+            SlideUser.getUser(userID: currusr!.uid) { (error) in}
             self.window?.makeKeyAndVisible()
         }
         return fbconfig

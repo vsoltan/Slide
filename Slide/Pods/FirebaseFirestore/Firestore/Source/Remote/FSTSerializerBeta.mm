@@ -41,6 +41,7 @@
 
 #include "Firestore/core/include/firebase/firestore/firestore_errors.h"
 #include "Firestore/core/include/firebase/firestore/geo_point.h"
+#include "Firestore/core/src/firebase/firestore/core/field_filter.h"
 #include "Firestore/core/src/firebase/firestore/core/filter.h"
 #include "Firestore/core/src/firebase/firestore/core/query.h"
 #include "Firestore/core/src/firebase/firestore/model/database_id.h"
@@ -64,8 +65,9 @@
 
 namespace util = firebase::firestore::util;
 using firebase::Timestamp;
-using firebase::firestore::FirestoreErrorCode;
+using firebase::firestore::Error;
 using firebase::firestore::GeoPoint;
+using firebase::firestore::core::FieldFilter;
 using firebase::firestore::core::Filter;
 using firebase::firestore::core::Query;
 using firebase::firestore::model::ArrayTransform;
@@ -93,6 +95,8 @@ using firebase::firestore::remote::ExistenceFilterWatchChange;
 using firebase::firestore::remote::WatchChange;
 using firebase::firestore::remote::WatchTargetChange;
 using firebase::firestore::remote::WatchTargetChangeState;
+
+using Operator = Filter::Operator;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -159,7 +163,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString *)encodedResourcePathForDatabaseID:(const DatabaseId &)databaseID
                                           path:(const ResourcePath &)path {
-  return util::WrapNSString([self encodedResourcePathForDatabaseID:databaseID]
+  return util::MakeNSString([self encodedResourcePathForDatabaseID:databaseID]
                                 .Append("documents")
                                 .Append(path)
                                 .CanonicalString());
@@ -203,7 +207,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (NSString *)encodedDatabaseID {
-  return util::WrapNSString([self encodedResourcePathForDatabaseID:_databaseID].CanonicalString());
+  return util::MakeNSString([self encodedResourcePathForDatabaseID:_databaseID].CanonicalString());
 }
 
 #pragma mark - FieldValue <=> Value proto
@@ -315,7 +319,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (GCFSValue *)encodedString:(absl::string_view)value {
   GCFSValue *result = [GCFSValue message];
-  result.stringValue = util::WrapNSString(value);
+  result.stringValue = util::MakeNSString(value);
   return result;
 }
 
@@ -404,7 +408,7 @@ NS_ASSUME_NONNULL_BEGIN
   NSMutableDictionary<NSString *, GCFSValue *> *result = [NSMutableDictionary dictionary];
 
   for (const auto &kv : value) {
-    NSString *key = util::WrapNSString(kv.first);
+    NSString *key = util::MakeNSString(kv.first);
     GCFSValue *converted = [self encodedFieldValue:kv.second];
     result[key] = converted;
   }
@@ -579,7 +583,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (GCFSDocumentMask *)encodedFieldMask:(const FieldMask &)fieldMask {
   GCFSDocumentMask *mask = [GCFSDocumentMask message];
   for (const FieldPath &field : fieldMask) {
-    [mask.fieldPathsArray addObject:util::WrapNSString(field.CanonicalString())];
+    [mask.fieldPathsArray addObject:util::MakeNSString(field.CanonicalString())];
   }
   return mask;
 }
@@ -605,7 +609,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (GCFSDocumentTransform_FieldTransform *)encodedFieldTransform:
     (const FieldTransform &)fieldTransform {
   GCFSDocumentTransform_FieldTransform *proto = [GCFSDocumentTransform_FieldTransform message];
-  proto.fieldPath = util::WrapNSString(fieldTransform.path().CanonicalString());
+  proto.fieldPath = util::MakeNSString(fieldTransform.path().CanonicalString());
   if (fieldTransform.transformation().type() == TransformOperation::Type::ServerTimestamp) {
     proto.setToServerValue = GCFSDocumentTransform_FieldTransform_ServerValue_RequestTime;
 
@@ -786,14 +790,14 @@ NS_ASSUME_NONNULL_BEGIN
                 "Collection group queries should be within a document path or root.");
     queryTarget.parent = [self encodedQueryPath:path];
     GCFSStructuredQuery_CollectionSelector *from = [GCFSStructuredQuery_CollectionSelector message];
-    from.collectionId = query.collectionGroup;
+    from.collectionId = util::MakeNSString(query.collectionGroup);
     from.allDescendants = YES;
     [queryTarget.structuredQuery.fromArray addObject:from];
   } else {
     HARD_ASSERT(path.size() % 2 != 0, "Document queries with filters are not supported.");
     queryTarget.parent = [self encodedQueryPath:path.PopLast()];
     GCFSStructuredQuery_CollectionSelector *from = [GCFSStructuredQuery_CollectionSelector message];
-    from.collectionId = util::WrapNSString(path.last_segment());
+    from.collectionId = util::MakeNSString(path.last_segment());
     [queryTarget.structuredQuery.fromArray addObject:from];
   }
 
@@ -827,7 +831,7 @@ NS_ASSUME_NONNULL_BEGIN
   ResourcePath path = [self decodedQueryPath:target.parent];
 
   GCFSStructuredQuery *query = target.structuredQuery;
-  NSString *collectionGroup;
+  std::shared_ptr<const std::string> collectionGroup;
   NSUInteger fromCount = query.fromArray_Count;
   if (fromCount > 0) {
     HARD_ASSERT(fromCount == 1,
@@ -835,17 +839,15 @@ NS_ASSUME_NONNULL_BEGIN
 
     GCFSStructuredQuery_CollectionSelector *from = query.fromArray[0];
     if (from.allDescendants) {
-      collectionGroup = from.collectionId;
+      collectionGroup = util::MakeStringPtr(from.collectionId);
     } else {
       path = path.Append(util::MakeString(from.collectionId));
     }
   }
 
-  NSArray<FSTFilter *> *filterBy;
+  Query::FilterList filterBy;
   if (query.hasWhere) {
     filterBy = [self decodedFilters:query.where];
-  } else {
-    filterBy = @[];
   }
 
   NSArray<FSTSortOrder *> *orderBy;
@@ -870,27 +872,24 @@ NS_ASSUME_NONNULL_BEGIN
     endAt = [self decodedBound:query.endAt];
   }
 
-  return [[FSTQuery alloc] initWithPath:path
-                        collectionGroup:collectionGroup
-                               filterBy:filterBy
-                                orderBy:orderBy
-                                  limit:limit
-                                startAt:startAt
-                                  endAt:endAt];
+  Query inner(std::move(path), std::move(collectionGroup), std::move(filterBy));
+  return [[FSTQuery alloc] initWithQuery:std::move(inner)
+                                 orderBy:orderBy
+                                   limit:limit
+                                 startAt:startAt
+                                   endAt:endAt];
 }
 
 #pragma mark Filters
 
-- (GCFSStructuredQuery_Filter *_Nullable)encodedFilters:(NSArray<FSTFilter *> *)filters {
-  if (filters.count == 0) {
+- (GCFSStructuredQuery_Filter *_Nullable)encodedFilters:(const Query::FilterList &)filters {
+  if (filters.empty()) {
     return nil;
   }
   NSMutableArray<GCFSStructuredQuery_Filter *> *protos = [NSMutableArray array];
-  for (FSTFilter *filter in filters) {
-    if ([filter isKindOfClass:[FSTRelationFilter class]]) {
-      [protos addObject:[self encodedRelationFilter:(FSTRelationFilter *)filter]];
-    } else {
-      [protos addObject:[self encodedUnaryFilter:filter]];
+  for (const auto &filter : filters) {
+    if (filter->IsAFieldFilter()) {
+      [protos addObject:[self encodedUnaryOrFieldFilter:static_cast<const FieldFilter &>(*filter)]];
     }
   }
   if (protos.count == 1) {
@@ -904,8 +903,8 @@ NS_ASSUME_NONNULL_BEGIN
   return composite;
 }
 
-- (NSArray<FSTFilter *> *)decodedFilters:(GCFSStructuredQuery_Filter *)proto {
-  NSMutableArray<FSTFilter *> *result = [NSMutableArray array];
+- (Query::FilterList)decodedFilters:(GCFSStructuredQuery_Filter *)proto {
+  Query::FilterList result;
 
   NSArray<GCFSStructuredQuery_Filter *> *filters;
   if (proto.filterTypeOneOfCase ==
@@ -923,11 +922,11 @@ NS_ASSUME_NONNULL_BEGIN
         HARD_FAIL("Nested composite filters are not supported");
 
       case GCFSStructuredQuery_Filter_FilterType_OneOfCase_FieldFilter:
-        [result addObject:[self decodedRelationFilter:filter.fieldFilter]];
+        result.push_back([self decodedFieldFilter:filter.fieldFilter]);
         break;
 
       case GCFSStructuredQuery_Filter_FilterType_OneOfCase_UnaryFilter:
-        [result addObject:[self decodedUnaryFilter:filter.unaryFilter]];
+        result.push_back([self decodedUnaryFilter:filter.unaryFilter]);
         break;
 
       default:
@@ -937,43 +936,45 @@ NS_ASSUME_NONNULL_BEGIN
   return result;
 }
 
-- (GCFSStructuredQuery_Filter *)encodedRelationFilter:(FSTRelationFilter *)filter {
+- (GCFSStructuredQuery_Filter *)encodedUnaryOrFieldFilter:(const FieldFilter &)filter {
   GCFSStructuredQuery_Filter *proto = [GCFSStructuredQuery_Filter message];
-  GCFSStructuredQuery_FieldFilter *fieldFilter = proto.fieldFilter;
-  fieldFilter.field = [self encodedFieldPath:filter.field];
-  fieldFilter.op = [self encodedRelationFilterOperator:filter.filterOperator];
-  fieldFilter.value = [self encodedFieldValue:filter.value];
-  return proto;
-}
 
-- (FSTRelationFilter *)decodedRelationFilter:(GCFSStructuredQuery_FieldFilter *)proto {
-  FieldPath fieldPath = FieldPath::FromServerFormat(util::MakeString(proto.field.fieldPath));
-  Filter::Operator filterOperator = [self decodedRelationFilterOperator:proto.op];
-  FieldValue value = [self decodedFieldValue:proto.value];
-  return [FSTRelationFilter filterWithField:fieldPath filterOperator:filterOperator value:value];
-}
+  if (filter.op() == Operator::Equal) {
+    if (filter.value().is_null()) {
+      proto.unaryFilter.field = [self encodedFieldPath:filter.field()];
+      proto.unaryFilter.op = GCFSStructuredQuery_UnaryFilter_Operator_IsNull;
+      return proto;
+    }
 
-- (GCFSStructuredQuery_Filter *)encodedUnaryFilter:(FSTFilter *)filter {
-  GCFSStructuredQuery_Filter *proto = [GCFSStructuredQuery_Filter message];
-  proto.unaryFilter.field = [self encodedFieldPath:filter.field];
-  if ([filter isKindOfClass:[FSTNanFilter class]]) {
-    proto.unaryFilter.op = GCFSStructuredQuery_UnaryFilter_Operator_IsNan;
-  } else if ([filter isKindOfClass:[FSTNullFilter class]]) {
-    proto.unaryFilter.op = GCFSStructuredQuery_UnaryFilter_Operator_IsNull;
-  } else {
-    HARD_FAIL("Unrecognized filter: %s", filter);
+    if (filter.value().is_nan()) {
+      proto.unaryFilter.field = [self encodedFieldPath:filter.field()];
+      proto.unaryFilter.op = GCFSStructuredQuery_UnaryFilter_Operator_IsNan;
+      return proto;
+    }
   }
+
+  GCFSStructuredQuery_FieldFilter *fieldFilter = proto.fieldFilter;
+  fieldFilter.field = [self encodedFieldPath:filter.field()];
+  fieldFilter.op = [self encodedFieldFilterOperator:filter.op()];
+  fieldFilter.value = [self encodedFieldValue:filter.value()];
   return proto;
 }
 
-- (FSTFilter *)decodedUnaryFilter:(GCFSStructuredQuery_UnaryFilter *)proto {
+- (std::shared_ptr<FieldFilter>)decodedFieldFilter:(GCFSStructuredQuery_FieldFilter *)proto {
+  FieldPath fieldPath = FieldPath::FromServerFormat(util::MakeString(proto.field.fieldPath));
+  Filter::Operator op = [self decodedFieldFilterOperator:proto.op];
+  FieldValue value = [self decodedFieldValue:proto.value];
+  return FieldFilter::Create(std::move(fieldPath), op, std::move(value));
+}
+
+- (std::shared_ptr<FieldFilter>)decodedUnaryFilter:(GCFSStructuredQuery_UnaryFilter *)proto {
   FieldPath field = FieldPath::FromServerFormat(util::MakeString(proto.field.fieldPath));
   switch (proto.op) {
-    case GCFSStructuredQuery_UnaryFilter_Operator_IsNan:
-      return [[FSTNanFilter alloc] initWithField:field];
-
     case GCFSStructuredQuery_UnaryFilter_Operator_IsNull:
-      return [[FSTNullFilter alloc] initWithField:field];
+      return FieldFilter::Create(std::move(field), Operator::Equal, FieldValue::Null());
+
+    case GCFSStructuredQuery_UnaryFilter_Operator_IsNan:
+      return FieldFilter::Create(std::move(field), Operator::Equal, FieldValue::Nan());
 
     default:
       HARD_FAIL("Unrecognized UnaryFilter.operator %s", proto.op);
@@ -982,11 +983,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (GCFSStructuredQuery_FieldReference *)encodedFieldPath:(const FieldPath &)fieldPath {
   GCFSStructuredQuery_FieldReference *ref = [GCFSStructuredQuery_FieldReference message];
-  ref.fieldPath = util::WrapNSString(fieldPath.CanonicalString());
+  ref.fieldPath = util::MakeNSString(fieldPath.CanonicalString());
   return ref;
 }
 
-- (GCFSStructuredQuery_FieldFilter_Operator)encodedRelationFilterOperator:
+- (GCFSStructuredQuery_FieldFilter_Operator)encodedFieldFilterOperator:
     (Filter::Operator)filterOperator {
   switch (filterOperator) {
     case Filter::Operator::LessThan:
@@ -1006,7 +1007,7 @@ NS_ASSUME_NONNULL_BEGIN
   }
 }
 
-- (Filter::Operator)decodedRelationFilterOperator:
+- (Filter::Operator)decodedFieldFilterOperator:
     (GCFSStructuredQuery_FieldFilter_Operator)filterOperator {
   switch (filterOperator) {
     case GCFSStructuredQuery_FieldFilter_Operator_LessThan:
@@ -1143,8 +1144,8 @@ NS_ASSUME_NONNULL_BEGIN
 
   util::Status cause;
   if (change.hasCause) {
-    cause = util::Status{static_cast<FirestoreErrorCode>(change.cause.code),
-                         util::MakeString(change.cause.message)};
+    cause =
+        util::Status{static_cast<Error>(change.cause.code), util::MakeString(change.cause.message)};
   }
 
   return absl::make_unique<WatchTargetChange>(state, std::move(targetIDs), resumeToken,

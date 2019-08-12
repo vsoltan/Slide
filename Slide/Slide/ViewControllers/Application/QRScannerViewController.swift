@@ -97,6 +97,7 @@ class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsD
     func found(code: String) {
         if (code == "") {
             print("json conversion failed, please check the data pipeline")
+            return
         }
         
         // decodes the information to be shared and stores it in a struct

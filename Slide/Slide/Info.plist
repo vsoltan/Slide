@@ -52,6 +52,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Slide requires use of the rear-facing camera </string>
+	<key>NSContactsUsageDescription</key>
+	<string>Slide requires access to contacts</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

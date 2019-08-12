@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		048F56E622DEDAAF00B59402 /* FaceBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048F56E522DEDAAF00B59402 /* FaceBookViewController.swift */; };
+		048F56E822EAA97100B59402 /* SnapchatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048F56E722EAA97100B59402 /* SnapchatViewController.swift */; };
 		04F596E022A8540D004AA63A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F596DF22A8540D004AA63A /* AppDelegate.swift */; };
 		04F596E222A8540D004AA63A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F596E122A8540D004AA63A /* HomeViewController.swift */; };
 		04F596E722A8540F004AA63A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F596E622A8540F004AA63A /* Assets.xcassets */; };
@@ -20,7 +22,8 @@
 		9807A6A122C5929000627887 /* SyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9807A6A022C5929000627887 /* SyncViewController.swift */; };
 		9867CCE722B9BB8400B6F14B /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9867CCE622B9BB8400B6F14B /* CustomError.swift */; };
 		9867CCE922BD47F800B6F14B /* GenerationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9867CCE822BD47F800B6F14B /* GenerationViewController.swift */; };
-		98B3847422B1C0260097A073 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847322B1C0260097A073 /* User.swift */; };
+		98A8C3D422F9E05300B9E745 /* UX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A8C3D322F9E05300B9E745 /* UX.swift */; };
+		98B3847422B1C0260097A073 /* SlideUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847322B1C0260097A073 /* SlideUser.swift */; };
 		98B3847822B2FCE90097A073 /* GenerateQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847722B2FCE90097A073 /* GenerateQR.swift */; };
 		98B3847B22B32B9C0097A073 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3847A22B32B9C0097A073 /* SafariServices.framework */; };
 		98B3847D22B32BB30097A073 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3847C22B32BB30097A073 /* SystemConfiguration.framework */; };
@@ -32,7 +35,7 @@
 		98B3A45722A8C9D7005FBCF2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3A45622A8C9D7005FBCF2 /* RegisterViewController.swift */; };
 		98B3A46522A9DD78005FBCF2 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B3A46422A9DD78005FBCF2 /* Settings.storyboard */; };
 		98B3A46722A9DD7F005FBCF2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3A46622A9DD7F005FBCF2 /* SettingsViewController.swift */; };
-		98B3A46E22A9E878005FBCF2 /* TextFieldParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3A46D22A9E878005FBCF2 /* TextFieldParser.swift */; };
+		98B3A46E22A9E878005FBCF2 /* TextParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3A46D22A9E878005FBCF2 /* TextParser.swift */; };
 		98B3A47222A9ED73005FBCF2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3A47122A9ED73005FBCF2 /* LoginViewController.swift */; };
 		98B3A4A022B1860D005FBCF2 /* GoogleSignInDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3A49922B1860D005FBCF2 /* GoogleSignInDependencies.framework */; };
 		98B3A4A122B1860D005FBCF2 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3A49A22B1860D005FBCF2 /* GoogleSignIn.framework */; };
@@ -52,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		01566259063A6F98051587FA /* Pods_Slide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Slide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		048F56E522DEDAAF00B59402 /* FaceBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceBookViewController.swift; sourceTree = "<group>"; };
+		048F56E722EAA97100B59402 /* SnapchatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SnapchatViewController.swift; path = Slide/ViewControllers/Settings/SnapchatViewController.swift; sourceTree = SOURCE_ROOT; };
 		04F596DC22A8540D004AA63A /* Slide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F596DF22A8540D004AA63A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04F596E122A8540D004AA63A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -69,7 +74,8 @@
 		9807A6A022C5929000627887 /* SyncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncViewController.swift; sourceTree = "<group>"; };
 		9867CCE622B9BB8400B6F14B /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		9867CCE822BD47F800B6F14B /* GenerationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationViewController.swift; sourceTree = "<group>"; };
-		98B3847322B1C0260097A073 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		98A8C3D322F9E05300B9E745 /* UX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UX.swift; sourceTree = "<group>"; };
+		98B3847322B1C0260097A073 /* SlideUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUser.swift; sourceTree = "<group>"; };
 		98B3847722B2FCE90097A073 /* GenerateQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateQR.swift; sourceTree = "<group>"; };
 		98B3847A22B32B9C0097A073 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		98B3847C22B32BB30097A073 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -81,7 +87,7 @@
 		98B3A45622A8C9D7005FBCF2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		98B3A46422A9DD78005FBCF2 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		98B3A46622A9DD7F005FBCF2 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		98B3A46D22A9E878005FBCF2 /* TextFieldParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldParser.swift; sourceTree = "<group>"; };
+		98B3A46D22A9E878005FBCF2 /* TextParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextParser.swift; sourceTree = "<group>"; };
 		98B3A47122A9ED73005FBCF2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		98B3A49622B1860D005FBCF2 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
 		98B3A49922B1860D005FBCF2 /* GoogleSignInDependencies.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignInDependencies.framework; sourceTree = "<group>"; };
@@ -166,6 +172,8 @@
 				04F9B36822BDA6BC00D87528 /* PasswordViewController.swift */,
 				E7F6370D22CCF617009B24C4 /* AccountsViewController.swift */,
 				E70FB49B22CFF58A0052485F /* PhoneNumViewController.swift */,
+				048F56E522DEDAAF00B59402 /* FaceBookViewController.swift */,
+				048F56E722EAA97100B59402 /* SnapchatViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -230,11 +238,12 @@
 		98B3A46A22A9E60A005FBCF2 /* Functions */ = {
 			isa = PBXGroup;
 			children = (
-				98B3A46D22A9E878005FBCF2 /* TextFieldParser.swift */,
-				98B3847322B1C0260097A073 /* User.swift */,
+				98B3A46D22A9E878005FBCF2 /* TextParser.swift */,
+				98B3847322B1C0260097A073 /* SlideUser.swift */,
 				98B3847722B2FCE90097A073 /* GenerateQR.swift */,
 				9867CCE622B9BB8400B6F14B /* CustomError.swift */,
 				98D2721422C183B600E300FE /* EncodedMedia.swift */,
+				98A8C3D322F9E05300B9E745 /* UX.swift */,
 			);
 			path = Functions;
 			sourceTree = "<group>";
@@ -305,7 +314,7 @@
 						CreatedOnToolsVersion = 10.2;
 						SystemCapabilities = {
 							com.apple.Keychain = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Push = {
 								enabled = 1;
@@ -419,7 +428,7 @@
 				0D08E33822EB5DA0009EAA68 /* BrowserViewController.swift in Sources */,
 				98B3848422B482950097A073 /* QRScannerViewController.swift in Sources */,
 				98D2721522C183B600E300FE /* EncodedMedia.swift in Sources */,
-				98B3847422B1C0260097A073 /* User.swift in Sources */,
+				98B3847422B1C0260097A073 /* SlideUser.swift in Sources */,
 				9867CCE722B9BB8400B6F14B /* CustomError.swift in Sources */,
 				E70FB49C22CFF58A0052485F /* PhoneNumViewController.swift in Sources */,
 				98E9D6D822CAC501009A0968 /* SwipeRight.swift in Sources */,
@@ -428,16 +437,19 @@
 				04F9B37522CFD8D600D87528 /* CreateViewController.swift in Sources */,
 				98D2721722C478D600E300FE /* ReceivedViewController.swift in Sources */,
 				04F596E222A8540D004AA63A /* HomeViewController.swift in Sources */,
+				048F56E622DEDAAF00B59402 /* FaceBookViewController.swift in Sources */,
 				9867CCE922BD47F800B6F14B /* GenerationViewController.swift in Sources */,
 				E7F6370E22CCF617009B24C4 /* AccountsViewController.swift in Sources */,
 				04F9B36922BDA6BC00D87528 /* PasswordViewController.swift in Sources */,
 				04F9B36B22C4088C00D87528 /* ManageViewController.swift in Sources */,
 				04F596E022A8540D004AA63A /* AppDelegate.swift in Sources */,
-				98B3A46E22A9E878005FBCF2 /* TextFieldParser.swift in Sources */,
+				98B3A46E22A9E878005FBCF2 /* TextParser.swift in Sources */,
 				04F9B37322CD49D200D87528 /* GroupsViewController.swift in Sources */,
 				98B3A46722A9DD7F005FBCF2 /* SettingsViewController.swift in Sources */,
+				048F56E822EAA97100B59402 /* SnapchatViewController.swift in Sources */,
 				98E9D6D522CAB7BE009A0968 /* SwipeLeft.swift in Sources */,
 				98B3847822B2FCE90097A073 /* GenerateQR.swift in Sources */,
+				98A8C3D422F9E05300B9E745 /* UX.swift in Sources */,
 				98B3A45722A8C9D7005FBCF2 /* RegisterViewController.swift in Sources */,
 				E7D0CC7D22C4513E00D73B44 /* AboutViewController.swift in Sources */,
 				98C55E6622C171FA00B16A14 /* MediaSelectionViewController.swift in Sources */,
@@ -568,7 +580,6 @@
 			baseConfigurationReference = E8210633C78B72B2087F8D48 /* Pods-Slide.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Slide/Slide.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -596,7 +607,6 @@
 			baseConfigurationReference = 6307111C166CE8B76E78A8BC /* Pods-Slide.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Slide/Slide.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
