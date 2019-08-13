@@ -107,7 +107,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                 if ((authResult?.additionalUserInfo!.isNewUser)!) {
                     
                     // data retrieved from profile if user was just created
-                    let userData = GraphRequest(graphPath: "me", parameters: ["fields":"name, email"], tokenString: AccessToken.current?.tokenString, version: nil, httpMethod: HTTPMethod(rawValue: "GET"))
+                    let userData = GraphRequest(graphPath: "me", parameters: ["fields":"name, email, id"], tokenString: AccessToken.current?.tokenString, version: nil, httpMethod: HTTPMethod(rawValue: "GET"))
                     
                 
                         //guard let userInfo = result as? [String : Any] else { return }

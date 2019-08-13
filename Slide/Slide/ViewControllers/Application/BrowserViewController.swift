@@ -21,9 +21,13 @@ class BrowserViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let userid = "tyler.clift.140"
-        let url = URL(string: "https://www.facebook.com/addfriend.php?id=\(userid)")!
-        webView.load(URLRequest(url: url))
-        webView.allowsBackForwardNavigationGestures = true
+        // TODO get the right id? 
+        if let userid = UserDefaults.standard.getFacebookID() {
+            let url = URL(string: "https://www.facebook.com/addfriend.php?id=\(userid)")!
+            webView.load(URLRequest(url: url))
+            webView.allowsBackForwardNavigationGestures = true
+        } else {
+            print("no facebook information available")
+        }
     }
 }

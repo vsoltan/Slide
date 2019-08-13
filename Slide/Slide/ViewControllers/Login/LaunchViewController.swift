@@ -16,9 +16,6 @@ class LaunchViewController: UIViewController {
         super.viewDidLoad()
         
         // bypasses login and goes to home page if logged in
-        print("currentid:", currentID)
-       
-        print("entered")
         SlideUser.getUser(userID: currentID) { (error) in
             
             if (error == nil) {
