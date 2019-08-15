@@ -109,14 +109,6 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                     // data retrieved from profile if user was just created
                     let userData = GraphRequest(graphPath: "me", parameters: ["fields":"name, email, id"], tokenString: AccessToken.current?.tokenString, version: nil, httpMethod: HTTPMethod(rawValue: "GET"))
                     
-                
-                        //guard let userInfo = result as? [String : Any] else { return }
-                        
-                        //The url is nested 3 layers deep into the result so it's pretty messy
-                        //if let imageURL = ((userInfo["picture"] as? [String: Any])?["data"] as? [String: Any])?["url"] as? String {
-                            //Download image from imageURL
-                        //}
-                    
                     // blocks off main thread from continuing execution before doc is created
                     myGroup.enter()
                     userData.start(completionHandler: { (connection, result, error) in
@@ -125,8 +117,6 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInUIDel
                         } else {
                             // data consolidated into a readable array
                             let data = result as! NSDictionary
-                            
-                            print(data)
                             
                             // new document is created for the user
                             db.collection("users").document(userID).setData([

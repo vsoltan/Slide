@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="dJ9-jp-Fpi">
@@ -150,6 +155,7 @@
                                 </state>
                                 <connections>
                                     <action selector="selectionComplete:" destination="PR1-od-sZB" eventType="touchUpInside" id="Vrw-iB-3HA"/>
+                                    <segue destination="geV-7T-qZd" kind="show" id="3tg-Za-u2L"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -186,17 +192,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13x-xq-AwI">
-                                <rect key="frame" x="20" y="74" width="57" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13x-xq-AwI">
+                                <rect key="frame" x="16" y="74" width="70" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
                                     <segue destination="znL-d6-ReE" kind="presentation" id="1da-dH-ztb"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrj-Cr-QSm">
-                                <rect key="frame" x="20" y="122" width="272" height="33"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to your slide, " lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrj-Cr-QSm">
+                                <rect key="frame" x="20" y="122" width="272" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -210,8 +218,10 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TdW-eZ-YGl">
-                                <rect key="frame" x="293" y="74" width="62" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TdW-eZ-YGl">
+                                <rect key="frame" x="289" y="74" width="70" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
                                 <state key="normal" title="Contacts"/>
                                 <connections>
                                     <segue destination="Dhf-gO-FV4" kind="show" id="htH-2i-QIQ"/>
@@ -220,12 +230,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="esl-Ic-Cb0" firstAttribute="trailing" secondItem="TdW-eZ-YGl" secondAttribute="trailing" constant="20" id="ZXs-EQ-1sy"/>
-                            <constraint firstItem="TdW-eZ-YGl" firstAttribute="top" secondItem="esl-Ic-Cb0" secondAttribute="top" constant="30" id="mzV-w4-EBb"/>
-                            <constraint firstItem="13x-xq-AwI" firstAttribute="leading" secondItem="esl-Ic-Cb0" secondAttribute="leading" constant="20" id="sxw-7A-ToW"/>
-                            <constraint firstItem="13x-xq-AwI" firstAttribute="top" secondItem="esl-Ic-Cb0" secondAttribute="top" constant="30" id="ykf-7E-07X"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="esl-Ic-Cb0"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="RB7-l8-Rpu" appends="YES" id="8jb-sK-qG5"/>
