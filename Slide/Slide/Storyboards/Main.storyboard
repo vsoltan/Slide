@@ -18,16 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Contacts" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MgO-hG-1fb">
-                                <rect key="frame" x="54" y="53" width="266" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Contacts" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MgO-hG-1fb">
+                                <rect key="frame" x="54" y="59" width="266" height="24"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZX-TC-0eZ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZX-TC-0eZ">
                                 <rect key="frame" x="154" y="132" width="67" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Facebook"/>
                                 <connections>
                                     <segue destination="CL5-6C-xiA" kind="presentation" id="L79-Sp-icr"/>
@@ -35,6 +33,15 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sZX-TC-0eZ" firstAttribute="top" secondItem="MgO-hG-1fb" secondAttribute="bottom" constant="49" id="4xY-Ed-q7X"/>
+                            <constraint firstItem="MgO-hG-1fb" firstAttribute="leading" secondItem="0gA-To-4kx" secondAttribute="leading" constant="54" id="FO7-kc-M7G"/>
+                            <constraint firstItem="0gA-To-4kx" firstAttribute="trailing" secondItem="MgO-hG-1fb" secondAttribute="trailing" constant="55" id="TBw-lf-j0f"/>
+                            <constraint firstItem="0gA-To-4kx" firstAttribute="trailing" secondItem="sZX-TC-0eZ" secondAttribute="trailing" constant="154" id="Zaa-el-zKO"/>
+                            <constraint firstItem="0gA-To-4kx" firstAttribute="bottom" secondItem="sZX-TC-0eZ" secondAttribute="bottom" constant="616" id="gro-65-gXw"/>
+                            <constraint firstItem="MgO-hG-1fb" firstAttribute="top" secondItem="0gA-To-4kx" secondAttribute="top" constant="15" id="olG-xj-2fh"/>
+                            <constraint firstItem="sZX-TC-0eZ" firstAttribute="leading" secondItem="0gA-To-4kx" secondAttribute="leading" constant="154" id="w2L-Ft-zIl"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="0gA-To-4kx"/>
                     </view>
                 </viewController>
@@ -52,6 +59,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="cM7-xd-aee"/>
                     </view>
+                    <connections>
+                        <segue destination="Dhf-gO-FV4" kind="presentation" identifier="ReturnToContacts" id="ezn-gW-uCD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ass-J4-MoB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -200,9 +210,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M8D-lz-IQb">
-                                <rect key="frame" x="265" y="674" width="76" height="78"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M8D-lz-IQb">
+                                <rect key="frame" x="301" y="712" width="40" height="40"/>
                                 <state key="normal" image="addNew"/>
                                 <connections>
                                     <segue destination="PR1-od-sZB" kind="popoverPresentation" popoverAnchorView="M8D-lz-IQb" id="KzC-P0-GHn">
@@ -221,6 +230,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="esl-Ic-Cb0" firstAttribute="trailing" secondItem="M8D-lz-IQb" secondAttribute="trailing" constant="34" id="1Ye-9s-3IA"/>
+                            <constraint firstItem="esl-Ic-Cb0" firstAttribute="bottom" secondItem="M8D-lz-IQb" secondAttribute="bottom" constant="26" id="A0z-pD-Mie"/>
                             <constraint firstItem="esl-Ic-Cb0" firstAttribute="trailing" secondItem="TdW-eZ-YGl" secondAttribute="trailing" constant="20" id="ZXs-EQ-1sy"/>
                             <constraint firstItem="TdW-eZ-YGl" firstAttribute="top" secondItem="esl-Ic-Cb0" secondAttribute="top" constant="30" id="mzV-w4-EBb"/>
                             <constraint firstItem="13x-xq-AwI" firstAttribute="leading" secondItem="esl-Ic-Cb0" secondAttribute="leading" constant="20" id="sxw-7A-ToW"/>
@@ -289,7 +300,8 @@
         <image name="addNew" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TGd-0r-vSG"/>
+        <segue reference="XWq-Nm-r85"/>
         <segue reference="KzC-P0-GHn"/>
+        <segue reference="ezn-gW-uCD"/>
     </inferredMetricsTieBreakers>
 </document>
