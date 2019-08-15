@@ -212,86 +212,10 @@ class SlideUser {
 
 // implemented properties for UserDefaults
 enum UserDefaultsKeys : String {
-    case localEmail
-    case localID
-    case localName
-    case localPhone
-    case localGroups
-    case localfbID
-}
-
-// TODO implement settings so phone number switch can be saved
-
-// setter and getter functions for local data
-extension UserDefaults {
-    
-    func setEmail(value: String) {
-        set(value, forKey: UserDefaultsKeys.localEmail.rawValue)
-    }
-    func getEmail() -> String {
-        return string(forKey: UserDefaultsKeys.localEmail.rawValue)!
-    }
-    
-    func setID(value: String){
-        set(value, forKey: UserDefaultsKeys.localID.rawValue)
-    }
-    func getID() -> String {
-        return string(forKey: UserDefaultsKeys.localID.rawValue)!
-    }
-    
-    func setGroup(value: String){
-        set(value, forKey: UserDefaultsKeys.localName.rawValue)
-    }
-    
-    func getGroup() -> String {
-        return string(forKey: UserDefaultsKeys.localName.rawValue)!
-    }
-    
-    func setName(value: String){
-        set(value, forKey: UserDefaultsKeys.localName.rawValue)
-    }
-    func getName() -> String {
-        return string(forKey: UserDefaultsKeys.localName.rawValue)!
-    }
-    
-    func setPhoneNumber(value: String?){
-        set(value, forKey: UserDefaultsKeys.localPhone.rawValue)
-    }
-    func getPhoneNumber() -> String? {
-        return string(forKey: UserDefaultsKeys.localPhone.rawValue)
-    }
-    
-    // TOOD store in a URL
-    func setFacebookID(value : String) {
-        set(value, forKey: UserDefaultsKeys.localfbID.rawValue)
-    }
-    
-    func getFacebookID() -> String? {
-        return string(forKey: UserDefaultsKeys.localfbID.rawValue)
-    }
-    
-    func setAllDefaults(source: QueryDocumentSnapshot) {
-        
-        let defaults = UserDefaults.standard
-        
-        if let nameData = source.data()["Name"] as? String {
-            defaults.setName(value: nameData)
-        }
-        
-        if let emailData = source.data()["Email"] as? String {
-            defaults.setEmail(value: emailData)
-        }
-        
-        if let idData = source.data() ["ID"] as? String {
-            defaults.setID(value: idData)
-        }
-        
-        if let phoneData = source.data() ["Phone"] as? String {
-            defaults.setPhoneNumber(value: phoneData)
-        }
-        
-        if let fbdata = source.data()["Facebook"] as? String {
-            defaults.setFacebookID(value: fbdata)
-        }
-    }
+    case email
+    case id
+    case name
+    case phone
+    case groups
+    case fbid
 }
