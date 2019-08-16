@@ -14,7 +14,7 @@ import FirebaseFirestore
 import FBSDKLoginKit
 import GoogleSignIn
 
-class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class Settings: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // constant for the number of sections in the settings table
     let numSections = 3

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MediaSelectionViewController: UIViewController {
+class SelectMedia: UIViewController {
     
     // QR Encoding structure
     var selectedMedia = EncodedMedia.Media.init()
