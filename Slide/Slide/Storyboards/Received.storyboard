@@ -10,6 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Main-->
+        <scene sceneID="Lgh-jX-6rC">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="uO8-CG-BJM" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1go-po-byL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-490" y="168"/>
+        </scene>
         <!--QRRead-->
         <scene sceneID="eQI-WX-weA">
             <objects>
@@ -66,8 +74,19 @@
                                     <action selector="createContact:" destination="BJq-nG-D82" eventType="touchUpInside" id="K7c-hm-GOb"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5dL-Gh-Quy">
+                                <rect key="frame" x="163.66666666666666" y="448" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <segue destination="uO8-CG-BJM" kind="show" id="LJL-aM-hu5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="IFi-ac-VMc" firstAttribute="bottom" secondItem="5dL-Gh-Quy" secondAttribute="bottom" constant="300" id="BCp-bn-YTx"/>
+                            <constraint firstItem="5dL-Gh-Quy" firstAttribute="centerX" secondItem="cNj-3b-WnT" secondAttribute="centerX" id="KpH-Ei-4Al"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="IFi-ac-VMc"/>
                     </view>
                     <connections>

@@ -31,7 +31,7 @@ class BrowserView: UIViewController, WKNavigationDelegate {
             print("no facebook information available")
             // TODO: this case should be handled before BrowserVC is called
             CustomError.createWith(errorTitle: "Error", errorMessage: "Facebook not setup for this account")
-            self.performSegue(withIdentifier: "ReturnToContacts", sender: self)
+
         }
     }
 }
