@@ -54,10 +54,10 @@
             </objects>
             <point key="canvasLocation" x="1836" y="-692.36453201970448"/>
         </scene>
-        <!--Browser View Controller-->
+        <!--Browser View-->
         <scene sceneID="Xwz-1U-EHz">
             <objects>
-                <viewController id="CL5-6C-xiA" customClass="BrowserViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="CL5-6C-xiA" customClass="BrowserView" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1wR-8K-go6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -83,7 +83,7 @@
         <!--GenerateQR-->
         <scene sceneID="xDE-Rp-z8P">
             <objects>
-                <viewController title="GenerateQR" id="KOy-JS-FTF" customClass="GenerationViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="GenerateQR" id="KOy-JS-FTF" customClass="Generate" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aCd-8f-YN6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -138,7 +138,7 @@
         <!--MediaCustomization-->
         <scene sceneID="tk0-XJ-jJq">
             <objects>
-                <viewController title="MediaCustomization" id="PR1-od-sZB" customClass="MediaSelectionViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="MediaCustomization" id="PR1-od-sZB" customClass="SelectMedia" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BUy-uG-tWk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -164,7 +164,6 @@
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="selectionComplete:" destination="PR1-od-sZB" eventType="touchUpInside" id="Vrw-iB-3HA"/>
                                     <segue destination="geV-7T-qZd" kind="show" id="3tg-Za-u2L"/>
                                 </connections>
                             </button>
@@ -197,7 +196,7 @@
         <!--Home-->
         <scene sceneID="NKf-KH-xe2">
             <objects>
-                <viewController storyboardIdentifier="Home" title="Home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="geV-7T-qZd" customClass="HomeViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" title="Home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="geV-7T-qZd" customClass="Home" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zMc-O2-ear">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -270,7 +269,7 @@
         <!--ScanQR-->
         <scene sceneID="5wZ-0Z-QE4">
             <objects>
-                <viewController storyboardIdentifier="QRScanner" title="ScanQR" id="lb8-9m-ZY2" customClass="QRScannerViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QRScanner" title="ScanQR" id="lb8-9m-ZY2" customClass="QRScanner" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Fd-re-NEX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

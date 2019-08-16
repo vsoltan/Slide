@@ -18,14 +18,6 @@
             </objects>
             <point key="canvasLocation" x="-45" y="314"/>
         </scene>
-        <!--Groups-->
-        <scene sceneID="5DS-qP-saA">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Groups" id="1nD-md-ptf" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DP7-aW-yNw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="16" y="-663"/>
-        </scene>
         <!--LinkedAccounts-->
         <scene sceneID="pd4-oI-MEJ">
             <objects>
@@ -99,7 +91,6 @@
                         <segue destination="8cJ-iF-hPv" kind="show" identifier="Change Password" id="5Rm-Ku-eQC"/>
                         <segue destination="jrR-xF-OOD" kind="show" identifier="Manage" id="8Nf-T2-zTr"/>
                         <segue destination="oJX-k0-kSv" kind="show" identifier="About" id="jYM-6y-g9q"/>
-                        <segue destination="1nD-md-ptf" kind="show" identifier="Slide Groups" id="TPU-zK-9ta"/>
                         <segue destination="mkm-C5-sNp" kind="show" identifier="Linked Accounts" id="BfE-TN-wHS"/>
                     </connections>
                 </viewController>
@@ -110,7 +101,7 @@
         <!--Change Password-->
         <scene sceneID="Hrc-py-Aon">
             <objects>
-                <viewController title="Change Password" id="8cJ-iF-hPv" customClass="PasswordViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Change Password" id="8cJ-iF-hPv" customClass="Password" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5aM-vv-JmF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -202,10 +193,10 @@
             </objects>
             <point key="canvasLocation" x="1542" y="-902"/>
         </scene>
-        <!--Manage View Controller-->
+        <!--Manage-->
         <scene sceneID="e6F-HS-eVX">
             <objects>
-                <viewController id="jrR-xF-OOD" customClass="ManageViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jrR-xF-OOD" customClass="Manage" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L7O-ZK-EeJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -286,7 +277,7 @@
         <!--About-->
         <scene sceneID="D3B-Xt-GD8">
             <objects>
-                <viewController title="About" id="oJX-k0-kSv" customClass="AboutViewController" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="About" id="oJX-k0-kSv" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L5d-9v-EaF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -351,6 +342,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="L1G-U1-ARp"/>
+        <segue reference="f5R-RL-3BU"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -123,7 +123,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                                                            bundle: nil).instantiateViewController(withIdentifier: "Launch")
             
             // passes the current user's id to the next vc
-            let destination = self.window?.rootViewController as! LaunchViewController
+            let destination = self.window?.rootViewController as! Launch
             destination.currentID = current
             
             // renders

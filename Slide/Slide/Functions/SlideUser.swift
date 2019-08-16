@@ -71,7 +71,6 @@ class SlideUser {
             "mobile"   : defaults.getPhoneNumber() ?? NSNull(),
             "facebook" : defaults.getFacebookID() ?? NSNull(),
         ]
-        print(dictionary)
         return dictionary
     }
     
