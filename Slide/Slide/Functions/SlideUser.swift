@@ -12,9 +12,9 @@ import GoogleSignIn
 
 // an interface between the database and the user
 class SlideUser {
-    
-/* METHODS that directy interact with backend and local storage */
- 
+
+    // MARK: - BACKEND AND LOCAL STORAGE
+
     // retrieves the data tree belonging to the current user
     private static func getDocument(currentUserID: String, completionHandler: @escaping ([QueryDocumentSnapshot]?, Error?) -> Void) {
         // reference to the database
@@ -74,7 +74,7 @@ class SlideUser {
         return dictionary
     }
     
-/* METHODS implementing account deletion functionality */
+    // MARK: - ACCOUNT DELETION
     
     static func deleteUser(caller: UIViewController) {
         
@@ -184,7 +184,7 @@ class SlideUser {
     }
     
     
-/* API METHODS */
+    // MARK: - API
     
     // get facebook credential
     static func facebookCredential() -> AuthCredential? {
@@ -207,7 +207,7 @@ class SlideUser {
     }
 }
 
-/* USER DEFAULTS */
+// MARK: - USER DEFAULTS
 
 // implemented properties for UserDefaults
 enum UserDefaultsKeys : String {

@@ -26,7 +26,6 @@
 		98B3847F22B32BBC0097A073 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3847E22B32BBC0097A073 /* LocalAuthentication.framework */; };
 		98B3848422B482950097A073 /* QRScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3848322B482950097A073 /* QRScanner.swift */; };
 		98B3A44922A87384005FBCF2 /* LoginRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B3A44622A87384005FBCF2 /* LoginRegister.storyboard */; };
-		98B3A44B22A87384005FBCF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B3A44822A87384005FBCF2 /* LaunchScreen.storyboard */; };
 		98B3A44E22A87A8A005FBCF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B3A44D22A87A8A005FBCF2 /* Main.storyboard */; };
 		98B3A45722A8C9D7005FBCF2 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3A45622A8C9D7005FBCF2 /* Register.swift */; };
 		98B3A46522A9DD78005FBCF2 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B3A46422A9DD78005FBCF2 /* Settings.storyboard */; };
@@ -35,7 +34,7 @@
 		98B3A47222A9ED73005FBCF2 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3A47122A9ED73005FBCF2 /* Login.swift */; };
 		98B3A4A022B1860D005FBCF2 /* GoogleSignInDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3A49922B1860D005FBCF2 /* GoogleSignInDependencies.framework */; };
 		98B3A4A122B1860D005FBCF2 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3A49A22B1860D005FBCF2 /* GoogleSignIn.framework */; };
-		98BA75C823011B860086D83F /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BA75C723011B860086D83F /* Launch.swift */; };
+		98BA75C823011B860086D83F /* LaunchHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BA75C723011B860086D83F /* LaunchHandler.swift */; };
 		98BA75CC23035A8D0086D83F /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BA75CB23035A8D0086D83F /* Defaults.swift */; };
 		98C55E6622C171FA00B16A14 /* SelectMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C55E6522C171FA00B16A14 /* SelectMedia.swift */; };
 		98D2721522C183B600E300FE /* EncodedMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D2721422C183B600E300FE /* EncodedMedia.swift */; };
@@ -75,7 +74,6 @@
 		98B3847E22B32BBC0097A073 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		98B3848322B482950097A073 /* QRScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanner.swift; sourceTree = "<group>"; };
 		98B3A44622A87384005FBCF2 /* LoginRegister.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LoginRegister.storyboard; path = Slide/Storyboards/LoginRegister.storyboard; sourceTree = SOURCE_ROOT; };
-		98B3A44822A87384005FBCF2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Slide/Storyboards/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		98B3A44D22A87A8A005FBCF2 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		98B3A45622A8C9D7005FBCF2 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		98B3A46422A9DD78005FBCF2 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -85,7 +83,7 @@
 		98B3A49622B1860D005FBCF2 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
 		98B3A49922B1860D005FBCF2 /* GoogleSignInDependencies.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignInDependencies.framework; sourceTree = "<group>"; };
 		98B3A49A22B1860D005FBCF2 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
-		98BA75C723011B860086D83F /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
+		98BA75C723011B860086D83F /* LaunchHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchHandler.swift; sourceTree = "<group>"; };
 		98BA75CB23035A8D0086D83F /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		98C55E6522C171FA00B16A14 /* SelectMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMedia.swift; sourceTree = "<group>"; };
 		98D2721422C183B600E300FE /* EncodedMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodedMedia.swift; sourceTree = "<group>"; };
@@ -186,7 +184,7 @@
 			children = (
 				98B3A45622A8C9D7005FBCF2 /* Register.swift */,
 				98B3A47122A9ED73005FBCF2 /* Login.swift */,
-				98BA75C723011B860086D83F /* Launch.swift */,
+				98BA75C723011B860086D83F /* LaunchHandler.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -207,7 +205,6 @@
 			children = (
 				E70FB49D22CFF7470052485F /* LinkedAccounts.storyboard */,
 				98B3A46422A9DD78005FBCF2 /* Settings.storyboard */,
-				98B3A44822A87384005FBCF2 /* LaunchScreen.storyboard */,
 				98B3A44622A87384005FBCF2 /* LoginRegister.storyboard */,
 				98B3A44D22A87A8A005FBCF2 /* Main.storyboard */,
 				9807A69C22C5618E00627887 /* Received.storyboard */,
@@ -339,7 +336,6 @@
 			files = (
 				04F596E722A8540F004AA63A /* Assets.xcassets in Resources */,
 				9807A69D22C5618E00627887 /* Received.storyboard in Resources */,
-				98B3A44B22A87384005FBCF2 /* LaunchScreen.storyboard in Resources */,
 				98B3A44922A87384005FBCF2 /* LoginRegister.storyboard in Resources */,
 				E70FB49E22CFF7470052485F /* LinkedAccounts.storyboard in Resources */,
 				98B3A44E22A87A8A005FBCF2 /* Main.storyboard in Resources */,
@@ -415,7 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98B3A47222A9ED73005FBCF2 /* Login.swift in Sources */,
-				98BA75C823011B860086D83F /* Launch.swift in Sources */,
+				98BA75C823011B860086D83F /* LaunchHandler.swift in Sources */,
 				0D08E33822EB5DA0009EAA68 /* BrowserView.swift in Sources */,
 				98B3848422B482950097A073 /* QRScanner.swift in Sources */,
 				98D2721522C183B600E300FE /* EncodedMedia.swift in Sources */,

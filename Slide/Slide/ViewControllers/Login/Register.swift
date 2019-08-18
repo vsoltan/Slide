@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class register: UIViewController {
+class Register: UIViewController {
 
     // input text fields
     @IBOutlet weak var usrEmail: UITextField!

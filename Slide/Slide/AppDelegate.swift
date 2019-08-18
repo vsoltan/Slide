@@ -97,9 +97,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        // use Firebase library to configure APIs
+        // configure APIs
         FirebaseApp.configure()
-        
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         
@@ -112,23 +111,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
          *
          * if user does not exist, then the root view controller will be set to loginRegister
          */
-
-        // checks if user is already signed in
-        if let current = Auth.auth().currentUser?.uid {
-            // initializes the container for the root view controller
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            
-            // goes to launch screen
-            self.window?.rootViewController = UIStoryboard(name: "LoginRegister",
-                                                           bundle: nil).instantiateViewController(withIdentifier: "Launch")
-            
-            // passes the current user's id to the next vc
-            let destination = self.window?.rootViewController as! Launch
-            destination.currentID = current
-            
-            // renders
-            self.window?.makeKeyAndVisible()
-        }
+        
+        // create a launch screen and render it
+        let launch = LaunchHandler()
+        self.window?.rootViewController = launch
+        self.window?.makeKeyAndVisible()
+        
         return fbconfig
     }
     

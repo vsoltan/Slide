@@ -20,7 +20,7 @@ class Settings: UIViewController, UITableViewDataSource, UITableViewDelegate {
     let numSections = 3
     
     // sections of the table
-    let profileArray = ["Slide Groups", "Cards", "Friends"]
+    let profileArray = ["Cards", "Friends"]
     
     let accountArray = ["Change Password", "Manage", "Linked Accounts"]
     

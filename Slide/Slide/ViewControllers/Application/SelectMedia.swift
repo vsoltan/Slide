@@ -34,7 +34,7 @@ class SelectMedia: UIViewController {
             print(media.key as! String)
             
             // don't create a button if media is not synced
-            if (media.value is NSNull) {} else {
+            if !(media.value is NSNull) {} else {
             
                 let mediaType = media.key as! String
 
