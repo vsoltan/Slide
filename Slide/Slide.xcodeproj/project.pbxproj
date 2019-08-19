@@ -22,7 +22,8 @@
 		98A18001230B276900874DCB /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A18000230B276900874DCB /* Menu.swift */; };
 		98A1800A230B4E4E00874DCB /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A18009230B4E4E00874DCB /* Container.swift */; };
 		98A1800D230B4FFA00874DCB /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A1800C230B4FFA00874DCB /* Protocols.swift */; };
-		98A1800F230B531000874DCB /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A18007230B333700874DCB /* MenuOption.swift */; };
+		98A1800F230B531000874DCB /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A18007230B333700874DCB /* MenuCell.swift */; };
+		98A18013230B63E800874DCB /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A18012230B63E800874DCB /* MenuOption.swift */; };
 		98A8C3D422F9E05300B9E745 /* UX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A8C3D322F9E05300B9E745 /* UX.swift */; };
 		98B3847422B1C0260097A073 /* SlideUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847322B1C0260097A073 /* SlideUser.swift */; };
 		98B3847822B2FCE90097A073 /* GenerateQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847722B2FCE90097A073 /* GenerateQR.swift */; };
@@ -73,9 +74,10 @@
 		9867CCE822BD47F800B6F14B /* Generate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generate.swift; sourceTree = "<group>"; };
 		98A17FFE2309252300874DCB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		98A18000230B276900874DCB /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
-		98A18007230B333700874DCB /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
+		98A18007230B333700874DCB /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		98A18009230B4E4E00874DCB /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		98A1800C230B4FFA00874DCB /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		98A18012230B63E800874DCB /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
 		98A8C3D322F9E05300B9E745 /* UX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UX.swift; sourceTree = "<group>"; };
 		98B3847322B1C0260097A073 /* SlideUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUser.swift; sourceTree = "<group>"; };
 		98B3847722B2FCE90097A073 /* GenerateQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateQR.swift; sourceTree = "<group>"; };
@@ -213,8 +215,9 @@
 			isa = PBXGroup;
 			children = (
 				98A18000230B276900874DCB /* Menu.swift */,
-				98A18007230B333700874DCB /* MenuOption.swift */,
+				98A18007230B333700874DCB /* MenuCell.swift */,
 				04F596E122A8540D004AA63A /* Home.swift */,
+				98A18012230B63E800874DCB /* MenuOption.swift */,
 			);
 			path = "Home Page";
 			sourceTree = "<group>";
@@ -442,7 +445,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98A1800F230B531000874DCB /* MenuOption.swift in Sources */,
+				98A1800F230B531000874DCB /* MenuCell.swift in Sources */,
 				98B3A47222A9ED73005FBCF2 /* Login.swift in Sources */,
 				98BA75C823011B860086D83F /* LaunchHandler.swift in Sources */,
 				98A18001230B276900874DCB /* Menu.swift in Sources */,
@@ -467,6 +470,7 @@
 				98B3A46E22A9E878005FBCF2 /* TextParser.swift in Sources */,
 				98B3A46722A9DD7F005FBCF2 /* Settings.swift in Sources */,
 				048F56E822EAA97100B59402 /* Snapchat.swift in Sources */,
+				98A18013230B63E800874DCB /* MenuOption.swift in Sources */,
 				98E9D6D522CAB7BE009A0968 /* SwipeLeft.swift in Sources */,
 				98B3847822B2FCE90097A073 /* GenerateQR.swift in Sources */,
 				98A8C3D422F9E05300B9E745 /* UX.swift in Sources */,

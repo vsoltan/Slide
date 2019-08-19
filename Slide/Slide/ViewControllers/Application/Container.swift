@@ -11,10 +11,9 @@ import UIKit
 class Container: UIViewController {
     
     // MARK: - PROPERTIES
-    var viewToAnimate : UIViewController!
-    var sideMenu : UIViewController!
-//    var menuHidden = true
-    var shouldExpand = false
+    var viewToAnimate: UIViewController!
+    var sideMenu: Menu!
+    var isHidden = true
     
     // MARK: - INITIALIZATIONS
     
@@ -23,12 +22,14 @@ class Container: UIViewController {
         configureHomeController()
     }
     
-    // MARK: - HANDLERS
-    
     // MARK: - CONFIGURATIONS
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     func configureHomeController() {
@@ -45,8 +46,9 @@ class Container: UIViewController {
     
     func configureMenuController() {
         // only creates the menu on startup
-        if sideMenu == nil {
+        if (sideMenu == nil) {
             sideMenu = Menu()
+            sideMenu.delegate = self
             view.insertSubview(sideMenu.view, at: 0)
             addChild(sideMenu)
             sideMenu.didMove(toParent: self)
@@ -54,7 +56,7 @@ class Container: UIViewController {
     }
     
     func showMenu(hidden: Bool) {
-        if (hidden) {
+        if !(hidden) {
             // show menu
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 self.viewToAnimate.view.frame.origin.x = self.viewToAnimate.view.frame.width - 80
@@ -66,15 +68,31 @@ class Container: UIViewController {
             }, completion: nil)
         }
     }
+    
+    func didSelectMenuOtion(withIdentifier identifier: MenuOption) {
+        switch identifier {
+        case .Profile:
+            print("ello")
+        case .Accounts:
+            print("yoit")
+        case .Logout:
+            print("logged out!")
+        }
+    }
 }
 
-extension Container : HomeControllerDelegate {
-    func handleMenuToggle() {
-        if !shouldExpand {
-            configureMenuController()
-        }
+extension Container: HomeControllerDelegate {
+    func handleMenuToggle(forMenuOption menuOption: MenuOption?) {
         
-        shouldExpand.toggle()
-        showMenu(hidden: shouldExpand)
+        if (menuOption != nil) {
+            didSelectMenuOtion(withIdentifier: menuOption!)
+        } else {
+            if isHidden {
+                configureMenuController()
+            }
+            
+            isHidden.toggle()
+            showMenu(hidden: isHidden)
+        }
     }
 }

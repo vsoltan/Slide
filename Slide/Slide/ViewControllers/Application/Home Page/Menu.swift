@@ -12,8 +12,8 @@ class Menu: UIViewController {
     
     // MARK: - PROPERTIES
     
-    var menuOptions : UITableView!
-    var delegate : HomeControllerDelegate?
+    var table: UITableView!
+    var delegate: HomeControllerDelegate?
     private let reuseIdentifier = "MenuOptionCell"
     
     
@@ -24,34 +24,48 @@ class Menu: UIViewController {
         configureMenu()
     }
     
-    // MARK: -CONFIGURATION
-    func configureMenu() {
-        menuOptions = UITableView()
-        menuOptions.delegate = self
-        menuOptions.dataSource = self
-        
-        menuOptions.backgroundColor = .darkGray
-        
-        menuOptions.register(MenuOption.self, forCellReuseIdentifier: reuseIdentifier)
-        
-        view.addSubview(menuOptions)
-        menuOptions.translatesAutoresizingMaskIntoConstraints = false
-        menuOptions.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        menuOptions.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        menuOptions.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        menuOptions.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-    }
+    // MARK: - CUSTOMIZATION
     
-    // MARK: - HANDLERS
+    func configureMenu() {
+        table = UITableView()
+        table.delegate = self
+        table.dataSource = self
+        
+        table.backgroundColor = .darkGray
+        table.separatorStyle = .none
+        table.rowHeight = 80
+        
+        
+        table.register(MenuCell.self, forCellReuseIdentifier: reuseIdentifier)
+        
+        view.addSubview(table)
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        table.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        table.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        table.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+    }
 }
 
 extension Menu : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! MenuOption
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! MenuCell
+        
+        let menuOption = MenuOption(rawValue: indexPath.row)
+        
+        // use indexPath to retrieve corresponding image and desc from enum
+        cell.optionText.text = menuOption?.description
+        cell.iconImage.image = menuOption?.image
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let menuOption = MenuOption(rawValue: indexPath.row)
+        delegate?.handleMenuToggle(forMenuOption: menuOption)
     }
 }

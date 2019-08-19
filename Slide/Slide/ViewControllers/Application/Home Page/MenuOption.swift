@@ -8,13 +8,27 @@
 
 import UIKit
 
-class MenuOption: UITableViewCell {
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+enum MenuOption: Int, CustomStringConvertible {
+    case Profile
+    case Accounts
+    case Logout
+    
+    var description : String {
+        switch self {
+            case .Profile: return "Profile"
+            case .Accounts: return "Accounts"
+            case .Logout: return "Logout"
+        }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    } 
+    var image: UIImage {
+        switch self {
+        case .Profile:
+            return #imageLiteral(resourceName: "Checkbox")
+        case .Accounts:
+            return #imageLiteral(resourceName: "addNew")
+        case .Logout:
+            return #imageLiteral(resourceName: "UnCheckbox")
+        }
+    }
 }

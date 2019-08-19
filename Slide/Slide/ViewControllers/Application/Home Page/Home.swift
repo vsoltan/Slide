@@ -7,12 +7,12 @@
 //
 
 import UIKit
-import Firebase
 
 class Home: UIViewController {
     
     // MARK: - PROPERTIES
     
+    // delegate is set to the container class
     var delegate: HomeControllerDelegate?
     
     override func viewDidLoad() {
@@ -34,8 +34,6 @@ class Home: UIViewController {
         return label
     }()
     
-    // MARK: - CONFIGURATION
-    
     func customizeHome() {
         // welcome page displays the user's name
         if let name = welcomeLabel.text {
@@ -56,7 +54,7 @@ class Home: UIViewController {
     // MARK : - HANDLERS
     
     @objc func handleSideMenuToggle() {
-        delegate?.handleMenuToggle()
+        delegate?.handleMenuToggle(forMenuOption: nil)
     }
 }
 
