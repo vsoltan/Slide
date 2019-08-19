@@ -6,6 +6,8 @@
 //  Copyright © 2019 Roodac. All rights reserved.
 //
 
+import Foundation
+
 protocol HomeControllerDelegate {
-    func toggleMenu()
+    func handleMenuToggle()
 }

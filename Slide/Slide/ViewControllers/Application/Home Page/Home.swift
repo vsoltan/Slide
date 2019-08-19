@@ -12,12 +12,14 @@ import Firebase
 class Home: UIViewController {
     
     // MARK: - PROPERTIES
-    var slideMenu : UIViewController!
+    
+    var delegate: HomeControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        customizeHome()
         configureNavigationBar()
-        configureHome()
     }
     
     // MARK: - CUSTOMIZATION
@@ -32,13 +34,9 @@ class Home: UIViewController {
         return label
     }()
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
     // MARK: - CONFIGURATION
     
-    func configureHome() {
+    func customizeHome() {
         // welcome page displays the user's name
         if let name = welcomeLabel.text {
             welcomeLabel.text = name + UserDefaults.standard.getName()
@@ -52,26 +50,13 @@ class Home: UIViewController {
         navigationController?.navigationBar.barStyle = .black
         navigationItem.title = "Slide"
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_menu_white_3x").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(toggleSideMenu))
-    }
-    
-    func configureMenu() {
-        // only creates the menu on startup
-        if (slideMenu == nil) {
-            slideMenu = Menu()
-        }
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_menu_white_3x").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleSideMenuToggle))
     }
     
     // MARK : - HANDLERS
     
-    @objc func toggleSideMenu() {
-        print("hello")
-    }
-}
-
-extension Home : HomeControllerDelegate {
-    func toggleMenu() {
-        configureMenu()
+    @objc func handleSideMenuToggle() {
+        delegate?.handleMenuToggle()
     }
 }
 

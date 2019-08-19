@@ -128,7 +128,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         if let user = auth.currentUser {
             SlideUser.getUser(userID: user.uid) { (error) in
                 if (error == nil) {
-                    completion(UINavigationController(rootViewController: Home()))
+                    completion(Container())
                 }
             }
         } else {
