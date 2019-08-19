@@ -18,6 +18,10 @@
 		9807A69D22C5618E00627887 /* Received.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9807A69C22C5618E00627887 /* Received.storyboard */; };
 		9867CCE722B9BB8400B6F14B /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9867CCE622B9BB8400B6F14B /* CustomError.swift */; };
 		9867CCE922BD47F800B6F14B /* Generate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9867CCE822BD47F800B6F14B /* Generate.swift */; };
+		98A17FFF2309252300874DCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98A17FFE2309252300874DCB /* LaunchScreen.storyboard */; };
+		98A18001230B276900874DCB /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A18000230B276900874DCB /* Menu.swift */; };
+		98A18004230B28FE00874DCB /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A18003230B28FE00874DCB /* Protocols.swift */; };
+		98A18006230B2A8000874DCB /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A18005230B2A8000874DCB /* Container.swift */; };
 		98A8C3D422F9E05300B9E745 /* UX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A8C3D322F9E05300B9E745 /* UX.swift */; };
 		98B3847422B1C0260097A073 /* SlideUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847322B1C0260097A073 /* SlideUser.swift */; };
 		98B3847822B2FCE90097A073 /* GenerateQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847722B2FCE90097A073 /* GenerateQR.swift */; };
@@ -66,6 +70,10 @@
 		9807A69C22C5618E00627887 /* Received.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Received.storyboard; sourceTree = "<group>"; };
 		9867CCE622B9BB8400B6F14B /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		9867CCE822BD47F800B6F14B /* Generate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generate.swift; sourceTree = "<group>"; };
+		98A17FFE2309252300874DCB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		98A18000230B276900874DCB /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		98A18003230B28FE00874DCB /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		98A18005230B2A8000874DCB /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		98A8C3D322F9E05300B9E745 /* UX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UX.swift; sourceTree = "<group>"; };
 		98B3847322B1C0260097A073 /* SlideUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUser.swift; sourceTree = "<group>"; };
 		98B3847722B2FCE90097A073 /* GenerateQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateQR.swift; sourceTree = "<group>"; };
@@ -137,6 +145,7 @@
 		04F596DE22A8540D004AA63A /* Slide */ = {
 			isa = PBXGroup;
 			children = (
+				98A18002230B28F300874DCB /* Utilities */,
 				98E9D6D622CAC4EF009A0968 /* Segues */,
 				0D3496B522BDC10800891BDD /* Slide.entitlements */,
 				98B3A49322B1860D005FBCF2 /* Frameworks */,
@@ -175,6 +184,7 @@
 				9867CCE822BD47F800B6F14B /* Generate.swift */,
 				98C55E6522C171FA00B16A14 /* SelectMedia.swift */,
 				0D08E33722EB5DA0009EAA68 /* BrowserView.swift */,
+				98A18000230B276900874DCB /* Menu.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -187,6 +197,14 @@
 				98BA75C723011B860086D83F /* LaunchHandler.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		98A18002230B28F300874DCB /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				98A18003230B28FE00874DCB /* Protocols.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		98B3847922B32B8A0097A073 /* Frameworks */ = {
@@ -208,6 +226,7 @@
 				98B3A44622A87384005FBCF2 /* LoginRegister.storyboard */,
 				98B3A44D22A87A8A005FBCF2 /* Main.storyboard */,
 				9807A69C22C5618E00627887 /* Received.storyboard */,
+				98A17FFE2309252300874DCB /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -218,6 +237,7 @@
 				9807A6A422C5931A00627887 /* Login */,
 				9807A6A322C592E400627887 /* Application */,
 				9807A6A222C592AB00627887 /* Settings */,
+				98A18005230B2A8000874DCB /* Container.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -335,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04F596E722A8540F004AA63A /* Assets.xcassets in Resources */,
+				98A17FFF2309252300874DCB /* LaunchScreen.storyboard in Resources */,
 				9807A69D22C5618E00627887 /* Received.storyboard in Resources */,
 				98B3A44922A87384005FBCF2 /* LoginRegister.storyboard in Resources */,
 				E70FB49E22CFF7470052485F /* LinkedAccounts.storyboard in Resources */,
@@ -412,10 +433,12 @@
 			files = (
 				98B3A47222A9ED73005FBCF2 /* Login.swift in Sources */,
 				98BA75C823011B860086D83F /* LaunchHandler.swift in Sources */,
+				98A18001230B276900874DCB /* Menu.swift in Sources */,
 				0D08E33822EB5DA0009EAA68 /* BrowserView.swift in Sources */,
 				98B3848422B482950097A073 /* QRScanner.swift in Sources */,
 				98D2721522C183B600E300FE /* EncodedMedia.swift in Sources */,
 				98BA75CC23035A8D0086D83F /* Defaults.swift in Sources */,
+				98A18006230B2A8000874DCB /* Container.swift in Sources */,
 				98B3847422B1C0260097A073 /* SlideUser.swift in Sources */,
 				9867CCE722B9BB8400B6F14B /* CustomError.swift in Sources */,
 				E70FB49C22CFF58A0052485F /* Phone.swift in Sources */,
@@ -433,6 +456,7 @@
 				98B3A46722A9DD7F005FBCF2 /* Settings.swift in Sources */,
 				048F56E822EAA97100B59402 /* Snapchat.swift in Sources */,
 				98E9D6D522CAB7BE009A0968 /* SwipeLeft.swift in Sources */,
+				98A18004230B28FE00874DCB /* Protocols.swift in Sources */,
 				98B3847822B2FCE90097A073 /* GenerateQR.swift in Sources */,
 				98A8C3D422F9E05300B9E745 /* UX.swift in Sources */,
 				98B3A45722A8C9D7005FBCF2 /* Register.swift in Sources */,

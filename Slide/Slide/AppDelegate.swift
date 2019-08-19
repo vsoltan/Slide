@@ -104,20 +104,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         let fbconfig = ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        /*
-         * if a user is already signed in, then we have to ping the server to update user defaults
-         *      - getUser takes time to execute
-         *      - in the meantime the root view controller will be launchScreen
-         *
-         * if user does not exist, then the root view controller will be set to loginRegister
-         */
+        getPostLaunchWindow { (view) in
         
-        // create a launch screen and render it
-        let launch = LaunchHandler()
-        self.window?.rootViewController = launch
-        self.window?.makeKeyAndVisible()
+            self.window?.rootViewController = view
+            self.window?.makeKeyAndVisible()
+        }
         
         return fbconfig
+    }
+    
+    /*
+     * if a user is already signed in, then we have to ping the server to update defaults
+     *      - getUser takes time to execute
+     *      - in the meantime the app will push the launchscreen to mask data retrieval
+     *
+     * if user does not exist, then the root view controller will be set to login
+     */
+    
+    func getPostLaunchWindow(completion: @escaping (UIViewController) -> Void)  {
+        let auth = Auth.auth()
+        
+        // if a user is already signed in
+        if let user = auth.currentUser {
+            SlideUser.getUser(userID: user.uid) { (error) in
+                if (error == nil) {
+                    completion(UINavigationController(rootViewController: Home()))
+                }
+            }
+        } else {
+            completion(Login())
+        }
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
