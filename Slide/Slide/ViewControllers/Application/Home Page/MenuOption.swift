@@ -24,11 +24,11 @@ enum MenuOption: Int, CustomStringConvertible {
     var image: UIImage {
         switch self {
         case .Profile:
-            return #imageLiteral(resourceName: "Checkbox")
+            return #imageLiteral(resourceName: "streamline-icon-single-neutral-profile-picture@24x24")
         case .Accounts:
-            return #imageLiteral(resourceName: "addNew")
+            return #imageLiteral(resourceName: "streamline-icon-tools-box@24x24")
         case .Logout:
-            return #imageLiteral(resourceName: "UnCheckbox")
+            return #imageLiteral(resourceName: "streamline-icon-login-2@24x24")
         }
     }
 }

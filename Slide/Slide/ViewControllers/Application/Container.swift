@@ -28,8 +28,13 @@ class Container: UIViewController {
         return .lightContent
     }
     
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .slide
+    }
+    
     override var prefersStatusBarHidden: Bool {
-        return true
+        // disappears when menu is activated
+        return !isHidden
     }
     
     func configureHomeController() {
@@ -55,7 +60,7 @@ class Container: UIViewController {
         }
     }
     
-    func showMenu(hidden: Bool) {
+    func showMenu(hidden: Bool, menuOption: MenuOption?) {
         if !(hidden) {
             // show menu
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
@@ -65,34 +70,43 @@ class Container: UIViewController {
             // hide menu
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 self.viewToAnimate.view.frame.origin.x = 0
-            }, completion: nil)
+            }) { (_) in
+                // only navigates to other pages if option selected
+                guard let menuOption = menuOption else { return }
+                self.didSelectMenuOtion(withIdentifier: menuOption)
+            }
         }
+        
+        animateStatusBar()
     }
     
     func didSelectMenuOtion(withIdentifier identifier: MenuOption) {
         switch identifier {
         case .Profile:
-            print("ello")
+            print("profile")
         case .Accounts:
-            print("yoit")
+            print("accounts")
+//        case .Settings:
+//            print("settings")
         case .Logout:
             print("logged out!")
         }
+    }
+    
+    func animateStatusBar() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            self.setNeedsStatusBarAppearanceUpdate()
+        }, completion: nil)
     }
 }
 
 extension Container: HomeControllerDelegate {
     func handleMenuToggle(forMenuOption menuOption: MenuOption?) {
-        
-        if (menuOption != nil) {
-            didSelectMenuOtion(withIdentifier: menuOption!)
-        } else {
-            if isHidden {
-                configureMenuController()
-            }
-            
-            isHidden.toggle()
-            showMenu(hidden: isHidden)
+        if isHidden {
+            configureMenuController()
         }
+        
+        isHidden.toggle()
+        showMenu(hidden: isHidden, menuOption: menuOption)
     }
 }
