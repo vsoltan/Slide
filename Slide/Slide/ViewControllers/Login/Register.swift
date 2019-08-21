@@ -10,8 +10,9 @@ import UIKit
 import Firebase
 
 class Register: UIViewController {
-
+    
     // input text fields
+
     @IBOutlet weak var usrEmail: UITextField!
     @IBOutlet weak var usrName: UITextField!
     @IBOutlet weak var usrUsername: UITextField!
@@ -77,7 +78,10 @@ class Register: UIViewController {
                 defaults.setID(value: userID)
                     
                 // continues with main thread execution on home page
-                self.performSegue(withIdentifier: "registerToHome", sender: self)
+                    
+                // create a container view to run the application
+                let container = Container()
+                self.present(container, animated: true, completion: nil)
                     
                 } else {
                     CustomError.createWith(errorTitle: "Account Creation", errorMessage: error!.localizedDescription)

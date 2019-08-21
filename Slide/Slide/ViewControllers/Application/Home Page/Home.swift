@@ -84,7 +84,7 @@ class Home: UIViewController {
     
     @objc func handleSwipeToScan() {
         let scanner = QRScanner()
-        self.present(scanner, animated: true) {
+        self.present(UINavigationController(rootViewController: scanner), animated: true) {
             print("we got there")
         }
     }

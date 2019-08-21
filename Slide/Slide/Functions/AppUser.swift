@@ -8,10 +8,11 @@
 
 import Firebase
 import FBSDKCoreKit
+import FBSDKLoginKit
 import GoogleSignIn
 
 // an interface between the database and the user
-class SlideUser {
+class AppUser {
 
     // MARK: - BACKEND AND LOCAL STORAGE
 
@@ -74,7 +75,40 @@ class SlideUser {
         return dictionary
     }
     
-    // MARK: - ACCOUNT DELETION
+    // MARK: - ACCOUNT
+    
+    static func logout() {
+        let auth = Auth.auth()
+
+        // checks the provider
+        if let providerData = auth.currentUser?.providerData {
+            for userInfo in providerData {
+                switch userInfo.providerID {
+                    
+                    case "facebook.com":
+                        let loginManager = LoginManager()
+                        loginManager.logOut()
+        
+                    case "google.com":
+                        GIDSignIn.sharedInstance()?.signOut()
+                    
+                    default:
+                        print("provider is \(userInfo.providerID)")
+                }
+            }
+        }
+
+        // end the user session in firebase
+        do {
+            try auth.signOut()
+            
+            // removes user data from local storage
+            AppUser.clearLocalData()
+            
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
     
     static func deleteUser(caller: UIViewController) {
         
@@ -180,7 +214,7 @@ class SlideUser {
                 print("Document successfully removed")
             }
         }
-        SlideUser.clearLocalData()
+        AppUser.clearLocalData()
     }
     
     

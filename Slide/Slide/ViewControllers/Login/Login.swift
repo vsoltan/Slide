@@ -45,11 +45,13 @@ class Login: UIViewController, LoginButtonDelegate, GIDSignInUIDelegate {
             Auth.auth().signIn(withEmail: email.text!.trim(), password: password.text!) { (user, error) in
                 if (user != nil) {
                     // retrieves user data to create defaults for the current session
-                    SlideUser.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
+                    AppUser.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
                         if (error != nil) {
                             print("something went wrong")
                         } else {
-                            self.performSegue(withIdentifier: "signInToMain", sender: self)
+                            // create a container view to run the application
+                            let container = Container()
+                            self.present(container, animated: true, completion: nil)
                         }
                     })
                 } else {
@@ -138,12 +140,13 @@ class Login: UIViewController, LoginButtonDelegate, GIDSignInUIDelegate {
                 }
                 
                 // wait till defaults are updated before proceeding to main page
-                SlideUser.getUser(userID: userID, completionHandler: { (error) in
+                AppUser.getUser(userID: userID, completionHandler: { (error) in
                     if (error != nil) {
                         print("trouble retrieving user data, \(error!.localizedDescription)")
                     } else {
-                        // user is redirected back to the home page
-                        self.performSegue(withIdentifier: "signInToMain", sender: self)
+                        // create a container view to run the application
+                        let container = Container()
+                        self.present(container, animated: true, completion: nil)
                     }
                 })
             }

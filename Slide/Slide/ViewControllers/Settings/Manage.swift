@@ -48,7 +48,7 @@ class Manage: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         // check if Delete Account was clicked
         if (indexPath.row == 0) {
-            SlideUser.deleteUser(caller: self)
+            AppUser.deleteUser(caller: self)
         }
     }
 }

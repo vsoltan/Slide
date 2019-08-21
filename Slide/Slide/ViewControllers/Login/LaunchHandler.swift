@@ -26,7 +26,7 @@ class LaunchHandler: UIViewController {
         // color scheme matches launch screen
         self.view.backgroundColor = UIColor(red: 255, green: 123, blue: 73, alpha: 0)
         
-        SlideUser.getUser(userID: currentUserID) { (error) in
+        AppUser.getUser(userID: currentUserID) { (error) in
             if (error == nil) {
                 self.present(Home(), animated: true, completion: {
                 })

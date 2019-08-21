@@ -12,7 +12,6 @@ import GoogleSignIn
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
@@ -54,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     }
                     
                     // store google user's data locally
-                    SlideUser.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
+                    AppUser.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
                         if (error != nil) {
                             print("something went wrong")
                         } else {
@@ -127,13 +126,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         // if a user is already signed in
         if let user = auth.currentUser {
-            SlideUser.getUser(userID: user.uid) { (error) in
+            AppUser.getUser(userID: user.uid) { (error) in
                 if (error == nil) {
                     completion(Container())
                 }
             }
         } else {
-            completion(Login())
+            // placeholder while I implement login screen
+            let login = UIStoryboard(name: "LoginRegister", bundle: nil).instantiateInitialViewController()
+            completion(login!)
         }
     }
     

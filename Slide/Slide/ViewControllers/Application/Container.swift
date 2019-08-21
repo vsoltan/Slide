@@ -19,6 +19,7 @@ class Container: UIViewController {
     // MARK: - INITIALIZATIONS
     
     override func viewDidLoad() {
+        print("at container")
         super.viewDidLoad()
         configureHomeController()
     }
@@ -90,9 +91,12 @@ class Container: UIViewController {
         case .Accounts:
             print("accounts")
         case .Settings:
-            print("settings")
+            let settings = Settings()
+            self.present(UINavigationController(rootViewController: settings), animated: true, completion: nil)
         case .Logout:
-            print("logged out!")
+            AppUser.logout()
+            let login = UIStoryboard(name: "LoginRegister", bundle: nil).instantiateInitialViewController()
+            self.present(login!, animated: true, completion: nil)
         }
     }
     

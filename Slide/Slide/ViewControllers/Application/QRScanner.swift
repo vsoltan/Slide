@@ -22,6 +22,7 @@ class QRScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigationBar()
         
         view.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
@@ -100,6 +101,10 @@ class QRScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     // MARK: - HANDLERS
     
+    @objc func handleBackButton() {
+        dismiss(animated: true, completion: nil)
+    }
+    
     func found(code: String) {
         // no data was supplied
         if (code == "") {
@@ -125,6 +130,19 @@ class QRScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             let recievedVC = segue.destination as! Received
             recievedVC.receivedInfo = self.receivedInformation!
         }
+    }
+    
+    // MARK: - CUSTOMIZATION
+    
+    func configureNavigationBar() {
+        
+        // makes the navigation bar transparent
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        
+        // add a back button
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "streamline-icon-navigation-left-2@24x24").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBackButton))
     }
     
     // doesn't show battery and cellular status
