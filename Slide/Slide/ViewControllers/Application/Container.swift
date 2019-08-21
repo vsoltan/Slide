@@ -12,6 +12,7 @@ class Container: UIViewController {
     
     // MARK: - PROPERTIES
     var viewToAnimate: UIViewController!
+    var homeView : Home!
     var sideMenu: Menu!
     var isHidden = true
     
@@ -38,11 +39,11 @@ class Container: UIViewController {
     }
     
     func configureHomeController() {
-        let home = Home()
-        home.delegate = self
+        homeView = Home()
+        homeView.delegate = self
         
         // embed the home view in a navigation controller
-        viewToAnimate = UINavigationController(rootViewController: home)
+        viewToAnimate = UINavigationController(rootViewController: homeView)
         
         view.addSubview(viewToAnimate.view)
         addChild(viewToAnimate)
@@ -60,16 +61,18 @@ class Container: UIViewController {
         }
     }
     
-    func showMenu(hidden: Bool, menuOption: MenuOption?) {
+    func animateMenu(hidden: Bool, menuOption: MenuOption?) {
         if !(hidden) {
             // show menu
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-                self.viewToAnimate.view.frame.origin.x = self.viewToAnimate.view.frame.width - 80
+                self.viewToAnimate.view.frame.origin.x = self.viewToAnimate.view.frame.width - 100
+                self.homeView.welcomeLabel.frame.origin.y = 0
             }, completion: nil)
         } else {
             // hide menu
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 self.viewToAnimate.view.frame.origin.x = 0
+                self.homeView.welcomeLabel.frame.origin.y = 100
             }) { (_) in
                 // only navigates to other pages if option selected
                 guard let menuOption = menuOption else { return }
@@ -86,8 +89,8 @@ class Container: UIViewController {
             print("profile")
         case .Accounts:
             print("accounts")
-//        case .Settings:
-//            print("settings")
+        case .Settings:
+            print("settings")
         case .Logout:
             print("logged out!")
         }
@@ -105,8 +108,7 @@ extension Container: HomeControllerDelegate {
         if isHidden {
             configureMenuController()
         }
-        
         isHidden.toggle()
-        showMenu(hidden: isHidden, menuOption: menuOption)
+        animateMenu(hidden: isHidden, menuOption: menuOption)
     }
 }

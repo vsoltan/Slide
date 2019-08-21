@@ -34,6 +34,21 @@ class Home: UIViewController {
         return label
     }()
     
+    let createSlideButton : UIButton = {
+        let dims = UIScreen.main.bounds.size
+        let button = UIButton()
+        button.frame = CGRect(x: dims.width / 2, y: dims.height * 7/8, width: 30, height: 30)
+        button.backgroundColor = .black
+        button.addTarget(self, action: #selector(handleAddButton), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var swipeToScan : UISwipeGestureRecognizer = {
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeToScan))
+        swipe.direction = .left
+        return swipe
+    }()
+    
     func customizeHome() {
         // welcome page displays the user's name
         if let name = welcomeLabel.text {
@@ -41,10 +56,15 @@ class Home: UIViewController {
         }
         view.backgroundColor = .white
         view.addSubview(welcomeLabel)
+        
+        view.addSubview(createSlideButton)
+        
+        // navigate to the QR scanner view controller
+        view.addGestureRecognizer(swipeToScan)
     }
     
     func configureNavigationBar() {
-        navigationController?.navigationBar.barTintColor = .darkGray
+        navigationController?.navigationBar.barTintColor = UX.defaultColor
         navigationController?.navigationBar.barStyle = .black
         navigationItem.title = "Slide"
         
@@ -55,6 +75,18 @@ class Home: UIViewController {
     
     @objc func handleSideMenuToggle() {
         delegate?.handleMenuToggle(forMenuOption: nil)
+    }
+    
+    @objc func handleAddButton() {
+        let createSlide = SelectMedia()
+        self.present(UINavigationController(rootViewController: createSlide), animated: true, completion: nil)
+    }
+    
+    @objc func handleSwipeToScan() {
+        let scanner = QRScanner()
+        self.present(scanner, animated: true) {
+            print("we got there")
+        }
     }
 }
 

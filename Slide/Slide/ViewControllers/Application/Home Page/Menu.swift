@@ -26,12 +26,19 @@ class Menu: UIViewController {
     
     // MARK: - CUSTOMIZATION
     
+    // swipe to the left to close the menu
+    lazy var closeGesture : UISwipeGestureRecognizer = {
+        let gesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeToClose))
+        gesture.direction = .left
+        return gesture
+    }()
+    
     func configureMenu() {
         table = UITableView()
         table.delegate = self
         table.dataSource = self
         
-        table.backgroundColor = .darkGray
+        table.backgroundColor = UX.defaultColor
         table.separatorStyle = .none
         table.rowHeight = 80
         
@@ -44,6 +51,13 @@ class Menu: UIViewController {
         table.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         table.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         table.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        
+        view.addGestureRecognizer(closeGesture)
+    }
+    
+    // MARK: - HANDLERS
+    @objc func handleSwipeToClose() {
+        delegate?.handleMenuToggle(forMenuOption: nil)
     }
 }
 

@@ -11,9 +11,13 @@ import UIKit
 
 
 class QRScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+    
+    // MARK: - PROPERTIES
+    
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
+    // struct that will store incoming data
     var receivedInformation : EncodedMedia.Media?
     
     override func viewDidLoad() {
@@ -94,7 +98,10 @@ class QRScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         dismiss(animated: true)
     }
     
+    // MARK: - HANDLERS
+    
     func found(code: String) {
+        // no data was supplied
         if (code == "") {
             print("json conversion failed, please check the data pipeline")
             return
@@ -112,7 +119,7 @@ class QRScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         performSegue(withIdentifier: "toMediaReceived", sender: self)
     }
     
-    // updates ReceivedVC's properties with the Slide's information
+    // sets the recieved property to the data read
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toMediaReceived") {
             let recievedVC = segue.destination as! Received
