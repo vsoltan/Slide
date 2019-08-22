@@ -26,7 +26,7 @@ class MediaSelectionViewController: UIViewController {
         super.viewDidLoad()
         
         // stores the user's information
-        let supportedMedia = SlideUser.generateKeyDictionary()
+        let supportedMedia = AppUser.generateKeyDictionary()
         
         var verticalOffset: CGFloat = 120
     

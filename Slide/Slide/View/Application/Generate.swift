@@ -21,6 +21,7 @@ class Generate: UIViewController {
     }
     
     func configureGenerationController() {
+        
         // applies a QR code filter on the text passed through the field
         let img = GenerateQR.generateQRCode(from: EncodedMedia.structToJSON(preparedData: toBeShared))
         QRView.image = img
