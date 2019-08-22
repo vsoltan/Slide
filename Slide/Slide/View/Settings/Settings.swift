@@ -16,6 +16,9 @@ private let reuseIdentifier = "SettingsItem"
 
 class Settings: UIViewController {
     
+    // MARK: - PROPERTIES
+    var menuHeader : SettingsHeader!
+    
     // MARK: - INITIALIZATIONS
     
     override func viewDidLoad() {
@@ -40,8 +43,18 @@ class Settings: UIViewController {
         settingsMenu.register(SettingsCell.self, forCellReuseIdentifier: reuseIdentifier)
         
         view.addSubview(settingsMenu)
-        settingsMenu.frame = view.frame
         
+        settingsMenu.frame = view.frame
+        settingsMenu.rowHeight = 60
+        
+        // frame for the header
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 100)
+        
+        menuHeader = SettingsHeader(frame: frame)
+        settingsMenu.tableHeaderView = menuHeader
+        
+        // the rest of the table is contained within this view
+        settingsMenu.tableFooterView = UIView()
     }
     
     func configureNavigationController() {
@@ -63,17 +76,41 @@ class Settings: UIViewController {
 
 extension Settings : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SettingsCell
+        cell.textLabel?.text = "hello"
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // do something
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        // cell designated for title descriptions
+        let view = UIView()
+        view.backgroundColor = UX.defaultColor
+        
+        let title = UILabel()
+        title.font = UIFont.boldSystemFont(ofSize: 16)
+        title.textColor = .white
+        title.text = "TITLE"
+        view.addSubview(title)
+        
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        title.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        
+        return view
+    }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
 }

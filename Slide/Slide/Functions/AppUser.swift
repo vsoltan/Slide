@@ -13,6 +13,9 @@ import GoogleSignIn
 
 // an interface between the database and the user
 class AppUser {
+    
+    // MARK: - PROPERTIES
+    let defaults = UserDefaults.standard
 
     // MARK: - BACKEND AND LOCAL STORAGE
 
@@ -239,6 +242,33 @@ class AppUser {
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         return credential
     }
+    
+    // MARK: - GETTERS AND SETTERS
+    func getName() -> String {
+        return defaults.getName()
+    }
+    
+    func setName(value: String) {
+        defaults.setName(value: value)
+    }
+    
+    func getEmail() -> String {
+        return defaults.getEmail()
+    }
+    
+    func setEmail(value: String) {
+        defaults.setEmail(value: value)
+    }
+    
+    func getPhone() -> String? {
+        return defaults.getPhoneNumber()
+    }
+    
+    func setPhone(value: String) {
+        defaults.setPhoneNumber(value: value)
+    }
+    
+    // TODO finish this or figure out a way to make it more elegant (not have to define funcs twice)
 }
 
 // MARK: - USER DEFAULTS
@@ -252,3 +282,5 @@ enum UserDefaultsKeys : String {
     case groups
     case fbid
 }
+
+
