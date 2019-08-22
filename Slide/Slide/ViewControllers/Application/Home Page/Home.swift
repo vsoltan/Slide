@@ -37,8 +37,10 @@ class Home: UIViewController {
     let createSlideButton : UIButton = {
         let dims = UIScreen.main.bounds.size
         let button = UIButton()
+        
+        // edit this to place it at the bottom of the screen
         button.frame = CGRect(x: dims.width / 2, y: dims.height * 7/8, width: 30, height: 30)
-        button.backgroundColor = .black
+        button.setImage(#imageLiteral(resourceName: "streamline-icon-add-square@24x24"), for: UIControl.State.normal)
         button.addTarget(self, action: #selector(handleAddButton), for: .touchUpInside)
         return button
     }()
@@ -57,6 +59,8 @@ class Home: UIViewController {
         view.backgroundColor = .white
         view.addSubview(welcomeLabel)
         
+        // TODO remove when including constraints
+        createSlideButton.center = self.view.center
         view.addSubview(createSlideButton)
         
         // navigate to the QR scanner view controller

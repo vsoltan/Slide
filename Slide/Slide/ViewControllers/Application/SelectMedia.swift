@@ -10,59 +10,81 @@ import UIKit
 
 class SelectMedia: UIViewController {
     
-    // QR Encoding structure
+    // MARK: - PROPERTIES
+    
+    // encoding structure
     var selectedMedia = EncodedMedia.Media.init()
 
     // stores the buttons and corresponding data
     var selections = [(button: UIButton, data: (key: Any, value: Any))]()
     
+    // stores the user's information
+    let supportedMedia = AppUser.generateKeyDictionary()
+    
     // visual assets
     let unchecked = UIImage(named: "UnCheckbox")!
     let checked = UIImage(named: "Checkbox")!
     
-    // generates choices for sharing based on what is synced to the account
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-        // stores the user's information
-        let supportedMedia = AppUser.generateKeyDictionary()
-        
-        var verticalOffset: CGFloat = 120
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureSelectMediaController()
+    }
+    
+    func configureSelectMediaController() {
+        view.backgroundColor = .white
+        configureNavigationController()
+        generateMediaChoices()
+        
+    }
+    
+    func generateMediaChoices() {
+        // generates choices for sharing based on what is synced to the account
+        
+        // TODO programmatically make this below the nav bar
+        var verticalOffset: CGFloat = 20 + (navigationController?.navigationBar.frame.maxY)!
+        
         for media in supportedMedia {
             print(media.key as! String)
             
             // don't create a button if media is not synced
             if !(media.value is NSNull) {} else {
-            
+                
                 let mediaType = media.key as! String
-
+                
                 // descriptions of media being selected
                 let mediaButtonlabel = UILabel()
                 mediaButtonlabel.text = mediaType
                 mediaButtonlabel.frame = CGRect(x: 100, y: verticalOffset, width: 100.0, height: 30.0)
-
+                
                 let mediaButton = UIButton(frame: CGRect(x: 50, y: verticalOffset, width: 30, height: 30))
-
+                
                 // customization
                 mediaButton.setImage(unchecked, for: UIControl.State.normal)
                 mediaButton.setTitle(mediaType, for: UIControl.State.normal)
                 mediaButton.isSelected = false
-
+                
                 // spacing between generated buttons
                 verticalOffset = verticalOffset + 50
-
+                
                 // add action to button
                 mediaButton.addTarget(self, action: #selector(mediaSelected), for: .touchUpInside)
-
+                
                 selections.append((mediaButton, media))
-
+                
                 // render
                 self.view.addSubview(mediaButton)
                 self.view.addSubview(mediaButtonlabel)
             }
         }
+    }
+    
+    func configureNavigationController() {
+        navigationController?.navigationBar.barTintColor = UX.defaultColor
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        navigationItem.title = "Choose Media"
     }
     
     // radio button functionality
