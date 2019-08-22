@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		048F56E622DEDAAF00B59402 /* Facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048F56E522DEDAAF00B59402 /* Facebook.swift */; };
-		048F56E822EAA97100B59402 /* Snapchat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048F56E722EAA97100B59402 /* Snapchat.swift */; };
 		04F596E022A8540D004AA63A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F596DF22A8540D004AA63A /* AppDelegate.swift */; };
 		04F596E222A8540D004AA63A /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F596E122A8540D004AA63A /* Home.swift */; };
 		04F596E722A8540F004AA63A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F596E622A8540F004AA63A /* Assets.xcassets */; };
@@ -25,7 +23,7 @@
 		98A1800F230B531000874DCB /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A18007230B333700874DCB /* MenuCell.swift */; };
 		98A18013230B63E800874DCB /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A18012230B63E800874DCB /* MenuOption.swift */; };
 		98A8C3D422F9E05300B9E745 /* UX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A8C3D322F9E05300B9E745 /* UX.swift */; };
-		98B3847422B1C0260097A073 /* SlideUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847322B1C0260097A073 /* SlideUser.swift */; };
+		98B3847422B1C0260097A073 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847322B1C0260097A073 /* AppUser.swift */; };
 		98B3847822B2FCE90097A073 /* GenerateQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3847722B2FCE90097A073 /* GenerateQR.swift */; };
 		98B3847B22B32B9C0097A073 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3847A22B32B9C0097A073 /* SafariServices.framework */; };
 		98B3847D22B32BB30097A073 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3847C22B32BB30097A073 /* SystemConfiguration.framework */; };
@@ -42,12 +40,10 @@
 		98B3A4A122B1860D005FBCF2 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3A49A22B1860D005FBCF2 /* GoogleSignIn.framework */; };
 		98BA75C823011B860086D83F /* LaunchHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BA75C723011B860086D83F /* LaunchHandler.swift */; };
 		98BA75CC23035A8D0086D83F /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BA75CB23035A8D0086D83F /* Defaults.swift */; };
+		98C08F2F230F01B400A9E177 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C08F2E230F01B400A9E177 /* SettingsCell.swift */; };
 		98C55E6622C171FA00B16A14 /* SelectMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C55E6522C171FA00B16A14 /* SelectMedia.swift */; };
 		98D2721522C183B600E300FE /* EncodedMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D2721422C183B600E300FE /* EncodedMedia.swift */; };
 		98D2721722C478D600E300FE /* Received.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D2721622C478D600E300FE /* Received.swift */; };
-		98E9D6D522CAB7BE009A0968 /* SwipeLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E9D6D422CAB7BE009A0968 /* SwipeLeft.swift */; };
-		98E9D6D822CAC501009A0968 /* SwipeRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E9D6D722CAC501009A0968 /* SwipeRight.swift */; };
-		98E9D6DC22CACD67009A0968 /* SwipeDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E9D6DB22CACD67009A0968 /* SwipeDown.swift */; };
 		CFAC7373BBC82D12B63D7217 /* Pods_Slide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01566259063A6F98051587FA /* Pods_Slide.framework */; };
 		E70FB49C22CFF58A0052485F /* Phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70FB49B22CFF58A0052485F /* Phone.swift */; };
 		E70FB49E22CFF7470052485F /* LinkedAccounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E70FB49D22CFF7470052485F /* LinkedAccounts.storyboard */; };
@@ -57,8 +53,6 @@
 
 /* Begin PBXFileReference section */
 		01566259063A6F98051587FA /* Pods_Slide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Slide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		048F56E522DEDAAF00B59402 /* Facebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facebook.swift; sourceTree = "<group>"; };
-		048F56E722EAA97100B59402 /* Snapchat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Snapchat.swift; path = Slide/ViewControllers/Settings/Snapchat.swift; sourceTree = SOURCE_ROOT; };
 		04F596DC22A8540D004AA63A /* Slide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F596DF22A8540D004AA63A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04F596E122A8540D004AA63A /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -79,7 +73,7 @@
 		98A1800C230B4FFA00874DCB /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		98A18012230B63E800874DCB /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
 		98A8C3D322F9E05300B9E745 /* UX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UX.swift; sourceTree = "<group>"; };
-		98B3847322B1C0260097A073 /* SlideUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUser.swift; sourceTree = "<group>"; };
+		98B3847322B1C0260097A073 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		98B3847722B2FCE90097A073 /* GenerateQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateQR.swift; sourceTree = "<group>"; };
 		98B3847A22B32B9C0097A073 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		98B3847C22B32BB30097A073 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -97,12 +91,10 @@
 		98B3A49A22B1860D005FBCF2 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
 		98BA75C723011B860086D83F /* LaunchHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchHandler.swift; sourceTree = "<group>"; };
 		98BA75CB23035A8D0086D83F /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		98C08F2E230F01B400A9E177 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		98C55E6522C171FA00B16A14 /* SelectMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMedia.swift; sourceTree = "<group>"; };
 		98D2721422C183B600E300FE /* EncodedMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodedMedia.swift; sourceTree = "<group>"; };
 		98D2721622C478D600E300FE /* Received.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Received.swift; sourceTree = "<group>"; };
-		98E9D6D422CAB7BE009A0968 /* SwipeLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeLeft.swift; sourceTree = "<group>"; };
-		98E9D6D722CAC501009A0968 /* SwipeRight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRight.swift; sourceTree = "<group>"; };
-		98E9D6DB22CACD67009A0968 /* SwipeDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDown.swift; sourceTree = "<group>"; };
 		E70FB49B22CFF58A0052485F /* Phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phone.swift; sourceTree = "<group>"; };
 		E70FB49D22CFF7470052485F /* LinkedAccounts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LinkedAccounts.storyboard; sourceTree = "<group>"; };
 		E7EF6C0122B35BD9005197FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -150,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				98A1800B230B4FEE00874DCB /* Utilities */,
-				98E9D6D622CAC4EF009A0968 /* Segues */,
 				0D3496B522BDC10800891BDD /* Slide.entitlements */,
 				98B3A49322B1860D005FBCF2 /* Frameworks */,
 				98B3A46A22A9E60A005FBCF2 /* Functions */,
@@ -173,8 +164,7 @@
 				04F9B36822BDA6BC00D87528 /* Password.swift */,
 				E7F6370D22CCF617009B24C4 /* Accounts.swift */,
 				E70FB49B22CFF58A0052485F /* Phone.swift */,
-				048F56E522DEDAAF00B59402 /* Facebook.swift */,
-				048F56E722EAA97100B59402 /* Snapchat.swift */,
+				98C08F2E230F01B400A9E177 /* SettingsCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -260,7 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				98B3A46D22A9E878005FBCF2 /* TextParser.swift */,
-				98B3847322B1C0260097A073 /* SlideUser.swift */,
+				98B3847322B1C0260097A073 /* AppUser.swift */,
 				98B3847722B2FCE90097A073 /* GenerateQR.swift */,
 				9867CCE622B9BB8400B6F14B /* CustomError.swift */,
 				98D2721422C183B600E300FE /* EncodedMedia.swift */,
@@ -278,16 +268,6 @@
 				98B3A49A22B1860D005FBCF2 /* GoogleSignIn.framework */,
 			);
 			path = Frameworks;
-			sourceTree = "<group>";
-		};
-		98E9D6D622CAC4EF009A0968 /* Segues */ = {
-			isa = PBXGroup;
-			children = (
-				98E9D6D422CAB7BE009A0968 /* SwipeLeft.swift */,
-				98E9D6D722CAC501009A0968 /* SwipeRight.swift */,
-				98E9D6DB22CACD67009A0968 /* SwipeDown.swift */,
-			);
-			path = Segues;
 			sourceTree = "<group>";
 		};
 		F52E42079EA3AD0EFB1F5453 /* Pods */ = {
@@ -454,14 +434,12 @@
 				98D2721522C183B600E300FE /* EncodedMedia.swift in Sources */,
 				98A1800A230B4E4E00874DCB /* Container.swift in Sources */,
 				98BA75CC23035A8D0086D83F /* Defaults.swift in Sources */,
-				98B3847422B1C0260097A073 /* SlideUser.swift in Sources */,
+				98B3847422B1C0260097A073 /* AppUser.swift in Sources */,
 				9867CCE722B9BB8400B6F14B /* CustomError.swift in Sources */,
 				E70FB49C22CFF58A0052485F /* Phone.swift in Sources */,
-				98E9D6D822CAC501009A0968 /* SwipeRight.swift in Sources */,
-				98E9D6DC22CACD67009A0968 /* SwipeDown.swift in Sources */,
 				98D2721722C478D600E300FE /* Received.swift in Sources */,
 				04F596E222A8540D004AA63A /* Home.swift in Sources */,
-				048F56E622DEDAAF00B59402 /* Facebook.swift in Sources */,
+				98C08F2F230F01B400A9E177 /* SettingsCell.swift in Sources */,
 				9867CCE922BD47F800B6F14B /* Generate.swift in Sources */,
 				E7F6370E22CCF617009B24C4 /* Accounts.swift in Sources */,
 				04F9B36922BDA6BC00D87528 /* Password.swift in Sources */,
@@ -469,9 +447,7 @@
 				04F596E022A8540D004AA63A /* AppDelegate.swift in Sources */,
 				98B3A46E22A9E878005FBCF2 /* TextParser.swift in Sources */,
 				98B3A46722A9DD7F005FBCF2 /* Settings.swift in Sources */,
-				048F56E822EAA97100B59402 /* Snapchat.swift in Sources */,
 				98A18013230B63E800874DCB /* MenuOption.swift in Sources */,
-				98E9D6D522CAB7BE009A0968 /* SwipeLeft.swift in Sources */,
 				98B3847822B2FCE90097A073 /* GenerateQR.swift in Sources */,
 				98A8C3D422F9E05300B9E745 /* UX.swift in Sources */,
 				98A1800D230B4FFA00874DCB /* Protocols.swift in Sources */,
