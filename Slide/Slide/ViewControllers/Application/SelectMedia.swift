@@ -85,6 +85,7 @@ class SelectMedia: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         navigationItem.title = "Choose Media"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "streamline-icon-navigation-left-2@24x24").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBackButton))
     }
     
     // radio button functionality
@@ -142,5 +143,10 @@ class SelectMedia: UIViewController {
             let generationController = segue.destination as! Generate
             generationController.toBeShared = selectedMedia
         }
+    }
+    
+    // MARK: - HANDLERS
+    @objc func handleBackButton() {
+        dismiss(animated: true, completion: nil)
     }
 }

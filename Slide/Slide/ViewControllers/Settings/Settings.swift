@@ -12,32 +12,40 @@ import Firebase
 import FBSDKLoginKit
 import GoogleSignIn
 
-class Settings: UIViewController {// UITableViewDataSource, UITableViewDelegate {
-    
-    // MARK: - PROPERTIES
+private let reuseIdentifier = "SettingsItem"
 
-    let settingsMenu : UITableView = {
-        let table = UITableView()
-        return table
-    }()
+class Settings: UIViewController {
     
-    // initialization
+    // MARK: - INITIALIZATIONS
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureSettingsMenu()
-        configureNavigationController()
         
-        //settingsMenu.dataSource = self
-        //settingsMenu.delegate = self
+        configureNavigationController()
+        configureSettingsMenu()
     }
     
+    // MARK: - CONFIGURATIONS
+    
     func configureSettingsMenu() {
-        // setup the tableview
+        
         view.backgroundColor = .white
+        
+        // setup the tableview
+        let settingsMenu = UITableView()
+        
+        settingsMenu.delegate = self
+        settingsMenu.dataSource = self
+        
+        settingsMenu.register(SettingsCell.self, forCellReuseIdentifier: reuseIdentifier)
+        
         view.addSubview(settingsMenu)
+        settingsMenu.frame = view.frame
+        
     }
     
     func configureNavigationController() {
+        
         navigationController?.navigationBar.barTintColor = UX.defaultColor
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -46,57 +54,26 @@ class Settings: UIViewController {// UITableViewDataSource, UITableViewDelegate 
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "streamline-icon-navigation-left-2@24x24").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBackButton))
     }
     
-//    // cell activation handler
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        // if a row is clicked, unclick and give it a fade out animation
-//        tableView.deselectRow(at: indexPath, animated: true)
-//
-//        // log out
-//        if (indexPath.section == 2 && indexPath.row == 3 ) {
-//            let firebaseAuth = Auth.auth()
-//
-//            // check the provider
-//            if let providerData = firebaseAuth.currentUser?.providerData {
-//                for userInfo in providerData {
-//                    switch userInfo.providerID {
-//                        // the user logged in using Facebook
-//                        case "facebook.com":
-//                            let loginManager = LoginManager()
-//                            loginManager.logOut()
-//
-//                        // the user logged in using Google
-//                        case "google.com":
-//                            GIDSignIn.sharedInstance()?.signOut()
-//                        default:
-//                            print("provider is \(userInfo.providerID)")
-//                    }
-//                }
-//            }
-//
-//            // end the user session in firebase
-//            do {
-//                try firebaseAuth.signOut()
-//                if (firebaseAuth.currentUser == nil) {
-//                    print ("Successfully signed out!")
-//                }
-//                // checks if the user logged in using facebook
-//                if AccessToken.current != nil {
-//                    let loginManager = LoginManager()
-//                    loginManager.logOut()
-//                }
-//                // removes user data from local storage
-//                SlideUser.clearLocalData()
-//
-//            } catch let signOutError as NSError {
-//                print ("Error signing out: %@", signOutError)
-//            }
-//        }
-    
     // MARK: - HANDLERS
     
     @objc func handleBackButton() {
         dismiss(animated: true, completion: nil)
     }
+}
+
+extension Settings : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SettingsCell
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // do something
+    }
+    
     
 }
