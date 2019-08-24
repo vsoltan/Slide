@@ -14,7 +14,7 @@ enum MenuOption: Int, CustomStringConvertible {
     case Settings
     case Logout
     
-    var description : String {
+    var description: String {
         switch self {
             case .Profile:
                 return "Profile"

@@ -27,7 +27,7 @@ class Menu: UIViewController {
     // MARK: - CUSTOMIZATION
     
     // swipe to the left to close the menu
-    lazy var closeGesture : UISwipeGestureRecognizer = {
+    lazy var closeGesture: UISwipeGestureRecognizer = {
         let gesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeToClose))
         gesture.direction = .left
         return gesture
@@ -61,7 +61,7 @@ class Menu: UIViewController {
     }
 }
 
-extension Menu : UITableViewDelegate, UITableViewDataSource {
+extension Menu: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }

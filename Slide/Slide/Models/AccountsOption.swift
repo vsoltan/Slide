@@ -6,4 +6,16 @@
 //  Copyright © 2019 Roodac. All rights reserved.
 //
 
-import Foundation
+enum AccountsOption: Int, CaseIterable {
+    case PhoneNumber
+    case Email
+    
+    var description: String {
+        switch self {
+        case .PhoneNumber:
+            return "Phone Number"
+        case .Email:
+            return "Email"
+        }
+    }
+}

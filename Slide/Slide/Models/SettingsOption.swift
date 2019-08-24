@@ -11,7 +11,7 @@ enum GeneralOption: Int, CaseIterable, CustomStringConvertible {
     case EditProfile
     case About
     
-    var description : String {
+    var description: String {
         switch self {
         case .EditProfile:
             return "Edit Profile"
@@ -25,7 +25,7 @@ enum ManageOption: Int, CaseIterable, CustomStringConvertible {
     
     case DeleteAccount
     
-    var description : String {
+    var description: String {
         switch self {
         case .DeleteAccount:
             return "Delete Account"
@@ -33,12 +33,20 @@ enum ManageOption: Int, CaseIterable, CustomStringConvertible {
     }
 }
 
+
+// collective enum for a more robust handling solution
+enum AllSettingsOption: Int {
+    case EditProfile
+    case About
+    case DeleteAccount
+}
+
 enum SettingSection: Int, CustomStringConvertible {
     
     case General
     case Manage
     
-    var description : String {
+    var description: String {
         switch self {
         case .General:
             return "General"

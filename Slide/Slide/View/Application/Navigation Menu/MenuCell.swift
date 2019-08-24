@@ -12,17 +12,19 @@ class MenuCell: UITableViewCell {
     
     // MARK: - PROPERTIES
     
-    let iconImage : UIImageView = {
+    let iconImage: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
         view.clipsToBounds = true
         return view
     }()
     
-    let optionText : UILabel = {
+    let optionText: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.text = "sample"
+        
+        // this gets set by the Menu class
+        label.text = "placeholder"
         label.font = UIFont.systemFont(ofSize: 16)
         return label
     }()
