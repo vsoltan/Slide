@@ -13,26 +13,29 @@
 		9867CCE722B9BB8400B6F14B /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9867CCE622B9BB8400B6F14B /* CustomError.swift */; };
 		98961F84230F291E00BC38CE /* Firebase.h in Frameworks */ = {isa = PBXBuildFile; fileRef = E7EF6C0322B35C45005197FE /* Firebase.h */; };
 		98961F85230F292800BC38CE /* GoogleSignIn.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B3A49622B1860D005FBCF2 /* GoogleSignIn.bundle */; };
-		98961FA4230F294C00BC38CE /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961F89230F293600BC38CE /* Password.swift */; };
-		98961FA5230F294C00BC38CE /* Phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961F8A230F293600BC38CE /* Phone.swift */; };
-		98961FA6230F294C00BC38CE /* Accounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961F8B230F293600BC38CE /* Accounts.swift */; };
-		98961FA7230F294C00BC38CE /* AddPhoneNumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961F8C230F293600BC38CE /* AddPhoneNumViewController.swift */; };
-		98961FA8230F294C00BC38CE /* Manage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961F8D230F293600BC38CE /* Manage.swift */; };
-		98961FA9230F294C00BC38CE /* SettingsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961F8F230F293600BC38CE /* SettingsHeader.swift */; };
-		98961FAA230F294C00BC38CE /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961F90230F293600BC38CE /* SettingsCell.swift */; };
-		98961FAB230F294C00BC38CE /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961F91230F293600BC38CE /* Settings.swift */; };
-		98961FAC230F294C00BC38CE /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961F93230F293600BC38CE /* Home.swift */; };
-		98961FAD230F294C00BC38CE /* MediaSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961F96230F293600BC38CE /* MediaSelectionViewController.swift */; };
-		98961FAE230F294C00BC38CE /* SelectMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961F97230F293600BC38CE /* SelectMedia.swift */; };
-		98961FAF230F294C00BC38CE /* Generate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961F98230F293600BC38CE /* Generate.swift */; };
-		98961FB0230F294C00BC38CE /* QRScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961F9A230F293600BC38CE /* QRScanner.swift */; };
-		98961FB1230F294C00BC38CE /* Received.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961F9B230F293600BC38CE /* Received.swift */; };
-		98961FB2230F294C00BC38CE /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961F9C230F293600BC38CE /* Container.swift */; };
-		98961FB3230F294C00BC38CE /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961F9E230F293600BC38CE /* MenuOption.swift */; };
-		98961FB4230F294C00BC38CE /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961F9F230F293600BC38CE /* Menu.swift */; };
-		98961FB5230F294C00BC38CE /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FA0230F293600BC38CE /* MenuCell.swift */; };
-		98961FB6230F294C00BC38CE /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FA2230F293600BC38CE /* Login.swift */; };
-		98961FB7230F294C00BC38CE /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FA3230F293600BC38CE /* Register.swift */; };
+		98961FD7230F2A5400BC38CE /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FBD230F2A4400BC38CE /* Password.swift */; };
+		98961FD8230F2A5400BC38CE /* Phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FBE230F2A4400BC38CE /* Phone.swift */; };
+		98961FD9230F2A5400BC38CE /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FBF230F2A4400BC38CE /* Account.swift */; };
+		98961FDB230F2A5400BC38CE /* Manage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FC1230F2A4400BC38CE /* Manage.swift */; };
+		98961FDC230F2A5400BC38CE /* SettingsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FC3230F2A4400BC38CE /* SettingsHeader.swift */; };
+		98961FDD230F2A5400BC38CE /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FC4230F2A4400BC38CE /* SettingsCell.swift */; };
+		98961FDE230F2A5400BC38CE /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FC5230F2A4400BC38CE /* Settings.swift */; };
+		98961FDF230F2A5400BC38CE /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FC7230F2A4400BC38CE /* Home.swift */; };
+		98961FE0230F2A5400BC38CE /* MediaSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FCA230F2A4400BC38CE /* MediaSelectionViewController.swift */; };
+		98961FE1230F2A5400BC38CE /* SelectMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FCB230F2A4400BC38CE /* SelectMedia.swift */; };
+		98961FE2230F2A5400BC38CE /* Generate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FCC230F2A4400BC38CE /* Generate.swift */; };
+		98961FE3230F2A5400BC38CE /* QRScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FCE230F2A4400BC38CE /* QRScanner.swift */; };
+		98961FE4230F2A5400BC38CE /* Received.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FCF230F2A4400BC38CE /* Received.swift */; };
+		98961FE5230F2A5400BC38CE /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FD0230F2A4400BC38CE /* Container.swift */; };
+		98961FE6230F2A5400BC38CE /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FD2230F2A4400BC38CE /* Menu.swift */; };
+		98961FE7230F2A5400BC38CE /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FD3230F2A4400BC38CE /* MenuCell.swift */; };
+		98961FE8230F2A5400BC38CE /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FD5230F2A4400BC38CE /* Login.swift */; };
+		98961FE9230F2A5400BC38CE /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FD6230F2A4400BC38CE /* Register.swift */; };
+		98961FEA230F2A5400BC38CE /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FB9230F2A3800BC38CE /* MenuOption.swift */; };
+		98961FEC230F2A7C00BC38CE /* SettingsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FEB230F2A7C00BC38CE /* SettingsOption.swift */; };
+		98961FEE2311E74D00BC38CE /* AccountsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FED2311E74D00BC38CE /* AccountsOption.swift */; };
+		98961FF32311F50200BC38CE /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FF22311F50200BC38CE /* About.swift */; };
+		98961FF52311F5C300BC38CE /* UXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FF42311F5C300BC38CE /* UXView.swift */; };
 		98A17FFF2309252300874DCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98A17FFE2309252300874DCB /* LaunchScreen.storyboard */; };
 		98A1800D230B4FFA00874DCB /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A1800C230B4FFA00874DCB /* Protocols.swift */; };
 		98A8C3D422F9E05300B9E745 /* UX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A8C3D322F9E05300B9E745 /* UX.swift */; };
@@ -58,26 +61,29 @@
 		6307111C166CE8B76E78A8BC /* Pods-Slide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slide.release.xcconfig"; path = "Target Support Files/Pods-Slide/Pods-Slide.release.xcconfig"; sourceTree = "<group>"; };
 		9807A69C22C5618E00627887 /* Received.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Received.storyboard; sourceTree = "<group>"; };
 		9867CCE622B9BB8400B6F14B /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
-		98961F89230F293600BC38CE /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
-		98961F8A230F293600BC38CE /* Phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phone.swift; sourceTree = "<group>"; };
-		98961F8B230F293600BC38CE /* Accounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accounts.swift; sourceTree = "<group>"; };
-		98961F8C230F293600BC38CE /* AddPhoneNumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhoneNumViewController.swift; sourceTree = "<group>"; };
-		98961F8D230F293600BC38CE /* Manage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manage.swift; sourceTree = "<group>"; };
-		98961F8F230F293600BC38CE /* SettingsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeader.swift; sourceTree = "<group>"; };
-		98961F90230F293600BC38CE /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
-		98961F91230F293600BC38CE /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		98961F93230F293600BC38CE /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-		98961F96230F293600BC38CE /* MediaSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSelectionViewController.swift; sourceTree = "<group>"; };
-		98961F97230F293600BC38CE /* SelectMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMedia.swift; sourceTree = "<group>"; };
-		98961F98230F293600BC38CE /* Generate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generate.swift; sourceTree = "<group>"; };
-		98961F9A230F293600BC38CE /* QRScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanner.swift; sourceTree = "<group>"; };
-		98961F9B230F293600BC38CE /* Received.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Received.swift; sourceTree = "<group>"; };
-		98961F9C230F293600BC38CE /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
-		98961F9E230F293600BC38CE /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
-		98961F9F230F293600BC38CE /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
-		98961FA0230F293600BC38CE /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
-		98961FA2230F293600BC38CE /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
-		98961FA3230F293600BC38CE /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		98961FB9230F2A3800BC38CE /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
+		98961FBD230F2A4400BC38CE /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
+		98961FBE230F2A4400BC38CE /* Phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phone.swift; sourceTree = "<group>"; };
+		98961FBF230F2A4400BC38CE /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		98961FC1230F2A4400BC38CE /* Manage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manage.swift; sourceTree = "<group>"; };
+		98961FC3230F2A4400BC38CE /* SettingsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeader.swift; sourceTree = "<group>"; };
+		98961FC4230F2A4400BC38CE /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
+		98961FC5230F2A4400BC38CE /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		98961FC7230F2A4400BC38CE /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		98961FCA230F2A4400BC38CE /* MediaSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSelectionViewController.swift; sourceTree = "<group>"; };
+		98961FCB230F2A4400BC38CE /* SelectMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMedia.swift; sourceTree = "<group>"; };
+		98961FCC230F2A4400BC38CE /* Generate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generate.swift; sourceTree = "<group>"; };
+		98961FCE230F2A4400BC38CE /* QRScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanner.swift; sourceTree = "<group>"; };
+		98961FCF230F2A4400BC38CE /* Received.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Received.swift; sourceTree = "<group>"; };
+		98961FD0230F2A4400BC38CE /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		98961FD2230F2A4400BC38CE /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		98961FD3230F2A4400BC38CE /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		98961FD5230F2A4400BC38CE /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		98961FD6230F2A4400BC38CE /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		98961FEB230F2A7C00BC38CE /* SettingsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOption.swift; sourceTree = "<group>"; };
+		98961FED2311E74D00BC38CE /* AccountsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsOption.swift; sourceTree = "<group>"; };
+		98961FF22311F50200BC38CE /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
+		98961FF42311F5C300BC38CE /* UXView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXView.swift; sourceTree = "<group>"; };
 		98A17FFE2309252300874DCB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		98A1800C230B4FFA00874DCB /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		98A8C3D322F9E05300B9E745 /* UX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UX.swift; sourceTree = "<group>"; };
@@ -134,7 +140,8 @@
 		04F596DE22A8540D004AA63A /* Slide */ = {
 			isa = PBXGroup;
 			children = (
-				98961F86230F293600BC38CE /* View */,
+				98961FBA230F2A4400BC38CE /* View */,
+				98961FB8230F2A3800BC38CE /* Models */,
 				98A1800B230B4FEE00874DCB /* Utilities */,
 				98B3A49322B1860D005FBCF2 /* Frameworks */,
 				98B3A46A22A9E60A005FBCF2 /* Functions */,
@@ -155,101 +162,111 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		98961F86230F293600BC38CE /* View */ = {
+		98961FB8230F2A3800BC38CE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				98961F87230F293600BC38CE /* Settings */,
-				98961F92230F293600BC38CE /* Application */,
-				98961FA1230F293600BC38CE /* Login */,
+				98961FB9230F2A3800BC38CE /* MenuOption.swift */,
+				98961FEB230F2A7C00BC38CE /* SettingsOption.swift */,
+				98961FED2311E74D00BC38CE /* AccountsOption.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		98961FBA230F2A4400BC38CE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				98961FBB230F2A4400BC38CE /* Settings */,
+				98961FC6230F2A4400BC38CE /* Application */,
+				98961FD4230F2A4400BC38CE /* Login */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		98961F87230F293600BC38CE /* Settings */ = {
+		98961FBB230F2A4400BC38CE /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				98961F88230F293600BC38CE /* Mutable */,
-				98961F8E230F293600BC38CE /* Table */,
-				98961F91230F293600BC38CE /* Settings.swift */,
+				98961FBC230F2A4400BC38CE /* Account */,
+				98961FC2230F2A4400BC38CE /* Table */,
+				98961FC5230F2A4400BC38CE /* Settings.swift */,
+				98961FF22311F50200BC38CE /* About.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		98961F88230F293600BC38CE /* Mutable */ = {
+		98961FBC230F2A4400BC38CE /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				98961F89230F293600BC38CE /* Password.swift */,
-				98961F8A230F293600BC38CE /* Phone.swift */,
-				98961F8B230F293600BC38CE /* Accounts.swift */,
-				98961F8C230F293600BC38CE /* AddPhoneNumViewController.swift */,
-				98961F8D230F293600BC38CE /* Manage.swift */,
+				98961FBD230F2A4400BC38CE /* Password.swift */,
+				98961FBE230F2A4400BC38CE /* Phone.swift */,
+				98961FBF230F2A4400BC38CE /* Account.swift */,
+				98961FC1230F2A4400BC38CE /* Manage.swift */,
 			);
-			path = Mutable;
+			path = Account;
 			sourceTree = "<group>";
 		};
-		98961F8E230F293600BC38CE /* Table */ = {
+		98961FC2230F2A4400BC38CE /* Table */ = {
 			isa = PBXGroup;
 			children = (
-				98961F8F230F293600BC38CE /* SettingsHeader.swift */,
-				98961F90230F293600BC38CE /* SettingsCell.swift */,
+				98961FC3230F2A4400BC38CE /* SettingsHeader.swift */,
+				98961FC4230F2A4400BC38CE /* SettingsCell.swift */,
 			);
 			path = Table;
 			sourceTree = "<group>";
 		};
-		98961F92230F293600BC38CE /* Application */ = {
+		98961FC6230F2A4400BC38CE /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				98961F93230F293600BC38CE /* Home.swift */,
-				98961F94230F293600BC38CE /* QR */,
-				98961F9C230F293600BC38CE /* Container.swift */,
-				98961F9D230F293600BC38CE /* Navigation Menu */,
+				98961FC7230F2A4400BC38CE /* Home.swift */,
+				98961FC8230F2A4400BC38CE /* QR */,
+				98961FD0230F2A4400BC38CE /* Container.swift */,
+				98961FD1230F2A4400BC38CE /* Navigation Menu */,
+				98961FF42311F5C300BC38CE /* UXView.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
 		};
-		98961F94230F293600BC38CE /* QR */ = {
+		98961FC8230F2A4400BC38CE /* QR */ = {
 			isa = PBXGroup;
 			children = (
-				98961F95230F293600BC38CE /* Write */,
-				98961F99230F293600BC38CE /* Read */,
+				98961FC9230F2A4400BC38CE /* Write */,
+				98961FCD230F2A4400BC38CE /* Read */,
 			);
 			path = QR;
 			sourceTree = "<group>";
 		};
-		98961F95230F293600BC38CE /* Write */ = {
+		98961FC9230F2A4400BC38CE /* Write */ = {
 			isa = PBXGroup;
 			children = (
-				98961F96230F293600BC38CE /* MediaSelectionViewController.swift */,
-				98961F97230F293600BC38CE /* SelectMedia.swift */,
-				98961F98230F293600BC38CE /* Generate.swift */,
+				98961FCA230F2A4400BC38CE /* MediaSelectionViewController.swift */,
+				98961FCB230F2A4400BC38CE /* SelectMedia.swift */,
+				98961FCC230F2A4400BC38CE /* Generate.swift */,
 			);
 			path = Write;
 			sourceTree = "<group>";
 		};
-		98961F99230F293600BC38CE /* Read */ = {
+		98961FCD230F2A4400BC38CE /* Read */ = {
 			isa = PBXGroup;
 			children = (
-				98961F9A230F293600BC38CE /* QRScanner.swift */,
-				98961F9B230F293600BC38CE /* Received.swift */,
+				98961FCE230F2A4400BC38CE /* QRScanner.swift */,
+				98961FCF230F2A4400BC38CE /* Received.swift */,
 			);
 			path = Read;
 			sourceTree = "<group>";
 		};
-		98961F9D230F293600BC38CE /* Navigation Menu */ = {
+		98961FD1230F2A4400BC38CE /* Navigation Menu */ = {
 			isa = PBXGroup;
 			children = (
-				98961F9E230F293600BC38CE /* MenuOption.swift */,
-				98961F9F230F293600BC38CE /* Menu.swift */,
-				98961FA0230F293600BC38CE /* MenuCell.swift */,
+				98961FD2230F2A4400BC38CE /* Menu.swift */,
+				98961FD3230F2A4400BC38CE /* MenuCell.swift */,
 			);
 			path = "Navigation Menu";
 			sourceTree = "<group>";
 		};
-		98961FA1230F293600BC38CE /* Login */ = {
+		98961FD4230F2A4400BC38CE /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				98961FA2230F293600BC38CE /* Login.swift */,
-				98961FA3230F293600BC38CE /* Register.swift */,
+				98961FD5230F2A4400BC38CE /* Login.swift */,
+				98961FD6230F2A4400BC38CE /* Register.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -454,29 +471,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98961FA4230F294C00BC38CE /* Password.swift in Sources */,
-				98961FA5230F294C00BC38CE /* Phone.swift in Sources */,
-				98961FA6230F294C00BC38CE /* Accounts.swift in Sources */,
-				98961FA7230F294C00BC38CE /* AddPhoneNumViewController.swift in Sources */,
-				98961FA8230F294C00BC38CE /* Manage.swift in Sources */,
-				98961FA9230F294C00BC38CE /* SettingsHeader.swift in Sources */,
-				98961FAA230F294C00BC38CE /* SettingsCell.swift in Sources */,
-				98961FAB230F294C00BC38CE /* Settings.swift in Sources */,
-				98961FAC230F294C00BC38CE /* Home.swift in Sources */,
-				98961FAD230F294C00BC38CE /* MediaSelectionViewController.swift in Sources */,
-				98961FAE230F294C00BC38CE /* SelectMedia.swift in Sources */,
-				98961FAF230F294C00BC38CE /* Generate.swift in Sources */,
-				98961FB0230F294C00BC38CE /* QRScanner.swift in Sources */,
-				98961FB1230F294C00BC38CE /* Received.swift in Sources */,
-				98961FB2230F294C00BC38CE /* Container.swift in Sources */,
-				98961FB3230F294C00BC38CE /* MenuOption.swift in Sources */,
-				98961FB4230F294C00BC38CE /* Menu.swift in Sources */,
-				98961FB5230F294C00BC38CE /* MenuCell.swift in Sources */,
-				98961FB6230F294C00BC38CE /* Login.swift in Sources */,
-				98961FB7230F294C00BC38CE /* Register.swift in Sources */,
+				98961FD7230F2A5400BC38CE /* Password.swift in Sources */,
+				98961FD8230F2A5400BC38CE /* Phone.swift in Sources */,
+				98961FD9230F2A5400BC38CE /* Account.swift in Sources */,
+				98961FDB230F2A5400BC38CE /* Manage.swift in Sources */,
+				98961FDC230F2A5400BC38CE /* SettingsHeader.swift in Sources */,
+				98961FDD230F2A5400BC38CE /* SettingsCell.swift in Sources */,
+				98961FDE230F2A5400BC38CE /* Settings.swift in Sources */,
+				98961FDF230F2A5400BC38CE /* Home.swift in Sources */,
+				98961FE0230F2A5400BC38CE /* MediaSelectionViewController.swift in Sources */,
+				98961FE1230F2A5400BC38CE /* SelectMedia.swift in Sources */,
+				98961FE2230F2A5400BC38CE /* Generate.swift in Sources */,
+				98961FE3230F2A5400BC38CE /* QRScanner.swift in Sources */,
+				98961FE4230F2A5400BC38CE /* Received.swift in Sources */,
+				98961FE5230F2A5400BC38CE /* Container.swift in Sources */,
+				98961FE6230F2A5400BC38CE /* Menu.swift in Sources */,
+				98961FF52311F5C300BC38CE /* UXView.swift in Sources */,
+				98961FE7230F2A5400BC38CE /* MenuCell.swift in Sources */,
+				98961FEC230F2A7C00BC38CE /* SettingsOption.swift in Sources */,
+				98961FE8230F2A5400BC38CE /* Login.swift in Sources */,
+				98961FE9230F2A5400BC38CE /* Register.swift in Sources */,
+				98961FEE2311E74D00BC38CE /* AccountsOption.swift in Sources */,
+				98961FEA230F2A5400BC38CE /* MenuOption.swift in Sources */,
 				98D2721522C183B600E300FE /* EncodedMedia.swift in Sources */,
 				98BA75CC23035A8D0086D83F /* Defaults.swift in Sources */,
 				98B3847422B1C0260097A073 /* AppUser.swift in Sources */,
+				98961FF32311F50200BC38CE /* About.swift in Sources */,
 				9867CCE722B9BB8400B6F14B /* CustomError.swift in Sources */,
 				04F596E022A8540D004AA63A /* AppDelegate.swift in Sources */,
 				98B3A46E22A9E878005FBCF2 /* TextParser.swift in Sources */,

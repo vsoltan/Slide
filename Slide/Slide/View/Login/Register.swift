@@ -47,8 +47,8 @@ class Register: UIViewController {
                 }
             }
             
-            let register = (name : usrName.text!, email : usrEmail.text!,
-                            password : usrPassword.text!)
+            let register = (name: usrName.text!, email: usrEmail.text!,
+                            password: usrPassword.text!)
             
             // creates a new user
             auth.createUser(withEmail: register.email, password: register.password) { (user, error) in

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Blx-y4-GzP">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,13 +21,13 @@
         <!--Linked Accounts-->
         <scene sceneID="Tqt-Hz-ujO">
             <objects>
-                <viewController title="Linked Accounts" id="Blx-y4-GzP" customClass="Accounts" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Linked Accounts" id="Blx-y4-GzP" customClass="Account" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ps8-z9-VCy">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfc-U7-8YC">
-                                <rect key="frame" x="210" y="37" width="180" height="28"/>
+                                <rect key="frame" x="117" y="61" width="180" height="28"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Linked Accounts">
                                         <attributes>
@@ -35,21 +39,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tCS-dQ-7ln">
-                                <rect key="frame" x="20" y="35" width="34" height="30"/>
+                                <rect key="frame" x="20" y="59" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
                                     <segue destination="oaC-9g-3Li" kind="show" id="ek2-od-BsB"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SaX-YZ-wOE" userLabel="Accounts Table">
-                                <rect key="frame" x="0.0" y="90" width="600" height="510"/>
+                                <rect key="frame" x="0.0" y="114" width="414" height="748"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Accounts Item" id="V6z-Bu-DS7" userLabel="AccountsItem">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V6z-Bu-DS7" id="eeY-BL-TXt">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -73,10 +77,7 @@
                         <viewLayoutGuide key="safeArea" id="eHk-Lh-abG"/>
                     </view>
                     <connections>
-                        <outlet property="accountsTable" destination="SaX-YZ-wOE" id="Ib6-Ey-1Zg"/>
                         <segue destination="bzN-EW-kMB" kind="show" identifier="Phone Number" id="RjH-Sa-gWE"/>
-                        <segue destination="94t-i8-1E8" kind="show" identifier="Facebook" id="Hqt-Ls-cda"/>
-                        <segue destination="WR9-eB-8CC" kind="show" identifier="Snapchat" id="DfJ-cH-Cc8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Cn-Aj-UA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -88,11 +89,11 @@
             <objects>
                 <viewController title="About" id="bzN-EW-kMB" userLabel="Add Phone Number" customClass="Phone" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fiv-QI-i0H">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BG1-98-zUd">
-                                <rect key="frame" x="219" y="37" width="162" height="28"/>
+                                <rect key="frame" x="126" y="61" width="162" height="28"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Phone Number">
                                         <attributes>
@@ -104,7 +105,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSL-sq-PTU">
-                                <rect key="frame" x="20" y="35" width="34" height="30"/>
+                                <rect key="frame" x="20" y="59" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
                                     <action selector="goBack:" destination="bzN-EW-kMB" eventType="touchUpInside" id="c9E-BU-FJU"/>
@@ -158,92 +159,5 @@
             </objects>
             <point key="canvasLocation" x="-308" y="-28.078817733990149"/>
         </scene>
-        <!--Snapchat-->
-        <scene sceneID="S6e-ZF-uAt">
-            <objects>
-                <viewController title="Snapchat" id="WR9-eB-8CC" customClass="Snapchat" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="HHz-cB-7YZ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flt-kM-iJy">
-                                <rect key="frame" x="248.5" y="37" width="103" height="28"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Snapchat">
-                                        <attributes>
-                                            <font key="NSFont" size="24" name="AppleSymbols"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CM2-1s-PwM">
-                                <rect key="frame" x="20" y="35" width="34" height="30"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <segue destination="Blx-y4-GzP" kind="show" id="mDh-a4-LNa"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="flt-kM-iJy" firstAttribute="centerX" secondItem="HHz-cB-7YZ" secondAttribute="centerX" id="0M5-bV-ZNF"/>
-                            <constraint firstItem="flt-kM-iJy" firstAttribute="top" secondItem="nqR-zA-so7" secondAttribute="top" constant="17" id="9ql-HR-Mep"/>
-                            <constraint firstItem="CM2-1s-PwM" firstAttribute="leading" secondItem="HHz-cB-7YZ" secondAttribute="leading" constant="20" id="wxf-fY-QoT"/>
-                            <constraint firstItem="CM2-1s-PwM" firstAttribute="top" secondItem="nqR-zA-so7" secondAttribute="top" constant="15" id="yAr-rO-qYD"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="nqR-zA-so7"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xKZ-9i-np4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1235" y="700"/>
-        </scene>
-        <!--Facebook-->
-        <scene sceneID="1OC-F4-vns">
-            <objects>
-                <viewController title="Facebook" id="94t-i8-1E8" customClass="Facebook" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Gs3-AO-ant">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tq6-lz-MMG">
-                                <rect key="frame" x="20" y="35" width="34" height="30"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <segue destination="Blx-y4-GzP" kind="show" id="F2g-U0-YBO"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FaY-y1-UxC">
-                                <rect key="frame" x="246.5" y="37" width="107" height="28"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Facebook">
-                                        <attributes>
-                                            <font key="NSFont" size="24" name="AppleSymbols"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="FaY-y1-UxC" firstAttribute="centerX" secondItem="Gs3-AO-ant" secondAttribute="centerX" id="HIC-ps-Ea3"/>
-                            <constraint firstItem="tq6-lz-MMG" firstAttribute="leading" secondItem="tnT-9L-ebR" secondAttribute="leading" constant="20" id="O83-HY-xh2"/>
-                            <constraint firstItem="tq6-lz-MMG" firstAttribute="top" secondItem="tnT-9L-ebR" secondAttribute="top" constant="15" id="lH7-ga-hRJ"/>
-                            <constraint firstItem="FaY-y1-UxC" firstAttribute="top" secondItem="tnT-9L-ebR" secondAttribute="top" constant="17" id="lqw-CK-tN7"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="tnT-9L-ebR"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JUf-Fe-ztN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-270" y="677"/>
-        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Wqu-ke-FLy"/>
-    </inferredMetricsTieBreakers>
 </document>

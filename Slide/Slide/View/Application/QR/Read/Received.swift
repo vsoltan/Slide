@@ -13,7 +13,7 @@ import AddressBook
 
 class Received: UIViewController, CNContactViewControllerDelegate {
     
-    var receivedInfo : EncodedMedia.Media?
+    var receivedInfo: EncodedMedia.Media?
 
     @IBOutlet weak var receivedInfoLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -39,7 +39,7 @@ class Received: UIViewController, CNContactViewControllerDelegate {
         }
     }
     
-    func addToAddressBook(contact : CNMutableContact) -> Bool {
+    func addToAddressBook(contact: CNMutableContact) -> Bool {
         let request = CNSaveRequest()
         let store = CNContactStore()
         

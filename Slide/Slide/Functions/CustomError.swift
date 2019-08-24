@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomError : UIAlertController {
+class CustomError: UIAlertController {
     
     // creates a UIAlertController with prompts for the user
     static func createWith(errorTitle: String, errorMessage: String) {

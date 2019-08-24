@@ -69,7 +69,7 @@ class AppUser {
     static func generateKeyDictionary() -> NSDictionary {
         let defaults = UserDefaults.standard
         
-        let dictionary : NSDictionary = [
+        let dictionary: NSDictionary = [
             "name"     : defaults.getName(),
             "email"    : defaults.getEmail(),
             "mobile"   : defaults.getPhoneNumber() ?? NSNull(),
@@ -206,7 +206,7 @@ class AppUser {
     }
     
     // deletes all other data in user's documents and local storage
-    static func deleteData(userID : String){
+    static func deleteData(userID: String){
         
         let db = Firestore.firestore()
         
@@ -274,7 +274,7 @@ class AppUser {
 // MARK: - USER DEFAULTS
 
 // implemented properties for UserDefaults
-enum UserDefaultsKeys : String {
+enum UserDefaultsKeys: String {
     case email
     case id
     case name

@@ -18,7 +18,7 @@ class TextParser {
     // verifies the format and completion of a text field entry
     static func validate(textFields: Array<(field: UITextField, type: String)>) -> Bool {
         
-        var completeForm : Bool = true
+        var completeForm: Bool = true
         
         // iterates through each textfield and checks if its empty
         for entry in textFields {

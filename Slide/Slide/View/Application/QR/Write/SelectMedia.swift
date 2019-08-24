@@ -39,10 +39,12 @@ class SelectMedia: UIViewController {
     }
     
     func generateMediaChoices() {
-        // generates choices for sharing based on what is synced to the account
         
-        // TODO programmatically make this below the nav bar
-        var verticalOffset: CGFloat = 20 + (navigationController?.navigationBar.frame.maxY)!
+        // generates choices for sharing based on what is synced to the account
+        let navBarHeight = UIApplication.shared.statusBarFrame.size.height +
+            (self.navigationController?.navigationBar.frame.height ?? 0.0)
+        
+        var verticalOffset: CGFloat = 20 + navBarHeight
         
         for media in supportedMedia {
             print(media.key as! String)

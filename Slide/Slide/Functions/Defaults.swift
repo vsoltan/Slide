@@ -49,7 +49,7 @@ extension UserDefaults {
     }
     
     // TOOD store in a URL
-    func setFacebookID(value : String) {
+    func setFacebookID(value: String) {
         set(value, forKey: UserDefaultsKeys.fbid.rawValue)
     }
     

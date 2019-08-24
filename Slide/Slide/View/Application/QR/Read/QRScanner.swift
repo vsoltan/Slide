@@ -18,7 +18,7 @@ class QRScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var previewLayer: AVCaptureVideoPreviewLayer!
     
     // struct that will store incoming data
-    var receivedInformation : EncodedMedia.Media?
+    var receivedInformation: EncodedMedia.Media?
     
     override func viewDidLoad() {
         super.viewDidLoad()
