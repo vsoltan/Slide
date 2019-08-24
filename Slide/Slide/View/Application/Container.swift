@@ -12,14 +12,13 @@ class Container: UIViewController {
     
     // MARK: - PROPERTIES
     var viewToAnimate: UIViewController!
-    var homeView : Home!
+    var homeView: Home!
     var sideMenu: Menu!
     var isHidden = true
     
     // MARK: - INITIALIZATIONS
     
     override func viewDidLoad() {
-        print("at container")
         super.viewDidLoad()
         configureHomeController()
     }
@@ -31,7 +30,7 @@ class Container: UIViewController {
     }
     
     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
-        return .slide
+        return .fade
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -62,6 +61,12 @@ class Container: UIViewController {
         }
     }
     
+    func animateStatusBar() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            self.setNeedsStatusBarAppearanceUpdate()
+        }, completion: nil)
+    }
+    
     func animateMenu(hidden: Bool, menuOption: MenuOption?) {
         if !(hidden) {
             // show menu
@@ -87,9 +92,10 @@ class Container: UIViewController {
     func didSelectMenuOtion(withIdentifier identifier: MenuOption) {
         switch identifier {
         case .Profile:
-            print("profile")
+            print("go to profile")
         case .Accounts:
-            print("accounts")
+            let accounts = Account()
+            self.present(UINavigationController(rootViewController: accounts), animated: true, completion: nil)
         case .Settings:
             let settings = Settings()
             self.present(UINavigationController(rootViewController: settings), animated: true, completion: nil)
@@ -98,12 +104,6 @@ class Container: UIViewController {
             let login = UIStoryboard(name: "LoginRegister", bundle: nil).instantiateInitialViewController()
             self.present(login!, animated: true, completion: nil)
         }
-    }
-    
-    func animateStatusBar() {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-            self.setNeedsStatusBarAppearanceUpdate()
-        }, completion: nil)
     }
 }
 

@@ -61,7 +61,7 @@ class Phone: UIViewController, UITextFieldDelegate {
     func checkAndUpdatePhone() -> Bool {
         
         // determines if the user can return to linked accounts page
-        var canContinue : Bool = true
+        var canContinue: Bool = true
         
         // if the user authorizes the app to work with their number
         if (userPermission.isOn) {

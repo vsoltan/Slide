@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Home: UIViewController {
+class Home: UXView {
     
     // MARK: - PROPERTIES
     
@@ -17,14 +17,13 @@ class Home: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.configureNavigationController()
         customizeHome()
-        configureNavigationBar()
     }
     
     // MARK: - CUSTOMIZATION
 
-    let welcomeLabel : UILabel = {
+    let welcomeLabel: UILabel = {
         let dims = UIScreen.main.bounds.size
         let label  = UILabel(frame: CGRect(x: 20, y: 100, width: 200, height: 60))
         label.textAlignment = .left
@@ -34,7 +33,7 @@ class Home: UIViewController {
         return label
     }()
     
-    let createSlideButton : UIButton = {
+    let createSlideButton: UIButton = {
         let dims = UIScreen.main.bounds.size
         let button = UIButton()
         
@@ -45,7 +44,7 @@ class Home: UIViewController {
         return button
     }()
     
-    lazy var swipeToScan : UISwipeGestureRecognizer = {
+    lazy var swipeToScan: UISwipeGestureRecognizer = {
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeToScan))
         swipe.direction = .left
         return swipe
@@ -67,15 +66,17 @@ class Home: UIViewController {
         view.addGestureRecognizer(swipeToScan)
     }
     
-    func configureNavigationBar() {
+    
+    override func configureNavigationController() {
         navigationController?.navigationBar.barTintColor = UX.defaultColor
         navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30)]
         navigationItem.title = "Slide"
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_menu_white_3x").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleSideMenuToggle))
     }
-    
-    // MARK : - HANDLERS
+
+    // MARK: - HANDLERS
     
     @objc func handleSideMenuToggle() {
         delegate?.handleMenuToggle(forMenuOption: nil)

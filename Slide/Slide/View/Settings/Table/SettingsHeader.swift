@@ -14,7 +14,7 @@ class SettingsHeader: UIView {
     
     let user = AppUser()
     
-    let profilePicture : UIImageView = {
+    let profilePicture: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
@@ -23,7 +23,7 @@ class SettingsHeader: UIView {
         return view
     }()
     
-    lazy var nameLabel : UILabel = {
+    lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .lightGray
@@ -32,7 +32,7 @@ class SettingsHeader: UIView {
         return label
     }()
     
-    lazy var emailLabel : UILabel = {
+    lazy var emailLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .lightGray
@@ -62,23 +62,6 @@ class SettingsHeader: UIView {
         addSubview(emailLabel)
         emailLabel.centerYAnchor.constraint(equalTo: profilePicture.centerYAnchor, constant: 10).isActive = true
         emailLabel.leftAnchor.constraint(equalTo: profilePicture.rightAnchor, constant: 12).isActive = true
-        
-//        // padding and layout
-//        profilePicture.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-//        profilePicture.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
-//        profilePicture.widthAnchor.constraint(equalToConstant: profileImageDimension).isActive = true
-//        profilePicture.heightAnchor.constraint(equalToConstant: profileImageDimension).isActive = true
-//
-//        // round the corners of the image
-//        profilePicture.layer.cornerRadius = profileImageDimension / 2
-//
-//        addSubview(nameLabel)
-//        nameLabel.centerYAnchor.constraint(equalTo: profilePicture.centerYAnchor, constant: -15).isActive = true
-//        nameLabel.leftAnchor.constraint(equalTo: profilePicture.rightAnchor, constant: 12).isActive = true
-//
-//        addSubview(emailLabel)
-//        emailLabel.centerYAnchor.constraint(equalTo: profilePicture.centerYAnchor, constant: 5).isActive = true
-//        emailLabel.leftAnchor.constraint(equalTo: profilePicture.rightAnchor, constant: 12).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {

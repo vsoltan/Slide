@@ -11,9 +11,7 @@ import Firebase
 
 private let reuseIdentifier = "Accounts Item"
 
-class Accounts: UXView {
-    
-    // MARK: - PROPERTIES
+class Account: UXView {
     
     // MARK: - INITIALIZATION
     
@@ -36,15 +34,9 @@ class Accounts: UXView {
         
         view.addSubview(accountsMenu)
     }
-    
-    // MARK: - HANDLERS
-    
-    @objc func handleBackButton() {
-        dismiss(animated: true, completion: nil)
-    }
 }
 
-extension Accounts:  UITableViewDataSource, UITableViewDelegate {
+extension Account:  UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -52,7 +44,6 @@ extension Accounts:  UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
-//        return AccountsOption.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

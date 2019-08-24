@@ -14,17 +14,15 @@ import GoogleSignIn
 
 private let reuseIdentifier = "SettingsItem"
 
-class Settings: UIViewController {
+class Settings: UXView {
     
     // MARK: - PROPERTIES
-    var menuHeader : SettingsHeader!
+    var menuHeader: SettingsHeader!
     
     // MARK: - INITIALIZATIONS
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        configureNavigationController()
+        super.viewDidLoad(withTitle: "Settings")
         configureSettingsMenu()
     }
     
@@ -56,32 +54,37 @@ class Settings: UIViewController {
         // the rest of the table is contained within this view
         settingsMenu.tableFooterView = UIView()
     }
-    
-    func configureNavigationController() {
-        
-        navigationController?.navigationBar.barTintColor = UX.defaultColor
-        navigationController?.navigationBar.barStyle = .black
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
-        navigationItem.title = "Settings"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "streamline-icon-navigation-left-2@24x24").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBackButton))
-    }
-    
-    // MARK: - HANDLERS
-    
-    @objc func handleBackButton() {
-        dismiss(animated: true, completion: nil)
-    }
 }
 
-extension Settings : UITableViewDelegate, UITableViewDataSource {
+extension Settings: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        
+        // retrieves the section corresponding to the section index
+        guard let section = SettingSection(rawValue: section) else { return 0 }
+        
+        switch section {
+        case .General:
+            return GeneralOption.allCases.count
+        case .Manage:
+            return ManageOption.allCases.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SettingsCell
-        cell.textLabel?.text = "hello"
+        
+        // section that encompasses the cell at the index
+        guard let section = SettingSection(rawValue: indexPath.section) else {return UITableViewCell()}
+
+        // set the name of the cell by iterating through the appropriate enum
+        switch section {
+        case .General:
+            let general = GeneralOption(rawValue: indexPath.row)
+            cell.textLabel?.text = general?.description
+        case .Manage:
+            let manage = ManageOption(rawValue: indexPath.row)
+            cell.textLabel?.text = manage?.description
+        }
         return cell
     }
     
@@ -97,7 +100,7 @@ extension Settings : UITableViewDelegate, UITableViewDataSource {
         let title = UILabel()
         title.font = UIFont.boldSystemFont(ofSize: 16)
         title.textColor = .white
-        title.text = "TITLE"
+        title.text = SettingSection(rawValue: section)?.description
         view.addSubview(title)
         
         title.translatesAutoresizingMaskIntoConstraints = false
@@ -108,9 +111,22 @@ extension Settings : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return 30
     }
-    
+
+    // action handler
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let allOptions = AllSettingsOption(rawValue: indexPath.row) else { return }
+
+        switch allOptions {
+        case .EditProfile:
+            print("edit profile")
+        case .About:
+            let about = About()
+            self.present(UINavigationController(rootViewController: about), animated: true, completion: nil)
+        case .DeleteAccount:
+            print("delete")
+        }
     }
 }
