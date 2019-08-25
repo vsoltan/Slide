@@ -180,7 +180,7 @@
         <!--Register-->
         <scene sceneID="KWc-na-h4s">
             <objects>
-                <viewController title="Register" id="Jhi-YG-4kD" customClass="register" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Register" id="Jhi-YG-4kD" customClass="Register" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G02-1n-y1C">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -216,6 +216,9 @@
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="accountActivated:" destination="Jhi-YG-4kD" eventType="touchUpInside" id="XEh-bK-tKW"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By signing up, you agree to our Terms , Data Policy and Cookies Policy " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHP-kd-rzV">
                                 <rect key="frame" x="65" y="544.5" width="284" height="61"/>
@@ -272,6 +275,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Log in"/>
                                         <connections>
+                                            <action selector="chooseLogIn:" destination="Jhi-YG-4kD" eventType="touchUpInside" id="lue-7l-Vno"/>
                                             <segue destination="rjZ-1j-7WL" kind="presentation" identifier="toLogin" id="r0b-ed-71v"/>
                                         </connections>
                                     </button>
@@ -301,6 +305,10 @@
                         <viewLayoutGuide key="safeArea" id="vUI-Bw-f2e"/>
                     </view>
                     <connections>
+                        <outlet property="usrEmail" destination="BJe-BK-adA" id="iKM-0I-4IQ"/>
+                        <outlet property="usrName" destination="oig-UZ-Jgz" id="mBC-ey-iR0"/>
+                        <outlet property="usrPassword" destination="yJU-nd-Fwf" id="i6F-Oe-5RW"/>
+                        <outlet property="usrUsername" destination="k2U-O7-JD1" id="ZwB-aJ-1Z5"/>
                         <segue destination="wrq-kI-aaL" kind="show" identifier="registerToHome" id="uJX-n3-th0"/>
                     </connections>
                 </viewController>

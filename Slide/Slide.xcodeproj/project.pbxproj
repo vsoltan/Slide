@@ -16,12 +16,10 @@
 		98961FD7230F2A5400BC38CE /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FBD230F2A4400BC38CE /* Password.swift */; };
 		98961FD8230F2A5400BC38CE /* Phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FBE230F2A4400BC38CE /* Phone.swift */; };
 		98961FD9230F2A5400BC38CE /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FBF230F2A4400BC38CE /* Account.swift */; };
-		98961FDB230F2A5400BC38CE /* Manage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FC1230F2A4400BC38CE /* Manage.swift */; };
 		98961FDC230F2A5400BC38CE /* SettingsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FC3230F2A4400BC38CE /* SettingsHeader.swift */; };
 		98961FDD230F2A5400BC38CE /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FC4230F2A4400BC38CE /* SettingsCell.swift */; };
 		98961FDE230F2A5400BC38CE /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FC5230F2A4400BC38CE /* Settings.swift */; };
 		98961FDF230F2A5400BC38CE /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FC7230F2A4400BC38CE /* Home.swift */; };
-		98961FE0230F2A5400BC38CE /* MediaSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FCA230F2A4400BC38CE /* MediaSelectionViewController.swift */; };
 		98961FE1230F2A5400BC38CE /* SelectMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FCB230F2A4400BC38CE /* SelectMedia.swift */; };
 		98961FE2230F2A5400BC38CE /* Generate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FCC230F2A4400BC38CE /* Generate.swift */; };
 		98961FE3230F2A5400BC38CE /* QRScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98961FCE230F2A4400BC38CE /* QRScanner.swift */; };
@@ -65,12 +63,10 @@
 		98961FBD230F2A4400BC38CE /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		98961FBE230F2A4400BC38CE /* Phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phone.swift; sourceTree = "<group>"; };
 		98961FBF230F2A4400BC38CE /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		98961FC1230F2A4400BC38CE /* Manage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manage.swift; sourceTree = "<group>"; };
 		98961FC3230F2A4400BC38CE /* SettingsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeader.swift; sourceTree = "<group>"; };
 		98961FC4230F2A4400BC38CE /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		98961FC5230F2A4400BC38CE /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		98961FC7230F2A4400BC38CE /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-		98961FCA230F2A4400BC38CE /* MediaSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSelectionViewController.swift; sourceTree = "<group>"; };
 		98961FCB230F2A4400BC38CE /* SelectMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMedia.swift; sourceTree = "<group>"; };
 		98961FCC230F2A4400BC38CE /* Generate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generate.swift; sourceTree = "<group>"; };
 		98961FCE230F2A4400BC38CE /* QRScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanner.swift; sourceTree = "<group>"; };
@@ -175,6 +171,8 @@
 		98961FBA230F2A4400BC38CE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				98961FD0230F2A4400BC38CE /* Container.swift */,
+				98961FF42311F5C300BC38CE /* UXView.swift */,
 				98961FBB230F2A4400BC38CE /* Settings */,
 				98961FC6230F2A4400BC38CE /* Application */,
 				98961FD4230F2A4400BC38CE /* Login */,
@@ -199,7 +197,6 @@
 				98961FBD230F2A4400BC38CE /* Password.swift */,
 				98961FBE230F2A4400BC38CE /* Phone.swift */,
 				98961FBF230F2A4400BC38CE /* Account.swift */,
-				98961FC1230F2A4400BC38CE /* Manage.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -218,9 +215,7 @@
 			children = (
 				98961FC7230F2A4400BC38CE /* Home.swift */,
 				98961FC8230F2A4400BC38CE /* QR */,
-				98961FD0230F2A4400BC38CE /* Container.swift */,
 				98961FD1230F2A4400BC38CE /* Navigation Menu */,
-				98961FF42311F5C300BC38CE /* UXView.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -237,7 +232,6 @@
 		98961FC9230F2A4400BC38CE /* Write */ = {
 			isa = PBXGroup;
 			children = (
-				98961FCA230F2A4400BC38CE /* MediaSelectionViewController.swift */,
 				98961FCB230F2A4400BC38CE /* SelectMedia.swift */,
 				98961FCC230F2A4400BC38CE /* Generate.swift */,
 			);
@@ -474,12 +468,10 @@
 				98961FD7230F2A5400BC38CE /* Password.swift in Sources */,
 				98961FD8230F2A5400BC38CE /* Phone.swift in Sources */,
 				98961FD9230F2A5400BC38CE /* Account.swift in Sources */,
-				98961FDB230F2A5400BC38CE /* Manage.swift in Sources */,
 				98961FDC230F2A5400BC38CE /* SettingsHeader.swift in Sources */,
 				98961FDD230F2A5400BC38CE /* SettingsCell.swift in Sources */,
 				98961FDE230F2A5400BC38CE /* Settings.swift in Sources */,
 				98961FDF230F2A5400BC38CE /* Home.swift in Sources */,
-				98961FE0230F2A5400BC38CE /* MediaSelectionViewController.swift in Sources */,
 				98961FE1230F2A5400BC38CE /* SelectMedia.swift in Sources */,
 				98961FE2230F2A5400BC38CE /* Generate.swift in Sources */,
 				98961FE3230F2A5400BC38CE /* QRScanner.swift in Sources */,
