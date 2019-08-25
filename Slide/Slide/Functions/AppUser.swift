@@ -156,10 +156,8 @@ class AppUser {
                         self.deleteData(userID: currUser.uid)
                         
                         // segue into LoginViewController
-                        let mySB = UIStoryboard(name: "LoginRegister", bundle: nil)
-                        let next = mySB.instantiateViewController(withIdentifier: "LoginViewController")
-                        caller.present(next, animated: true, completion: nil)
-                        print("completed")
+                        let login = Login()
+                        caller.present(login, animated: true, completion: nil)
                     }
                 })
             }

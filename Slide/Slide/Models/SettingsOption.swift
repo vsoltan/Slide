@@ -33,14 +33,6 @@ enum ManageOption: Int, CaseIterable, CustomStringConvertible {
     }
 }
 
-
-// collective enum for a more robust handling solution
-enum AllSettingsOption: Int {
-    case EditProfile
-    case About
-    case DeleteAccount
-}
-
 enum SettingSection: Int, CustomStringConvertible {
     
     case General
