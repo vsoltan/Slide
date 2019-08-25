@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="geV-7T-qZd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EGf-WZ-jgX">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,11 +9,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Roboto-Bold.ttf">
-            <string>Roboto-Bold</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="dJ9-jp-Fpi">
@@ -39,9 +34,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Vc-ok-g4e">
                                 <rect key="frame" x="20" y="59" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
-                                <connections>
-                                    <segue destination="geV-7T-qZd" kind="show" id="d8F-cE-tVb"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -81,14 +73,6 @@
             </objects>
             <point key="canvasLocation" x="2641" y="-692"/>
         </scene>
-        <!--Settings-->
-        <scene sceneID="0Lt-Vm-umS">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Settings" id="znL-d6-ReE" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cmr-Qh-S2u" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="958" y="-446"/>
-        </scene>
         <!--GenerateQR-->
         <scene sceneID="xDE-Rp-z8P">
             <objects>
@@ -124,9 +108,6 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8s3-BY-O9C">
                                         <rect key="frame" x="0.0" y="50" width="134" height="30"/>
                                         <state key="normal" title="Finish"/>
-                                        <connections>
-                                            <segue destination="geV-7T-qZd" kind="show" id="s9p-af-1jp"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -157,11 +138,7 @@
                         <segue destination="PR1-od-sZB" kind="show" id="cPU-pa-WRE"/>
                     </connections>
                 </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="down" id="3UR-z5-97x">
-                    <connections>
-                        <segue destination="geV-7T-qZd" kind="show" customClass="SwipeDown" customModule="Slide" customModuleProvider="target" id="oay-vt-5ME"/>
-                    </connections>
-                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="down" id="3UR-z5-97x"/>
             </objects>
             <point key="canvasLocation" x="-942" y="21"/>
         </scene>
@@ -191,9 +168,6 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="geV-7T-qZd" kind="show" id="3tg-Za-u2L"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -217,87 +191,24 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZYx-Ay-i0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="vXw-1O-3v0">
-                    <connections>
-                        <segue destination="geV-7T-qZd" kind="custom" customClass="SwipeRight" customModule="Slide" customModuleProvider="target" id="TGd-0r-vSG"/>
-                    </connections>
-                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="vXw-1O-3v0"/>
             </objects>
             <point key="canvasLocation" x="12" y="21"/>
         </scene>
-        <!--Home-->
-        <scene sceneID="NKf-KH-xe2">
+        <!--View Controller-->
+        <scene sceneID="h8B-77-MwN">
             <objects>
-                <viewController storyboardIdentifier="Home" title="Home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="geV-7T-qZd" customClass="Home" customModule="Slide" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zMc-O2-ear">
+                <viewController id="EGf-WZ-jgX" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ktF-wK-ci6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13x-xq-AwI">
-                                <rect key="frame" x="16" y="74" width="64" height="32"/>
-                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
-                                <state key="normal" title="Settings"/>
-                                <connections>
-                                    <segue destination="znL-d6-ReE" kind="presentation" id="1da-dH-ztb"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to your slide, " lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrj-Cr-QSm">
-                                <rect key="frame" x="20" y="122" width="177.33333333333334" height="20"/>
-                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M8D-lz-IQb">
-                                <rect key="frame" x="301" y="712" width="40" height="40"/>
-                                <state key="normal" image="addNew"/>
-                                <connections>
-                                    <segue destination="PR1-od-sZB" kind="popoverPresentation" popoverAnchorView="M8D-lz-IQb" id="KzC-P0-GHn">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TdW-eZ-YGl">
-                                <rect key="frame" x="290" y="74" width="69" height="32"/>
-                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
-                                <state key="normal" title="Contacts"/>
-                                <connections>
-                                    <segue destination="Dhf-gO-FV4" kind="show" id="htH-2i-QIQ"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="esl-Ic-Cb0" firstAttribute="trailing" secondItem="M8D-lz-IQb" secondAttribute="trailing" constant="34" id="1Ye-9s-3IA"/>
-                            <constraint firstItem="esl-Ic-Cb0" firstAttribute="bottom" secondItem="M8D-lz-IQb" secondAttribute="bottom" constant="26" id="A0z-pD-Mie"/>
-                            <constraint firstItem="zrj-Cr-QSm" firstAttribute="top" secondItem="13x-xq-AwI" secondAttribute="bottom" constant="16" id="JYC-2D-aAF"/>
-                            <constraint firstItem="esl-Ic-Cb0" firstAttribute="trailing" secondItem="TdW-eZ-YGl" secondAttribute="trailing" constant="16" id="coX-xa-EGD"/>
-                            <constraint firstItem="TdW-eZ-YGl" firstAttribute="top" secondItem="esl-Ic-Cb0" secondAttribute="top" constant="30" id="es5-MB-g0T"/>
-                            <constraint firstItem="13x-xq-AwI" firstAttribute="leading" secondItem="esl-Ic-Cb0" secondAttribute="leading" constant="16" id="hbJ-1F-Vn8"/>
-                            <constraint firstItem="13x-xq-AwI" firstAttribute="top" secondItem="esl-Ic-Cb0" secondAttribute="top" constant="30" id="kVD-ev-vuB"/>
-                            <constraint firstItem="zrj-Cr-QSm" firstAttribute="leading" secondItem="esl-Ic-Cb0" secondAttribute="leading" constant="20" id="uXN-sK-YB7"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="esl-Ic-Cb0"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="RB7-l8-Rpu" appends="YES" id="8jb-sK-qG5"/>
-                            <outletCollection property="gestureRecognizers" destination="1sV-Qh-GK4" appends="YES" id="ycz-Sn-I0l"/>
-                        </connections>
+                        <viewLayoutGuide key="safeArea" id="RQy-xw-0KX"/>
                     </view>
-                    <navigationItem key="navigationItem" id="YfQ-22-Hb5"/>
-                    <connections>
-                        <outlet property="NameLabel" destination="zrj-Cr-QSm" id="IAK-d8-5Dw"/>
-                        <outlet property="nameLabel" destination="zrj-Cr-QSm" id="Pqp-rh-mge"/>
-                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aV3-u5-IRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="RB7-l8-Rpu">
-                    <connections>
-                        <segue destination="lb8-9m-ZY2" kind="show" id="smv-gf-qZj"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="right" id="1sV-Qh-GK4"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jfL-fe-Kyx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="957.60000000000002" y="20.689655172413794"/>
+            <point key="canvasLocation" x="899" y="15"/>
         </scene>
         <!--ScanQR-->
         <scene sceneID="5wZ-0Z-QE4">
@@ -310,9 +221,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Y4-jn-PgS">
                                 <rect key="frame" x="20" y="59" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
-                                <connections>
-                                    <segue destination="geV-7T-qZd" kind="show" id="HQp-df-1qm"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -332,11 +240,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYj-IQ-TOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="gw7-6n-KSs">
-                    <connections>
-                        <segue destination="geV-7T-qZd" kind="presentation" id="XWq-Nm-r85"/>
-                    </connections>
-                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="gw7-6n-KSs"/>
             </objects>
             <point key="canvasLocation" x="1828" y="21"/>
         </scene>
@@ -349,12 +253,8 @@
             <point key="canvasLocation" x="2510" y="8"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="addNew" width="40" height="40"/>
-    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TGd-0r-vSG"/>
-        <segue reference="KzC-P0-GHn"/>
-        <segue reference="htH-2i-QIQ"/>
+        <segue reference="ezn-gW-uCD"/>
+        <segue reference="ghu-kF-wry"/>
     </inferredMetricsTieBreakers>
 </document>

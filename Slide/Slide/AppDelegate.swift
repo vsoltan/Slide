@@ -7,10 +7,10 @@
 //
 
 import UIKit
+import Firebase
 import GoogleSignIn
 import FBSDKCoreKit
 import FBSDKLoginKit
-import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     }
                     
                     // store google user's data locally
-                    SlideUser.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
+                    AppUser.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
                         if (error != nil) {
                             print("something went wrong")
                         } else {
@@ -97,42 +97,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        // use Firebase library to configure APIs
+        // configure APIs
         FirebaseApp.configure()
-        
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         
         let fbconfig = ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        /*
-         * if a user is already signed in, then we have to ping the server to update user defaults
-         *      - getUser takes time to execute
-         *      - in the meantime the root view controller will be launchScreen
-         *
-         * if user does not exist, then the root view controller will be set to loginRegister
-         */
-
-        // checks if user is already signed in
-        if let current = Auth.auth().currentUser?.uid {
-            // initializes the container for the root view controller
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            
-            // goes to launch screen
-            self.window?.rootViewController = UIStoryboard(name: "LoginRegister",
-                                                           bundle: nil).instantiateViewController(withIdentifier: "Launch")
-            
-            // passes the current user's id to the next vc
-            let destination = self.window?.rootViewController as! Launch
-            destination.currentID = current
-            
-            // renders
+        getPostLaunchWindow { (view) in
+        
+            self.window?.rootViewController = view
             self.window?.makeKeyAndVisible()
         }
+        
         return fbconfig
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    /*
+     * if a user is already signed in, then we have to ping the server to update defaults
+     *      - getUser takes time to execute
+     *      - in the meantime the app will push the launchscreen to mask data retrieval
+     *
+     * if user does not exist, then the root view controller will be set to login
+     */
+    
+    func getPostLaunchWindow(completion: @escaping (UIViewController) -> Void)  {
+        let auth = Auth.auth()
+        
+        // if a user is already signed in
+        if let user = auth.currentUser {
+            AppUser.getUser(userID: user.uid) { (error) in
+                if (error == nil) {
+                    completion(Container())
+                }
+            }
+        } else {
+            // placeholder while I implement login screen
+            let login = UIStoryboard(name: "LoginRegister", bundle: nil).instantiateInitialViewController()
+            completion(login!)
+        }
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
     }
     

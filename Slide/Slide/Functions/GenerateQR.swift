@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 class GenerateQR {
-    static func generateQRCode(from string : String?) -> UIImage? {
+    static func generateQRCode(from string: String?) -> UIImage? {
         
         // retrieves data from string and encodes it into ascii
         guard let data = string!.data(using: String.Encoding.ascii) else {

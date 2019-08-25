@@ -82,7 +82,7 @@
                         <viewLayoutGuide key="safeArea" id="BsO-VU-0d2"/>
                     </view>
                     <connections>
-                        <outlet property="settingsTable" destination="AqZ-UB-twD" id="nUF-Ef-gQc"/>
+                        <outlet property="settingsMenu" destination="AqZ-UB-twD" id="nUF-Ef-gQc"/>
                         <segue destination="KEq-JS-mqr" kind="show" identifier="Logout" id="kQ6-Rm-Etw"/>
                         <segue destination="8cJ-iF-hPv" kind="show" identifier="Change Password" id="5Rm-Ku-eQC"/>
                         <segue destination="jrR-xF-OOD" kind="show" identifier="Manage" id="8Nf-T2-zTr"/>
