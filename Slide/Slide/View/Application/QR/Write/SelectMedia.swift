@@ -16,7 +16,7 @@ class SelectMedia: UXView {
         let button = UIButton()
         button.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
         button.backgroundColor = UX.defaultColor
-//        button.layer.cornerRadius = 5
+        button.layer.cornerRadius = 5
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Create", for: .normal)
         return button
@@ -38,6 +38,7 @@ class SelectMedia: UXView {
     // MARK: - INITIALIZATIONS
     
     override func viewDidLoad() {
+        print("\(isViewLoaded)")
         super.viewDidLoad(withTitle: "Select Media")
         configureSelectMediaController()
     }
@@ -46,7 +47,11 @@ class SelectMedia: UXView {
     
     func configureSelectMediaController() {
         view.backgroundColor = .white
-        generateMediaChoices()
+        
+//        if !(isViewLoaded) {
+            print("generating")
+            generateMediaChoices()
+//        }
         
         view.addSubview(createButton)
         createButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

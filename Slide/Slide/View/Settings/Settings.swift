@@ -117,16 +117,16 @@ extension Settings: UITableViewDelegate, UITableViewDataSource {
     // action handler
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let allOptions = AllSettingsOption(rawValue: indexPath.row) else { return }
-
-        switch allOptions {
-        case .EditProfile:
+        switch tableView.cellForRow(at: indexPath)?.textLabel?.text {
+        case "Edit Profile":
             print("edit profile")
-        case .About:
+        case "About":
             let about = About()
-            self.present(UINavigationController(rootViewController: about), animated: true, completion: nil)
-        case .DeleteAccount:
-            print("delete")
+            present(UINavigationController(rootViewController: about), animated: true, completion: nil)
+        case "Delete Account":
+            AppUser.deleteUser(caller: self)
+        default:
+            print("ay")
         }
     }
 }

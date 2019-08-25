@@ -26,7 +26,7 @@ class Generate: UXView {
         let button = UIButton()
         button.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
         button.setTitle("Done", for: .normal)
-//        button.layer.cornerRadius = 5
+        button.layer.cornerRadius = 5
         button.backgroundColor = UX.defaultColor
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

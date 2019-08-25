@@ -18,6 +18,7 @@ class Register: UIViewController {
     @IBOutlet weak var usrUsername: UITextField!
     @IBOutlet weak var usrPassword: UITextField!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardOnGesture() 

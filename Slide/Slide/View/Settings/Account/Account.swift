@@ -70,24 +70,5 @@ extension Account:  UITableViewDataSource, UITableViewDelegate {
             print("email selected")
         }
     }
-    
-//    // slide action to configure or remove account reference from user data
-//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//        let addAction = UITableViewRowAction(style: .default, title: "Configure" , handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
-//        })
-//        let removeAction = UITableViewRowAction(style: .destructive, title: "Delete" , handler: { (action: UITableViewRowAction, indexPath: IndexPath) -> Void in
-//            let removeMenu = UIAlertController(title: nil, message: "This will completely remove this media from your account, proceed?", preferredStyle: .actionSheet)
-//
-//            let continueAction = UIAlertAction(title: "Yes", style: .default, handler: nil)
-//            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//
-//            removeMenu.addAction(continueAction)
-//            removeMenu.addAction(cancelAction)
-//
-//            self.present(removeMenu, animated: true, completion: nil)
-//        })
-//        return [removeAction, addAction]
-//    }
-    
 }
 
