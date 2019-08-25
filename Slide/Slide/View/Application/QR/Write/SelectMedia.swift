@@ -8,9 +8,19 @@
 
 import UIKit
 
-class SelectMedia: UIViewController {
+class SelectMedia: UXView {
     
     // MARK: - PROPERTIES
+    
+    lazy var createButton: UIButton = {
+        let button = UIButton()
+        button.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
+        button.backgroundColor = UX.defaultColor
+//        button.layer.cornerRadius = 5
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Create", for: .normal)
+        return button
+    }()
     
     // encoding structure
     var selectedMedia = EncodedMedia.Media.init()
@@ -25,17 +35,24 @@ class SelectMedia: UIViewController {
     let unchecked = UIImage(named: "UnCheckbox")!
     let checked = UIImage(named: "Checkbox")!
     
+    // MARK: - INITIALIZATIONS
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad(withTitle: "Select Media")
         configureSelectMediaController()
     }
     
+    // MARK: - CONFIGURATIONS
+    
     func configureSelectMediaController() {
         view.backgroundColor = .white
-        configureNavigationController()
         generateMediaChoices()
         
+        view.addSubview(createButton)
+        createButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        createButton.centerYAnchor.constraint(equalTo: view.bottomAnchor, constant: -80).isActive = true
+        
+        createButton.addTarget(self, action: #selector(handleCreateButton), for: .touchUpInside)
     }
     
     func generateMediaChoices() {
@@ -50,7 +67,7 @@ class SelectMedia: UIViewController {
             print(media.key as! String)
             
             // don't create a button if media is not synced
-            if !(media.value is NSNull) {} else {
+            if (media.value is NSNull) {} else {
                 
                 let mediaType = media.key as! String
                 
@@ -81,15 +98,6 @@ class SelectMedia: UIViewController {
         }
     }
     
-    func configureNavigationController() {
-        navigationController?.navigationBar.barTintColor = UX.defaultColor
-        navigationController?.navigationBar.barStyle = .black
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
-        navigationItem.title = "Choose Media"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "streamline-icon-navigation-left-2@24x24").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBackButton))
-    }
-    
     // radio button functionality
     @objc func mediaSelected(sender: UIButton!) {
         if sender.isSelected {
@@ -101,8 +109,17 @@ class SelectMedia: UIViewController {
         }
     }
     
-    // stages the media properties to be added to the encoding structure
-    @IBAction func selectionComplete(_ sender: Any) {
+    // passes data accumuated in this view controller to the GenerationVC
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toQRCodeView") {
+            let generationController = segue.destination as! Generate
+            generationController.toBeShared = selectedMedia
+        }
+    }
+    
+    // MARK: - HANDLERS
+    
+    @objc func handleCreateButton() {
         // keeps track of the number of fields selected
         var numChecked = 0
         
@@ -113,13 +130,13 @@ class SelectMedia: UIViewController {
                 let type = selection.data.key as! String
                 let data = selection.data.value as! String
                 
-                switch(type) {
-                
+                switch type {
                 case "name":
                     self.selectedMedia.name = data
                 case "email":
                     self.selectedMedia.email = data
                 case "mobile":
+                    // TODO Check if this is still how i am doing it "none" vs NSNUll
                     if (data != "none") {
                         self.selectedMedia.phoneNumber = data
                     }
@@ -136,19 +153,9 @@ class SelectMedia: UIViewController {
         }
         
         // performs the segue once all the info was solicited
-        self.performSegue(withIdentifier: "toQRCodeView", sender: self)
-    }
-    
-    // passes data accumuated in this view controller to the GenerationVC
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "toQRCodeView") {
-            let generationController = segue.destination as! Generate
-            generationController.toBeShared = selectedMedia
-        }
-    }
-    
-    // MARK: - HANDLERS
-    @objc func handleBackButton() {
-        dismiss(animated: true, completion: nil)
+        let generate = Generate()
+        generate.toBeShared = selectedMedia
+//        self.navigationController?.addChild(generate)
+        self.present(UINavigationController(rootViewController: generate), animated: true, completion: nil)
     }
 }
