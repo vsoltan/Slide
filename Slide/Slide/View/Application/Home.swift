@@ -89,9 +89,7 @@ class Home: UXView {
     
     @objc func handleSwipeToScan() {
         let scanner = QRScanner()
-        self.present(UINavigationController(rootViewController: scanner), animated: true) {
-            print("we got there")
-        }
+        self.present(UINavigationController(rootViewController: scanner), animated: true, completion: nil)
     }
 }
 

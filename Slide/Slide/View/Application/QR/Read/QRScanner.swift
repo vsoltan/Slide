@@ -115,15 +115,18 @@ class QRScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         // decodes the information to be shared and stores it in a struct
         receivedInformation = EncodedMedia.JSONtoStruct(source: code)!
         
-        // set the current view controller as root to conform to view hierarchy
-        let initialViewController = UIStoryboard(name: "Main", bundle:nil).instantiateViewController(withIdentifier: "QRScanner")
-        let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
-        appDelegate.window?.rootViewController = initialViewController
+        let received = Received()
+        received.receivedInfo = receivedInformation
         
-        // TODO animate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
+        guard let root = appDelegate.window?.rootViewController else { return }
         
-        // transitions to the receiving interface
-        performSegue(withIdentifier: "toMediaReceived", sender: self)
+        UIView.transition(from: root.view, to: received.view, duration: 2, options:
+            .transitionCrossDissolve, completion: { (_) in
+                appDelegate.window?.rootViewController = received
+                appDelegate.window?.makeKeyAndVisible()
+        })
     }
     
     // sets the recieved property to the data read

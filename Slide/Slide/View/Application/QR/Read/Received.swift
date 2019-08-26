@@ -11,45 +11,80 @@ import Contacts
 import ContactsUI
 import AddressBook
 
-class Received: UIViewController, CNContactViewControllerDelegate {
+class Received: UIViewController {
+    
+    // MARK: - PROPERTIES
+    
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Add New"
+        label.font = UIFont.systemFont(ofSize: 30)
+        return label
+    }()
+    
+    let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.text = "synchronize the contents of this Slide\n with your social networks and contacts!"
+        label.textColor = .lightGray
+        label.font = UIFont.systemFont(ofSize: 16)
+        return label
+    }()
+    
+    let createContactButton: UIButton = {
+        let button = UIButton()
+        button.frame = CGRect(x: 0, y: 0, width: 60, height: 30)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UX.defaultColor
+        button.setTitle("Create New Contact", for: .normal)
+        button.layer.cornerRadius = 5
+        return button
+    }()
     
     var receivedInfo: EncodedMedia.Media?
-
-    @IBOutlet weak var receivedInfoLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
+    
+    // MARK: - CONFIGURATION
+    
+    func configureRecieved() {
+        view.backgroundColor = .white
+        
+        view.addSubview(titleLabel)
+        titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
+        
+        view.addSubview(descriptionLabel)
+        descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30).isActive = true
+        
+        view.addSubview(createContactButton)
+        createContactButton.addTarget(self, action: #selector(handleCreateContactButton), for: .touchUpInside)
+        createContactButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        createContactButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 30).isActive = true
+    }
+    
+    // generates labels for all information shared
+    func generateSharedLabels() {
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        receivedInfoLabel.text = receivedInfo?.email!
-        nameLabel.text = receivedInfo?.name!
+        configureRecieved()
     }
     
-    @IBAction func createContact(_ sender: Any) {
-        let newContact = contactDataScrape(data: receivedInfo!)
-        
-        if (addToAddressBook(contact: newContact)) {
-            let contactVC = CNContactViewController(forNewContact: newContact)
-            contactVC.delegate = self
-            let navigationController = UINavigationController(rootViewController: contactVC)
-            self.present(navigationController, animated: true, completion: nil)
-        } else {
-            CustomError.createWith(errorTitle: "Something went wrong", errorMessage:
-                "couldn't add contact to address book")
-        }
-    }
-    
-    func addToAddressBook(contact: CNMutableContact) -> Bool {
+    func addToAddressBook(contact: CNMutableContact) {
         let request = CNSaveRequest()
         let store = CNContactStore()
         
         request.add(contact, toContainerWithIdentifier: nil)
         do {
             try store.execute(request)
-            return true
         } catch let err {
             print("Failed to save the contact. \(err)")
-            return false
         }
     }
 
@@ -70,15 +105,34 @@ class Received: UIViewController, CNContactViewControllerDelegate {
 
         contact.emailAddresses = [personalEmail]
         
-        contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile,
-                                               value: CNPhoneNumber(stringValue: data.phoneNumber!))]
-        
+        if let ayyy = data.phoneNumber {
+            contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile,
+                                                   value: CNPhoneNumber(stringValue: ayyy))]
+        }
         return contact
+    }
+    
+    // MARK: - HANDLERS
+    @objc func handleCreateContactButton() {
+        let newContact = contactDataScrape(data: receivedInfo!)
+        
+        let contactView = CNContactViewController(forNewContact: newContact)
+        contactView.delegate = self
+        let navigationController = UINavigationController(rootViewController: contactView)
+        self.present(navigationController, animated: true, completion: nil)
     }
 }
 
-extension CNMutableContact {
+extension Received: CNContactViewControllerDelegate{
+    func contactViewController(_ viewController: CNContactViewController, didCompleteWith contact: CNContact?) {
+        if let contact = contact {
+            addToAddressBook(contact: contact.mutableCopy() as! CNMutableContact)
+        }
+        viewController.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
+    }
+
     // TODO
-//    func isDuplicate() -> Bool {
-//    }
+    // func isDuplicate() -> Bool {
+    // }
 }

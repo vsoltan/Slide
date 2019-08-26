@@ -70,9 +70,6 @@
                                 <state key="normal" title="Create Contact">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="createContact:" destination="BJq-nG-D82" eventType="touchUpInside" id="K7c-hm-GOb"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5dL-Gh-Quy">
                                 <rect key="frame" x="163.66666666666666" y="448" width="48" height="30"/>
@@ -89,10 +86,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IFi-ac-VMc"/>
                     </view>
-                    <connections>
-                        <outlet property="nameLabel" destination="fl1-VR-Yfs" id="dgR-Bq-73h"/>
-                        <outlet property="receivedInfoLabel" destination="Jck-jj-Yvx" id="VuO-Q7-T1Y"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Qx-Qc-tJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
