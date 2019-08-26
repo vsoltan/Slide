@@ -101,8 +101,8 @@ class Container: UIViewController {
             self.present(UINavigationController(rootViewController: settings), animated: true, completion: nil)
         case .Logout:
             AppUser.logout()
-            let login = UIStoryboard(name: "LoginRegister", bundle: nil).instantiateInitialViewController()
-            self.present(login!, animated: true, completion: nil)
+            let login = Login()
+            self.present(login, animated: true, completion: nil)
         }
     }
 }

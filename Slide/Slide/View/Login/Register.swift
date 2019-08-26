@@ -11,7 +11,7 @@ import Firebase
 
 class Register: UIViewController {
     
-    // input text fields
+    // MARK: - PROPERTIES
 
     @IBOutlet weak var usrEmail: UITextField!
     @IBOutlet weak var usrName: UITextField!

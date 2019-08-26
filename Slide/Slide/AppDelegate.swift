@@ -105,11 +105,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let fbconfig = ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         getPostLaunchWindow { (view) in
-        
-            self.window?.rootViewController = view
-            self.window?.makeKeyAndVisible()
+            
+            guard let root = self.window?.rootViewController else { return }
+            
+            UIView.transition(from: root.view, to: view.view, duration: 0.4, options:
+                .transitionCrossDissolve, completion: { (_) in
+                self.window?.rootViewController = view
+                self.window?.makeKeyAndVisible()
+            })
         }
-        
         return fbconfig
     }
     
@@ -133,8 +137,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             }
         } else {
             // placeholder while I implement login screen
-            let login = UIStoryboard(name: "LoginRegister", bundle: nil).instantiateInitialViewController()
-            completion(login!)
+            completion(Login())
         }
     }
     

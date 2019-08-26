@@ -120,6 +120,8 @@ class QRScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
         appDelegate.window?.rootViewController = initialViewController
         
+        // TODO animate
+        
         // transitions to the receiving interface
         performSegue(withIdentifier: "toMediaReceived", sender: self)
     }
