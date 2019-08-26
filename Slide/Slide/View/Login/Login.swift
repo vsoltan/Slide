@@ -188,7 +188,7 @@ class Login: UIViewController, LoginButtonDelegate, GIDSignInUIDelegate {
     }
     
     @objc func handleToRegisterButton() {
-        let register = UIStoryboard(name: "LoginRegister", bundle: nil).instantiateViewController(withIdentifier: "Register")
+        let register = Register()
         present(register, animated: true, completion: nil)
     }
     

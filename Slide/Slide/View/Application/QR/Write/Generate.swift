@@ -57,8 +57,9 @@ class Generate: UXView {
     
     // MARK: - HANDLERS
     @objc func handleDoneButton() {
+        
         // return to container
-        navigationController?.popToRootViewController(animated: true)
-//        dismiss(animated: true, completion: nil)
+        let container = Container()
+        present(container, animated: true, completion: nil)
     }
 }
