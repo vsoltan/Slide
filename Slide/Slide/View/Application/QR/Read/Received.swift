@@ -17,7 +17,6 @@ class Received: UIViewController {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Add New"
         label.font = UIFont.systemFont(ofSize: 30)
@@ -26,7 +25,6 @@ class Received: UIViewController {
     
     let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.text = "synchronize the contents of this Slide\n with your social networks and contacts!"
@@ -37,10 +35,18 @@ class Received: UIViewController {
     
     let createContactButton: UIButton = {
         let button = UIButton()
-        button.frame = CGRect(x: 0, y: 0, width: 60, height: 30)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UX.defaultColor
         button.setTitle("Create New Contact", for: .normal)
+        button.layer.cornerRadius = 5
+        return button
+    }()
+    
+    let doneButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UX.defaultColor
+        button.setTitle("Done", for: .normal)
         button.layer.cornerRadius = 5
         return button
     }()
@@ -55,7 +61,7 @@ class Received: UIViewController {
         view.addSubview(titleLabel)
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
-        
+
         view.addSubview(descriptionLabel)
         descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30).isActive = true
@@ -64,16 +70,44 @@ class Received: UIViewController {
         createContactButton.addTarget(self, action: #selector(handleCreateContactButton), for: .touchUpInside)
         createContactButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         createContactButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 30).isActive = true
+        
+        view.addSubview(doneButton)
+        doneButton.addTarget(self, action: #selector(handleDoneButton), for: .touchUpInside)
+        doneButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        doneButton.topAnchor.constraint(equalTo: createContactButton.bottomAnchor, constant: 30).isActive = true
     }
     
     // generates labels for all information shared
     func generateSharedLabels() {
         
+        guard let received = receivedInfo else { return }
+        
+        let sharedMedia: Array<(key: String, value: String?)> = [
+            ("Name", received.name), ("Email", received.email),
+            ("Phone", received.phoneNumber),
+        ]
+        
+        var labelOffset: CGFloat = 50
+        
+        for tuple in sharedMedia {
+            if let value = tuple.value {
+                let label = UILabel()
+                
+                label.translatesAutoresizingMaskIntoConstraints = false
+                label.text = tuple.key + ": \(value)"
+                view.addSubview(label)
+                
+                label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+                label.topAnchor.constraint(equalTo: createContactButton.topAnchor, constant: labelOffset).isActive = true
+                labelOffset = labelOffset + 50
+            }
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureRecieved()
+        //generateSharedLabels()
     }
     
     func addToAddressBook(contact: CNMutableContact) {
@@ -120,6 +154,11 @@ class Received: UIViewController {
         contactView.delegate = self
         let navigationController = UINavigationController(rootViewController: contactView)
         self.present(navigationController, animated: true, completion: nil)
+    }
+    
+    @objc func handleDoneButton() {
+        let container = Container()
+        present(container, animated: true, completion: nil)
     }
 }
 

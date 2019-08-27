@@ -88,7 +88,9 @@ class Home: UXView {
     }
     
     @objc func handleSwipeToScan() {
+        // TODO swipe animation 
         let scanner = QRScanner()
+        scanner.modalTransitionStyle = .partialCurl
         self.present(UINavigationController(rootViewController: scanner), animated: true, completion: nil)
     }
 }

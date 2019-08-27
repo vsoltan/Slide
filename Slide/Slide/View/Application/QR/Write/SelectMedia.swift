@@ -41,17 +41,13 @@ class SelectMedia: UXView {
         print("\(isViewLoaded)")
         super.viewDidLoad(withTitle: "Select Media")
         configureSelectMediaController()
+        generateMediaChoices()
     }
     
     // MARK: - CONFIGURATIONS
     
     func configureSelectMediaController() {
         view.backgroundColor = .white
-        
-//        if !(isViewLoaded) {
-            print("generating")
-            generateMediaChoices()
-//        }
         
         view.addSubview(createButton)
         createButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

@@ -10,8 +10,12 @@ import Foundation
 import UIKit
 
 class UX {
+    
+    // MARK: - COLORS
+    
     static let defaultColor = UIColor(red: 255, green: 123, blue: 73)
     static let facebookColor = UIColor(red: 59, green: 89, blue: 152)
+    
 }
 
 extension UIColor {
