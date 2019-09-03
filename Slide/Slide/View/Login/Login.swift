@@ -166,12 +166,14 @@ class Login: UIViewController, LoginButtonDelegate, GIDSignInUIDelegate {
         let signInInfo: Array<(field: UITextField, type: String)>
             = [(emailField, "username"), (passwordField, "password")]
         
+        let auth = Auth.auth()
+        
         // checks that the user passed information to the application
         if (TextParser.validate(textFields: signInInfo) == true) {
             Auth.auth().signIn(withEmail: emailField.text!.trim(), password: passwordField.text!) { (user, error) in
                 if (user != nil) {
                     // retrieves user data to create defaults for the current session
-                    AppUser.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
+                    AppUser.setLocalData(for: auth.currentUser!.uid, completionHandler: { (error) in
                         if (error != nil) {
                             print("something went wrong")
                         } else {
@@ -272,7 +274,7 @@ class Login: UIViewController, LoginButtonDelegate, GIDSignInUIDelegate {
                 }
                 
                 // wait till defaults are updated before proceeding to main page
-                AppUser.getUser(userID: userID, completionHandler: { (error) in
+                AppUser.setLocalData(for: userID, completionHandler: { (error) in
                     if (error != nil) {
                         print("trouble retrieving user data, \(error!.localizedDescription)")
                     } else {

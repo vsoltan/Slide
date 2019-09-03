@@ -8,7 +8,7 @@
 
 import UIKit
 
-class About: UXView {
+class About: BaseView {
     
     // MARK: - PROPERTIES
     

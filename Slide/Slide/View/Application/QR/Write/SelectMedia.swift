@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectMedia: UXView {
+class SelectMedia: BaseView {
     
     // MARK: - PROPERTIES
     
@@ -83,16 +83,13 @@ class SelectMedia: UXView {
                 mediaButton.setImage(unchecked, for: UIControl.State.normal)
                 mediaButton.setTitle(mediaType, for: UIControl.State.normal)
                 mediaButton.isSelected = false
-                
-                // spacing between generated buttons
+            
                 verticalOffset = verticalOffset + 50
                 
-                // add action to button
                 mediaButton.addTarget(self, action: #selector(mediaSelected), for: .touchUpInside)
                 
                 selections.append((mediaButton, media))
                 
-                // render
                 self.view.addSubview(mediaButton)
                 self.view.addSubview(mediaButtonlabel)
             }
@@ -101,13 +98,11 @@ class SelectMedia: UXView {
     
     // radio button functionality
     @objc func mediaSelected(sender: UIButton!) {
-        if sender.isSelected {
-            sender.isSelected = false
-            sender.setImage(unchecked, for: UIControl.State.normal)
-        } else {
-            sender.isSelected = true
-            sender.setImage(checked, for: UIControl.State.normal)
-        }
+        sender.isSelected.toggle()
+        sender.setImage(sender.isSelected  // isSelect refers to new state now
+                            ? checked
+                            : unchecked,
+                        for: UIControl.State.normal)
     }
     
     // passes data accumuated in this view controller to the GenerationVC
@@ -121,6 +116,7 @@ class SelectMedia: UXView {
     // MARK: - HANDLERS
     
     @objc func handleCreateButton() {
+        
         // keeps track of the number of fields selected
         var numChecked = 0
         

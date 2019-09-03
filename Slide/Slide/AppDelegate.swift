@@ -21,66 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             CustomError.createWith(errorTitle: "Google Login Error", errorMessage: error.localizedDescription)
             return
         } else {
-            
             // send the user to google's login system
             guard let authentication = user.authentication else { return }
             
             // login token linked to the specified google acount
-            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+            let generatedCredential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
             
-            // use the token to sign into firebase
-            Auth.auth().signIn(with: credential) { (authResult, error) in
-                if (error == nil) {
-                    // the user was just created
-                    if ((authResult?.additionalUserInfo!.isNewUser)!) {
-                        // reference to the database
-                        let db = Firestore.firestore()
-                        let userID = Auth.auth().currentUser!.uid
-                        
-                        // creates firestore document for google user
-                        db.collection("users").document(userID).setData([
-                            // set specified data entries
-                            "Name": authResult?.user.displayName as Any,
-                            "ID": userID,
-                            "Email": authResult?.user.email as Any,
-                        ]) { err in
-                            if let err = err {
-                                print("Error writing document: \(err)")
-                            } else {
-                                print("Document successfully written!")
-                            }
-                        }
-                    }
-                    
-                    // store google user's data locally
-                    AppUser.getUser(userID: Auth.auth().currentUser!.uid, completionHandler: { (error) in
-                        if (error != nil) {
-                            print("something went wrong")
-                        } else {
-                            // print results to console and take user to Home
-                            print(authResult?.user.email as Any)
-                            print(authResult?.user.displayName as Any)
-                            
-                            // initializes the container for the view controller
-                            self.window = UIWindow(frame: UIScreen.main.bounds)
-                            
-                            // specifies the destination and creates an instance of that view controller
-                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                            let initialViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-                            
-                            // sets the root view controller to the desination and renders it
-                            self.window?.rootViewController = initialViewController
-                            self.window?.makeKeyAndVisible()
-                        }
-                    })
-                }
-                // failed
-                else {
-                    print(error?.localizedDescription as Any)
-                    CustomError.createWith(errorTitle: "Google Authentication Error", errorMessage: error!.localizedDescription)
-                }
-            }
-            
+            //GoogleLoginHandler.handleGoogleSignIn(GIDCredential: generatedCredential)
         }
     }
     
@@ -130,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         // if a user is already signed in
         if let user = auth.currentUser {
-            AppUser.getUser(userID: user.uid) { (error) in
+            AppUser.setLocalData(for: user.uid) { (error) in
                 if (error == nil) {
                     completion(Container())
                 }

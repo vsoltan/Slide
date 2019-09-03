@@ -11,7 +11,7 @@ import Firebase
 
 private let reuseIdentifier = "Accounts Item"
 
-class Account: UXView {
+class Account: BaseView {
     
     // MARK: - INITIALIZATION
     

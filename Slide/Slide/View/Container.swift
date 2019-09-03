@@ -11,6 +11,7 @@ import UIKit
 class Container: UIViewController {
     
     // MARK: - PROPERTIES
+    
     var viewToAnimate: UIViewController!
     var homeView: Home!
     var sideMenu: Menu!

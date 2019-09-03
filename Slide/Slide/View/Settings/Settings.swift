@@ -14,7 +14,7 @@ import GoogleSignIn
 
 private let reuseIdentifier = "SettingsItem"
 
-class Settings: UXView {
+class Settings: BaseView {
     
     // MARK: - PROPERTIES
     var menuHeader: SettingsHeader!

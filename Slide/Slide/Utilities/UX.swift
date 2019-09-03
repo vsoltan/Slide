@@ -18,6 +18,7 @@ class UX {
     
 }
 
+// int inputs are converted to CGFloat
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
         let newRed = CGFloat(red) / 255

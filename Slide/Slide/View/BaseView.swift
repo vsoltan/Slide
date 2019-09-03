@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UXView: UIViewController {
+class BaseView: UIViewController {
     
     var viewTitle: String?
     

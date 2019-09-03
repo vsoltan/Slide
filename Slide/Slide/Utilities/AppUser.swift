@@ -20,7 +20,7 @@ class AppUser {
     // MARK: - BACKEND AND LOCAL STORAGE
 
     // retrieves the data tree belonging to the current user
-    private static func getDocument(currentUserID: String, completionHandler: @escaping ([QueryDocumentSnapshot]?, Error?) -> Void) {
+    private static func getDocument(forUserWithID currentUserID: String, completionHandler: @escaping ([QueryDocumentSnapshot]?, Error?) -> Void) {
         // reference to the database
         let db = Firestore.firestore()
 
@@ -38,9 +38,9 @@ class AppUser {
     }
     
     // downloads user data to local storage
-    static func getUser(userID: String, completionHandler: @escaping (Error?) -> Void) {
+    static func setLocalData(for userID: String, completionHandler: @escaping (Error?) -> Void) {
         // thread deployed to interact with database
-        getDocument(currentUserID: userID) { (userData, error) in
+        getDocument(forUserWithID: userID) { (userData, error) in
             if (error == nil && userData != nil) {
                 // iterates through the array, as there may be several docs
                 for document in userData! {
