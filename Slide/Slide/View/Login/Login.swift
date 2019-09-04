@@ -94,7 +94,7 @@ class Login: UIViewController, LoginButtonDelegate, GIDSignInUIDelegate {
         return button
     }()
     
-    // reference to underlying facebook button
+    // reference to facebook API-generated button
     var fbLoginButton: FBLoginButton!
     
     // MARK: - CONFIGURATION
@@ -149,42 +149,25 @@ class Login: UIViewController, LoginButtonDelegate, GIDSignInUIDelegate {
         super.viewDidLoad()
         configureLogin()
         
-        self.hideKeyboardOnGesture()
-        
-        // creates facebook login button
         fbLoginButton = FBLoginButton()
         fbLoginButton.delegate = self
         
-        // google delegate setup
         GIDSignIn.sharedInstance()?.uiDelegate = self
+        
+        self.hideKeyboardOnGesture()
     }
     
     // MARK: - HANDLERS
     
     @objc func handleLoginButton() {
-        // consolidate provided data
-        let signInInfo: Array<(field: UITextField, type: String)>
-            = [(emailField, "username"), (passwordField, "password")]
         
-        let auth = Auth.auth()
+        let signInInfo = LoginDetails(email: emailField, password: passwordField)
         
-        // checks that the user passed information to the application
-        if (TextParser.validate(textFields: signInInfo) == true) {
-            Auth.auth().signIn(withEmail: emailField.text!.trim(), password: passwordField.text!) { (user, error) in
-                if (user != nil) {
-                    // retrieves user data to create defaults for the current session
-                    AppUser.setLocalData(for: auth.currentUser!.uid, completionHandler: { (error) in
-                        if (error != nil) {
-                            print("something went wrong")
-                        } else {
-                            // create a container view to run the application
-                            let container = Container()
-                            self.present(container, animated: true, completion: nil)
-                        }
-                    })
-                } else {
-                    CustomError.createWith(errorTitle: "Login Error", errorMessage: error!.localizedDescription)
-                }
+        let loginHandler = FirebaseLoginHandler()
+        
+        loginHandler.handleFirebaseLogin(for: signInInfo) { (loginSuccessful) in
+            if (loginSuccessful) {
+                loginHandler.presentApplication(from: self)
             }
         }
     }
@@ -287,7 +270,6 @@ class Login: UIViewController, LoginButtonDelegate, GIDSignInUIDelegate {
         }
     }
     
-    // facebook delegate function (not used)
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         print("finished facebook logout")
     }

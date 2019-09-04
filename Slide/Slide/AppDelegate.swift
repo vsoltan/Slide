@@ -15,37 +15,46 @@ import FBSDKLoginKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
-    // sign in function for Google
+    // MARK: - PROPERTIES
+    
+    var window: UIWindow?
+    
+    // MARK: - API LOGIN
+    
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
             CustomError.createWith(errorTitle: "Google Login Error", errorMessage: error.localizedDescription)
             return
         } else {
-            // send the user to google's login system
-            guard let authentication = user.authentication else { return }
             
-            // login token linked to the specified google acount
-            let generatedCredential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+            guard let userAuthDetails = user.authentication else { return }
             
-            //GoogleLoginHandler.handleGoogleSignIn(GIDCredential: generatedCredential)
+            let loginHandler = GoogleLoginHandler()
+            
+            let generatedCredential = GoogleAuthProvider.credential(withIDToken: userAuthDetails.idToken, accessToken: userAuthDetails.accessToken)
+            
+            loginHandler.handleGoogleSignIn(for: generatedCredential) { (loginSuccessful) in
+                if (loginSuccessful) {
+                    loginHandler.presentApplication(from: self)
+                }
+            }
         }
     }
     
-    // Finished disconnecting user from app if error is null
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         if error != nil {
             CustomError.createWith(errorTitle: "Google Signout Error", errorMessage: error!.localizedDescription)
         } else {
-            print("Successfully disconnected user from Slide")
+            print("Successfully disconnected user from the application")
         }
     }
-    
-    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        // configure APIs
+        // API configs
+        
         FirebaseApp.configure()
+        
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         
@@ -55,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             
             guard let root = self.window?.rootViewController else { return }
             
-            UIView.transition(from: root.view, to: view.view, duration: 0.4, options:
+            UIView.transition(from: root.view, to: view.view, duration: 0.5, options:
                 .transitionCrossDissolve, completion: { (_) in
                 self.window?.rootViewController = view
                 self.window?.makeKeyAndVisible()
@@ -64,15 +73,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         return fbconfig
     }
     
-    /*
-     * if a user is already signed in, then we have to ping the server to update defaults
-     *      - getUser takes time to execute
-     *      - in the meantime the app will push the launchscreen to mask data retrieval
-     *
-     * if user does not exist, then the root view controller will be set to login
-     */
-    
     func getPostLaunchWindow(completion: @escaping (UIViewController) -> Void)  {
+        
         let auth = Auth.auth()
         
         // if a user is already signed in
@@ -80,6 +82,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             AppUser.setLocalData(for: user.uid) { (error) in
                 if (error == nil) {
                     completion(Container())
+                } else {
+                    print("could not complete login")
                 }
             }
         } else {
